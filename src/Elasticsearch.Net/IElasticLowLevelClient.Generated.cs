@@ -8185,6 +8185,1270 @@ namespace Elasticsearch.Net
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
 		Task<ElasticsearchResponse<T>> XpackLicensePostAsync<T>(PostData<object> body, Func<PostLicenseRequestParameters, PostLicenseRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_close
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-close-job.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job to close</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlCloseJob<T>(string job_id, Func<CloseJobRequestParameters, CloseJobRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_close
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-close-job.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job to close</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlCloseJobAsync<T>(string job_id, Func<CloseJobRequestParameters, CloseJobRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a DELETE on /_xpack/ml/datafeeds/{datafeed_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeed to delete</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlDeleteDatafeed<T>(string datafeed_id, Func<XpackMlDeleteDatafeedRequestParameters, XpackMlDeleteDatafeedRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a DELETE on /_xpack/ml/datafeeds/{datafeed_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeed to delete</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlDeleteDatafeedAsync<T>(string datafeed_id, Func<XpackMlDeleteDatafeedRequestParameters, XpackMlDeleteDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a DELETE on /_xpack/ml/_delete_expired_data
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlDeleteExpiredData<T>(Func<XpackMlDeleteExpiredDataRequestParameters, XpackMlDeleteExpiredDataRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a DELETE on /_xpack/ml/_delete_expired_data
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlDeleteExpiredDataAsync<T>(Func<XpackMlDeleteExpiredDataRequestParameters, XpackMlDeleteExpiredDataRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a DELETE on /_xpack/ml/filters/{filter_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="filter_id">The ID of the filter to delete</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlDeleteFilter<T>(string filter_id, Func<XpackMlDeleteFilterRequestParameters, XpackMlDeleteFilterRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a DELETE on /_xpack/ml/filters/{filter_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="filter_id">The ID of the filter to delete</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlDeleteFilterAsync<T>(string filter_id, Func<XpackMlDeleteFilterRequestParameters, XpackMlDeleteFilterRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a DELETE on /_xpack/ml/anomaly_detectors/{job_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to delete</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlDeleteJob<T>(string job_id, Func<XpackMlDeleteJobRequestParameters, XpackMlDeleteJobRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a DELETE on /_xpack/ml/anomaly_detectors/{job_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to delete</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlDeleteJobAsync<T>(string job_id, Func<XpackMlDeleteJobRequestParameters, XpackMlDeleteJobRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a DELETE on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="snapshot_id">The ID of the snapshot to delete</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlDeleteModelSnapshot<T>(string job_id, string snapshot_id, Func<XpackMlDeleteModelSnapshotRequestParameters, XpackMlDeleteModelSnapshotRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a DELETE on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="snapshot_id">The ID of the snapshot to delete</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlDeleteModelSnapshotAsync<T>(string job_id, string snapshot_id, Func<XpackMlDeleteModelSnapshotRequestParameters, XpackMlDeleteModelSnapshotRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_flush
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job to flush</param>
+		///<param name="body">Flush parameters</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlFlushJob<T>(string job_id, PostData<object> body, Func<XpackMlFlushJobRequestParameters, XpackMlFlushJobRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_flush
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job to flush</param>
+		///<param name="body">Flush parameters</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlFlushJobAsync<T>(string job_id, PostData<object> body, Func<XpackMlFlushJobRequestParameters, XpackMlFlushJobRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html </para>
+		///</summary>
+		///<param name="job_id">ID of the job to get bucket results from</param>
+		///<param name="timestamp">The timestamp of the desired single bucket result</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetBuckets<T>(string job_id, string timestamp, Func<XpackMlGetBucketsRequestParameters, XpackMlGetBucketsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html </para>
+		///</summary>
+		///<param name="job_id">ID of the job to get bucket results from</param>
+		///<param name="timestamp">The timestamp of the desired single bucket result</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetBucketsAsync<T>(string job_id, string timestamp, Func<XpackMlGetBucketsRequestParameters, XpackMlGetBucketsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/buckets
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html </para>
+		///</summary>
+		///<param name="job_id">ID of the job to get bucket results from</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetBuckets<T>(string job_id, Func<XpackMlGetBucketsRequestParameters, XpackMlGetBucketsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/buckets
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html </para>
+		///</summary>
+		///<param name="job_id">ID of the job to get bucket results from</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetBucketsAsync<T>(string job_id, Func<XpackMlGetBucketsRequestParameters, XpackMlGetBucketsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html </para>
+		///</summary>
+		///<param name="job_id">ID of the job to get bucket results from</param>
+		///<param name="timestamp">The timestamp of the desired single bucket result</param>
+		///<param name="body">Bucket selection details if not provided in URI</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetBuckets<T>(string job_id, string timestamp, PostData<object> body, Func<XpackMlGetBucketsRequestParameters, XpackMlGetBucketsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html </para>
+		///</summary>
+		///<param name="job_id">ID of the job to get bucket results from</param>
+		///<param name="timestamp">The timestamp of the desired single bucket result</param>
+		///<param name="body">Bucket selection details if not provided in URI</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetBucketsAsync<T>(string job_id, string timestamp, PostData<object> body, Func<XpackMlGetBucketsRequestParameters, XpackMlGetBucketsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/buckets
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html </para>
+		///</summary>
+		///<param name="job_id">ID of the job to get bucket results from</param>
+		///<param name="body">Bucket selection details if not provided in URI</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetBuckets<T>(string job_id, PostData<object> body, Func<XpackMlGetBucketsRequestParameters, XpackMlGetBucketsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/buckets
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html </para>
+		///</summary>
+		///<param name="job_id">ID of the job to get bucket results from</param>
+		///<param name="body">Bucket selection details if not provided in URI</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetBucketsAsync<T>(string job_id, PostData<object> body, Func<XpackMlGetBucketsRequestParameters, XpackMlGetBucketsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/{category_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job</param>
+		///<param name="category_id">The identifier of the category definition of interest</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetCategories<T>(string job_id, long category_id, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/{category_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job</param>
+		///<param name="category_id">The identifier of the category definition of interest</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetCategoriesAsync<T>(string job_id, long category_id, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetCategories<T>(string job_id, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetCategoriesAsync<T>(string job_id, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/{category_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job</param>
+		///<param name="category_id">The identifier of the category definition of interest</param>
+		///<param name="body">Category selection details if not provided in URI</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetCategories<T>(string job_id, long category_id, PostData<object> body, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/{category_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job</param>
+		///<param name="category_id">The identifier of the category definition of interest</param>
+		///<param name="body">Category selection details if not provided in URI</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetCategoriesAsync<T>(string job_id, long category_id, PostData<object> body, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job</param>
+		///<param name="body">Category selection details if not provided in URI</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetCategories<T>(string job_id, PostData<object> body, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job</param>
+		///<param name="body">Category selection details if not provided in URI</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetCategoriesAsync<T>(string job_id, PostData<object> body, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/datafeeds/{datafeed_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeeds to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetDatafeeds<T>(string datafeed_id, Func<XpackMlGetDatafeedsRequestParameters, XpackMlGetDatafeedsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/datafeeds/{datafeed_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeeds to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetDatafeedsAsync<T>(string datafeed_id, Func<XpackMlGetDatafeedsRequestParameters, XpackMlGetDatafeedsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/datafeeds
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html </para>
+		///</summary>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetDatafeeds<T>(Func<XpackMlGetDatafeedsRequestParameters, XpackMlGetDatafeedsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/datafeeds
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html </para>
+		///</summary>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetDatafeedsAsync<T>(Func<XpackMlGetDatafeedsRequestParameters, XpackMlGetDatafeedsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/datafeeds/{datafeed_id}/_stats
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeeds stats to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetDatafeedStats<T>(string datafeed_id, Func<XpackMlGetDatafeedStatsRequestParameters, XpackMlGetDatafeedStatsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/datafeeds/{datafeed_id}/_stats
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeeds stats to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetDatafeedStatsAsync<T>(string datafeed_id, Func<XpackMlGetDatafeedStatsRequestParameters, XpackMlGetDatafeedStatsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/datafeeds/_stats
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html </para>
+		///</summary>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetDatafeedStats<T>(Func<XpackMlGetDatafeedStatsRequestParameters, XpackMlGetDatafeedStatsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/datafeeds/_stats
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html </para>
+		///</summary>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetDatafeedStatsAsync<T>(Func<XpackMlGetDatafeedStatsRequestParameters, XpackMlGetDatafeedStatsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/filters/
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetFilters<T>(Func<XpackMlGetFiltersRequestParameters, XpackMlGetFiltersRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/filters/
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetFiltersAsync<T>(Func<XpackMlGetFiltersRequestParameters, XpackMlGetFiltersRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/filters/{filter_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="filter_id">The ID of the filter to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetFilters<T>(string filter_id, Func<XpackMlGetFiltersRequestParameters, XpackMlGetFiltersRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/filters/{filter_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="filter_id">The ID of the filter to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetFiltersAsync<T>(string filter_id, Func<XpackMlGetFiltersRequestParameters, XpackMlGetFiltersRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/influencers
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-influencer.html </para>
+		///</summary>
+		///<param name="job_id"></param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetInfluencers<T>(string job_id, Func<XpackMlGetInfluencersRequestParameters, XpackMlGetInfluencersRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/influencers
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-influencer.html </para>
+		///</summary>
+		///<param name="job_id"></param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetInfluencersAsync<T>(string job_id, Func<XpackMlGetInfluencersRequestParameters, XpackMlGetInfluencersRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/influencers
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-influencer.html </para>
+		///</summary>
+		///<param name="job_id"></param>
+		///<param name="body">Influencer selection criteria</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetInfluencers<T>(string job_id, PostData<object> body, Func<XpackMlGetInfluencersRequestParameters, XpackMlGetInfluencersRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/influencers
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-influencer.html </para>
+		///</summary>
+		///<param name="job_id"></param>
+		///<param name="body">Influencer selection criteria</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetInfluencersAsync<T>(string job_id, PostData<object> body, Func<XpackMlGetInfluencersRequestParameters, XpackMlGetInfluencersRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the jobs to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetJobs<T>(string job_id, Func<XpackMlGetJobsRequestParameters, XpackMlGetJobsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the jobs to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetJobsAsync<T>(string job_id, Func<XpackMlGetJobsRequestParameters, XpackMlGetJobsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html </para>
+		///</summary>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetJobs<T>(Func<XpackMlGetJobsRequestParameters, XpackMlGetJobsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html </para>
+		///</summary>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetJobsAsync<T>(Func<XpackMlGetJobsRequestParameters, XpackMlGetJobsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/_stats
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html </para>
+		///</summary>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetJobStats<T>(Func<XpackMlGetJobStatsRequestParameters, XpackMlGetJobStatsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/_stats
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html </para>
+		///</summary>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetJobStatsAsync<T>(Func<XpackMlGetJobStatsRequestParameters, XpackMlGetJobStatsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/_stats
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the jobs stats to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetJobStats<T>(string job_id, Func<XpackMlGetJobStatsRequestParameters, XpackMlGetJobStatsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/_stats
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the jobs stats to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetJobStatsAsync<T>(string job_id, Func<XpackMlGetJobStatsRequestParameters, XpackMlGetJobStatsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="snapshot_id">The ID of the snapshot to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetModelSnapshots<T>(string job_id, string snapshot_id, Func<XpackMlGetModelSnapshotsRequestParameters, XpackMlGetModelSnapshotsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="snapshot_id">The ID of the snapshot to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetModelSnapshotsAsync<T>(string job_id, string snapshot_id, Func<XpackMlGetModelSnapshotsRequestParameters, XpackMlGetModelSnapshotsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetModelSnapshots<T>(string job_id, Func<XpackMlGetModelSnapshotsRequestParameters, XpackMlGetModelSnapshotsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetModelSnapshotsAsync<T>(string job_id, Func<XpackMlGetModelSnapshotsRequestParameters, XpackMlGetModelSnapshotsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="snapshot_id">The ID of the snapshot to fetch</param>
+		///<param name="body">Model snapshot selection criteria</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetModelSnapshots<T>(string job_id, string snapshot_id, PostData<object> body, Func<XpackMlGetModelSnapshotsRequestParameters, XpackMlGetModelSnapshotsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="snapshot_id">The ID of the snapshot to fetch</param>
+		///<param name="body">Model snapshot selection criteria</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetModelSnapshotsAsync<T>(string job_id, string snapshot_id, PostData<object> body, Func<XpackMlGetModelSnapshotsRequestParameters, XpackMlGetModelSnapshotsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="body">Model snapshot selection criteria</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetModelSnapshots<T>(string job_id, PostData<object> body, Func<XpackMlGetModelSnapshotsRequestParameters, XpackMlGetModelSnapshotsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="body">Model snapshot selection criteria</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetModelSnapshotsAsync<T>(string job_id, PostData<object> body, Func<XpackMlGetModelSnapshotsRequestParameters, XpackMlGetModelSnapshotsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/records
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-record.html </para>
+		///</summary>
+		///<param name="job_id"></param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetRecords<T>(string job_id, Func<XpackMlGetRecordsRequestParameters, XpackMlGetRecordsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/records
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-record.html </para>
+		///</summary>
+		///<param name="job_id"></param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetRecordsAsync<T>(string job_id, Func<XpackMlGetRecordsRequestParameters, XpackMlGetRecordsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/records
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-record.html </para>
+		///</summary>
+		///<param name="job_id"></param>
+		///<param name="body">Record selection criteria</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlGetRecords<T>(string job_id, PostData<object> body, Func<XpackMlGetRecordsRequestParameters, XpackMlGetRecordsRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/records
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-record.html </para>
+		///</summary>
+		///<param name="job_id"></param>
+		///<param name="body">Record selection criteria</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlGetRecordsAsync<T>(string job_id, PostData<object> body, Func<XpackMlGetRecordsRequestParameters, XpackMlGetRecordsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_open
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to open</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlOpenJob<T>(string job_id, Func<XpackMlOpenJobRequestParameters, XpackMlOpenJobRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_open
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to open</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlOpenJobAsync<T>(string job_id, Func<XpackMlOpenJobRequestParameters, XpackMlOpenJobRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_data
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-data.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job receiving the data</param>
+		///<param name="body">The data to process</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlPostData<T>(string job_id, PostData<object> body, Func<XpackMlPostDataRequestParameters, XpackMlPostDataRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_data
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-data.html </para>
+		///</summary>
+		///<param name="job_id">The name of the job receiving the data</param>
+		///<param name="body">The data to process</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlPostDataAsync<T>(string job_id, PostData<object> body, Func<XpackMlPostDataRequestParameters, XpackMlPostDataRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/datafeeds/{datafeed_id}/_preview
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeed to preview</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlPreviewDatafeed<T>(string datafeed_id, Func<XpackMlPreviewDatafeedRequestParameters, XpackMlPreviewDatafeedRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a GET on /_xpack/ml/datafeeds/{datafeed_id}/_preview
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeed to preview</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlPreviewDatafeedAsync<T>(string datafeed_id, Func<XpackMlPreviewDatafeedRequestParameters, XpackMlPreviewDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a PUT on /_xpack/ml/datafeeds/{datafeed_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeed to create</param>
+		///<param name="body">The datafeed config</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlPutDatafeed<T>(string datafeed_id, PostData<object> body, Func<PutDatafeedRequestParameters, PutDatafeedRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a PUT on /_xpack/ml/datafeeds/{datafeed_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeed to create</param>
+		///<param name="body">The datafeed config</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlPutDatafeedAsync<T>(string datafeed_id, PostData<object> body, Func<PutDatafeedRequestParameters, PutDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a PUT on /_xpack/ml/filters/{filter_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="filter_id">The ID of the filter to create</param>
+		///<param name="body">The filter details</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlPutFilter<T>(string filter_id, PostData<object> body, Func<XpackMlPutFilterRequestParameters, XpackMlPutFilterRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a PUT on /_xpack/ml/filters/{filter_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="filter_id">The ID of the filter to create</param>
+		///<param name="body">The filter details</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlPutFilterAsync<T>(string filter_id, PostData<object> body, Func<XpackMlPutFilterRequestParameters, XpackMlPutFilterRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a PUT on /_xpack/ml/anomaly_detectors/{job_id}
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to create</param>
+		///<param name="body">The job</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlPutJob<T>(string job_id, PostData<object> body, Func<PutJobRequestParameters, PutJobRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a PUT on /_xpack/ml/anomaly_detectors/{job_id}
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to create</param>
+		///<param name="body">The job</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlPutJobAsync<T>(string job_id, PostData<object> body, Func<PutJobRequestParameters, PutJobRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-revert-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="snapshot_id">The ID of the snapshot to revert to</param>
+		///<param name="body">Reversion options</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlRevertModelSnapshot<T>(string job_id, string snapshot_id, PostData<object> body, Func<XpackMlRevertModelSnapshotRequestParameters, XpackMlRevertModelSnapshotRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-revert-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="snapshot_id">The ID of the snapshot to revert to</param>
+		///<param name="body">Reversion options</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlRevertModelSnapshotAsync<T>(string job_id, string snapshot_id, PostData<object> body, Func<XpackMlRevertModelSnapshotRequestParameters, XpackMlRevertModelSnapshotRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_start
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeed to start</param>
+		///<param name="body">The start datafeed parameters</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlStartDatafeed<T>(string datafeed_id, PostData<object> body, Func<XpackMlStartDatafeedRequestParameters, XpackMlStartDatafeedRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_start
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeed to start</param>
+		///<param name="body">The start datafeed parameters</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlStartDatafeedAsync<T>(string datafeed_id, PostData<object> body, Func<XpackMlStartDatafeedRequestParameters, XpackMlStartDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_stop
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeed to stop</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlStopDatafeed<T>(string datafeed_id, Func<XpackMlStopDatafeedRequestParameters, XpackMlStopDatafeedRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_stop
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeed to stop</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlStopDatafeedAsync<T>(string datafeed_id, Func<XpackMlStopDatafeedRequestParameters, XpackMlStopDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_update
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeed to update</param>
+		///<param name="body">The datafeed update settings</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlUpdateDatafeed<T>(string datafeed_id, PostData<object> body, Func<XpackMlUpdateDatafeedRequestParameters, XpackMlUpdateDatafeedRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_update
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html </para>
+		///</summary>
+		///<param name="datafeed_id">The ID of the datafeed to update</param>
+		///<param name="body">The datafeed update settings</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlUpdateDatafeedAsync<T>(string datafeed_id, PostData<object> body, Func<XpackMlUpdateDatafeedRequestParameters, XpackMlUpdateDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_update
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to create</param>
+		///<param name="body">The job update settings</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlUpdateJob<T>(string job_id, PostData<object> body, Func<XpackMlUpdateJobRequestParameters, XpackMlUpdateJobRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_update
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to create</param>
+		///<param name="body">The job update settings</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlUpdateJobAsync<T>(string job_id, PostData<object> body, Func<XpackMlUpdateJobRequestParameters, XpackMlUpdateJobRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="snapshot_id">The ID of the snapshot to update</param>
+		///<param name="body">The model snapshot properties to update</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlUpdateModelSnapshot<T>(string job_id, string snapshot_id, PostData<object> body, Func<XpackMlUpdateModelSnapshotRequestParameters, XpackMlUpdateModelSnapshotRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-snapshot.html </para>
+		///</summary>
+		///<param name="job_id">The ID of the job to fetch</param>
+		///<param name="snapshot_id">The ID of the snapshot to update</param>
+		///<param name="body">The model snapshot properties to update</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlUpdateModelSnapshotAsync<T>(string job_id, string snapshot_id, PostData<object> body, Func<XpackMlUpdateModelSnapshotRequestParameters, XpackMlUpdateModelSnapshotRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/_validate
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="body">The job config</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlValidate<T>(PostData<object> body, Func<XpackMlValidateRequestParameters, XpackMlValidateRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/_validate
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="body">The job config</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlValidateAsync<T>(PostData<object> body, Func<XpackMlValidateRequestParameters, XpackMlValidateRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/_validate/detector
+		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="body">The detector</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		ElasticsearchResponse<T> XpackMlValidateDetector<T>(PostData<object> body, Func<XpackMlValidateDetectorRequestParameters, XpackMlValidateDetectorRequestParameters> requestParameters = null) where T : class;
+		
+		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/_validate/detector
+		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
+		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>
+		///<para> - byte[], no deserialization, but the response stream will be closed </para>
+		///<para> - Stream, no deserialization, response stream is your responsibility </para>
+		///<para> - VoidResponse, no deserialization, response stream never read and closed </para>
+		///<para> - DynamicDictionary, a dynamic aware dictionary that can be safely traversed to any depth </para>
+		///<para>See also:  </para>
+		///</summary>
+		///<param name="body">The detector</param>
+		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
+		Task<ElasticsearchResponse<T>> XpackMlValidateDetectorAsync<T>(PostData<object> body, Func<XpackMlValidateDetectorRequestParameters, XpackMlValidateDetectorRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		
 		///<summary>Represents a GET on /_xpack/security/_authenticate
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
 		///<para> - T, an object you own that the elasticsearch response will be deserialized to </para>

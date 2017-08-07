@@ -36,6 +36,8 @@ namespace ApiGenerator.Domain
 						return "IndexName";
 					case "type": return this.Type == "string" ? "TypeName" : "Types";
 					case "watch_id":
+					case "job_id":
+					case "datafeed_id":
 					case "id": return this.Type == "string" ? "Id" : "Ids";
 					case "node_id": return this.Type == "string" ? "NodeId" : "NodeIds";
 					case "scroll_id": return this.Type == "string" ? "ScrollId" : "ScrollIds";

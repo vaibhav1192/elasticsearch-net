@@ -44,4 +44,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Document\Single\Attachment\Attachment_Test_Document.pdf" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="XPack\MachineLearning\PutDatafeed" />
+  </ItemGroup>
 </Project>

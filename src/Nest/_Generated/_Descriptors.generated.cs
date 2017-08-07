@@ -6680,6 +6680,1095 @@ namespace Nest
 	
 	}
 	
+	///<summary>descriptor for XpackMlCloseJob <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-close-job.html</pre></summary>
+	public partial class CloseJobDescriptor  : RequestDescriptorBase<CloseJobDescriptor,CloseJobRequestParameters, ICloseJobRequest>, ICloseJobRequest
+	{ 
+		Id ICloseJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/_close</summary>
+///<param name="job_id"> this parameter is required</param>
+		public CloseJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+		
+		///<summary>True if the job should be forcefully closed</summary>
+		public CloseJobDescriptor Force(bool force = true) => AssignParam(p=>p.Force(force));
+
+		///<summary>Controls the time to wait until a job has closed. Default to 30 minutes</summary>
+		public CloseJobDescriptor Timeout(Time timeout) => AssignParam(p=>p.Timeout(timeout.ToTimeSpan()));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public CloseJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public CloseJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public CloseJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public CloseJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public CloseJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+	
+	}
+	
+	///<summary>descriptor for XpackMlDeleteDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html</pre></summary>
+	public partial class XpackMlDeleteDatafeedDescriptor  : RequestDescriptorBase<XpackMlDeleteDatafeedDescriptor,XpackMlDeleteDatafeedRequestParameters, IXpackMlDeleteDatafeedRequest>, IXpackMlDeleteDatafeedRequest
+	{ 
+		Id IXpackMlDeleteDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}</summary>
+///<param name="datafeed_id"> this parameter is required</param>
+		public XpackMlDeleteDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		
+
+		
+		///<summary>True if the datafeed should be forcefully deleted</summary>
+		public XpackMlDeleteDatafeedDescriptor Force(bool force = true) => AssignParam(p=>p.Force(force));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlDeleteDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlDeleteDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlDeleteDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlDeleteDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlDeleteDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlDeleteExpiredData <pre></pre></summary>
+	public partial class XpackMlDeleteExpiredDataDescriptor  : RequestDescriptorBase<XpackMlDeleteExpiredDataDescriptor,XpackMlDeleteExpiredDataRequestParameters, IXpackMlDeleteExpiredDataRequest>, IXpackMlDeleteExpiredDataRequest
+	{ 
+			
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlDeleteExpiredDataDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlDeleteExpiredDataDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlDeleteExpiredDataDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlDeleteExpiredDataDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlDeleteExpiredDataDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlDeleteFilter <pre></pre></summary>
+	public partial class XpackMlDeleteFilterDescriptor  : RequestDescriptorBase<XpackMlDeleteFilterDescriptor,XpackMlDeleteFilterRequestParameters, IXpackMlDeleteFilterRequest>, IXpackMlDeleteFilterRequest
+	{ 
+		string_ IXpackMlDeleteFilterRequest.FilterId => Self.RouteValues.Get<string_>("filter_id");
+			/// <summary>/_xpack/ml/filters/{filter_id}</summary>
+///<param name="filter_id"> this parameter is required</param>
+		public XpackMlDeleteFilterDescriptor(string_ filter_id) : base(r=>r.Required("filter_id", filter_id)){}
+		
+
+		
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlDeleteFilterDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlDeleteFilterDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlDeleteFilterDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlDeleteFilterDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlDeleteFilterDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlDeleteJob <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html</pre></summary>
+	public partial class XpackMlDeleteJobDescriptor  : RequestDescriptorBase<XpackMlDeleteJobDescriptor,XpackMlDeleteJobRequestParameters, IXpackMlDeleteJobRequest>, IXpackMlDeleteJobRequest
+	{ 
+		Id IXpackMlDeleteJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}</summary>
+///<param name="job_id"> this parameter is required</param>
+		public XpackMlDeleteJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+		
+		///<summary>True if the job should be forcefully deleted</summary>
+		public XpackMlDeleteJobDescriptor Force(bool force = true) => AssignParam(p=>p.Force(force));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlDeleteJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlDeleteJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlDeleteJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlDeleteJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlDeleteJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlDeleteModelSnapshot <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-snapshot.html</pre></summary>
+	public partial class XpackMlDeleteModelSnapshotDescriptor  : RequestDescriptorBase<XpackMlDeleteModelSnapshotDescriptor,XpackMlDeleteModelSnapshotRequestParameters, IXpackMlDeleteModelSnapshotRequest>, IXpackMlDeleteModelSnapshotRequest
+	{ 
+		Id IXpackMlDeleteModelSnapshotRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		string_ IXpackMlDeleteModelSnapshotRequest.SnapshotId => Self.RouteValues.Get<string_>("snapshot_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}</summary>
+///<param name="job_id"> this parameter is required</param>		
+///<param name="snapshot_id"> this parameter is required</param>
+		public XpackMlDeleteModelSnapshotDescriptor(Id job_id, string_ snapshot_id) : base(r=>r.Required("job_id", job_id).Required("snapshot_id", snapshot_id)){}
+		
+
+		
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlDeleteModelSnapshotDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlDeleteModelSnapshotDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlDeleteModelSnapshotDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlDeleteModelSnapshotDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlDeleteModelSnapshotDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlFlushJob <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html</pre></summary>
+	public partial class XpackMlFlushJobDescriptor  : RequestDescriptorBase<XpackMlFlushJobDescriptor,XpackMlFlushJobRequestParameters, IXpackMlFlushJobRequest>, IXpackMlFlushJobRequest
+	{ 
+		Id IXpackMlFlushJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/_flush</summary>
+///<param name="job_id"> this parameter is required</param>
+		public XpackMlFlushJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+		
+		///<summary>Calculates interim results for the most recent bucket or all buckets within the latency period</summary>
+		public XpackMlFlushJobDescriptor CalcInterim(bool calc_interim = true) => AssignParam(p=>p.CalcInterim(calc_interim));
+
+		///<summary>When used in conjunction with calc_interim, specifies the range of buckets on which to calculate interim results</summary>
+		public XpackMlFlushJobDescriptor Start(string start) => AssignParam(p=>p.Start(start));
+
+		///<summary>When used in conjunction with calc_interim, specifies the range of buckets on which to calculate interim results</summary>
+		public XpackMlFlushJobDescriptor End(string end) => AssignParam(p=>p.End(end));
+
+		///<summary>Setting this tells the Engine API that no data prior to advance_time is expected</summary>
+		public XpackMlFlushJobDescriptor AdvanceTime(string advance_time) => AssignParam(p=>p.AdvanceTime(advance_time));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlFlushJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlFlushJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlFlushJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlFlushJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlFlushJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlGetBuckets <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html</pre></summary>
+	public partial class XpackMlGetBucketsDescriptor  : RequestDescriptorBase<XpackMlGetBucketsDescriptor,XpackMlGetBucketsRequestParameters, IXpackMlGetBucketsRequest>, IXpackMlGetBucketsRequest
+	{ 
+		Id IXpackMlGetBucketsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		string_ IXpackMlGetBucketsRequest.Timestamp => Self.RouteValues.Get<string_>("timestamp");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}</summary>
+///<param name="job_id"> this parameter is required</param>
+		public XpackMlGetBucketsDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+			///<summary>The timestamp of the desired single bucket result</summary>
+		public XpackMlGetBucketsDescriptor Timestamp(string_ timestamp) => Assign(a=>a.RouteValues.Optional("timestamp", timestamp));
+
+	
+		///<summary>Include anomaly records</summary>
+		public XpackMlGetBucketsDescriptor Expand(bool expand = true) => AssignParam(p=>p.Expand(expand));
+
+		///<summary>Exclude interim results</summary>
+		public XpackMlGetBucketsDescriptor ExcludeInterim(bool exclude_interim = true) => AssignParam(p=>p.ExcludeInterim(exclude_interim));
+
+		///<summary>skips a number of buckets</summary>
+		public XpackMlGetBucketsDescriptor From(int from) => AssignParam(p=>p.From(from));
+
+		///<summary>specifies a max number of buckets to get</summary>
+		public XpackMlGetBucketsDescriptor Size(int size) => AssignParam(p=>p.Size(size));
+
+		///<summary>Start time filter for buckets</summary>
+		public XpackMlGetBucketsDescriptor Start(string start) => AssignParam(p=>p.Start(start));
+
+		///<summary>End time filter for buckets</summary>
+		public XpackMlGetBucketsDescriptor End(string end) => AssignParam(p=>p.End(end));
+
+		///<summary>Filter for the most anomalous buckets</summary>
+		public XpackMlGetBucketsDescriptor AnomalyScore(double anomaly_score) => AssignParam(p=>p.AnomalyScore(anomaly_score));
+
+		///<summary>Sort buckets by a particular field</summary>
+		public XpackMlGetBucketsDescriptor Sort(string sort) => AssignParam(p=>p.Sort(sort));
+
+		///<summary>Set the sort direction</summary>
+		public XpackMlGetBucketsDescriptor Desc(bool desc = true) => AssignParam(p=>p.Desc(desc));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlGetBucketsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlGetBucketsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlGetBucketsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlGetBucketsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlGetBucketsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlGetCategories <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html</pre></summary>
+	public partial class XpackMlGetCategoriesDescriptor  : RequestDescriptorBase<XpackMlGetCategoriesDescriptor,XpackMlGetCategoriesRequestParameters, IXpackMlGetCategoriesRequest>, IXpackMlGetCategoriesRequest
+	{ 
+		Id IXpackMlGetCategoriesRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		long_ IXpackMlGetCategoriesRequest.CategoryId => Self.RouteValues.Get<long_>("category_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/categories/{category_id}</summary>
+///<param name="job_id"> this parameter is required</param>		
+///<param name="category_id"> this parameter is required</param>
+		public XpackMlGetCategoriesDescriptor(Id job_id, long_ category_id) : base(r=>r.Required("job_id", job_id).Required("category_id", category_id)){}
+		
+
+		/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/categories/</summary>
+///<param name="job_id"> this parameter is required</param>
+		public XpackMlGetCategoriesDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+		
+		///<summary>skips a number of categories</summary>
+		public XpackMlGetCategoriesDescriptor From(int from) => AssignParam(p=>p.From(from));
+
+		///<summary>specifies a max number of categories to get</summary>
+		public XpackMlGetCategoriesDescriptor Size(int size) => AssignParam(p=>p.Size(size));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlGetCategoriesDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlGetCategoriesDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlGetCategoriesDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlGetCategoriesDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlGetCategoriesDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlGetDatafeeds <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html</pre></summary>
+	public partial class XpackMlGetDatafeedsDescriptor  : RequestDescriptorBase<XpackMlGetDatafeedsDescriptor,XpackMlGetDatafeedsRequestParameters, IXpackMlGetDatafeedsRequest>, IXpackMlGetDatafeedsRequest
+	{ 
+		Id IXpackMlGetDatafeedsRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}</summary>
+		public XpackMlGetDatafeedsDescriptor() : base(){}
+		
+
+			///<summary>The ID of the datafeeds to fetch</summary>
+		public XpackMlGetDatafeedsDescriptor DatafeedId(Id datafeedId) => Assign(a=>a.RouteValues.Optional("datafeed_id", datafeedId));
+
+	
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlGetDatafeedsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlGetDatafeedsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlGetDatafeedsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlGetDatafeedsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlGetDatafeedsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlGetDatafeedStats <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html</pre></summary>
+	public partial class XpackMlGetDatafeedStatsDescriptor  : RequestDescriptorBase<XpackMlGetDatafeedStatsDescriptor,XpackMlGetDatafeedStatsRequestParameters, IXpackMlGetDatafeedStatsRequest>, IXpackMlGetDatafeedStatsRequest
+	{ 
+		Id IXpackMlGetDatafeedStatsRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_stats</summary>
+		public XpackMlGetDatafeedStatsDescriptor() : base(){}
+		
+
+			///<summary>The ID of the datafeeds stats to fetch</summary>
+		public XpackMlGetDatafeedStatsDescriptor DatafeedId(Id datafeedId) => Assign(a=>a.RouteValues.Optional("datafeed_id", datafeedId));
+
+	
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlGetDatafeedStatsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlGetDatafeedStatsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlGetDatafeedStatsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlGetDatafeedStatsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlGetDatafeedStatsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlGetFilters <pre></pre></summary>
+	public partial class XpackMlGetFiltersDescriptor  : RequestDescriptorBase<XpackMlGetFiltersDescriptor,XpackMlGetFiltersRequestParameters, IXpackMlGetFiltersRequest>, IXpackMlGetFiltersRequest
+	{ 
+		string_ IXpackMlGetFiltersRequest.FilterId => Self.RouteValues.Get<string_>("filter_id");
+			/// <summary>/_xpack/ml/filters/</summary>
+		public XpackMlGetFiltersDescriptor() : base(){}
+		
+
+			///<summary>The ID of the filter to fetch</summary>
+		public XpackMlGetFiltersDescriptor FilterId(string_ filterId) => Assign(a=>a.RouteValues.Optional("filter_id", filterId));
+
+	
+		///<summary>skips a number of filters</summary>
+		public XpackMlGetFiltersDescriptor From(int from) => AssignParam(p=>p.From(from));
+
+		///<summary>specifies a max number of filters to get</summary>
+		public XpackMlGetFiltersDescriptor Size(int size) => AssignParam(p=>p.Size(size));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlGetFiltersDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlGetFiltersDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlGetFiltersDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlGetFiltersDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlGetFiltersDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlGetInfluencers <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-influencer.html</pre></summary>
+	public partial class XpackMlGetInfluencersDescriptor  : RequestDescriptorBase<XpackMlGetInfluencersDescriptor,XpackMlGetInfluencersRequestParameters, IXpackMlGetInfluencersRequest>, IXpackMlGetInfluencersRequest
+	{ 
+		Id IXpackMlGetInfluencersRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/influencers</summary>
+///<param name="job_id"> this parameter is required</param>
+		public XpackMlGetInfluencersDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+		
+		///<summary>Exclude interim results</summary>
+		public XpackMlGetInfluencersDescriptor ExcludeInterim(bool exclude_interim = true) => AssignParam(p=>p.ExcludeInterim(exclude_interim));
+
+		///<summary>skips a number of influencers</summary>
+		public XpackMlGetInfluencersDescriptor From(int from) => AssignParam(p=>p.From(from));
+
+		///<summary>specifies a max number of influencers to get</summary>
+		public XpackMlGetInfluencersDescriptor Size(int size) => AssignParam(p=>p.Size(size));
+
+		///<summary>start timestamp for the requested influencers</summary>
+		public XpackMlGetInfluencersDescriptor Start(string start) => AssignParam(p=>p.Start(start));
+
+		///<summary>end timestamp for the requested influencers</summary>
+		public XpackMlGetInfluencersDescriptor End(string end) => AssignParam(p=>p.End(end));
+
+		///<summary>influencer score threshold for the requested influencers</summary>
+		public XpackMlGetInfluencersDescriptor InfluencerScore(double influencer_score) => AssignParam(p=>p.InfluencerScore(influencer_score));
+
+		///<summary>sort field for the requested influencers</summary>
+		public XpackMlGetInfluencersDescriptor Sort(string sort) => AssignParam(p=>p.Sort(sort));
+
+		///<summary>whether the results should be sorted in decending order</summary>
+		public XpackMlGetInfluencersDescriptor Desc(bool desc = true) => AssignParam(p=>p.Desc(desc));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlGetInfluencersDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlGetInfluencersDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlGetInfluencersDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlGetInfluencersDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlGetInfluencersDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlGetJobs <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html</pre></summary>
+	public partial class XpackMlGetJobsDescriptor  : RequestDescriptorBase<XpackMlGetJobsDescriptor,XpackMlGetJobsRequestParameters, IXpackMlGetJobsRequest>, IXpackMlGetJobsRequest
+	{ 
+		Id IXpackMlGetJobsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}</summary>
+		public XpackMlGetJobsDescriptor() : base(){}
+		
+
+			///<summary>The ID of the jobs to fetch</summary>
+		public XpackMlGetJobsDescriptor JobId(Id jobId) => Assign(a=>a.RouteValues.Optional("job_id", jobId));
+
+	
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlGetJobsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlGetJobsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlGetJobsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlGetJobsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlGetJobsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlGetJobStats <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html</pre></summary>
+	public partial class XpackMlGetJobStatsDescriptor  : RequestDescriptorBase<XpackMlGetJobStatsDescriptor,XpackMlGetJobStatsRequestParameters, IXpackMlGetJobStatsRequest>, IXpackMlGetJobStatsRequest
+	{ 
+		Id IXpackMlGetJobStatsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/_stats</summary>
+		public XpackMlGetJobStatsDescriptor() : base(){}
+		
+
+			///<summary>The ID of the jobs stats to fetch</summary>
+		public XpackMlGetJobStatsDescriptor JobId(Id jobId) => Assign(a=>a.RouteValues.Optional("job_id", jobId));
+
+	
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlGetJobStatsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlGetJobStatsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlGetJobStatsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlGetJobStatsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlGetJobStatsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlGetModelSnapshots <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html</pre></summary>
+	public partial class XpackMlGetModelSnapshotsDescriptor  : RequestDescriptorBase<XpackMlGetModelSnapshotsDescriptor,XpackMlGetModelSnapshotsRequestParameters, IXpackMlGetModelSnapshotsRequest>, IXpackMlGetModelSnapshotsRequest
+	{ 
+		Id IXpackMlGetModelSnapshotsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		string_ IXpackMlGetModelSnapshotsRequest.SnapshotId => Self.RouteValues.Get<string_>("snapshot_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}</summary>
+///<param name="job_id"> this parameter is required</param>
+		public XpackMlGetModelSnapshotsDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+			///<summary>The ID of the snapshot to fetch</summary>
+		public XpackMlGetModelSnapshotsDescriptor SnapshotId(string_ snapshotId) => Assign(a=>a.RouteValues.Optional("snapshot_id", snapshotId));
+
+	
+		///<summary>Skips a number of documents</summary>
+		public XpackMlGetModelSnapshotsDescriptor From(int from) => AssignParam(p=>p.From(from));
+
+		///<summary>The default number of documents returned in queries as a string.</summary>
+		public XpackMlGetModelSnapshotsDescriptor Size(int size) => AssignParam(p=>p.Size(size));
+
+		///<summary>The filter &#39;start&#39; query parameter</summary>
+		public XpackMlGetModelSnapshotsDescriptor Start(DateTimeOffset start) => AssignParam(p=>p.Start(start));
+
+		///<summary>The filter &#39;end&#39; query parameter</summary>
+		public XpackMlGetModelSnapshotsDescriptor End(DateTimeOffset end) => AssignParam(p=>p.End(end));
+
+		///<summary>Name of the field to sort on</summary>
+		public XpackMlGetModelSnapshotsDescriptor Sort(string sort) => AssignParam(p=>p.Sort(sort));
+
+		///<summary>True if the results should be sorted in descending order</summary>
+		public XpackMlGetModelSnapshotsDescriptor Desc(bool desc = true) => AssignParam(p=>p.Desc(desc));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlGetModelSnapshotsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlGetModelSnapshotsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlGetModelSnapshotsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlGetModelSnapshotsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlGetModelSnapshotsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlGetRecords <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-record.html</pre></summary>
+	public partial class XpackMlGetRecordsDescriptor  : RequestDescriptorBase<XpackMlGetRecordsDescriptor,XpackMlGetRecordsRequestParameters, IXpackMlGetRecordsRequest>, IXpackMlGetRecordsRequest
+	{ 
+		Id IXpackMlGetRecordsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/records</summary>
+///<param name="job_id"> this parameter is required</param>
+		public XpackMlGetRecordsDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+		
+		///<summary>Exclude interim results</summary>
+		public XpackMlGetRecordsDescriptor ExcludeInterim(bool exclude_interim = true) => AssignParam(p=>p.ExcludeInterim(exclude_interim));
+
+		///<summary>skips a number of records</summary>
+		public XpackMlGetRecordsDescriptor From(int from) => AssignParam(p=>p.From(from));
+
+		///<summary>specifies a max number of records to get</summary>
+		public XpackMlGetRecordsDescriptor Size(int size) => AssignParam(p=>p.Size(size));
+
+		///<summary>Start time filter for records</summary>
+		public XpackMlGetRecordsDescriptor Start(string start) => AssignParam(p=>p.Start(start));
+
+		///<summary>End time filter for records</summary>
+		public XpackMlGetRecordsDescriptor End(string end) => AssignParam(p=>p.End(end));
+
+		///<summary></summary>
+		public XpackMlGetRecordsDescriptor RecordScore(double record_score) => AssignParam(p=>p.RecordScore(record_score));
+
+		///<summary>Sort records by a particular field</summary>
+		public XpackMlGetRecordsDescriptor Sort(string sort) => AssignParam(p=>p.Sort(sort));
+
+		///<summary>Set the sort direction</summary>
+		public XpackMlGetRecordsDescriptor Desc(bool desc = true) => AssignParam(p=>p.Desc(desc));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlGetRecordsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlGetRecordsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlGetRecordsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlGetRecordsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlGetRecordsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlOpenJob <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html</pre></summary>
+	public partial class XpackMlOpenJobDescriptor  : RequestDescriptorBase<XpackMlOpenJobDescriptor,XpackMlOpenJobRequestParameters, IXpackMlOpenJobRequest>, IXpackMlOpenJobRequest
+	{ 
+		Id IXpackMlOpenJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/_open</summary>
+///<param name="job_id"> this parameter is required</param>
+		public XpackMlOpenJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+		
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlOpenJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlOpenJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlOpenJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlOpenJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlOpenJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlPostData <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-data.html</pre></summary>
+	public partial class XpackMlPostDataDescriptor  : RequestDescriptorBase<XpackMlPostDataDescriptor,XpackMlPostDataRequestParameters, IXpackMlPostDataRequest>, IXpackMlPostDataRequest
+	{ 
+		Id IXpackMlPostDataRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/_data</summary>
+///<param name="job_id"> this parameter is required</param>
+		public XpackMlPostDataDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+		
+		///<summary>Optional parameter to specify the start of the bucket resetting range</summary>
+		public XpackMlPostDataDescriptor ResetStart(string reset_start) => AssignParam(p=>p.ResetStart(reset_start));
+
+		///<summary>Optional parameter to specify the end of the bucket resetting range</summary>
+		public XpackMlPostDataDescriptor ResetEnd(string reset_end) => AssignParam(p=>p.ResetEnd(reset_end));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlPostDataDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlPostDataDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlPostDataDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlPostDataDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlPostDataDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlPreviewDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html</pre></summary>
+	public partial class XpackMlPreviewDatafeedDescriptor  : RequestDescriptorBase<XpackMlPreviewDatafeedDescriptor,XpackMlPreviewDatafeedRequestParameters, IXpackMlPreviewDatafeedRequest>, IXpackMlPreviewDatafeedRequest
+	{ 
+		Id IXpackMlPreviewDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_preview</summary>
+///<param name="datafeed_id"> this parameter is required</param>
+		public XpackMlPreviewDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		
+
+		
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlPreviewDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlPreviewDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlPreviewDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlPreviewDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlPreviewDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlPutDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html</pre></summary>
+	public partial class PutDatafeedDescriptor  : RequestDescriptorBase<PutDatafeedDescriptor,PutDatafeedRequestParameters, IPutDatafeedRequest>, IPutDatafeedRequest
+	{ 
+		Id IPutDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}</summary>
+///<param name="datafeed_id"> this parameter is required</param>
+		public PutDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		
+
+		
+		///<summary>Pretty format the returned JSON response.</summary>
+		public PutDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public PutDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public PutDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public PutDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public PutDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+	
+	}
+	
+	///<summary>descriptor for XpackMlPutFilter <pre></pre></summary>
+	public partial class XpackMlPutFilterDescriptor  : RequestDescriptorBase<XpackMlPutFilterDescriptor,XpackMlPutFilterRequestParameters, IXpackMlPutFilterRequest>, IXpackMlPutFilterRequest
+	{ 
+		string_ IXpackMlPutFilterRequest.FilterId => Self.RouteValues.Get<string_>("filter_id");
+			/// <summary>/_xpack/ml/filters/{filter_id}</summary>
+///<param name="filter_id"> this parameter is required</param>
+		public XpackMlPutFilterDescriptor(string_ filter_id) : base(r=>r.Required("filter_id", filter_id)){}
+		
+
+		
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlPutFilterDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlPutFilterDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlPutFilterDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlPutFilterDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlPutFilterDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlPutJob <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html</pre></summary>
+	public partial class PutJobDescriptor<T>  : RequestDescriptorBase<PutJobDescriptor<T>,PutJobRequestParameters, IPutJobRequest>, IPutJobRequest
+	{ 
+		Id IPutJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}</summary>
+///<param name="job_id"> this parameter is required</param>
+		public PutJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+		
+		///<summary>Pretty format the returned JSON response.</summary>
+		public PutJobDescriptor<T> Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public PutJobDescriptor<T> Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public PutJobDescriptor<T> ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public PutJobDescriptor<T> Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public PutJobDescriptor<T> FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+	
+	}
+	
+	///<summary>descriptor for XpackMlRevertModelSnapshot <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-revert-snapshot.html</pre></summary>
+	public partial class XpackMlRevertModelSnapshotDescriptor  : RequestDescriptorBase<XpackMlRevertModelSnapshotDescriptor,XpackMlRevertModelSnapshotRequestParameters, IXpackMlRevertModelSnapshotRequest>, IXpackMlRevertModelSnapshotRequest
+	{ 
+		Id IXpackMlRevertModelSnapshotRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		string_ IXpackMlRevertModelSnapshotRequest.SnapshotId => Self.RouteValues.Get<string_>("snapshot_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert</summary>
+///<param name="job_id"> this parameter is required</param>
+		public XpackMlRevertModelSnapshotDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+			///<summary>The ID of the snapshot to revert to</summary>
+		public XpackMlRevertModelSnapshotDescriptor SnapshotId(string_ snapshotId) => Assign(a=>a.RouteValues.Optional("snapshot_id", snapshotId));
+
+	
+		///<summary>Should we reset the results back to the time of the snapshot?</summary>
+		public XpackMlRevertModelSnapshotDescriptor DeleteInterveningResults(bool delete_intervening_results = true) => AssignParam(p=>p.DeleteInterveningResults(delete_intervening_results));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlRevertModelSnapshotDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlRevertModelSnapshotDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlRevertModelSnapshotDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlRevertModelSnapshotDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlRevertModelSnapshotDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlStartDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html</pre></summary>
+	public partial class XpackMlStartDatafeedDescriptor  : RequestDescriptorBase<XpackMlStartDatafeedDescriptor,XpackMlStartDatafeedRequestParameters, IXpackMlStartDatafeedRequest>, IXpackMlStartDatafeedRequest
+	{ 
+		Id IXpackMlStartDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_start</summary>
+///<param name="datafeed_id"> this parameter is required</param>
+		public XpackMlStartDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		
+
+		
+		///<summary>The start time from where the datafeed should begin</summary>
+		public XpackMlStartDatafeedDescriptor Start(string start) => AssignParam(p=>p.Start(start));
+
+		///<summary>The end time when the datafeed should stop. When not set, the datafeed continues in real time</summary>
+		public XpackMlStartDatafeedDescriptor End(string end) => AssignParam(p=>p.End(end));
+
+		///<summary>Controls the time to wait until a datafeed has started. Default to 20 seconds</summary>
+		public XpackMlStartDatafeedDescriptor Timeout(Time timeout) => AssignParam(p=>p.Timeout(timeout.ToTimeSpan()));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlStartDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlStartDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlStartDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlStartDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlStartDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlStopDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html</pre></summary>
+	public partial class XpackMlStopDatafeedDescriptor  : RequestDescriptorBase<XpackMlStopDatafeedDescriptor,XpackMlStopDatafeedRequestParameters, IXpackMlStopDatafeedRequest>, IXpackMlStopDatafeedRequest
+	{ 
+		Id IXpackMlStopDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_stop</summary>
+///<param name="datafeed_id"> this parameter is required</param>
+		public XpackMlStopDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		
+
+		
+		///<summary>True if the datafeed should be forcefully stopped.</summary>
+		public XpackMlStopDatafeedDescriptor Force(bool force = true) => AssignParam(p=>p.Force(force));
+
+		///<summary>Controls the time to wait until a datafeed has stopped. Default to 20 seconds</summary>
+		public XpackMlStopDatafeedDescriptor Timeout(Time timeout) => AssignParam(p=>p.Timeout(timeout.ToTimeSpan()));
+
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlStopDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlStopDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlStopDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlStopDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlStopDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlUpdateDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html</pre></summary>
+	public partial class XpackMlUpdateDatafeedDescriptor  : RequestDescriptorBase<XpackMlUpdateDatafeedDescriptor,XpackMlUpdateDatafeedRequestParameters, IXpackMlUpdateDatafeedRequest>, IXpackMlUpdateDatafeedRequest
+	{ 
+		Id IXpackMlUpdateDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_update</summary>
+///<param name="datafeed_id"> this parameter is required</param>
+		public XpackMlUpdateDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		
+
+		
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlUpdateDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlUpdateDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlUpdateDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlUpdateDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlUpdateDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlUpdateJob <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html</pre></summary>
+	public partial class XpackMlUpdateJobDescriptor  : RequestDescriptorBase<XpackMlUpdateJobDescriptor,XpackMlUpdateJobRequestParameters, IXpackMlUpdateJobRequest>, IXpackMlUpdateJobRequest
+	{ 
+		Id IXpackMlUpdateJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/_update</summary>
+///<param name="job_id"> this parameter is required</param>
+		public XpackMlUpdateJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		
+
+		
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlUpdateJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlUpdateJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlUpdateJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlUpdateJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlUpdateJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlUpdateModelSnapshot <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-snapshot.html</pre></summary>
+	public partial class XpackMlUpdateModelSnapshotDescriptor  : RequestDescriptorBase<XpackMlUpdateModelSnapshotDescriptor,XpackMlUpdateModelSnapshotRequestParameters, IXpackMlUpdateModelSnapshotRequest>, IXpackMlUpdateModelSnapshotRequest
+	{ 
+		Id IXpackMlUpdateModelSnapshotRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		string_ IXpackMlUpdateModelSnapshotRequest.SnapshotId => Self.RouteValues.Get<string_>("snapshot_id");
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update</summary>
+///<param name="job_id"> this parameter is required</param>		
+///<param name="snapshot_id"> this parameter is required</param>
+		public XpackMlUpdateModelSnapshotDescriptor(Id job_id, string_ snapshot_id) : base(r=>r.Required("job_id", job_id).Required("snapshot_id", snapshot_id)){}
+		
+
+		
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlUpdateModelSnapshotDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlUpdateModelSnapshotDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlUpdateModelSnapshotDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlUpdateModelSnapshotDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlUpdateModelSnapshotDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlValidate <pre></pre></summary>
+	public partial class XpackMlValidateDescriptor  : RequestDescriptorBase<XpackMlValidateDescriptor,XpackMlValidateRequestParameters, IXpackMlValidateRequest>, IXpackMlValidateRequest
+	{ 
+			
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlValidateDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlValidateDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlValidateDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlValidateDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlValidateDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
+	///<summary>descriptor for XpackMlValidateDetector <pre></pre></summary>
+	public partial class XpackMlValidateDetectorDescriptor  : RequestDescriptorBase<XpackMlValidateDetectorDescriptor,XpackMlValidateDetectorRequestParameters, IXpackMlValidateDetectorRequest>, IXpackMlValidateDetectorRequest
+	{ 
+			
+		///<summary>Pretty format the returned JSON response.</summary>
+		public XpackMlValidateDetectorDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+
+		///<summary>Return human readable values for statistics.</summary>
+		public XpackMlValidateDetectorDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+
+		///<summary>Include the stack trace of returned errors.</summary>
+		public XpackMlValidateDetectorDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public XpackMlValidateDetectorDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public XpackMlValidateDetectorDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+
+		//TODO THIS METHOD IS UNMAPPED!
+		
+	
+	}
+	
 	///<summary>descriptor for XpackSecurityAuthenticate <pre>https://www.elastic.co/guide/en/x-pack/master/security-api-authenticate.html</pre></summary>
 	public partial class AuthenticateDescriptor  : RequestDescriptorBase<AuthenticateDescriptor,AuthenticateRequestParameters, IAuthenticateRequest>, IAuthenticateRequest
 	{ 
