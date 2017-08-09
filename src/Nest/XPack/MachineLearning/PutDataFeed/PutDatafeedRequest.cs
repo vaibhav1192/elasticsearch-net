@@ -6,7 +6,7 @@ using Newtonsoft.Json.Converters;
 namespace Nest
 {
 	/// <summary>
-	/// Creates a datafeed
+	/// Creates a datafeed for a Machine Learning job
 	/// </summary>
 	public partial interface IPutDatafeedRequest
 	{
@@ -107,7 +107,7 @@ namespace Nest
 	}
 
 	[DescriptorFor("XpackMlPutDatafeed")]
-	public partial class PutDatafeedDescriptor
+	public partial class PutDatafeedDescriptor<T> where T : class
 	{
 		AggregationDictionary IPutDatafeedRequest.Aggregations { get; set; }
 		IChunkingConfig IPutDatafeedRequest.ChunkingConfig { get; set; }
@@ -121,50 +121,50 @@ namespace Nest
 		Types IPutDatafeedRequest.Types { get; set; }
 
 		/// <inheritdoc />
-		public PutDatafeedDescriptor Aggregations<T>(Func<AggregationContainerDescriptor<T>, IAggregationContainer> aggregationsSelector) where T : class =>
+		public PutDatafeedDescriptor<T> Aggregations(Func<AggregationContainerDescriptor<T>, IAggregationContainer> aggregationsSelector) =>
 			Assign(a => a.Aggregations = aggregationsSelector(new AggregationContainerDescriptor<T>())?.Aggregations);
 
 		/// <inheritdoc />
-		public PutDatafeedDescriptor ChunkingConfig(Func<ChunkingConfigDescriptor, IChunkingConfig> selector) =>
+		public PutDatafeedDescriptor<T> ChunkingConfig(Func<ChunkingConfigDescriptor, IChunkingConfig> selector) =>
 			Assign(a => a.ChunkingConfig = selector.InvokeOrDefault(new ChunkingConfigDescriptor()));
 
 		/// <inheritdoc />
-		public PutDatafeedDescriptor Frequency(Time frequency) => Assign(a => a.Frequency = frequency);
+		public PutDatafeedDescriptor<T> Frequency(Time frequency) => Assign(a => a.Frequency = frequency);
 
 		/// <inheritdoc />
-		public PutDatafeedDescriptor Indices(Indices indices) => Assign(a => a.Indices = indices);
+		public PutDatafeedDescriptor<T> Indices(Indices indices) => Assign(a => a.Indices = indices);
 
-		///<summary>a shortcut into calling Indices(typeof(T))</summary>
-		public PutDatafeedDescriptor Indices<T>() where T : class => Assign(a => a.Indices = (Indices)typeof(T));
+		///<summary>a shortcut into calling Indices(typeof(TOther))</summary>
+		public PutDatafeedDescriptor<T> Indices<TOther>() => Assign(a => a.Indices = (Indices)typeof(TOther));
 
 		///<summary>A shortcut into calling Indices(Indices.All)</summary>
-		public PutDatafeedDescriptor AllIndices() => this.Indices(Nest.Indices.All);
+		public PutDatafeedDescriptor<T> AllIndices() => this.Indices(Nest.Indices.All);
 
 		/// <inheritdoc />
-		public PutDatafeedDescriptor JobId(Id jobId) => Assign(a => a.JobId = jobId);
+		public PutDatafeedDescriptor<T> JobId(Id jobId) => Assign(a => a.JobId = jobId);
 
 		/// <inheritdoc />
-		public PutDatafeedDescriptor Query<T>(Func<QueryContainerDescriptor<T>, QueryContainer> query) where T : class =>
+		public PutDatafeedDescriptor<T> Query(Func<QueryContainerDescriptor<T>, QueryContainer> query) =>
 			Assign(a => a.Query = query?.Invoke(new QueryContainerDescriptor<T>()));
 
 		/// <inheritdoc />
-		public PutDatafeedDescriptor QueryDelay(Time queryDelay) => Assign(a => a.QueryDelay = queryDelay);
+		public PutDatafeedDescriptor<T> QueryDelay(Time queryDelay) => Assign(a => a.QueryDelay = queryDelay);
 
 		/// <inheritdoc />
-		public PutDatafeedDescriptor ScriptFields(Func<ScriptFieldsDescriptor, IPromise<IScriptFields>> selector) =>
+		public PutDatafeedDescriptor<T> ScriptFields(Func<ScriptFieldsDescriptor, IPromise<IScriptFields>> selector) =>
 			Assign(a => a.ScriptFields = selector?.Invoke(new ScriptFieldsDescriptor())?.Value);
 
 		/// <inheritdoc />
-		public PutDatafeedDescriptor ScrollSize(int scrollSize) => Assign(a => a.ScrollSize = scrollSize);
+		public PutDatafeedDescriptor<T> ScrollSize(int scrollSize) => Assign(a => a.ScrollSize = scrollSize);
 
 		/// <inheritdoc />
-		public PutDatafeedDescriptor Types(Types types) => Assign(a => a.Types = types);
+		public PutDatafeedDescriptor<T> Types(Types types) => Assign(a => a.Types = types);
 
-		///<summary>a shortcut into calling Types(typeof(T))</summary>
-		public PutDatafeedDescriptor Types<T>() where T : class =>
-			Assign(a => a.Types = (Types)typeof(T));
+		///<summary>a shortcut into calling Types(typeof(TOther))</summary>
+		public PutDatafeedDescriptor<T> Types<TOther>() =>
+			Assign(a => a.Types = (Types)typeof(TOther));
 
 		///<summary>a shortcut into calling Types(Types.All)</summary>
-		public PutDatafeedDescriptor AllTypes() => this.Types(Nest.Types.All);
+		public PutDatafeedDescriptor<T> AllTypes() => this.Types(Nest.Types.All);
 	}
 }

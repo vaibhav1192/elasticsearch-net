@@ -3534,7 +3534,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlCloseJob", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/{job_id}/_close");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlDeleteDatafeedDispatch<T>(IRequest<XpackMlDeleteDatafeedRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlDeleteDatafeedDispatch<T>(IRequest<DeleteDatafeedRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3546,7 +3546,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlDeleteDatafeed", p, new [] { DELETE }, "/_xpack/ml/datafeeds/{datafeed_id}");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlDeleteDatafeedDispatchAsync<T>(IRequest<XpackMlDeleteDatafeedRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlDeleteDatafeedDispatchAsync<T>(IRequest<DeleteDatafeedRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3558,7 +3558,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlDeleteDatafeed", p, new [] { DELETE }, "/_xpack/ml/datafeeds/{datafeed_id}");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlDeleteExpiredDataDispatch<T>(IRequest<XpackMlDeleteExpiredDataRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlDeleteExpiredDataDispatch<T>(IRequest<DeleteExpiredDataRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3569,7 +3569,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlDeleteExpiredData", p, new [] { DELETE }, "/_xpack/ml/_delete_expired_data");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlDeleteExpiredDataDispatchAsync<T>(IRequest<XpackMlDeleteExpiredDataRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlDeleteExpiredDataDispatchAsync<T>(IRequest<DeleteExpiredDataRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{

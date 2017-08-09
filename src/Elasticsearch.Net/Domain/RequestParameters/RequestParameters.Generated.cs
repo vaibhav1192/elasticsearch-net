@@ -6892,32 +6892,32 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html
 	///</pre>
 	///</summary>
-	public class XpackMlDeleteDatafeedRequestParameters : FluentRequestParameters<XpackMlDeleteDatafeedRequestParameters> 
+	public class DeleteDatafeedRequestParameters : FluentRequestParameters<DeleteDatafeedRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.DELETE;
 		
 		///<summary>True if the datafeed should be forcefully deleted</summary>
-		public XpackMlDeleteDatafeedRequestParameters Force(bool force) => this.AddQueryString("force", force);
+		public DeleteDatafeedRequestParameters Force(bool force) => this.AddQueryString("force", force);
 		
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlDeleteDatafeedRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public DeleteDatafeedRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlDeleteDatafeedRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public DeleteDatafeedRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlDeleteDatafeedRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public DeleteDatafeedRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlDeleteDatafeedRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public DeleteDatafeedRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlDeleteDatafeedRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public DeleteDatafeedRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	
@@ -6926,28 +6926,28 @@ namespace Elasticsearch.Net
 	///
 	///</pre>
 	///</summary>
-	public class XpackMlDeleteExpiredDataRequestParameters : FluentRequestParameters<XpackMlDeleteExpiredDataRequestParameters> 
+	public class DeleteExpiredDataRequestParameters : FluentRequestParameters<DeleteExpiredDataRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.DELETE;
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlDeleteExpiredDataRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public DeleteExpiredDataRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlDeleteExpiredDataRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public DeleteExpiredDataRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlDeleteExpiredDataRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public DeleteExpiredDataRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlDeleteExpiredDataRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public DeleteExpiredDataRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlDeleteExpiredDataRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public DeleteExpiredDataRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

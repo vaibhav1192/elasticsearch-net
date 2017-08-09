@@ -6714,59 +6714,53 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlDeleteDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html</pre></summary>
-	public partial class XpackMlDeleteDatafeedDescriptor  : RequestDescriptorBase<XpackMlDeleteDatafeedDescriptor,XpackMlDeleteDatafeedRequestParameters, IXpackMlDeleteDatafeedRequest>, IXpackMlDeleteDatafeedRequest
+	public partial class DeleteDatafeedDescriptor  : RequestDescriptorBase<DeleteDatafeedDescriptor,DeleteDatafeedRequestParameters, IDeleteDatafeedRequest>, IDeleteDatafeedRequest
 	{ 
-		Id IXpackMlDeleteDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+		Id IDeleteDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
 			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}</summary>
 ///<param name="datafeed_id"> this parameter is required</param>
-		public XpackMlDeleteDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		public DeleteDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
 		
 
 		
 		///<summary>True if the datafeed should be forcefully deleted</summary>
-		public XpackMlDeleteDatafeedDescriptor Force(bool force = true) => AssignParam(p=>p.Force(force));
+		public DeleteDatafeedDescriptor Force(bool force = true) => AssignParam(p=>p.Force(force));
 
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlDeleteDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public DeleteDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlDeleteDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public DeleteDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlDeleteDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public DeleteDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlDeleteDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public DeleteDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlDeleteDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public DeleteDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
 	///<summary>descriptor for XpackMlDeleteExpiredData <pre></pre></summary>
-	public partial class XpackMlDeleteExpiredDataDescriptor  : RequestDescriptorBase<XpackMlDeleteExpiredDataDescriptor,XpackMlDeleteExpiredDataRequestParameters, IXpackMlDeleteExpiredDataRequest>, IXpackMlDeleteExpiredDataRequest
+	public partial class DeleteExpiredDataDescriptor  : RequestDescriptorBase<DeleteExpiredDataDescriptor,DeleteExpiredDataRequestParameters, IDeleteExpiredDataRequest>, IDeleteExpiredDataRequest
 	{ 
 			
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlDeleteExpiredDataDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public DeleteExpiredDataDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlDeleteExpiredDataDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public DeleteExpiredDataDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlDeleteExpiredDataDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public DeleteExpiredDataDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlDeleteExpiredDataDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public DeleteExpiredDataDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlDeleteExpiredDataDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public DeleteExpiredDataDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
@@ -7434,7 +7428,7 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlPutDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html</pre></summary>
-	public partial class PutDatafeedDescriptor  : RequestDescriptorBase<PutDatafeedDescriptor,PutDatafeedRequestParameters, IPutDatafeedRequest>, IPutDatafeedRequest
+	public partial class PutDatafeedDescriptor<T>  : RequestDescriptorBase<PutDatafeedDescriptor<T>,PutDatafeedRequestParameters, IPutDatafeedRequest>, IPutDatafeedRequest
 	{ 
 		Id IPutDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
 			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}</summary>
@@ -7444,19 +7438,19 @@ namespace Nest
 
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public PutDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public PutDatafeedDescriptor<T> Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public PutDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public PutDatafeedDescriptor<T> Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public PutDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public PutDatafeedDescriptor<T> ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public PutDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public PutDatafeedDescriptor<T> Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public PutDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+		public PutDatafeedDescriptor<T> FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

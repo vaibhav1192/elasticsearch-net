@@ -11,13 +11,13 @@ namespace Nest
 		/// Creates a Machine Learning datafeed.
 		/// You must create a job before you create a datafeed. You can associate only one datafeed to each job.
 		/// </summary>
-		IPutDatafeedResponse PutDatafeed(Id id, Func<PutDatafeedDescriptor, IPutDatafeedRequest> selector = null);
+		IPutDatafeedResponse PutDatafeed<T>(Id id, Func<PutDatafeedDescriptor<T>, IPutDatafeedRequest> selector = null) where T : class;
 
 		/// <inheritdoc/>
 		IPutDatafeedResponse PutDatafeed(IPutDatafeedRequest request);
 
 		/// <inheritdoc/>
-		Task<IPutDatafeedResponse> PutDatafeedAsync(Id id, Func<PutDatafeedDescriptor, IPutDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task<IPutDatafeedResponse> PutDatafeedAsync<T>(Id id, Func<PutDatafeedDescriptor<T>, IPutDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 
 		/// <inheritdoc/>
 		Task<IPutDatafeedResponse> PutDatafeedAsync(IPutDatafeedRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -26,8 +26,8 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IPutDatafeedResponse PutDatafeed(Id id, Func<PutDatafeedDescriptor, IPutDatafeedRequest> selector = null) =>
-			this.PutDatafeed(selector.InvokeOrDefault(new PutDatafeedDescriptor(id)));
+		public IPutDatafeedResponse PutDatafeed<T>(Id id, Func<PutDatafeedDescriptor<T>, IPutDatafeedRequest> selector = null) where T : class =>
+			this.PutDatafeed(selector.InvokeOrDefault(new PutDatafeedDescriptor<T>(id)));
 
 		/// <inheritdoc/>
 		public IPutDatafeedResponse PutDatafeed(IPutDatafeedRequest request) =>
@@ -37,8 +37,8 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IPutDatafeedResponse> PutDatafeedAsync(Id id, Func<PutDatafeedDescriptor, IPutDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
-			this.PutDatafeedAsync(selector.InvokeOrDefault(new PutDatafeedDescriptor(id)), cancellationToken);
+		public Task<IPutDatafeedResponse> PutDatafeedAsync<T>(Id id, Func<PutDatafeedDescriptor<T>, IPutDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
+			this.PutDatafeedAsync(selector.InvokeOrDefault(new PutDatafeedDescriptor<T>(id)), cancellationToken);
 
 		/// <inheritdoc/>
 		public Task<IPutDatafeedResponse> PutDatafeedAsync(IPutDatafeedRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>

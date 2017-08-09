@@ -8832,7 +8832,7 @@ namespace Elasticsearch.Net
 	    ///</summary>
 		///<param name="datafeed_id">The ID of the datafeed to delete</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlDeleteDatafeed<T>(string datafeed_id, Func<XpackMlDeleteDatafeedRequestParameters, XpackMlDeleteDatafeedRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlDeleteDatafeed<T>(string datafeed_id, Func<DeleteDatafeedRequestParameters, DeleteDatafeedRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(DELETE, Url($"_xpack/ml/datafeeds/{datafeed_id.NotNull("datafeed_id")}"), null, _params(requestParameters));
 		
 		///<summary>Represents a DELETE on /_xpack/ml/datafeeds/{datafeed_id}
@@ -8846,7 +8846,7 @@ namespace Elasticsearch.Net
 	    ///</summary>
 		///<param name="datafeed_id">The ID of the datafeed to delete</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlDeleteDatafeedAsync<T>(string datafeed_id, Func<XpackMlDeleteDatafeedRequestParameters, XpackMlDeleteDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlDeleteDatafeedAsync<T>(string datafeed_id, Func<DeleteDatafeedRequestParameters, DeleteDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(DELETE, Url($"_xpack/ml/datafeeds/{datafeed_id.NotNull("datafeed_id")}"), cancellationToken, null, _params(requestParameters));
 		
 		///<summary>Represents a DELETE on /_xpack/ml/_delete_expired_data
@@ -8859,7 +8859,7 @@ namespace Elasticsearch.Net
 	    ///<para>See also:  </para>
 	    ///</summary>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlDeleteExpiredData<T>(Func<XpackMlDeleteExpiredDataRequestParameters, XpackMlDeleteExpiredDataRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlDeleteExpiredData<T>(Func<DeleteExpiredDataRequestParameters, DeleteExpiredDataRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(DELETE, Url($"_xpack/ml/_delete_expired_data"), null, _params(requestParameters));
 		
 		///<summary>Represents a DELETE on /_xpack/ml/_delete_expired_data
@@ -8872,7 +8872,7 @@ namespace Elasticsearch.Net
 	    ///<para>See also:  </para>
 	    ///</summary>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlDeleteExpiredDataAsync<T>(Func<XpackMlDeleteExpiredDataRequestParameters, XpackMlDeleteExpiredDataRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlDeleteExpiredDataAsync<T>(Func<DeleteExpiredDataRequestParameters, DeleteExpiredDataRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(DELETE, Url($"_xpack/ml/_delete_expired_data"), cancellationToken, null, _params(requestParameters));
 		
 		///<summary>Represents a DELETE on /_xpack/ml/filters/{filter_id}

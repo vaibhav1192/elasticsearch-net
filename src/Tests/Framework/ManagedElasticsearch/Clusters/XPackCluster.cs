@@ -2,6 +2,7 @@
 using System.Linq;
 using Nest;
 using Tests.Framework.Integration;
+using Tests.Framework.ManagedElasticsearch.NodeSeeders;
 using Tests.Framework.ManagedElasticsearch.Plugins;
 
 namespace Tests.Framework.ManagedElasticsearch.Clusters
@@ -17,5 +18,7 @@ namespace Tests.Framework.ManagedElasticsearch.Clusters
 
 		public override ConnectionSettings ClusterConnectionSettings(ConnectionSettings s) =>
 			s.BasicAuthentication("es_admin", "es_admin");
+
+		protected override void SeedNode() => new DefaultSeeder(this.Node).SeedNode();
 	}
 }

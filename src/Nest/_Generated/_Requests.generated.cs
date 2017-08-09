@@ -2782,6 +2782,66 @@ namespace Nest
 		}
 	
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+	public partial interface IDeleteDatafeedRequest : IRequest<DeleteDatafeedRequestParameters> 
+	{
+		Id DatafeedId { get; }
+	 } 
+	///<summary>Request parameters for XpackMlDeleteDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html</pre></summary>
+	public partial class DeleteDatafeedRequest  : PlainRequestBase<DeleteDatafeedRequestParameters>, IDeleteDatafeedRequest
+	{
+		protected IDeleteDatafeedRequest Self => this;
+		Id IDeleteDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}</summary>
+///<param name="datafeed_id">this parameter is required</param>
+		public DeleteDatafeedRequest(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		
+
+			///<summary>True if the datafeed should be forcefully deleted</summary>
+		public bool Force { get { return Q<bool>("force"); } set { Q("force", value); } }
+		
+		///<summary>Pretty format the returned JSON response.</summary>
+		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
+		
+		///<summary>Return human readable values for statistics.</summary>
+		public bool Human { get { return Q<bool>("human"); } set { Q("human", value); } }
+		
+		///<summary>Include the stack trace of returned errors.</summary>
+		public bool ErrorTrace { get { return Q<bool>("error_trace"); } set { Q("error_trace", value); } }
+		
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public string Source { get { return Q<string>("source"); } set { Q("source", value); } }
+		
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
+		
+		}
+	
+	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+	public partial interface IDeleteExpiredDataRequest : IRequest<DeleteExpiredDataRequestParameters> 
+	{
+	 } 
+	///<summary>Request parameters for XpackMlDeleteExpiredData <pre></pre></summary>
+	public partial class DeleteExpiredDataRequest  : PlainRequestBase<DeleteExpiredDataRequestParameters>, IDeleteExpiredDataRequest
+	{
+		protected IDeleteExpiredDataRequest Self => this;
+				///<summary>Pretty format the returned JSON response.</summary>
+		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
+		
+		///<summary>Return human readable values for statistics.</summary>
+		public bool Human { get { return Q<bool>("human"); } set { Q("human", value); } }
+		
+		///<summary>Include the stack trace of returned errors.</summary>
+		public bool ErrorTrace { get { return Q<bool>("error_trace"); } set { Q("error_trace", value); } }
+		
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public string Source { get { return Q<string>("source"); } set { Q("source", value); } }
+		
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
+		
+		}
+	
+	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public partial interface IDeleteIndexRequest : IRequest<DeleteIndexRequestParameters> 
 	{
 		Indices Index { get; }
@@ -8983,70 +9043,6 @@ namespace Nest
 		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
 		
 		}
-	
-	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-	public partial interface IXpackMlDeleteDatafeedRequest : IRequest<XpackMlDeleteDatafeedRequestParameters> 
-	{
-		Id DatafeedId { get; }
-	 } 
-	///<summary>Request parameters for XpackMlDeleteDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html</pre></summary>
-	public partial class XpackMlDeleteDatafeedRequest  : PlainRequestBase<XpackMlDeleteDatafeedRequestParameters>, IXpackMlDeleteDatafeedRequest
-	{
-		protected IXpackMlDeleteDatafeedRequest Self => this;
-		Id IXpackMlDeleteDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
-			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}</summary>
-///<param name="datafeed_id">this parameter is required</param>
-		public XpackMlDeleteDatafeedRequest(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
-		
-
-			///<summary>True if the datafeed should be forcefully deleted</summary>
-		public bool Force { get { return Q<bool>("force"); } set { Q("force", value); } }
-		
-		///<summary>Pretty format the returned JSON response.</summary>
-		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
-		
-		///<summary>Return human readable values for statistics.</summary>
-		public bool Human { get { return Q<bool>("human"); } set { Q("human", value); } }
-		
-		///<summary>Include the stack trace of returned errors.</summary>
-		public bool ErrorTrace { get { return Q<bool>("error_trace"); } set { Q("error_trace", value); } }
-		
-		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public string Source { get { return Q<string>("source"); } set { Q("source", value); } }
-		
-		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
-		
-		//TODO THIS METHOD IS UNMAPPED!
-	
-	}
-	
-	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-	public partial interface IXpackMlDeleteExpiredDataRequest : IRequest<XpackMlDeleteExpiredDataRequestParameters> 
-	{
-	 } 
-	///<summary>Request parameters for XpackMlDeleteExpiredData <pre></pre></summary>
-	public partial class XpackMlDeleteExpiredDataRequest  : PlainRequestBase<XpackMlDeleteExpiredDataRequestParameters>, IXpackMlDeleteExpiredDataRequest
-	{
-		protected IXpackMlDeleteExpiredDataRequest Self => this;
-				///<summary>Pretty format the returned JSON response.</summary>
-		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
-		
-		///<summary>Return human readable values for statistics.</summary>
-		public bool Human { get { return Q<bool>("human"); } set { Q("human", value); } }
-		
-		///<summary>Include the stack trace of returned errors.</summary>
-		public bool ErrorTrace { get { return Q<bool>("error_trace"); } set { Q("error_trace", value); } }
-		
-		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public string Source { get { return Q<string>("source"); } set { Q("source", value); } }
-		
-		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
-		
-		//TODO THIS METHOD IS UNMAPPED!
-	
-	}
 	
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public partial interface IXpackMlDeleteFilterRequest : IRequest<XpackMlDeleteFilterRequestParameters> 
