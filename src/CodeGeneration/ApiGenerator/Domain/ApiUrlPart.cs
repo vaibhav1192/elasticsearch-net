@@ -38,6 +38,7 @@ namespace ApiGenerator.Domain
 					case "watch_id":
 					case "job_id":
 					case "datafeed_id":
+					case "snapshot_id":
 					case "id": return this.Type == "string" ? "Id" : "Ids";
 					case "node_id": return this.Type == "string" ? "NodeId" : "NodeIds";
 					case "scroll_id": return this.Type == "string" ? "ScrollId" : "ScrollIds";
@@ -61,6 +62,7 @@ namespace ApiGenerator.Domain
 					case "thread_pool_patterns":
 						return this.Type == "string" ? "Name" : "Names";
 					case "task_id": return "TaskId";
+					case "timestamp": return "Timestamp";
 					default: return this.Type + "_";
 				}
 			}

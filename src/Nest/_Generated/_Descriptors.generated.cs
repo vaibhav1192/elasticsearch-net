@@ -6795,170 +6795,131 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlDeleteJob <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html</pre></summary>
-	public partial class XpackMlDeleteJobDescriptor  : RequestDescriptorBase<XpackMlDeleteJobDescriptor,XpackMlDeleteJobRequestParameters, IXpackMlDeleteJobRequest>, IXpackMlDeleteJobRequest
+	public partial class DeleteJobDescriptor  : RequestDescriptorBase<DeleteJobDescriptor,DeleteJobRequestParameters, IDeleteJobRequest>, IDeleteJobRequest
 	{ 
-		Id IXpackMlDeleteJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Id IDeleteJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}</summary>
 ///<param name="job_id"> this parameter is required</param>
-		public XpackMlDeleteJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		public DeleteJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
 		
 		///<summary>True if the job should be forcefully deleted</summary>
-		public XpackMlDeleteJobDescriptor Force(bool force = true) => AssignParam(p=>p.Force(force));
+		public DeleteJobDescriptor Force(bool force = true) => AssignParam(p=>p.Force(force));
 
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlDeleteJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public DeleteJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlDeleteJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public DeleteJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlDeleteJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public DeleteJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlDeleteJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public DeleteJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlDeleteJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public DeleteJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
 	///<summary>descriptor for XpackMlDeleteModelSnapshot <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-snapshot.html</pre></summary>
-	public partial class XpackMlDeleteModelSnapshotDescriptor  : RequestDescriptorBase<XpackMlDeleteModelSnapshotDescriptor,XpackMlDeleteModelSnapshotRequestParameters, IXpackMlDeleteModelSnapshotRequest>, IXpackMlDeleteModelSnapshotRequest
+	public partial class DeleteModelSnapshotDescriptor  : RequestDescriptorBase<DeleteModelSnapshotDescriptor,DeleteModelSnapshotRequestParameters, IDeleteModelSnapshotRequest>, IDeleteModelSnapshotRequest
 	{ 
-		Id IXpackMlDeleteModelSnapshotRequest.JobId => Self.RouteValues.Get<Id>("job_id");
-		string_ IXpackMlDeleteModelSnapshotRequest.SnapshotId => Self.RouteValues.Get<string_>("snapshot_id");
+		Id IDeleteModelSnapshotRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Id IDeleteModelSnapshotRequest.SnapshotId => Self.RouteValues.Get<Id>("snapshot_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}</summary>
 ///<param name="job_id"> this parameter is required</param>		
 ///<param name="snapshot_id"> this parameter is required</param>
-		public XpackMlDeleteModelSnapshotDescriptor(Id job_id, string_ snapshot_id) : base(r=>r.Required("job_id", job_id).Required("snapshot_id", snapshot_id)){}
+		public DeleteModelSnapshotDescriptor(Id job_id, Id snapshot_id) : base(r=>r.Required("job_id", job_id).Required("snapshot_id", snapshot_id)){}
 		
 
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlDeleteModelSnapshotDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public DeleteModelSnapshotDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlDeleteModelSnapshotDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public DeleteModelSnapshotDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlDeleteModelSnapshotDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public DeleteModelSnapshotDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlDeleteModelSnapshotDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public DeleteModelSnapshotDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlDeleteModelSnapshotDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public DeleteModelSnapshotDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
 	///<summary>descriptor for XpackMlFlushJob <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html</pre></summary>
-	public partial class XpackMlFlushJobDescriptor  : RequestDescriptorBase<XpackMlFlushJobDescriptor,XpackMlFlushJobRequestParameters, IXpackMlFlushJobRequest>, IXpackMlFlushJobRequest
+	public partial class FlushJobDescriptor  : RequestDescriptorBase<FlushJobDescriptor,FlushJobRequestParameters, IFlushJobRequest>, IFlushJobRequest
 	{ 
-		Id IXpackMlFlushJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Id IFlushJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/_flush</summary>
 ///<param name="job_id"> this parameter is required</param>
-		public XpackMlFlushJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		public FlushJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
 		
 		///<summary>Calculates interim results for the most recent bucket or all buckets within the latency period</summary>
-		public XpackMlFlushJobDescriptor CalcInterim(bool calc_interim = true) => AssignParam(p=>p.CalcInterim(calc_interim));
+		public FlushJobDescriptor CalcInterim(bool calc_interim = true) => AssignParam(p=>p.CalcInterim(calc_interim));
 
 		///<summary>When used in conjunction with calc_interim, specifies the range of buckets on which to calculate interim results</summary>
-		public XpackMlFlushJobDescriptor Start(string start) => AssignParam(p=>p.Start(start));
+		public FlushJobDescriptor Start(string start) => AssignParam(p=>p.Start(start));
 
 		///<summary>When used in conjunction with calc_interim, specifies the range of buckets on which to calculate interim results</summary>
-		public XpackMlFlushJobDescriptor End(string end) => AssignParam(p=>p.End(end));
+		public FlushJobDescriptor End(string end) => AssignParam(p=>p.End(end));
 
 		///<summary>Setting this tells the Engine API that no data prior to advance_time is expected</summary>
-		public XpackMlFlushJobDescriptor AdvanceTime(string advance_time) => AssignParam(p=>p.AdvanceTime(advance_time));
+		public FlushJobDescriptor AdvanceTime(string advance_time) => AssignParam(p=>p.AdvanceTime(advance_time));
 
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlFlushJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public FlushJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlFlushJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public FlushJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlFlushJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public FlushJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlFlushJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public FlushJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlFlushJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public FlushJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
 	///<summary>descriptor for XpackMlGetBuckets <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html</pre></summary>
-	public partial class XpackMlGetBucketsDescriptor  : RequestDescriptorBase<XpackMlGetBucketsDescriptor,XpackMlGetBucketsRequestParameters, IXpackMlGetBucketsRequest>, IXpackMlGetBucketsRequest
+	public partial class GetBucketsDescriptor  : RequestDescriptorBase<GetBucketsDescriptor,GetBucketsRequestParameters, IGetBucketsRequest>, IGetBucketsRequest
 	{ 
-		Id IXpackMlGetBucketsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
-		string_ IXpackMlGetBucketsRequest.Timestamp => Self.RouteValues.Get<string_>("timestamp");
+		Id IGetBucketsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Timestamp IGetBucketsRequest.Timestamp => Self.RouteValues.Get<Timestamp>("timestamp");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}</summary>
 ///<param name="job_id"> this parameter is required</param>
-		public XpackMlGetBucketsDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		public GetBucketsDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
 			///<summary>The timestamp of the desired single bucket result</summary>
-		public XpackMlGetBucketsDescriptor Timestamp(string_ timestamp) => Assign(a=>a.RouteValues.Optional("timestamp", timestamp));
+		public GetBucketsDescriptor Timestamp(Timestamp timestamp) => Assign(a=>a.RouteValues.Optional("timestamp", timestamp));
 
 	
-		///<summary>Include anomaly records</summary>
-		public XpackMlGetBucketsDescriptor Expand(bool expand = true) => AssignParam(p=>p.Expand(expand));
-
-		///<summary>Exclude interim results</summary>
-		public XpackMlGetBucketsDescriptor ExcludeInterim(bool exclude_interim = true) => AssignParam(p=>p.ExcludeInterim(exclude_interim));
-
-		///<summary>skips a number of buckets</summary>
-		public XpackMlGetBucketsDescriptor From(int from) => AssignParam(p=>p.From(from));
-
-		///<summary>specifies a max number of buckets to get</summary>
-		public XpackMlGetBucketsDescriptor Size(int size) => AssignParam(p=>p.Size(size));
-
-		///<summary>Start time filter for buckets</summary>
-		public XpackMlGetBucketsDescriptor Start(string start) => AssignParam(p=>p.Start(start));
-
-		///<summary>End time filter for buckets</summary>
-		public XpackMlGetBucketsDescriptor End(string end) => AssignParam(p=>p.End(end));
-
-		///<summary>Filter for the most anomalous buckets</summary>
-		public XpackMlGetBucketsDescriptor AnomalyScore(double anomaly_score) => AssignParam(p=>p.AnomalyScore(anomaly_score));
-
-		///<summary>Sort buckets by a particular field</summary>
-		public XpackMlGetBucketsDescriptor Sort(string sort) => AssignParam(p=>p.Sort(sort));
-
-		///<summary>Set the sort direction</summary>
-		public XpackMlGetBucketsDescriptor Desc(bool desc = true) => AssignParam(p=>p.Desc(desc));
-
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetBucketsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public GetBucketsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetBucketsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public GetBucketsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetBucketsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public GetBucketsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetBucketsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public GetBucketsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetBucketsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public GetBucketsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
@@ -7229,14 +7190,14 @@ namespace Nest
 	public partial class XpackMlGetModelSnapshotsDescriptor  : RequestDescriptorBase<XpackMlGetModelSnapshotsDescriptor,XpackMlGetModelSnapshotsRequestParameters, IXpackMlGetModelSnapshotsRequest>, IXpackMlGetModelSnapshotsRequest
 	{ 
 		Id IXpackMlGetModelSnapshotsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
-		string_ IXpackMlGetModelSnapshotsRequest.SnapshotId => Self.RouteValues.Get<string_>("snapshot_id");
+		Id IXpackMlGetModelSnapshotsRequest.SnapshotId => Self.RouteValues.Get<Id>("snapshot_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}</summary>
 ///<param name="job_id"> this parameter is required</param>
 		public XpackMlGetModelSnapshotsDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
 			///<summary>The ID of the snapshot to fetch</summary>
-		public XpackMlGetModelSnapshotsDescriptor SnapshotId(string_ snapshotId) => Assign(a=>a.RouteValues.Optional("snapshot_id", snapshotId));
+		public XpackMlGetModelSnapshotsDescriptor SnapshotId(Id snapshotId) => Assign(a=>a.RouteValues.Optional("snapshot_id", snapshotId));
 
 	
 		///<summary>Skips a number of documents</summary>
@@ -7332,32 +7293,29 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlOpenJob <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html</pre></summary>
-	public partial class XpackMlOpenJobDescriptor  : RequestDescriptorBase<XpackMlOpenJobDescriptor,XpackMlOpenJobRequestParameters, IXpackMlOpenJobRequest>, IXpackMlOpenJobRequest
+	public partial class OpenJobDescriptor  : RequestDescriptorBase<OpenJobDescriptor,OpenJobRequestParameters, IOpenJobRequest>, IOpenJobRequest
 	{ 
-		Id IXpackMlOpenJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Id IOpenJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/_open</summary>
 ///<param name="job_id"> this parameter is required</param>
-		public XpackMlOpenJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		public OpenJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlOpenJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public OpenJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlOpenJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public OpenJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlOpenJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public OpenJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlOpenJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public OpenJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlOpenJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public OpenJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
@@ -7515,14 +7473,14 @@ namespace Nest
 	public partial class XpackMlRevertModelSnapshotDescriptor  : RequestDescriptorBase<XpackMlRevertModelSnapshotDescriptor,XpackMlRevertModelSnapshotRequestParameters, IXpackMlRevertModelSnapshotRequest>, IXpackMlRevertModelSnapshotRequest
 	{ 
 		Id IXpackMlRevertModelSnapshotRequest.JobId => Self.RouteValues.Get<Id>("job_id");
-		string_ IXpackMlRevertModelSnapshotRequest.SnapshotId => Self.RouteValues.Get<string_>("snapshot_id");
+		Id IXpackMlRevertModelSnapshotRequest.SnapshotId => Self.RouteValues.Get<Id>("snapshot_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert</summary>
 ///<param name="job_id"> this parameter is required</param>
 		public XpackMlRevertModelSnapshotDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
 			///<summary>The ID of the snapshot to revert to</summary>
-		public XpackMlRevertModelSnapshotDescriptor SnapshotId(string_ snapshotId) => Assign(a=>a.RouteValues.Optional("snapshot_id", snapshotId));
+		public XpackMlRevertModelSnapshotDescriptor SnapshotId(Id snapshotId) => Assign(a=>a.RouteValues.Optional("snapshot_id", snapshotId));
 
 	
 		///<summary>Should we reset the results back to the time of the snapshot?</summary>
@@ -7687,11 +7645,11 @@ namespace Nest
 	public partial class XpackMlUpdateModelSnapshotDescriptor  : RequestDescriptorBase<XpackMlUpdateModelSnapshotDescriptor,XpackMlUpdateModelSnapshotRequestParameters, IXpackMlUpdateModelSnapshotRequest>, IXpackMlUpdateModelSnapshotRequest
 	{ 
 		Id IXpackMlUpdateModelSnapshotRequest.JobId => Self.RouteValues.Get<Id>("job_id");
-		string_ IXpackMlUpdateModelSnapshotRequest.SnapshotId => Self.RouteValues.Get<string_>("snapshot_id");
+		Id IXpackMlUpdateModelSnapshotRequest.SnapshotId => Self.RouteValues.Get<Id>("snapshot_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update</summary>
 ///<param name="job_id"> this parameter is required</param>		
 ///<param name="snapshot_id"> this parameter is required</param>
-		public XpackMlUpdateModelSnapshotDescriptor(Id job_id, string_ snapshot_id) : base(r=>r.Required("job_id", job_id).Required("snapshot_id", snapshot_id)){}
+		public XpackMlUpdateModelSnapshotDescriptor(Id job_id, Id snapshot_id) : base(r=>r.Required("job_id", job_id).Required("snapshot_id", snapshot_id)){}
 		
 
 		

@@ -3604,7 +3604,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlDeleteFilter", p, new [] { DELETE }, "/_xpack/ml/filters/{filter_id}");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlDeleteJobDispatch<T>(IRequest<XpackMlDeleteJobRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlDeleteJobDispatch<T>(IRequest<DeleteJobRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3616,7 +3616,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlDeleteJob", p, new [] { DELETE }, "/_xpack/ml/anomaly_detectors/{job_id}");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlDeleteJobDispatchAsync<T>(IRequest<XpackMlDeleteJobRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlDeleteJobDispatchAsync<T>(IRequest<DeleteJobRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3628,7 +3628,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlDeleteJob", p, new [] { DELETE }, "/_xpack/ml/anomaly_detectors/{job_id}");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlDeleteModelSnapshotDispatch<T>(IRequest<XpackMlDeleteModelSnapshotRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlDeleteModelSnapshotDispatch<T>(IRequest<DeleteModelSnapshotRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3640,7 +3640,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlDeleteModelSnapshot", p, new [] { DELETE }, "/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlDeleteModelSnapshotDispatchAsync<T>(IRequest<XpackMlDeleteModelSnapshotRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlDeleteModelSnapshotDispatchAsync<T>(IRequest<DeleteModelSnapshotRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3652,7 +3652,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlDeleteModelSnapshot", p, new [] { DELETE }, "/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlFlushJobDispatch<T>(IRequest<XpackMlFlushJobRequestParameters> p , PostData<object> body) where T : class
+		internal ElasticsearchResponse<T> XpackMlFlushJobDispatch<T>(IRequest<FlushJobRequestParameters> p , PostData<object> body) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3664,7 +3664,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlFlushJob", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/{job_id}/_flush");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlFlushJobDispatchAsync<T>(IRequest<XpackMlFlushJobRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlFlushJobDispatchAsync<T>(IRequest<FlushJobRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3676,7 +3676,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlFlushJob", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/{job_id}/_flush");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlGetBucketsDispatch<T>(IRequest<XpackMlGetBucketsRequestParameters> p , PostData<object> body) where T : class
+		internal ElasticsearchResponse<T> XpackMlGetBucketsDispatch<T>(IRequest<GetBucketsRequestParameters> p , PostData<object> body) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3694,7 +3694,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetBuckets", p, new [] { GET, POST }, "/_xpack/ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}", "/_xpack/ml/anomaly_detectors/{job_id}/results/buckets");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlGetBucketsDispatchAsync<T>(IRequest<XpackMlGetBucketsRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlGetBucketsDispatchAsync<T>(IRequest<GetBucketsRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3968,7 +3968,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetRecords", p, new [] { GET, POST }, "/_xpack/ml/anomaly_detectors/{job_id}/results/records");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlOpenJobDispatch<T>(IRequest<XpackMlOpenJobRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlOpenJobDispatch<T>(IRequest<OpenJobRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3980,7 +3980,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlOpenJob", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/{job_id}/_open");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlOpenJobDispatchAsync<T>(IRequest<XpackMlOpenJobRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlOpenJobDispatchAsync<T>(IRequest<OpenJobRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
