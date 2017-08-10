@@ -41,7 +41,7 @@ namespace Nest
 		/// his adds overhead to the performance of the system and is not feasible for jobs with many entities
 		/// </summary>
 		[JsonProperty("model_plot")]
-		IModelPlot ModelPlot { get; set; }
+		IModelPlotConfig ModelPlotConfig { get; set; }
 
 		/// <summary>
 		/// The time in days that model snapshots are retained for the job.
@@ -70,7 +70,7 @@ namespace Nest
 		/// <inheritdoc />
 		public string Description { get; set; }
 		/// <inheritdoc />
-		public IModelPlot ModelPlot { get; set; }
+		public IModelPlotConfig ModelPlotConfig { get; set; }
 		/// <inheritdoc />
 		public long? ModelSnapshotRetentionDays { get; set; }
 		/// <inheritdoc />
@@ -85,7 +85,7 @@ namespace Nest
 		IAnalysisLimits IPutJobRequest.AnalysisLimits { get; set; }
 		IDataDescription IPutJobRequest.DataDescription { get; set; }
 		string IPutJobRequest.Description { get; set; }
-		IModelPlot IPutJobRequest.ModelPlot { get; set; }
+		IModelPlotConfig IPutJobRequest.ModelPlotConfig { get; set; }
 		long? IPutJobRequest.ModelSnapshotRetentionDays { get; set; }
 		IndexName IPutJobRequest.ResultsIndexName { get; set; }
 
@@ -105,8 +105,8 @@ namespace Nest
 		public PutJobDescriptor<T> Description(string description) => Assign(a => a.Description = description);
 
 		/// <inheritdoc />
-		public PutJobDescriptor<T> ModelPlot(Func<ModelPlotDescriptor<T>, IModelPlot> selector) =>
-			Assign(a => a.ModelPlot = selector?.Invoke(new ModelPlotDescriptor<T>()));
+		public PutJobDescriptor<T> ModelPlot(Func<ModelPlotConfigDescriptor<T>, IModelPlotConfig> selector) =>
+			Assign(a => a.ModelPlotConfig = selector?.Invoke(new ModelPlotConfigDescriptor<T>()));
 
 		/// <inheritdoc />
 		public PutJobDescriptor<T> ModelSnapshotRetentionDays(long modelSnapshotRetentionDays) =>

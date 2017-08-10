@@ -7126,36 +7126,28 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html
 	///</pre>
 	///</summary>
-	public class XpackMlGetCategoriesRequestParameters : FluentRequestParameters<XpackMlGetCategoriesRequestParameters> 
+	public class GetCategoriesRequestParameters : FluentRequestParameters<GetCategoriesRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
-		///<summary>skips a number of categories</summary>
-		public XpackMlGetCategoriesRequestParameters From(int from) => this.AddQueryString("from", from);
-		
-		
-		///<summary>specifies a max number of categories to get</summary>
-		public XpackMlGetCategoriesRequestParameters Size(int size) => this.AddQueryString("size", size);
-		
-		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetCategoriesRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public GetCategoriesRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetCategoriesRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public GetCategoriesRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetCategoriesRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public GetCategoriesRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetCategoriesRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public GetCategoriesRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetCategoriesRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public GetCategoriesRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	
@@ -7164,28 +7156,28 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html
 	///</pre>
 	///</summary>
-	public class XpackMlGetDatafeedsRequestParameters : FluentRequestParameters<XpackMlGetDatafeedsRequestParameters> 
+	public class GetDatafeedsRequestParameters : FluentRequestParameters<GetDatafeedsRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.GET;
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetDatafeedsRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public GetDatafeedsRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetDatafeedsRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public GetDatafeedsRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetDatafeedsRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public GetDatafeedsRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetDatafeedsRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public GetDatafeedsRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetDatafeedsRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public GetDatafeedsRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

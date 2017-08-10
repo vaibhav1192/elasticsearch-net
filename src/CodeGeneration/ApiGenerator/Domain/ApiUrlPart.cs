@@ -10,7 +10,11 @@ namespace ApiGenerator.Domain
 
 
 		private string _description;
-		public string Description { get { return _description; } set { _description = CleanUpDescription(value); } }
+		public string Description
+		{
+			get => _description;
+			set => _description = CleanUpDescription(value);
+		}
 		public bool Required { get; set; }
 		public IEnumerable<string> Options { get; set; }
 
@@ -40,6 +44,7 @@ namespace ApiGenerator.Domain
 					case "datafeed_id":
 					case "snapshot_id":
 					case "id": return this.Type == "string" ? "Id" : "Ids";
+					case "category_id": return "CategoryId";
 					case "node_id": return this.Type == "string" ? "NodeId" : "NodeIds";
 					case "scroll_id": return this.Type == "string" ? "ScrollId" : "ScrollIds";
 					case "field":

@@ -3712,17 +3712,17 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetBuckets", p, new [] { GET, POST }, "/_xpack/ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}", "/_xpack/ml/anomaly_detectors/{job_id}/results/buckets");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlGetCategoriesDispatch<T>(IRequest<XpackMlGetCategoriesRequestParameters> p , PostData<object> body) where T : class
+		internal ElasticsearchResponse<T> XpackMlGetCategoriesDispatch<T>(IRequest<GetCategoriesRequestParameters> p , PostData<object> body) where T : class
 		{
 			switch(p.HttpMethod)
 			{
 				case GET:
-					if (AllSetNoFallback(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategories<T>(p.RouteValues.JobId,p.RouteValues.CategoryId,u => p.RequestParameters);
+					if (AllSet(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategories<T>(p.RouteValues.JobId,p.RouteValues.CategoryId,u => p.RequestParameters);
 					if (AllSetNoFallback(p.RouteValues.JobId)) return _lowLevel.XpackMlGetCategories<T>(p.RouteValues.JobId,u => p.RequestParameters);
 					break;
 
 				case POST:
-					if (AllSetNoFallback(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategories<T>(p.RouteValues.JobId,p.RouteValues.CategoryId,body,u => p.RequestParameters);
+					if (AllSet(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategories<T>(p.RouteValues.JobId,p.RouteValues.CategoryId,body,u => p.RequestParameters);
 					if (AllSetNoFallback(p.RouteValues.JobId)) return _lowLevel.XpackMlGetCategories<T>(p.RouteValues.JobId,body,u => p.RequestParameters);
 					break;
 
@@ -3730,17 +3730,17 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetCategories", p, new [] { GET, POST }, "/_xpack/ml/anomaly_detectors/{job_id}/results/categories/{category_id}", "/_xpack/ml/anomaly_detectors/{job_id}/results/categories/");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlGetCategoriesDispatchAsync<T>(IRequest<XpackMlGetCategoriesRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlGetCategoriesDispatchAsync<T>(IRequest<GetCategoriesRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
 				case GET:
-					if (AllSetNoFallback(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategoriesAsync<T>(p.RouteValues.JobId,p.RouteValues.CategoryId,u => p.RequestParameters,cancellationToken);
+					if (AllSet(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategoriesAsync<T>(p.RouteValues.JobId,p.RouteValues.CategoryId,u => p.RequestParameters,cancellationToken);
 					if (AllSetNoFallback(p.RouteValues.JobId)) return _lowLevel.XpackMlGetCategoriesAsync<T>(p.RouteValues.JobId,u => p.RequestParameters,cancellationToken);
 					break;
 
 				case POST:
-					if (AllSetNoFallback(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategoriesAsync<T>(p.RouteValues.JobId,p.RouteValues.CategoryId,body,u => p.RequestParameters,cancellationToken);
+					if (AllSet(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategoriesAsync<T>(p.RouteValues.JobId,p.RouteValues.CategoryId,body,u => p.RequestParameters,cancellationToken);
 					if (AllSetNoFallback(p.RouteValues.JobId)) return _lowLevel.XpackMlGetCategoriesAsync<T>(p.RouteValues.JobId,body,u => p.RequestParameters,cancellationToken);
 					break;
 
@@ -3748,7 +3748,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetCategories", p, new [] { GET, POST }, "/_xpack/ml/anomaly_detectors/{job_id}/results/categories/{category_id}", "/_xpack/ml/anomaly_detectors/{job_id}/results/categories/");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlGetDatafeedsDispatch<T>(IRequest<XpackMlGetDatafeedsRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlGetDatafeedsDispatch<T>(IRequest<GetDatafeedsRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3760,7 +3760,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetDatafeeds", p, new [] { GET }, "/_xpack/ml/datafeeds/{datafeed_id}", "/_xpack/ml/datafeeds");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlGetDatafeedsDispatchAsync<T>(IRequest<XpackMlGetDatafeedsRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlGetDatafeedsDispatchAsync<T>(IRequest<GetDatafeedsRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{

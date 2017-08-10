@@ -40,16 +40,10 @@ namespace Nest
 		bool? Expand { get; set; }
 
 		/// <summary>
-		/// Skips the specified number of buckets.
+		/// Specifies pagination for the buckets
 		/// </summary>
-		[JsonProperty("from")]
-		int? From { get; set; }
-
-		/// <summary>
-		/// Specifies the maximum number of buckets to obtain.
-		/// </summary>
-		[JsonProperty("size")]
-		int? Size { get; set; }
+		[JsonProperty("page")]
+		IPage Page { get; set; }
 
 		/// <summary>
 		/// Specifies the sort field for the requested buckets. By default, the buckets are sorted by the timestamp field.
@@ -79,13 +73,43 @@ namespace Nest
 		/// <inheritdoc />
 		public bool? Expand { get; set; }
 		/// <inheritdoc />
-		public int? From { get; set; }
-		/// <inheritdoc />
-		public int? Size { get; set; }
+		public IPage Page { get; set; }
 		/// <inheritdoc />
 		public Field Sort { get; set; }
 		/// <inheritdoc />
 		public DateTimeOffset? Start { get; set; }
+	}
+
+	public interface IPage
+	{
+		/// <summary>
+		/// Skips the specified number of buckets.
+		/// </summary>
+		[JsonProperty("from")]
+		int? From { get; set; }
+
+		/// <summary>
+		/// Specifies the maximum number of buckets to obtain.
+		/// </summary>
+		[JsonProperty("size")]
+		int? Size { get; set; }
+	}
+
+	public class PageDescriptor : DescriptorBase<PageDescriptor, IPage>, IPage
+	{
+		int? IPage.From { get; set; }
+		int? IPage.Size { get; set; }
+
+		public PageDescriptor From(int from) => Assign(a => a.From = from);
+
+		public PageDescriptor Size(int size) => Assign(a => a.Size = size);
+	}
+
+	public class Page : IPage
+	{
+		public int? From { get; set; }
+
+		public int? Size { get; set; }
 	}
 
 	/// <inheritdoc />
@@ -97,8 +121,7 @@ namespace Nest
 		DateTimeOffset? IGetBucketsRequest.End { get; set; }
 		bool? IGetBucketsRequest.ExcludeInterim { get; set; }
 		bool? IGetBucketsRequest.Expand { get; set; }
-		int? IGetBucketsRequest.From { get; set; }
-		int? IGetBucketsRequest.Size { get; set; }
+		IPage IGetBucketsRequest.Page { get; set; }
 		Field IGetBucketsRequest.Sort { get; set; }
 		DateTimeOffset? IGetBucketsRequest.Start { get; set; }
 
@@ -118,10 +141,8 @@ namespace Nest
 		public GetBucketsDescriptor Expand(bool expand = true) => Assign(a => a.Expand = expand);
 
 		/// <inheritdoc />
-		public GetBucketsDescriptor From(int from) => Assign(a => a.From = from);
-
-		/// <inheritdoc />
-		public GetBucketsDescriptor Size(int size) => Assign(a => a.Size = size);
+		public GetBucketsDescriptor Page(Func<PageDescriptor, IPage> selector) =>
+			Assign(a => a.Page = selector?.Invoke(new PageDescriptor()));
 
 		/// <inheritdoc />
 		public GetBucketsDescriptor Sort(Field field) => Assign(a => a.Sort = field);

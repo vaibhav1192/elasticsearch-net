@@ -6924,77 +6924,62 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlGetCategories <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html</pre></summary>
-	public partial class XpackMlGetCategoriesDescriptor  : RequestDescriptorBase<XpackMlGetCategoriesDescriptor,XpackMlGetCategoriesRequestParameters, IXpackMlGetCategoriesRequest>, IXpackMlGetCategoriesRequest
+	public partial class GetCategoriesDescriptor  : RequestDescriptorBase<GetCategoriesDescriptor,GetCategoriesRequestParameters, IGetCategoriesRequest>, IGetCategoriesRequest
 	{ 
-		Id IXpackMlGetCategoriesRequest.JobId => Self.RouteValues.Get<Id>("job_id");
-		long_ IXpackMlGetCategoriesRequest.CategoryId => Self.RouteValues.Get<long_>("category_id");
+		Id IGetCategoriesRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		CategoryId IGetCategoriesRequest.CategoryId => Self.RouteValues.Get<CategoryId>("category_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/categories/{category_id}</summary>
-///<param name="job_id"> this parameter is required</param>		
-///<param name="category_id"> this parameter is required</param>
-		public XpackMlGetCategoriesDescriptor(Id job_id, long_ category_id) : base(r=>r.Required("job_id", job_id).Required("category_id", category_id)){}
-		
-
-		/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/categories/</summary>
 ///<param name="job_id"> this parameter is required</param>
-		public XpackMlGetCategoriesDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		public GetCategoriesDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
-		
-		///<summary>skips a number of categories</summary>
-		public XpackMlGetCategoriesDescriptor From(int from) => AssignParam(p=>p.From(from));
+			///<summary>The identifier of the category definition of interest</summary>
+		public GetCategoriesDescriptor CategoryId(CategoryId categoryId) => Assign(a=>a.RouteValues.Optional("category_id", categoryId));
 
-		///<summary>specifies a max number of categories to get</summary>
-		public XpackMlGetCategoriesDescriptor Size(int size) => AssignParam(p=>p.Size(size));
-
+	
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetCategoriesDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public GetCategoriesDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetCategoriesDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public GetCategoriesDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetCategoriesDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public GetCategoriesDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetCategoriesDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public GetCategoriesDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetCategoriesDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public GetCategoriesDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
 	///<summary>descriptor for XpackMlGetDatafeeds <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html</pre></summary>
-	public partial class XpackMlGetDatafeedsDescriptor  : RequestDescriptorBase<XpackMlGetDatafeedsDescriptor,XpackMlGetDatafeedsRequestParameters, IXpackMlGetDatafeedsRequest>, IXpackMlGetDatafeedsRequest
+	public partial class GetDatafeedsDescriptor  : RequestDescriptorBase<GetDatafeedsDescriptor,GetDatafeedsRequestParameters, IGetDatafeedsRequest>, IGetDatafeedsRequest
 	{ 
-		Id IXpackMlGetDatafeedsRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+		Id IGetDatafeedsRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
 			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}</summary>
-		public XpackMlGetDatafeedsDescriptor() : base(){}
+		public GetDatafeedsDescriptor() : base(){}
 		
 
 			///<summary>The ID of the datafeeds to fetch</summary>
-		public XpackMlGetDatafeedsDescriptor DatafeedId(Id datafeedId) => Assign(a=>a.RouteValues.Optional("datafeed_id", datafeedId));
+		public GetDatafeedsDescriptor DatafeedId(Id datafeedId) => Assign(a=>a.RouteValues.Optional("datafeed_id", datafeedId));
 
 	
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetDatafeedsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public GetDatafeedsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetDatafeedsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public GetDatafeedsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetDatafeedsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public GetDatafeedsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetDatafeedsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public GetDatafeedsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetDatafeedsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public GetDatafeedsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

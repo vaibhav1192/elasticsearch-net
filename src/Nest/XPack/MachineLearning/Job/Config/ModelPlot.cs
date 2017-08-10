@@ -7,7 +7,7 @@ namespace Nest
 	/// Stores model information along with the results.
 	/// It provides a more detailed view into anomaly detection.
 	/// </summary>
-	public interface IModelPlot
+	public interface IModelPlotConfig
 	{
 		/// <summary>
 		/// Enables calculation and storage of the model bounds for each entity that is being analyzed.
@@ -28,7 +28,7 @@ namespace Nest
 	}
 
 	/// <inheritdoc />
-	public class ModelPlot : IModelPlot
+	public class ModelPlotConfig : IModelPlotConfig
 	{
 		/// <inheritdoc />
 		public bool? Enabled { get; set; }
@@ -37,19 +37,19 @@ namespace Nest
 	}
 
 	/// <inheritdoc />
-	public class ModelPlotDescriptor<T> : DescriptorBase<ModelPlotDescriptor<T>, IModelPlot>, IModelPlot where T : class
+	public class ModelPlotConfigDescriptor<T> : DescriptorBase<ModelPlotConfigDescriptor<T>, IModelPlotConfig>, IModelPlotConfig where T : class
 	{
-		bool? IModelPlot.Enabled { get; set; }
-		Fields IModelPlot.Terms { get; set; }
+		bool? IModelPlotConfig.Enabled { get; set; }
+		Fields IModelPlotConfig.Terms { get; set; }
 
 		/// <inheritdoc />
-		public ModelPlotDescriptor<T> Enabled(bool enabled = true) => Assign(a => a.Enabled = enabled);
+		public ModelPlotConfigDescriptor<T> Enabled(bool enabled = true) => Assign(a => a.Enabled = enabled);
 
 		/// <inheritdoc />
-		public ModelPlotDescriptor<T> Terms(Func<FieldsDescriptor<T>, IPromise<Fields>> fields) =>
+		public ModelPlotConfigDescriptor<T> Terms(Func<FieldsDescriptor<T>, IPromise<Fields>> fields) =>
 			Assign(a => a.Terms = fields?.Invoke(new FieldsDescriptor<T>())?.Value);
 
 		/// <inheritdoc />
-		public ModelPlotDescriptor<T> Terms(Fields fields) => Assign(a => a.Terms = fields);
+		public ModelPlotConfigDescriptor<T> Terms(Fields fields) => Assign(a => a.Terms = fields);
 	}
 }

@@ -9123,7 +9123,7 @@ namespace Elasticsearch.Net
 		///<param name="job_id">The name of the job</param>
 		///<param name="category_id">The identifier of the category definition of interest</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlGetCategories<T>(string job_id, long category_id, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlGetCategories<T>(string job_id, long category_id, Func<GetCategoriesRequestParameters, GetCategoriesRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(GET, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}/results/categories/{category_id}"), null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/{category_id}
@@ -9138,7 +9138,7 @@ namespace Elasticsearch.Net
 		///<param name="job_id">The name of the job</param>
 		///<param name="category_id">The identifier of the category definition of interest</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlGetCategoriesAsync<T>(string job_id, long category_id, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlGetCategoriesAsync<T>(string job_id, long category_id, Func<GetCategoriesRequestParameters, GetCategoriesRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(GET, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}/results/categories/{category_id}"), cancellationToken, null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/
@@ -9152,7 +9152,7 @@ namespace Elasticsearch.Net
 	    ///</summary>
 		///<param name="job_id">The name of the job</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlGetCategories<T>(string job_id, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlGetCategories<T>(string job_id, Func<GetCategoriesRequestParameters, GetCategoriesRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(GET, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}/results/categories/"), null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/
@@ -9166,7 +9166,7 @@ namespace Elasticsearch.Net
 	    ///</summary>
 		///<param name="job_id">The name of the job</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlGetCategoriesAsync<T>(string job_id, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlGetCategoriesAsync<T>(string job_id, Func<GetCategoriesRequestParameters, GetCategoriesRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(GET, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}/results/categories/"), cancellationToken, null, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/{category_id}
@@ -9182,7 +9182,7 @@ namespace Elasticsearch.Net
 		///<param name="category_id">The identifier of the category definition of interest</param>
 		///<param name="body">Category selection details if not provided in URI</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlGetCategories<T>(string job_id, long category_id, PostData<object> body, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlGetCategories<T>(string job_id, long category_id, PostData<object> body, Func<GetCategoriesRequestParameters, GetCategoriesRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(POST, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}/results/categories/{category_id}"), body, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/{category_id}
@@ -9198,7 +9198,7 @@ namespace Elasticsearch.Net
 		///<param name="category_id">The identifier of the category definition of interest</param>
 		///<param name="body">Category selection details if not provided in URI</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlGetCategoriesAsync<T>(string job_id, long category_id, PostData<object> body, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlGetCategoriesAsync<T>(string job_id, long category_id, PostData<object> body, Func<GetCategoriesRequestParameters, GetCategoriesRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(POST, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}/results/categories/{category_id}"), cancellationToken, body, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/
@@ -9213,7 +9213,7 @@ namespace Elasticsearch.Net
 		///<param name="job_id">The name of the job</param>
 		///<param name="body">Category selection details if not provided in URI</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlGetCategories<T>(string job_id, PostData<object> body, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlGetCategories<T>(string job_id, PostData<object> body, Func<GetCategoriesRequestParameters, GetCategoriesRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(POST, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}/results/categories/"), body, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/results/categories/
@@ -9228,7 +9228,7 @@ namespace Elasticsearch.Net
 		///<param name="job_id">The name of the job</param>
 		///<param name="body">Category selection details if not provided in URI</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlGetCategoriesAsync<T>(string job_id, PostData<object> body, Func<XpackMlGetCategoriesRequestParameters, XpackMlGetCategoriesRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlGetCategoriesAsync<T>(string job_id, PostData<object> body, Func<GetCategoriesRequestParameters, GetCategoriesRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(POST, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}/results/categories/"), cancellationToken, body, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/datafeeds/{datafeed_id}
@@ -9242,7 +9242,7 @@ namespace Elasticsearch.Net
 	    ///</summary>
 		///<param name="datafeed_id">The ID of the datafeeds to fetch</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlGetDatafeeds<T>(string datafeed_id, Func<XpackMlGetDatafeedsRequestParameters, XpackMlGetDatafeedsRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlGetDatafeeds<T>(string datafeed_id, Func<GetDatafeedsRequestParameters, GetDatafeedsRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(GET, Url($"_xpack/ml/datafeeds/{datafeed_id.NotNull("datafeed_id")}"), null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/datafeeds/{datafeed_id}
@@ -9256,7 +9256,7 @@ namespace Elasticsearch.Net
 	    ///</summary>
 		///<param name="datafeed_id">The ID of the datafeeds to fetch</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlGetDatafeedsAsync<T>(string datafeed_id, Func<XpackMlGetDatafeedsRequestParameters, XpackMlGetDatafeedsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlGetDatafeedsAsync<T>(string datafeed_id, Func<GetDatafeedsRequestParameters, GetDatafeedsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(GET, Url($"_xpack/ml/datafeeds/{datafeed_id.NotNull("datafeed_id")}"), cancellationToken, null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/datafeeds
@@ -9269,7 +9269,7 @@ namespace Elasticsearch.Net
 	    ///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html </para>
 	    ///</summary>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlGetDatafeeds<T>(Func<XpackMlGetDatafeedsRequestParameters, XpackMlGetDatafeedsRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlGetDatafeeds<T>(Func<GetDatafeedsRequestParameters, GetDatafeedsRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(GET, Url($"_xpack/ml/datafeeds"), null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/datafeeds
@@ -9282,7 +9282,7 @@ namespace Elasticsearch.Net
 	    ///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html </para>
 	    ///</summary>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlGetDatafeedsAsync<T>(Func<XpackMlGetDatafeedsRequestParameters, XpackMlGetDatafeedsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlGetDatafeedsAsync<T>(Func<GetDatafeedsRequestParameters, GetDatafeedsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(GET, Url($"_xpack/ml/datafeeds"), cancellationToken, null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/datafeeds/{datafeed_id}/_stats
