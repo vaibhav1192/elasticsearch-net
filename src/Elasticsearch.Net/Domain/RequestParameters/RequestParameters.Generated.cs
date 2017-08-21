@@ -7714,40 +7714,28 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html
 	///</pre>
 	///</summary>
-	public class XpackMlStartDatafeedRequestParameters : FluentRequestParameters<XpackMlStartDatafeedRequestParameters> 
+	public class StartDatafeedRequestParameters : FluentRequestParameters<StartDatafeedRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
-		///<summary>The start time from where the datafeed should begin</summary>
-		public XpackMlStartDatafeedRequestParameters Start(string start) => this.AddQueryString("start", start);
-		
-		
-		///<summary>The end time when the datafeed should stop. When not set, the datafeed continues in real time</summary>
-		public XpackMlStartDatafeedRequestParameters End(string end) => this.AddQueryString("end", end);
-		
-		
-		///<summary>Controls the time to wait until a datafeed has started. Default to 20 seconds</summary>
-		public XpackMlStartDatafeedRequestParameters Timeout(TimeSpan timeout) => this.AddQueryString("timeout", timeout.ToTimeUnit());
-		
-		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlStartDatafeedRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public StartDatafeedRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlStartDatafeedRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public StartDatafeedRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlStartDatafeedRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public StartDatafeedRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlStartDatafeedRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public StartDatafeedRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlStartDatafeedRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public StartDatafeedRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

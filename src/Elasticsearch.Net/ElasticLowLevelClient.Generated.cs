@@ -9957,7 +9957,7 @@ namespace Elasticsearch.Net
 		///<param name="datafeed_id">The ID of the datafeed to start</param>
 		///<param name="body">The start datafeed parameters</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlStartDatafeed<T>(string datafeed_id, PostData<object> body, Func<XpackMlStartDatafeedRequestParameters, XpackMlStartDatafeedRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlStartDatafeed<T>(string datafeed_id, PostData<object> body, Func<StartDatafeedRequestParameters, StartDatafeedRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(POST, Url($"_xpack/ml/datafeeds/{datafeed_id.NotNull("datafeed_id")}/_start"), body, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_start
@@ -9972,7 +9972,7 @@ namespace Elasticsearch.Net
 		///<param name="datafeed_id">The ID of the datafeed to start</param>
 		///<param name="body">The start datafeed parameters</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlStartDatafeedAsync<T>(string datafeed_id, PostData<object> body, Func<XpackMlStartDatafeedRequestParameters, XpackMlStartDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlStartDatafeedAsync<T>(string datafeed_id, PostData<object> body, Func<StartDatafeedRequestParameters, StartDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(POST, Url($"_xpack/ml/datafeeds/{datafeed_id.NotNull("datafeed_id")}/_start"), cancellationToken, body, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_stop

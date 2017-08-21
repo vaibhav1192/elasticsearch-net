@@ -9269,7 +9269,7 @@ namespace Elasticsearch.Net
 		///<param name="datafeed_id">The ID of the datafeed to start</param>
 		///<param name="body">The start datafeed parameters</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		ElasticsearchResponse<T> XpackMlStartDatafeed<T>(string datafeed_id, PostData<object> body, Func<XpackMlStartDatafeedRequestParameters, XpackMlStartDatafeedRequestParameters> requestParameters = null) where T : class;
+		ElasticsearchResponse<T> XpackMlStartDatafeed<T>(string datafeed_id, PostData<object> body, Func<StartDatafeedRequestParameters, StartDatafeedRequestParameters> requestParameters = null) where T : class;
 		
 		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_start
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -9283,7 +9283,7 @@ namespace Elasticsearch.Net
 		///<param name="datafeed_id">The ID of the datafeed to start</param>
 		///<param name="body">The start datafeed parameters</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		Task<ElasticsearchResponse<T>> XpackMlStartDatafeedAsync<T>(string datafeed_id, PostData<object> body, Func<XpackMlStartDatafeedRequestParameters, XpackMlStartDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<ElasticsearchResponse<T>> XpackMlStartDatafeedAsync<T>(string datafeed_id, PostData<object> body, Func<StartDatafeedRequestParameters, StartDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
 		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_stop
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:

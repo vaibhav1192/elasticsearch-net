@@ -7486,41 +7486,29 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlStartDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html</pre></summary>
-	public partial class XpackMlStartDatafeedDescriptor  : RequestDescriptorBase<XpackMlStartDatafeedDescriptor,XpackMlStartDatafeedRequestParameters, IXpackMlStartDatafeedRequest>, IXpackMlStartDatafeedRequest
+	public partial class StartDatafeedDescriptor  : RequestDescriptorBase<StartDatafeedDescriptor,StartDatafeedRequestParameters, IStartDatafeedRequest>, IStartDatafeedRequest
 	{ 
-		Id IXpackMlStartDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+		Id IStartDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
 			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_start</summary>
 ///<param name="datafeed_id"> this parameter is required</param>
-		public XpackMlStartDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		public StartDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
 		
 
 		
-		///<summary>The start time from where the datafeed should begin</summary>
-		public XpackMlStartDatafeedDescriptor Start(string start) => AssignParam(p=>p.Start(start));
-
-		///<summary>The end time when the datafeed should stop. When not set, the datafeed continues in real time</summary>
-		public XpackMlStartDatafeedDescriptor End(string end) => AssignParam(p=>p.End(end));
-
-		///<summary>Controls the time to wait until a datafeed has started. Default to 20 seconds</summary>
-		public XpackMlStartDatafeedDescriptor Timeout(Time timeout) => AssignParam(p=>p.Timeout(timeout.ToTimeSpan()));
-
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlStartDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public StartDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlStartDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public StartDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlStartDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public StartDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlStartDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public StartDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlStartDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public StartDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

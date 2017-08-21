@@ -4136,7 +4136,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlRevertModelSnapshot", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlStartDatafeedDispatch<T>(IRequest<XpackMlStartDatafeedRequestParameters> p , PostData<object> body) where T : class
+		internal ElasticsearchResponse<T> XpackMlStartDatafeedDispatch<T>(IRequest<StartDatafeedRequestParameters> p , PostData<object> body) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -4148,7 +4148,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlStartDatafeed", p, new [] { POST }, "/_xpack/ml/datafeeds/{datafeed_id}/_start");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlStartDatafeedDispatchAsync<T>(IRequest<XpackMlStartDatafeedRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlStartDatafeedDispatchAsync<T>(IRequest<StartDatafeedRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
