@@ -7254,60 +7254,28 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-influencer.html
 	///</pre>
 	///</summary>
-	public class XpackMlGetInfluencersRequestParameters : FluentRequestParameters<XpackMlGetInfluencersRequestParameters> 
+	public class GetInfluencersRequestParameters : FluentRequestParameters<GetInfluencersRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
-		///<summary>Exclude interim results</summary>
-		public XpackMlGetInfluencersRequestParameters ExcludeInterim(bool exclude_interim) => this.AddQueryString("exclude_interim", exclude_interim);
-		
-		
-		///<summary>skips a number of influencers</summary>
-		public XpackMlGetInfluencersRequestParameters From(int from) => this.AddQueryString("from", from);
-		
-		
-		///<summary>specifies a max number of influencers to get</summary>
-		public XpackMlGetInfluencersRequestParameters Size(int size) => this.AddQueryString("size", size);
-		
-		
-		///<summary>start timestamp for the requested influencers</summary>
-		public XpackMlGetInfluencersRequestParameters Start(string start) => this.AddQueryString("start", start);
-		
-		
-		///<summary>end timestamp for the requested influencers</summary>
-		public XpackMlGetInfluencersRequestParameters End(string end) => this.AddQueryString("end", end);
-		
-		
-		///<summary>influencer score threshold for the requested influencers</summary>
-		public XpackMlGetInfluencersRequestParameters InfluencerScore(double influencer_score) => this.AddQueryString("influencer_score", influencer_score);
-		
-		
-		///<summary>sort field for the requested influencers</summary>
-		public XpackMlGetInfluencersRequestParameters Sort(string sort) => this.AddQueryString("sort", sort);
-		
-		
-		///<summary>whether the results should be sorted in decending order</summary>
-		public XpackMlGetInfluencersRequestParameters Desc(bool desc) => this.AddQueryString("desc", desc);
-		
-		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetInfluencersRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public GetInfluencersRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetInfluencersRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public GetInfluencersRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetInfluencersRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public GetInfluencersRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetInfluencersRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public GetInfluencersRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetInfluencersRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public GetInfluencersRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	
@@ -7346,28 +7314,28 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html
 	///</pre>
 	///</summary>
-	public class XpackMlGetJobStatsRequestParameters : FluentRequestParameters<XpackMlGetJobStatsRequestParameters> 
+	public class GetJobStatsRequestParameters : FluentRequestParameters<GetJobStatsRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.GET;
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetJobStatsRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public GetJobStatsRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetJobStatsRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public GetJobStatsRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetJobStatsRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public GetJobStatsRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetJobStatsRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public GetJobStatsRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetJobStatsRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public GetJobStatsRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

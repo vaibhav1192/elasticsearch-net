@@ -3820,7 +3820,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetFilters", p, new [] { GET }, "/_xpack/ml/filters/", "/_xpack/ml/filters/{filter_id}");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlGetInfluencersDispatch<T>(IRequest<XpackMlGetInfluencersRequestParameters> p , PostData<object> body) where T : class
+		internal ElasticsearchResponse<T> XpackMlGetInfluencersDispatch<T>(IRequest<GetInfluencersRequestParameters> p , PostData<object> body) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3836,7 +3836,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetInfluencers", p, new [] { GET, POST }, "/_xpack/ml/anomaly_detectors/{job_id}/results/influencers");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlGetInfluencersDispatchAsync<T>(IRequest<XpackMlGetInfluencersRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlGetInfluencersDispatchAsync<T>(IRequest<GetInfluencersRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3876,7 +3876,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetJobs", p, new [] { GET }, "/_xpack/ml/anomaly_detectors/{job_id}", "/_xpack/ml/anomaly_detectors/");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlGetJobStatsDispatch<T>(IRequest<XpackMlGetJobStatsRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlGetJobStatsDispatch<T>(IRequest<GetJobStatsRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3888,7 +3888,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetJobStats", p, new [] { GET }, "/_xpack/ml/anomaly_detectors/_stats", "/_xpack/ml/anomaly_detectors/{job_id}/_stats");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlGetJobStatsDispatchAsync<T>(IRequest<XpackMlGetJobStatsRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlGetJobStatsDispatchAsync<T>(IRequest<GetJobStatsRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
