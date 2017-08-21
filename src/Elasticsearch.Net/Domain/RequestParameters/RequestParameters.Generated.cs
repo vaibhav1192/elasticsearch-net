@@ -7744,36 +7744,28 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html
 	///</pre>
 	///</summary>
-	public class XpackMlStopDatafeedRequestParameters : FluentRequestParameters<XpackMlStopDatafeedRequestParameters> 
+	public class StopDatafeedRequestParameters : FluentRequestParameters<StopDatafeedRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
-		///<summary>True if the datafeed should be forcefully stopped.</summary>
-		public XpackMlStopDatafeedRequestParameters Force(bool force) => this.AddQueryString("force", force);
-		
-		
-		///<summary>Controls the time to wait until a datafeed has stopped. Default to 20 seconds</summary>
-		public XpackMlStopDatafeedRequestParameters Timeout(TimeSpan timeout) => this.AddQueryString("timeout", timeout.ToTimeUnit());
-		
-		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlStopDatafeedRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public StopDatafeedRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlStopDatafeedRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public StopDatafeedRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlStopDatafeedRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public StopDatafeedRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlStopDatafeedRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public StopDatafeedRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlStopDatafeedRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public StopDatafeedRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

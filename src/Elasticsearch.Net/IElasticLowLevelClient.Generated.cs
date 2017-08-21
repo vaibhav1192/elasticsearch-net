@@ -9296,7 +9296,7 @@ namespace Elasticsearch.Net
 		///</summary>
 		///<param name="datafeed_id">The ID of the datafeed to stop</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		ElasticsearchResponse<T> XpackMlStopDatafeed<T>(string datafeed_id, Func<XpackMlStopDatafeedRequestParameters, XpackMlStopDatafeedRequestParameters> requestParameters = null) where T : class;
+		ElasticsearchResponse<T> XpackMlStopDatafeed<T>(string datafeed_id, Func<StopDatafeedRequestParameters, StopDatafeedRequestParameters> requestParameters = null) where T : class;
 		
 		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_stop
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -9309,7 +9309,7 @@ namespace Elasticsearch.Net
 		///</summary>
 		///<param name="datafeed_id">The ID of the datafeed to stop</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		Task<ElasticsearchResponse<T>> XpackMlStopDatafeedAsync<T>(string datafeed_id, Func<XpackMlStopDatafeedRequestParameters, XpackMlStopDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<ElasticsearchResponse<T>> XpackMlStopDatafeedAsync<T>(string datafeed_id, Func<StopDatafeedRequestParameters, StopDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
 		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_update
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:

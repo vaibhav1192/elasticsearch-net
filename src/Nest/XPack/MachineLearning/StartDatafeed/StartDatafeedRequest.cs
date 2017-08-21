@@ -42,7 +42,7 @@ namespace Nest
 		public StartDatafeedDescriptor Timeout(Time timeout) => Assign(a => a.Timeout = timeout);
 
 		/// <inheritdoc />
-		public StartDatafeedDescriptor Start(DateTimeOffset end) => Assign(a => a.Start = end);
+		public StartDatafeedDescriptor Start(DateTimeOffset start) => Assign(a => a.Start = start);
 
 		/// <inheritdoc />
 		public StartDatafeedDescriptor End(DateTimeOffset end) => Assign(a => a.End = end);

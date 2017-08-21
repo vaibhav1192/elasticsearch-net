@@ -7513,38 +7513,29 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlStopDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html</pre></summary>
-	public partial class XpackMlStopDatafeedDescriptor  : RequestDescriptorBase<XpackMlStopDatafeedDescriptor,XpackMlStopDatafeedRequestParameters, IXpackMlStopDatafeedRequest>, IXpackMlStopDatafeedRequest
+	public partial class StopDatafeedDescriptor  : RequestDescriptorBase<StopDatafeedDescriptor,StopDatafeedRequestParameters, IStopDatafeedRequest>, IStopDatafeedRequest
 	{ 
-		Id IXpackMlStopDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+		Id IStopDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
 			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_stop</summary>
 ///<param name="datafeed_id"> this parameter is required</param>
-		public XpackMlStopDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		public StopDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
 		
 
 		
-		///<summary>True if the datafeed should be forcefully stopped.</summary>
-		public XpackMlStopDatafeedDescriptor Force(bool force = true) => AssignParam(p=>p.Force(force));
-
-		///<summary>Controls the time to wait until a datafeed has stopped. Default to 20 seconds</summary>
-		public XpackMlStopDatafeedDescriptor Timeout(Time timeout) => AssignParam(p=>p.Timeout(timeout.ToTimeSpan()));
-
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlStopDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public StopDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlStopDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public StopDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlStopDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public StopDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlStopDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public StopDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlStopDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public StopDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

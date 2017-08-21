@@ -4160,7 +4160,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlStartDatafeed", p, new [] { POST }, "/_xpack/ml/datafeeds/{datafeed_id}/_start");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlStopDatafeedDispatch<T>(IRequest<XpackMlStopDatafeedRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlStopDatafeedDispatch<T>(IRequest<StopDatafeedRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -4172,7 +4172,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlStopDatafeed", p, new [] { POST }, "/_xpack/ml/datafeeds/{datafeed_id}/_stop");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlStopDatafeedDispatchAsync<T>(IRequest<XpackMlStopDatafeedRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlStopDatafeedDispatchAsync<T>(IRequest<StopDatafeedRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
