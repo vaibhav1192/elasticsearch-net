@@ -7048,56 +7048,29 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlGetInfluencers <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-influencer.html</pre></summary>
-	public partial class XpackMlGetInfluencersDescriptor  : RequestDescriptorBase<XpackMlGetInfluencersDescriptor,XpackMlGetInfluencersRequestParameters, IXpackMlGetInfluencersRequest>, IXpackMlGetInfluencersRequest
+	public partial class GetInfluencersDescriptor  : RequestDescriptorBase<GetInfluencersDescriptor,GetInfluencersRequestParameters, IGetInfluencersRequest>, IGetInfluencersRequest
 	{ 
-		Id IXpackMlGetInfluencersRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Id IGetInfluencersRequest.JobId => Self.RouteValues.Get<Id>("job_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/influencers</summary>
 ///<param name="job_id"> this parameter is required</param>
-		public XpackMlGetInfluencersDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		public GetInfluencersDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
 		
-		///<summary>Exclude interim results</summary>
-		public XpackMlGetInfluencersDescriptor ExcludeInterim(bool exclude_interim = true) => AssignParam(p=>p.ExcludeInterim(exclude_interim));
-
-		///<summary>skips a number of influencers</summary>
-		public XpackMlGetInfluencersDescriptor From(int from) => AssignParam(p=>p.From(from));
-
-		///<summary>specifies a max number of influencers to get</summary>
-		public XpackMlGetInfluencersDescriptor Size(int size) => AssignParam(p=>p.Size(size));
-
-		///<summary>start timestamp for the requested influencers</summary>
-		public XpackMlGetInfluencersDescriptor Start(string start) => AssignParam(p=>p.Start(start));
-
-		///<summary>end timestamp for the requested influencers</summary>
-		public XpackMlGetInfluencersDescriptor End(string end) => AssignParam(p=>p.End(end));
-
-		///<summary>influencer score threshold for the requested influencers</summary>
-		public XpackMlGetInfluencersDescriptor InfluencerScore(double influencer_score) => AssignParam(p=>p.InfluencerScore(influencer_score));
-
-		///<summary>sort field for the requested influencers</summary>
-		public XpackMlGetInfluencersDescriptor Sort(string sort) => AssignParam(p=>p.Sort(sort));
-
-		///<summary>whether the results should be sorted in decending order</summary>
-		public XpackMlGetInfluencersDescriptor Desc(bool desc = true) => AssignParam(p=>p.Desc(desc));
-
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetInfluencersDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public GetInfluencersDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetInfluencersDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public GetInfluencersDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetInfluencersDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public GetInfluencersDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetInfluencersDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public GetInfluencersDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetInfluencersDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public GetInfluencersDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
@@ -7134,34 +7107,31 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlGetJobStats <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html</pre></summary>
-	public partial class XpackMlGetJobStatsDescriptor  : RequestDescriptorBase<XpackMlGetJobStatsDescriptor,XpackMlGetJobStatsRequestParameters, IXpackMlGetJobStatsRequest>, IXpackMlGetJobStatsRequest
+	public partial class GetJobStatsDescriptor  : RequestDescriptorBase<GetJobStatsDescriptor,GetJobStatsRequestParameters, IGetJobStatsRequest>, IGetJobStatsRequest
 	{ 
-		Id IXpackMlGetJobStatsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Id IGetJobStatsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/_stats</summary>
-		public XpackMlGetJobStatsDescriptor() : base(){}
+		public GetJobStatsDescriptor() : base(){}
 		
 
 			///<summary>The ID of the jobs stats to fetch</summary>
-		public XpackMlGetJobStatsDescriptor JobId(Id jobId) => Assign(a=>a.RouteValues.Optional("job_id", jobId));
+		public GetJobStatsDescriptor JobId(Id jobId) => Assign(a=>a.RouteValues.Optional("job_id", jobId));
 
 	
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetJobStatsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public GetJobStatsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetJobStatsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public GetJobStatsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetJobStatsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public GetJobStatsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetJobStatsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public GetJobStatsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetJobStatsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public GetJobStatsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
