@@ -6984,34 +6984,31 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlGetDatafeedStats <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html</pre></summary>
-	public partial class XpackMlGetDatafeedStatsDescriptor  : RequestDescriptorBase<XpackMlGetDatafeedStatsDescriptor,XpackMlGetDatafeedStatsRequestParameters, IXpackMlGetDatafeedStatsRequest>, IXpackMlGetDatafeedStatsRequest
+	public partial class GetDatafeedStatsDescriptor  : RequestDescriptorBase<GetDatafeedStatsDescriptor,GetDatafeedStatsRequestParameters, IGetDatafeedStatsRequest>, IGetDatafeedStatsRequest
 	{ 
-		Id IXpackMlGetDatafeedStatsRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+		Id IGetDatafeedStatsRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
 			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_stats</summary>
-		public XpackMlGetDatafeedStatsDescriptor() : base(){}
+		public GetDatafeedStatsDescriptor() : base(){}
 		
 
 			///<summary>The ID of the datafeeds stats to fetch</summary>
-		public XpackMlGetDatafeedStatsDescriptor DatafeedId(Id datafeedId) => Assign(a=>a.RouteValues.Optional("datafeed_id", datafeedId));
+		public GetDatafeedStatsDescriptor DatafeedId(Id datafeedId) => Assign(a=>a.RouteValues.Optional("datafeed_id", datafeedId));
 
 	
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetDatafeedStatsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public GetDatafeedStatsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetDatafeedStatsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public GetDatafeedStatsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetDatafeedStatsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public GetDatafeedStatsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetDatafeedStatsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public GetDatafeedStatsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetDatafeedStatsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public GetDatafeedStatsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

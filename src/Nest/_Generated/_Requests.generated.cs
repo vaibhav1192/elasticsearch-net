@@ -4219,6 +4219,42 @@ namespace Nest
 		}
 	
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+	public partial interface IGetDatafeedStatsRequest : IRequest<GetDatafeedStatsRequestParameters> 
+	{
+		Id DatafeedId { get; }
+	 } 
+	///<summary>Request parameters for XpackMlGetDatafeedStats <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html</pre></summary>
+	public partial class GetDatafeedStatsRequest  : PlainRequestBase<GetDatafeedStatsRequestParameters>, IGetDatafeedStatsRequest
+	{
+		protected IGetDatafeedStatsRequest Self => this;
+		Id IGetDatafeedStatsRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_stats</summary>
+///<param name="datafeed_id">Optional, accepts null</param>
+		public GetDatafeedStatsRequest(Id datafeed_id) : base(r=>r.Optional("datafeed_id", datafeed_id)){}
+		
+
+		/// <summary>/_xpack/ml/datafeeds/_stats</summary>
+		public GetDatafeedStatsRequest() : base(){}
+		
+
+			///<summary>Pretty format the returned JSON response.</summary>
+		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
+		
+		///<summary>Return human readable values for statistics.</summary>
+		public bool Human { get { return Q<bool>("human"); } set { Q("human", value); } }
+		
+		///<summary>Include the stack trace of returned errors.</summary>
+		public bool ErrorTrace { get { return Q<bool>("error_trace"); } set { Q("error_trace", value); } }
+		
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public string Source { get { return Q<string>("source"); } set { Q("source", value); } }
+		
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
+		
+		}
+	
+	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public partial interface IGetFieldMappingRequest : IRequest<GetFieldMappingRequestParameters> 
 	{
 		Indices Index { get; }
@@ -9319,44 +9355,6 @@ namespace Nest
 			/// <summary>/_xpack/ml/filters/{filter_id}</summary>
 ///<param name="filter_id">this parameter is required</param>
 		public XpackMlDeleteFilterRequest(string_ filter_id) : base(r=>r.Required("filter_id", filter_id)){}
-		
-
-			///<summary>Pretty format the returned JSON response.</summary>
-		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
-		
-		///<summary>Return human readable values for statistics.</summary>
-		public bool Human { get { return Q<bool>("human"); } set { Q("human", value); } }
-		
-		///<summary>Include the stack trace of returned errors.</summary>
-		public bool ErrorTrace { get { return Q<bool>("error_trace"); } set { Q("error_trace", value); } }
-		
-		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public string Source { get { return Q<string>("source"); } set { Q("source", value); } }
-		
-		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
-		
-		//TODO THIS METHOD IS UNMAPPED!
-	
-	}
-	
-	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-	public partial interface IXpackMlGetDatafeedStatsRequest : IRequest<XpackMlGetDatafeedStatsRequestParameters> 
-	{
-		Id DatafeedId { get; }
-	 } 
-	///<summary>Request parameters for XpackMlGetDatafeedStats <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html</pre></summary>
-	public partial class XpackMlGetDatafeedStatsRequest  : PlainRequestBase<XpackMlGetDatafeedStatsRequestParameters>, IXpackMlGetDatafeedStatsRequest
-	{
-		protected IXpackMlGetDatafeedStatsRequest Self => this;
-		Id IXpackMlGetDatafeedStatsRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
-			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_stats</summary>
-///<param name="datafeed_id">Optional, accepts null</param>
-		public XpackMlGetDatafeedStatsRequest(Id datafeed_id) : base(r=>r.Optional("datafeed_id", datafeed_id)){}
-		
-
-		/// <summary>/_xpack/ml/datafeeds/_stats</summary>
-		public XpackMlGetDatafeedStatsRequest() : base(){}
 		
 
 			///<summary>Pretty format the returned JSON response.</summary>

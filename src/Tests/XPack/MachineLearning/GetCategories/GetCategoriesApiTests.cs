@@ -15,7 +15,7 @@ namespace Tests.XPack.MachineLearning.GetCategories
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
-			// TODO: run a job in order to get bucket results
+			// TODO: run a job in order to get results
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(

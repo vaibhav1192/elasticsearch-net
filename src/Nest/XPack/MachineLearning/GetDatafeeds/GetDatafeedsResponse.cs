@@ -19,6 +19,9 @@ namespace Nest
 		public IReadOnlyCollection<DatafeedConfig> Datafeeds { get; internal set; } = EmptyReadOnly<DatafeedConfig>.Collection;
 	}
 
+	/// <summary>
+	/// Configuration of a Machine Learning Datafeed
+	/// </summary>
 	[JsonObject]
 	public class DatafeedConfig
 	{
@@ -49,7 +52,7 @@ namespace Nest
 		public Time Frequency { get; internal set; }
 
 		///<summary>A list of index names to search within. Wildcards are supported</summary>
-		[JsonProperty("indexes")] // TODO: Check property name. Looks like indices in code, indexes in docs
+		[JsonProperty("indices")] // TODO: Check property name. Looks like indices in code, indexes in docs
 		public Indices Indices { get; internal set; }
 
 		/// <summary>
@@ -66,7 +69,7 @@ namespace Nest
 
 		/// <summary>
 		/// The number of seconds behind real time that data is queried.
-		/// For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m.,
+		/// For example, if data from 10:04 A.M. might not be searchable in Elasticsearch until 10:06 A.M.,
 		/// set this property to 120 seconds. The default value is 60s.
 		/// </summary>
 		[JsonProperty("query_delay")]

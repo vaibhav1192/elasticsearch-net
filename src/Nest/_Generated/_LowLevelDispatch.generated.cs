@@ -3772,7 +3772,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetDatafeeds", p, new [] { GET }, "/_xpack/ml/datafeeds/{datafeed_id}", "/_xpack/ml/datafeeds");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlGetDatafeedStatsDispatch<T>(IRequest<XpackMlGetDatafeedStatsRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlGetDatafeedStatsDispatch<T>(IRequest<GetDatafeedStatsRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3784,7 +3784,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetDatafeedStats", p, new [] { GET }, "/_xpack/ml/datafeeds/{datafeed_id}/_stats", "/_xpack/ml/datafeeds/_stats");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlGetDatafeedStatsDispatchAsync<T>(IRequest<XpackMlGetDatafeedStatsRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlGetDatafeedStatsDispatchAsync<T>(IRequest<GetDatafeedStatsRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{

@@ -8654,7 +8654,7 @@ namespace Elasticsearch.Net
 		///</summary>
 		///<param name="datafeed_id">The ID of the datafeeds stats to fetch</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		ElasticsearchResponse<T> XpackMlGetDatafeedStats<T>(string datafeed_id, Func<XpackMlGetDatafeedStatsRequestParameters, XpackMlGetDatafeedStatsRequestParameters> requestParameters = null) where T : class;
+		ElasticsearchResponse<T> XpackMlGetDatafeedStats<T>(string datafeed_id, Func<GetDatafeedStatsRequestParameters, GetDatafeedStatsRequestParameters> requestParameters = null) where T : class;
 		
 		///<summary>Represents a GET on /_xpack/ml/datafeeds/{datafeed_id}/_stats
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -8667,7 +8667,7 @@ namespace Elasticsearch.Net
 		///</summary>
 		///<param name="datafeed_id">The ID of the datafeeds stats to fetch</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		Task<ElasticsearchResponse<T>> XpackMlGetDatafeedStatsAsync<T>(string datafeed_id, Func<XpackMlGetDatafeedStatsRequestParameters, XpackMlGetDatafeedStatsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<ElasticsearchResponse<T>> XpackMlGetDatafeedStatsAsync<T>(string datafeed_id, Func<GetDatafeedStatsRequestParameters, GetDatafeedStatsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
 		///<summary>Represents a GET on /_xpack/ml/datafeeds/_stats
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
@@ -8679,7 +8679,7 @@ namespace Elasticsearch.Net
 		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html </para>
 		///</summary>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		ElasticsearchResponse<T> XpackMlGetDatafeedStats<T>(Func<XpackMlGetDatafeedStatsRequestParameters, XpackMlGetDatafeedStatsRequestParameters> requestParameters = null) where T : class;
+		ElasticsearchResponse<T> XpackMlGetDatafeedStats<T>(Func<GetDatafeedStatsRequestParameters, GetDatafeedStatsRequestParameters> requestParameters = null) where T : class;
 		
 		///<summary>Represents a GET on /_xpack/ml/datafeeds/_stats
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -8691,7 +8691,7 @@ namespace Elasticsearch.Net
 		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html </para>
 		///</summary>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		Task<ElasticsearchResponse<T>> XpackMlGetDatafeedStatsAsync<T>(Func<XpackMlGetDatafeedStatsRequestParameters, XpackMlGetDatafeedStatsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<ElasticsearchResponse<T>> XpackMlGetDatafeedStatsAsync<T>(Func<GetDatafeedStatsRequestParameters, GetDatafeedStatsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
 		///<summary>Represents a GET on /_xpack/ml/filters/
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
