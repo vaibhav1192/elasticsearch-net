@@ -7216,36 +7216,36 @@ namespace Elasticsearch.Net
 	///
 	///</pre>
 	///</summary>
-	public class XpackMlGetFiltersRequestParameters : FluentRequestParameters<XpackMlGetFiltersRequestParameters> 
+	public class GetFiltersRequestParameters : FluentRequestParameters<GetFiltersRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.GET;
 		
 		///<summary>skips a number of filters</summary>
-		public XpackMlGetFiltersRequestParameters From(int from) => this.AddQueryString("from", from);
+		public GetFiltersRequestParameters From(int from) => this.AddQueryString("from", from);
 		
 		
 		///<summary>specifies a max number of filters to get</summary>
-		public XpackMlGetFiltersRequestParameters Size(int size) => this.AddQueryString("size", size);
+		public GetFiltersRequestParameters Size(int size) => this.AddQueryString("size", size);
 		
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetFiltersRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public GetFiltersRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetFiltersRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public GetFiltersRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetFiltersRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public GetFiltersRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetFiltersRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public GetFiltersRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetFiltersRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public GetFiltersRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	
@@ -7884,28 +7884,28 @@ namespace Elasticsearch.Net
 	///
 	///</pre>
 	///</summary>
-	public class XpackMlValidateRequestParameters : FluentRequestParameters<XpackMlValidateRequestParameters> 
+	public class ValidateJobRequestParameters : FluentRequestParameters<ValidateJobRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlValidateRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public ValidateJobRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlValidateRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public ValidateJobRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlValidateRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public ValidateJobRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlValidateRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public ValidateJobRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlValidateRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public ValidateJobRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

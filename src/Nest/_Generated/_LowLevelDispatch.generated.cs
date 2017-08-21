@@ -3796,7 +3796,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetDatafeedStats", p, new [] { GET }, "/_xpack/ml/datafeeds/{datafeed_id}/_stats", "/_xpack/ml/datafeeds/_stats");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlGetFiltersDispatch<T>(IRequest<XpackMlGetFiltersRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlGetFiltersDispatch<T>(IRequest<GetFiltersRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3808,7 +3808,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetFilters", p, new [] { GET }, "/_xpack/ml/filters/", "/_xpack/ml/filters/{filter_id}");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlGetFiltersDispatchAsync<T>(IRequest<XpackMlGetFiltersRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlGetFiltersDispatchAsync<T>(IRequest<GetFiltersRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -4256,7 +4256,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlUpdateModelSnapshot", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlValidateDispatch<T>(IRequest<XpackMlValidateRequestParameters> p , PostData<object> body) where T : class
+		internal ElasticsearchResponse<T> XpackMlValidateDispatch<T>(IRequest<ValidateJobRequestParameters> p , PostData<object> body) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -4267,7 +4267,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlValidate", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/_validate");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlValidateDispatchAsync<T>(IRequest<XpackMlValidateRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlValidateDispatchAsync<T>(IRequest<ValidateJobRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{

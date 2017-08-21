@@ -6767,10 +6767,10 @@ namespace Nest
 	///<summary>descriptor for XpackMlDeleteFilter <pre></pre></summary>
 	public partial class XpackMlDeleteFilterDescriptor  : RequestDescriptorBase<XpackMlDeleteFilterDescriptor,XpackMlDeleteFilterRequestParameters, IXpackMlDeleteFilterRequest>, IXpackMlDeleteFilterRequest
 	{ 
-		string_ IXpackMlDeleteFilterRequest.FilterId => Self.RouteValues.Get<string_>("filter_id");
+		Id IXpackMlDeleteFilterRequest.FilterId => Self.RouteValues.Get<Id>("filter_id");
 			/// <summary>/_xpack/ml/filters/{filter_id}</summary>
 ///<param name="filter_id"> this parameter is required</param>
-		public XpackMlDeleteFilterDescriptor(string_ filter_id) : base(r=>r.Required("filter_id", filter_id)){}
+		public XpackMlDeleteFilterDescriptor(Id filter_id) : base(r=>r.Required("filter_id", filter_id)){}
 		
 
 		
@@ -7013,40 +7013,37 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlGetFilters <pre></pre></summary>
-	public partial class XpackMlGetFiltersDescriptor  : RequestDescriptorBase<XpackMlGetFiltersDescriptor,XpackMlGetFiltersRequestParameters, IXpackMlGetFiltersRequest>, IXpackMlGetFiltersRequest
+	public partial class GetFiltersDescriptor  : RequestDescriptorBase<GetFiltersDescriptor,GetFiltersRequestParameters, IGetFiltersRequest>, IGetFiltersRequest
 	{ 
-		string_ IXpackMlGetFiltersRequest.FilterId => Self.RouteValues.Get<string_>("filter_id");
+		Id IGetFiltersRequest.FilterId => Self.RouteValues.Get<Id>("filter_id");
 			/// <summary>/_xpack/ml/filters/</summary>
-		public XpackMlGetFiltersDescriptor() : base(){}
+		public GetFiltersDescriptor() : base(){}
 		
 
 			///<summary>The ID of the filter to fetch</summary>
-		public XpackMlGetFiltersDescriptor FilterId(string_ filterId) => Assign(a=>a.RouteValues.Optional("filter_id", filterId));
+		public GetFiltersDescriptor FilterId(Id filterId) => Assign(a=>a.RouteValues.Optional("filter_id", filterId));
 
 	
 		///<summary>skips a number of filters</summary>
-		public XpackMlGetFiltersDescriptor From(int from) => AssignParam(p=>p.From(from));
+		public GetFiltersDescriptor From(int from) => AssignParam(p=>p.From(from));
 
 		///<summary>specifies a max number of filters to get</summary>
-		public XpackMlGetFiltersDescriptor Size(int size) => AssignParam(p=>p.Size(size));
+		public GetFiltersDescriptor Size(int size) => AssignParam(p=>p.Size(size));
 
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetFiltersDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public GetFiltersDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetFiltersDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public GetFiltersDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetFiltersDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public GetFiltersDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetFiltersDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public GetFiltersDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetFiltersDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public GetFiltersDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
@@ -7397,10 +7394,10 @@ namespace Nest
 	///<summary>descriptor for XpackMlPutFilter <pre></pre></summary>
 	public partial class XpackMlPutFilterDescriptor  : RequestDescriptorBase<XpackMlPutFilterDescriptor,XpackMlPutFilterRequestParameters, IXpackMlPutFilterRequest>, IXpackMlPutFilterRequest
 	{ 
-		string_ IXpackMlPutFilterRequest.FilterId => Self.RouteValues.Get<string_>("filter_id");
+		Id IXpackMlPutFilterRequest.FilterId => Self.RouteValues.Get<Id>("filter_id");
 			/// <summary>/_xpack/ml/filters/{filter_id}</summary>
 ///<param name="filter_id"> this parameter is required</param>
-		public XpackMlPutFilterDescriptor(string_ filter_id) : base(r=>r.Required("filter_id", filter_id)){}
+		public XpackMlPutFilterDescriptor(Id filter_id) : base(r=>r.Required("filter_id", filter_id)){}
 		
 
 		
@@ -7656,26 +7653,23 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlValidate <pre></pre></summary>
-	public partial class XpackMlValidateDescriptor  : RequestDescriptorBase<XpackMlValidateDescriptor,XpackMlValidateRequestParameters, IXpackMlValidateRequest>, IXpackMlValidateRequest
+	public partial class ValidateJobDescriptor  : RequestDescriptorBase<ValidateJobDescriptor,ValidateJobRequestParameters, IValidateJobRequest>, IValidateJobRequest
 	{ 
 			
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlValidateDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public ValidateJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlValidateDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public ValidateJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlValidateDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public ValidateJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlValidateDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public ValidateJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlValidateDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public ValidateJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

@@ -43,6 +43,7 @@ namespace ApiGenerator.Domain
 					case "job_id":
 					case "datafeed_id":
 					case "snapshot_id":
+					case "filter_id":
 					case "id": return this.Type == "string" ? "Id" : "Ids";
 					case "category_id": return "CategoryId";
 					case "node_id": return this.Type == "string" ? "NodeId" : "NodeIds";
