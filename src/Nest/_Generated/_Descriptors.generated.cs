@@ -7680,26 +7680,23 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlValidateDetector <pre></pre></summary>
-	public partial class XpackMlValidateDetectorDescriptor  : RequestDescriptorBase<XpackMlValidateDetectorDescriptor,XpackMlValidateDetectorRequestParameters, IXpackMlValidateDetectorRequest>, IXpackMlValidateDetectorRequest
+	public partial class ValidateDetectorDescriptor<T>  : RequestDescriptorBase<ValidateDetectorDescriptor<T>,ValidateDetectorRequestParameters, IValidateDetectorRequest>, IValidateDetectorRequest
 	{ 
 			
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlValidateDetectorDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public ValidateDetectorDescriptor<T> Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlValidateDetectorDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public ValidateDetectorDescriptor<T> Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlValidateDetectorDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public ValidateDetectorDescriptor<T> ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlValidateDetectorDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public ValidateDetectorDescriptor<T> Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlValidateDetectorDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public ValidateDetectorDescriptor<T> FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

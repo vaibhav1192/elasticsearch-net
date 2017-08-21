@@ -10134,7 +10134,7 @@ namespace Elasticsearch.Net
 	    ///</summary>
 		///<param name="body">The detector</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlValidateDetector<T>(PostData<object> body, Func<XpackMlValidateDetectorRequestParameters, XpackMlValidateDetectorRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlValidateDetector<T>(PostData<object> body, Func<ValidateDetectorRequestParameters, ValidateDetectorRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(POST, Url($"_xpack/ml/anomaly_detectors/_validate/detector"), body, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/_validate/detector
@@ -10148,7 +10148,7 @@ namespace Elasticsearch.Net
 	    ///</summary>
 		///<param name="body">The detector</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlValidateDetectorAsync<T>(PostData<object> body, Func<XpackMlValidateDetectorRequestParameters, XpackMlValidateDetectorRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlValidateDetectorAsync<T>(PostData<object> body, Func<ValidateDetectorRequestParameters, ValidateDetectorRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(POST, Url($"_xpack/ml/anomaly_detectors/_validate/detector"), cancellationToken, body, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/security/_authenticate

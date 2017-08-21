@@ -7914,28 +7914,28 @@ namespace Elasticsearch.Net
 	///
 	///</pre>
 	///</summary>
-	public class XpackMlValidateDetectorRequestParameters : FluentRequestParameters<XpackMlValidateDetectorRequestParameters> 
+	public class ValidateDetectorRequestParameters : FluentRequestParameters<ValidateDetectorRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlValidateDetectorRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public ValidateDetectorRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlValidateDetectorRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public ValidateDetectorRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlValidateDetectorRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public ValidateDetectorRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlValidateDetectorRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public ValidateDetectorRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlValidateDetectorRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public ValidateDetectorRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

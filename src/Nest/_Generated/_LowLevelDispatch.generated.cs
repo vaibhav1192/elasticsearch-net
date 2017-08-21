@@ -4278,7 +4278,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlValidate", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/_validate");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlValidateDetectorDispatch<T>(IRequest<XpackMlValidateDetectorRequestParameters> p , PostData<object> body) where T : class
+		internal ElasticsearchResponse<T> XpackMlValidateDetectorDispatch<T>(IRequest<ValidateDetectorRequestParameters> p , PostData<object> body) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -4289,7 +4289,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlValidateDetector", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/_validate/detector");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlValidateDetectorDispatchAsync<T>(IRequest<XpackMlValidateDetectorRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlValidateDetectorDispatchAsync<T>(IRequest<ValidateDetectorRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{

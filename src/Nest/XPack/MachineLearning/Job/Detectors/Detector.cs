@@ -6,6 +6,8 @@ using Newtonsoft.Json.Linq;
 
 namespace Nest
 {
+	// TODO: Detector.java has detection rules, but these are not listed in the docs:
+	// TODO: Investigate of these can be set wherever a detector can be passed
 	[JsonConverter(typeof(DetectorConverter))]
 	public interface IDetector
 	{
@@ -191,106 +193,106 @@ namespace Nest
 	{
 		public DetectorsDescriptor() : base(new List<IDetector>()) {}
 
-		public DetectorsDescriptor<T> Count(Func<CountDetectorDescriptor<T>, ICountDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new CountDetectorDescriptor<T>(CountFunctions.Count))));
+		public DetectorsDescriptor<T> Count(Func<CountDetectorDescriptor<T>, ICountDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new CountDetectorDescriptor<T>(CountFunctions.Count))));
 
-		public DetectorsDescriptor<T> HighCount(Func<CountDetectorDescriptor<T>, ICountDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new CountDetectorDescriptor<T>(CountFunctions.HighCount))));
+		public DetectorsDescriptor<T> HighCount(Func<CountDetectorDescriptor<T>, ICountDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new CountDetectorDescriptor<T>(CountFunctions.HighCount))));
 
-		public DetectorsDescriptor<T> LowCount(Func<CountDetectorDescriptor<T>, ICountDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new CountDetectorDescriptor<T>(CountFunctions.LowCount))));
+		public DetectorsDescriptor<T> LowCount(Func<CountDetectorDescriptor<T>, ICountDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new CountDetectorDescriptor<T>(CountFunctions.LowCount))));
 
-		public DetectorsDescriptor<T> NonZeroCount(Func<NonZeroCountDetectorDescriptor<T>, INonZeroCountDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new NonZeroCountDetectorDescriptor<T>(CountFunctions.NonZeroCount))));
+		public DetectorsDescriptor<T> NonZeroCount(Func<NonZeroCountDetectorDescriptor<T>, INonZeroCountDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new NonZeroCountDetectorDescriptor<T>(CountFunctions.NonZeroCount))));
 
-		public DetectorsDescriptor<T> HighNonZeroCount(Func<NonZeroCountDetectorDescriptor<T>, INonZeroCountDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new NonZeroCountDetectorDescriptor<T>(CountFunctions.HighNonZeroCount))));
+		public DetectorsDescriptor<T> HighNonZeroCount(Func<NonZeroCountDetectorDescriptor<T>, INonZeroCountDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new NonZeroCountDetectorDescriptor<T>(CountFunctions.HighNonZeroCount))));
 
-		public DetectorsDescriptor<T> LowNonZeroCount(Func<NonZeroCountDetectorDescriptor<T>, INonZeroCountDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new NonZeroCountDetectorDescriptor<T>(CountFunctions.LowNonZeroCount))));
+		public DetectorsDescriptor<T> LowNonZeroCount(Func<NonZeroCountDetectorDescriptor<T>, INonZeroCountDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new NonZeroCountDetectorDescriptor<T>(CountFunctions.LowNonZeroCount))));
 
-		public DetectorsDescriptor<T> DistinctCount(Func<DistinctCountDetectorDescriptor<T>, IDistinctCountDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new DistinctCountDetectorDescriptor<T>(CountFunctions.DistinctCount))));
+		public DetectorsDescriptor<T> DistinctCount(Func<DistinctCountDetectorDescriptor<T>, IDistinctCountDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new DistinctCountDetectorDescriptor<T>(CountFunctions.DistinctCount))));
 
-		public DetectorsDescriptor<T> HighDistinctCount(Func<DistinctCountDetectorDescriptor<T>, IDistinctCountDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new DistinctCountDetectorDescriptor<T>(CountFunctions.HighDistinctCount))));
+		public DetectorsDescriptor<T> HighDistinctCount(Func<DistinctCountDetectorDescriptor<T>, IDistinctCountDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new DistinctCountDetectorDescriptor<T>(CountFunctions.HighDistinctCount))));
 
-		public DetectorsDescriptor<T> LowDistinctCount(Func<DistinctCountDetectorDescriptor<T>, IDistinctCountDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new DistinctCountDetectorDescriptor<T>(CountFunctions.LowDistinctCount))));
+		public DetectorsDescriptor<T> LowDistinctCount(Func<DistinctCountDetectorDescriptor<T>, IDistinctCountDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new DistinctCountDetectorDescriptor<T>(CountFunctions.LowDistinctCount))));
 
-		public DetectorsDescriptor<T> InfoContent(Func<InfoContentDetectorDescriptor<T>, IInfoContentDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new InfoContentDetectorDescriptor<T>(InfoContentFunctions.InfoContent))));
+		public DetectorsDescriptor<T> InfoContent(Func<InfoContentDetectorDescriptor<T>, IInfoContentDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new InfoContentDetectorDescriptor<T>(InfoContentFunctions.InfoContent))));
 
-		public DetectorsDescriptor<T> HighInfoContent(Func<InfoContentDetectorDescriptor<T>, IInfoContentDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new InfoContentDetectorDescriptor<T>(InfoContentFunctions.HighInfoContent))));
+		public DetectorsDescriptor<T> HighInfoContent(Func<InfoContentDetectorDescriptor<T>, IInfoContentDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new InfoContentDetectorDescriptor<T>(InfoContentFunctions.HighInfoContent))));
 
-		public DetectorsDescriptor<T> LowInfoContent(Func<InfoContentDetectorDescriptor<T>, IInfoContentDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new InfoContentDetectorDescriptor<T>(InfoContentFunctions.LowInfoContent))));
+		public DetectorsDescriptor<T> LowInfoContent(Func<InfoContentDetectorDescriptor<T>, IInfoContentDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new InfoContentDetectorDescriptor<T>(InfoContentFunctions.LowInfoContent))));
 
-		public DetectorsDescriptor<T> Min(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new MetricDetectorDescriptor<T>(MetricFunctions.Min))));
+		public DetectorsDescriptor<T> Min(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new MetricDetectorDescriptor<T>(MetricFunctions.Min))));
 
-		public DetectorsDescriptor<T> Max(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new MetricDetectorDescriptor<T>(MetricFunctions.Max))));
+		public DetectorsDescriptor<T> Max(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new MetricDetectorDescriptor<T>(MetricFunctions.Max))));
 
-		public DetectorsDescriptor<T> Median(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new MetricDetectorDescriptor<T>(MetricFunctions.Median))));
+		public DetectorsDescriptor<T> Median(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new MetricDetectorDescriptor<T>(MetricFunctions.Median))));
 
-		public DetectorsDescriptor<T> HighMedian(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new MetricDetectorDescriptor<T>(MetricFunctions.HighMedian))));
+		public DetectorsDescriptor<T> HighMedian(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new MetricDetectorDescriptor<T>(MetricFunctions.HighMedian))));
 
-		public DetectorsDescriptor<T> LowMedian(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new MetricDetectorDescriptor<T>(MetricFunctions.LowMedian))));
+		public DetectorsDescriptor<T> LowMedian(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new MetricDetectorDescriptor<T>(MetricFunctions.LowMedian))));
 
-		public DetectorsDescriptor<T> Mean(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new MetricDetectorDescriptor<T>(MetricFunctions.Mean))));
+		public DetectorsDescriptor<T> Mean(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new MetricDetectorDescriptor<T>(MetricFunctions.Mean))));
 
-		public DetectorsDescriptor<T> HighMean(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new MetricDetectorDescriptor<T>(MetricFunctions.HighMean))));
+		public DetectorsDescriptor<T> HighMean(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new MetricDetectorDescriptor<T>(MetricFunctions.HighMean))));
 
-		public DetectorsDescriptor<T> LowMean(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new MetricDetectorDescriptor<T>(MetricFunctions.LowMean))));
+		public DetectorsDescriptor<T> LowMean(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new MetricDetectorDescriptor<T>(MetricFunctions.LowMean))));
 
-		public DetectorsDescriptor<T> Metric(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new MetricDetectorDescriptor<T>(MetricFunctions.Metric))));
+		public DetectorsDescriptor<T> Metric(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new MetricDetectorDescriptor<T>(MetricFunctions.Metric))));
 
-		public DetectorsDescriptor<T> Varp(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new MetricDetectorDescriptor<T>(MetricFunctions.Varp))));
+		public DetectorsDescriptor<T> Varp(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new MetricDetectorDescriptor<T>(MetricFunctions.Varp))));
 
-		public DetectorsDescriptor<T> HighVarp(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new MetricDetectorDescriptor<T>(MetricFunctions.HighVarp))));
+		public DetectorsDescriptor<T> HighVarp(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new MetricDetectorDescriptor<T>(MetricFunctions.HighVarp))));
 
-		public DetectorsDescriptor<T> LowVarp(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new MetricDetectorDescriptor<T>(MetricFunctions.LowVarp))));
+		public DetectorsDescriptor<T> LowVarp(Func<MetricDetectorDescriptor<T>, IMetricDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new MetricDetectorDescriptor<T>(MetricFunctions.LowVarp))));
 
-		public DetectorsDescriptor<T> Rare(Func<RareDetectorDescriptor<T>, IRareDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new RareDetectorDescriptor<T>(RareFunctions.Rare))));
+		public DetectorsDescriptor<T> Rare(Func<RareDetectorDescriptor<T>, IRareDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new RareDetectorDescriptor<T>(RareFunctions.Rare))));
 
-		public DetectorsDescriptor<T> FreqRare(Func<RareDetectorDescriptor<T>, IRareDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new RareDetectorDescriptor<T>(RareFunctions.FreqRare))));
+		public DetectorsDescriptor<T> FreqRare(Func<RareDetectorDescriptor<T>, IRareDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new RareDetectorDescriptor<T>(RareFunctions.FreqRare))));
 
-		public DetectorsDescriptor<T> Sum(Func<SumDetectorDescriptor<T>, ISumDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new SumDetectorDescriptor<T>(SumFunctions.Sum))));
+		public DetectorsDescriptor<T> Sum(Func<SumDetectorDescriptor<T>, ISumDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new SumDetectorDescriptor<T>(SumFunctions.Sum))));
 
-		public DetectorsDescriptor<T> HighSum(Func<SumDetectorDescriptor<T>, ISumDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new SumDetectorDescriptor<T>(SumFunctions.HighSum))));
+		public DetectorsDescriptor<T> HighSum(Func<SumDetectorDescriptor<T>, ISumDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new SumDetectorDescriptor<T>(SumFunctions.HighSum))));
 
-		public DetectorsDescriptor<T> LowSum(Func<SumDetectorDescriptor<T>, ISumDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new SumDetectorDescriptor<T>(SumFunctions.LowSum))));
+		public DetectorsDescriptor<T> LowSum(Func<SumDetectorDescriptor<T>, ISumDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new SumDetectorDescriptor<T>(SumFunctions.LowSum))));
 
-		public DetectorsDescriptor<T> NonNullSum(Func<NonNullSumDetectorDescriptor<T>, INonNullSumDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new NonNullSumDetectorDescriptor<T>(SumFunctions.NonNullSum))));
+		public DetectorsDescriptor<T> NonNullSum(Func<NonNullSumDetectorDescriptor<T>, INonNullSumDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new NonNullSumDetectorDescriptor<T>(SumFunctions.NonNullSum))));
 
-		public DetectorsDescriptor<T> HighNonNullSum(Func<NonNullSumDetectorDescriptor<T>, INonNullSumDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new NonNullSumDetectorDescriptor<T>(SumFunctions.HighNonNullSum))));
+		public DetectorsDescriptor<T> HighNonNullSum(Func<NonNullSumDetectorDescriptor<T>, INonNullSumDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new NonNullSumDetectorDescriptor<T>(SumFunctions.HighNonNullSum))));
 
-		public DetectorsDescriptor<T> LowNonNullSum(Func<NonNullSumDetectorDescriptor<T>, INonNullSumDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new NonNullSumDetectorDescriptor<T>(SumFunctions.LowNonNullSum))));
+		public DetectorsDescriptor<T> LowNonNullSum(Func<NonNullSumDetectorDescriptor<T>, INonNullSumDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new NonNullSumDetectorDescriptor<T>(SumFunctions.LowNonNullSum))));
 
-		public DetectorsDescriptor<T> TimeOfDay(Func<TimeDetectorDescriptor<T>, ITimeDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new TimeDetectorDescriptor<T>(TimeFunctions.TimeOfDay))));
+		public DetectorsDescriptor<T> TimeOfDay(Func<TimeDetectorDescriptor<T>, ITimeDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new TimeDetectorDescriptor<T>(TimeFunctions.TimeOfDay))));
 
-		public DetectorsDescriptor<T> TimeOfWeek(Func<TimeDetectorDescriptor<T>, ITimeDetector> selector) =>
-			Assign(a => a.AddIfNotNull(selector?.Invoke(new TimeDetectorDescriptor<T>(TimeFunctions.TimeOfWeek))));
+		public DetectorsDescriptor<T> TimeOfWeek(Func<TimeDetectorDescriptor<T>, ITimeDetector> selector = null) =>
+			Assign(a => a.AddIfNotNull(selector.InvokeOrDefault(new TimeDetectorDescriptor<T>(TimeFunctions.TimeOfWeek))));
 	}
 }

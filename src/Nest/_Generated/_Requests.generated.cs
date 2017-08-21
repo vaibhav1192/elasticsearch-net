@@ -9074,6 +9074,31 @@ namespace Nest
 		}
 	
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+	public partial interface IValidateDetectorRequest : IRequest<ValidateDetectorRequestParameters> 
+	{
+	 } 
+	///<summary>Request parameters for XpackMlValidateDetector <pre></pre></summary>
+	public partial class ValidateDetectorRequest  : PlainRequestBase<ValidateDetectorRequestParameters>, IValidateDetectorRequest
+	{
+		protected IValidateDetectorRequest Self => this;
+				///<summary>Pretty format the returned JSON response.</summary>
+		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
+		
+		///<summary>Return human readable values for statistics.</summary>
+		public bool Human { get { return Q<bool>("human"); } set { Q("human", value); } }
+		
+		///<summary>Include the stack trace of returned errors.</summary>
+		public bool ErrorTrace { get { return Q<bool>("error_trace"); } set { Q("error_trace", value); } }
+		
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public string Source { get { return Q<string>("source"); } set { Q("source", value); } }
+		
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
+		
+		}
+	
+	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public partial interface IValidateQueryRequest : IRequest<ValidateQueryRequestParameters> 
 	{
 		Indices Index { get; }
@@ -9990,33 +10015,6 @@ namespace Nest
 		
 
 			///<summary>Pretty format the returned JSON response.</summary>
-		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
-		
-		///<summary>Return human readable values for statistics.</summary>
-		public bool Human { get { return Q<bool>("human"); } set { Q("human", value); } }
-		
-		///<summary>Include the stack trace of returned errors.</summary>
-		public bool ErrorTrace { get { return Q<bool>("error_trace"); } set { Q("error_trace", value); } }
-		
-		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public string Source { get { return Q<string>("source"); } set { Q("source", value); } }
-		
-		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
-		
-		//TODO THIS METHOD IS UNMAPPED!
-	
-	}
-	
-	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-	public partial interface IXpackMlValidateDetectorRequest : IRequest<XpackMlValidateDetectorRequestParameters> 
-	{
-	 } 
-	///<summary>Request parameters for XpackMlValidateDetector <pre></pre></summary>
-	public partial class XpackMlValidateDetectorRequest  : PlainRequestBase<XpackMlValidateDetectorRequestParameters>, IXpackMlValidateDetectorRequest
-	{
-		protected IXpackMlValidateDetectorRequest Self => this;
-				///<summary>Pretty format the returned JSON response.</summary>
 		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
 		
 		///<summary>Return human readable values for statistics.</summary>
