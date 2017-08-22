@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Nest
+﻿namespace Nest
 {
 	public interface IValidateJobResponse : IAcknowledgedResponse {}
 

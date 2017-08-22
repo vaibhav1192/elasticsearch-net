@@ -11,13 +11,13 @@ namespace Nest
 		/// <summary>
 		/// Validates a Machine Learning job
 		/// </summary>
-		IValidateJobResponse ValidateJob(Func<ValidateJobDescriptor, IValidateJobRequest> selector);
+		IValidateJobResponse ValidateJob<T>(Func<ValidateJobDescriptor<T>, IValidateJobRequest> selector);
 
 		/// <inheritdoc/>
 		IValidateJobResponse ValidateJob(IValidateJobRequest request);
 
 		/// <inheritdoc/>
-		Task<IValidateJobResponse> ValidateJobAsync(Func<ValidateJobDescriptor, IValidateJobRequest> selector, CancellationToken cancellationToken = default(CancellationToken));
+		Task<IValidateJobResponse> ValidateJobAsync<T>(Func<ValidateJobDescriptor<T>, IValidateJobRequest> selector, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <inheritdoc/>
 		Task<IValidateJobResponse> ValidateJobAsync(IValidateJobRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -26,8 +26,8 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IValidateJobResponse ValidateJob(Func<ValidateJobDescriptor, IValidateJobRequest> selector = null) =>
-			this.ValidateJob(selector.InvokeOrDefault(new ValidateJobDescriptor()));
+		public IValidateJobResponse ValidateJob<T>(Func<ValidateJobDescriptor<T>, IValidateJobRequest> selector = null) =>
+			this.ValidateJob(selector.InvokeOrDefault(new ValidateJobDescriptor<T>()));
 
 		/// <inheritdoc/>
 		public IValidateJobResponse ValidateJob(IValidateJobRequest request) =>
@@ -37,8 +37,8 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IValidateJobResponse> ValidateJobAsync(Func<ValidateJobDescriptor, IValidateJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
-			this.ValidateJobAsync(selector.InvokeOrDefault(new ValidateJobDescriptor()), cancellationToken);
+		public Task<IValidateJobResponse> ValidateJobAsync<T>(Func<ValidateJobDescriptor<T>, IValidateJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
+			this.ValidateJobAsync(selector.InvokeOrDefault(new ValidateJobDescriptor<T>()), cancellationToken);
 
 		/// <inheritdoc/>
 		public Task<IValidateJobResponse> ValidateJobAsync(IValidateJobRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>

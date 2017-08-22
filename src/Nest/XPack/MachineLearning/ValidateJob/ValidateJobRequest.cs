@@ -17,7 +17,7 @@ namespace Nest
 
 	/// <inheritdoc />
 	[DescriptorFor("XpackMlValidate")]
-	public partial class ValidateJobDescriptor
+	public partial class ValidateJobDescriptor<T>
 	{
 	}
 }

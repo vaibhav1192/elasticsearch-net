@@ -7072,34 +7072,31 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlGetJobs <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html</pre></summary>
-	public partial class XpackMlGetJobsDescriptor  : RequestDescriptorBase<XpackMlGetJobsDescriptor,XpackMlGetJobsRequestParameters, IXpackMlGetJobsRequest>, IXpackMlGetJobsRequest
+	public partial class GetJobsDescriptor  : RequestDescriptorBase<GetJobsDescriptor,GetJobsRequestParameters, IGetJobsRequest>, IGetJobsRequest
 	{ 
-		Id IXpackMlGetJobsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Id IGetJobsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}</summary>
-		public XpackMlGetJobsDescriptor() : base(){}
+		public GetJobsDescriptor() : base(){}
 		
 
 			///<summary>The ID of the jobs to fetch</summary>
-		public XpackMlGetJobsDescriptor JobId(Id jobId) => Assign(a=>a.RouteValues.Optional("job_id", jobId));
+		public GetJobsDescriptor JobId(Id jobId) => Assign(a=>a.RouteValues.Optional("job_id", jobId));
 
 	
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetJobsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public GetJobsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetJobsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public GetJobsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetJobsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public GetJobsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetJobsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public GetJobsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetJobsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public GetJobsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
@@ -7599,23 +7596,23 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlValidate <pre></pre></summary>
-	public partial class ValidateJobDescriptor  : RequestDescriptorBase<ValidateJobDescriptor,ValidateJobRequestParameters, IValidateJobRequest>, IValidateJobRequest
+	public partial class ValidateJobDescriptor<T>  : RequestDescriptorBase<ValidateJobDescriptor<T>,ValidateJobRequestParameters, IValidateJobRequest>, IValidateJobRequest
 	{ 
 			
 		///<summary>Pretty format the returned JSON response.</summary>
-		public ValidateJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public ValidateJobDescriptor<T> Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public ValidateJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public ValidateJobDescriptor<T> Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public ValidateJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public ValidateJobDescriptor<T> ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public ValidateJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public ValidateJobDescriptor<T> Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public ValidateJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+		public ValidateJobDescriptor<T> FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

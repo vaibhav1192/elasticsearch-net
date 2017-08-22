@@ -8,6 +8,7 @@ namespace Nest
 	/// <summary>
 	/// An analysis configuration for a Machine Learning job.
 	/// </summary>
+	[JsonConverter(typeof(ReadAsTypeJsonConverter<AnalysisConfig>))]
 	public interface IAnalysisConfig
 	{
 		/// <summary>

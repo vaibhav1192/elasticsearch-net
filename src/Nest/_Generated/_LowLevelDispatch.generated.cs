@@ -3852,7 +3852,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetInfluencers", p, new [] { GET, POST }, "/_xpack/ml/anomaly_detectors/{job_id}/results/influencers");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlGetJobsDispatch<T>(IRequest<XpackMlGetJobsRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlGetJobsDispatch<T>(IRequest<GetJobsRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3864,7 +3864,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlGetJobs", p, new [] { GET }, "/_xpack/ml/anomaly_detectors/{job_id}", "/_xpack/ml/anomaly_detectors/");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlGetJobsDispatchAsync<T>(IRequest<XpackMlGetJobsRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlGetJobsDispatchAsync<T>(IRequest<GetJobsRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
