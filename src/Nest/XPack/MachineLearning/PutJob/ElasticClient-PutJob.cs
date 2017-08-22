@@ -10,13 +10,13 @@ namespace Nest
 		/// <summary>
 		/// Creates a Machine Learning job.
 		/// </summary>
-		IPutJobResponse PutJob<T>(Id id, Func<PutJobDescriptor<T>, IPutJobRequest> selector = null) where T : class;
+		IPutJobResponse PutJob<T>(Id jobId, Func<PutJobDescriptor<T>, IPutJobRequest> selector) where T : class;
 
 		/// <inheritdoc/>
 		IPutJobResponse PutJob(IPutJobRequest request);
 
 		/// <inheritdoc/>
-		Task<IPutJobResponse> PutJobAsync<T>(Id id, Func<PutJobDescriptor<T>, IPutJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<IPutJobResponse> PutJobAsync<T>(Id jobId, Func<PutJobDescriptor<T>, IPutJobRequest> selector, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 
 		/// <inheritdoc/>
 		Task<IPutJobResponse> PutJobAsync(IPutJobRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -25,8 +25,8 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IPutJobResponse PutJob<T>(Id id, Func<PutJobDescriptor<T>, IPutJobRequest> selector = null) where T : class =>
-			this.PutJob(selector.InvokeOrDefault(new PutJobDescriptor<T>(id)));
+		public IPutJobResponse PutJob<T>(Id jobId, Func<PutJobDescriptor<T>, IPutJobRequest> selector) where T : class =>
+			this.PutJob(selector.InvokeOrDefault(new PutJobDescriptor<T>(jobId)));
 
 		/// <inheritdoc/>
 		public IPutJobResponse PutJob(IPutJobRequest request) =>
@@ -36,8 +36,8 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IPutJobResponse> PutJobAsync<T>(Id id, Func<PutJobDescriptor<T>, IPutJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
-			this.PutJobAsync(selector.InvokeOrDefault(new PutJobDescriptor<T>(id)), cancellationToken);
+		public Task<IPutJobResponse> PutJobAsync<T>(Id jobId, Func<PutJobDescriptor<T>, IPutJobRequest> selector, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
+			this.PutJobAsync(selector.InvokeOrDefault(new PutJobDescriptor<T>(jobId)), cancellationToken);
 
 		/// <inheritdoc/>
 		public Task<IPutJobResponse> PutJobAsync(IPutJobRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>
