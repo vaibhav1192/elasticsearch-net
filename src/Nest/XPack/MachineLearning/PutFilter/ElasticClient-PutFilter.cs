@@ -10,13 +10,13 @@ namespace Nest
 		/// <summary>
 		/// Creates a filter for a Machine Learning job.
 		/// </summary>
-		IPutFilterResponse PutFilter(Id filterId, Func<PutFilterDescriptor, IPutFilterRequest> selector) where T : class;
+		IPutFilterResponse PutFilter(Id filterId, Func<PutFilterDescriptor, IPutFilterRequest> selector);
 
 		/// <inheritdoc/>
 		IPutFilterResponse PutFilter(IPutFilterRequest request);
 
 		/// <inheritdoc/>
-		Task<IPutFilterResponse> PutFilterAsync(Id filterId, Func<PutFilterDescriptor, IPutFilterRequest> selector, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<IPutFilterResponse> PutFilterAsync(Id filterId, Func<PutFilterDescriptor, IPutFilterRequest> selector, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <inheritdoc/>
 		Task<IPutFilterResponse> PutFilterAsync(IPutFilterRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -25,7 +25,7 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IPutFilterResponse PutFilter(Id filterId, Func<PutFilterDescriptor, IPutFilterRequest> selector) where T : class =>
+		public IPutFilterResponse PutFilter(Id filterId, Func<PutFilterDescriptor, IPutFilterRequest> selector) =>
 			this.PutFilter(selector.InvokeOrDefault(new PutFilterDescriptor(filterId)));
 
 		/// <inheritdoc/>
@@ -36,7 +36,7 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IPutFilterResponse> PutFilterAsync(Id filterId, Func<PutFilterDescriptor, IPutFilterRequest> selector, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
+		public Task<IPutFilterResponse> PutFilterAsync(Id filterId, Func<PutFilterDescriptor, IPutFilterRequest> selector, CancellationToken cancellationToken = default(CancellationToken)) =>
 			this.PutFilterAsync(selector.InvokeOrDefault(new PutFilterDescriptor(filterId)), cancellationToken);
 
 		/// <inheritdoc/>
