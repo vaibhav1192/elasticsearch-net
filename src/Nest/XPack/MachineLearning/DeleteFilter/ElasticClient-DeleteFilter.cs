@@ -8,7 +8,7 @@ namespace Nest
 	public partial interface IElasticClient
 	{
 		/// <summary>
-		/// Delete a filter
+		/// Delete a filter for Machine Learning.
 		/// </summary>
 		IDeleteFilterResponse DeleteFilter(Id id, Func<DeleteFilterDescriptor, IDeleteFilterRequest> selector = null);
 

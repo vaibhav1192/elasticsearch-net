@@ -5,13 +5,22 @@ namespace Nest
 {
 	public partial interface IStartDatafeedRequest
 	{
+		/// <summary>
+		/// Controls the amount of time to wait until a datafeed starts.
+		/// </summary>
 		[JsonProperty("timeout")]
 		Time Timeout { get; set; }
 
+		/// <summary>
+		/// The time that the datafeed should begin. This value is inclusive.
+		/// </summary>
 		[JsonProperty("start")]
 		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
 		DateTimeOffset? Start { get; set; }
 
+		/// <summary>
+		/// The time that the datafeed should end. This value is exclusive.
+		/// </summary>
 		[JsonProperty("end")]
 		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
 		DateTimeOffset? End { get; set; }

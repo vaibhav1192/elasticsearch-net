@@ -8,9 +8,8 @@ namespace Nest
 	public partial interface IElasticClient
 	{
 		/// <summary>
-		/// Opens a Machine Learning job.
-		/// A job must be opened in order for it to be ready to receive and analyze data.
-		/// A job can be opened and closed multiple times throughout its lifecycle.
+		/// Preview a Machine Learning datafeed.
+		/// This preview shows the structure of the data that will be passed to the anomaly detection engine.
 		/// </summary>
 		IPreviewDatafeedResponse PreviewDatafeed(Id id, Func<PreviewDatafeedDescriptor, IPreviewDatafeedRequest> selector = null);
 

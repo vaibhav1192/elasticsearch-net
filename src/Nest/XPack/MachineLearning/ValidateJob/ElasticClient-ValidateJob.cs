@@ -5,7 +5,6 @@ using Elasticsearch.Net;
 
 namespace Nest
 {
-	// TODO: Implement
 	public partial interface IElasticClient
 	{
 		/// <summary>

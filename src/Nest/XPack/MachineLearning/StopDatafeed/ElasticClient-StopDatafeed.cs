@@ -7,6 +7,10 @@ namespace Nest
 {
 	public partial interface IElasticClient
 	{
+		/// <summary>
+		/// Stop a Machine Learning data feed.
+		/// A datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped multiple times throughout its lifecycle.
+		/// </summary>
 		IStopDatafeedResponse StopDatafeed(Id id, Func<StopDatafeedDescriptor, IStopDatafeedRequest> selector = null);
 
 		/// <inheritdoc/>
@@ -29,7 +33,7 @@ namespace Nest
 		public IStopDatafeedResponse StopDatafeed(IStopDatafeedRequest request) =>
 			this.Dispatcher.Dispatch<IStopDatafeedRequest, StopDatafeedRequestParameters, StopDatafeedResponse>(
 				request,
-				this.LowLevelDispatch.XpackMlStopDatafeedDispatch<StopDatafeedResponse>
+				(p, d) => this.LowLevelDispatch.XpackMlStopDatafeedDispatch<StopDatafeedResponse>(p)
 			);
 
 		/// <inheritdoc/>
@@ -41,7 +45,7 @@ namespace Nest
 			this.Dispatcher.DispatchAsync<IStopDatafeedRequest, StopDatafeedRequestParameters, StopDatafeedResponse, IStopDatafeedResponse>(
 				request,
 				cancellationToken,
-				this.LowLevelDispatch.XpackMlStopDatafeedDispatchAsync<StopDatafeedResponse>
+				(p, d, c) => this.LowLevelDispatch.XpackMlStopDatafeedDispatchAsync<StopDatafeedResponse>(p, c)
 			);
 	}
 }

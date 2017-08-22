@@ -1,14 +1,10 @@
-﻿using Newtonsoft.Json;
-
-namespace Nest
+﻿namespace Nest
 {
 	public interface IPutJobResponse : IResponse
 	{
-
 	}
 
 	public class PutJobResponse : ResponseBase, IPutJobResponse
 	{
-
 	}
 }

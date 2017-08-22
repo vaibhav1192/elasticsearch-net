@@ -5,9 +5,15 @@ namespace Nest
 {
 	public partial interface IStopDatafeedRequest
 	{
+		/// <summary>
+		/// Controls the amount of time to wait until a datafeed stops. 
+		/// </summary>
 		[JsonProperty("timeout")]
 		Time Timeout { get; set; }
 
+		/// <summary>
+		/// If true, the datafeed is stopped forcefully.
+		/// </summary>
 		[JsonProperty("force")]
 		bool Force { get; set; }
 	}

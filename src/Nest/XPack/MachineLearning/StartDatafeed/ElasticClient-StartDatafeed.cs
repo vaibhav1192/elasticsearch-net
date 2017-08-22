@@ -7,6 +7,10 @@ namespace Nest
 {
 	public partial interface IElasticClient
 	{
+		/// <summary>
+		/// Start a Machine Learning datafeed.
+		/// A datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped multiple times throughout its lifecycle.
+		/// </summary>
 		IStartDatafeedResponse StartDatafeed(Id id, Func<StartDatafeedDescriptor, IStartDatafeedRequest> selector = null);
 
 		/// <inheritdoc/>

@@ -9,7 +9,8 @@ namespace Nest
 	{
 		/// <summary>
 		/// Deletes a Machine Learning job.
-		/// A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.
+		/// Before you can delete a job, you must delete the datafeeds that are associated with it, see DeleteDatafeed. Unless the force parameter is used the job must be closed before it can be deleted.
+		/// It is not currently possible to delete multiple jobs using wildcards or a comma separated list.
 		/// </summary>
 		IDeleteJobResponse DeleteJob(Id id, Func<DeleteJobDescriptor, IDeleteJobRequest> selector = null);
 
