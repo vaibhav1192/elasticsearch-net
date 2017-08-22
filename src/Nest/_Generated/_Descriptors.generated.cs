@@ -6765,32 +6765,29 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlDeleteFilter <pre></pre></summary>
-	public partial class XpackMlDeleteFilterDescriptor  : RequestDescriptorBase<XpackMlDeleteFilterDescriptor,XpackMlDeleteFilterRequestParameters, IXpackMlDeleteFilterRequest>, IXpackMlDeleteFilterRequest
+	public partial class DeleteFilterDescriptor  : RequestDescriptorBase<DeleteFilterDescriptor,DeleteFilterRequestParameters, IDeleteFilterRequest>, IDeleteFilterRequest
 	{ 
-		Id IXpackMlDeleteFilterRequest.FilterId => Self.RouteValues.Get<Id>("filter_id");
+		Id IDeleteFilterRequest.FilterId => Self.RouteValues.Get<Id>("filter_id");
 			/// <summary>/_xpack/ml/filters/{filter_id}</summary>
 ///<param name="filter_id"> this parameter is required</param>
-		public XpackMlDeleteFilterDescriptor(Id filter_id) : base(r=>r.Required("filter_id", filter_id)){}
+		public DeleteFilterDescriptor(Id filter_id) : base(r=>r.Required("filter_id", filter_id)){}
 		
 
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlDeleteFilterDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public DeleteFilterDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlDeleteFilterDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public DeleteFilterDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlDeleteFilterDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public DeleteFilterDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlDeleteFilterDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public DeleteFilterDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlDeleteFilterDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public DeleteFilterDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

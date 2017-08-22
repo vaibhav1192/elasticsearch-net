@@ -6956,28 +6956,28 @@ namespace Elasticsearch.Net
 	///
 	///</pre>
 	///</summary>
-	public class XpackMlDeleteFilterRequestParameters : FluentRequestParameters<XpackMlDeleteFilterRequestParameters> 
+	public class DeleteFilterRequestParameters : FluentRequestParameters<DeleteFilterRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.DELETE;
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlDeleteFilterRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public DeleteFilterRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlDeleteFilterRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public DeleteFilterRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlDeleteFilterRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public DeleteFilterRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlDeleteFilterRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public DeleteFilterRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlDeleteFilterRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public DeleteFilterRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

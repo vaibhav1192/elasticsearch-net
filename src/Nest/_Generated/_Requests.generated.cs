@@ -2842,6 +2842,38 @@ namespace Nest
 		}
 	
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+	public partial interface IDeleteFilterRequest : IRequest<DeleteFilterRequestParameters> 
+	{
+		Id FilterId { get; }
+	 } 
+	///<summary>Request parameters for XpackMlDeleteFilter <pre></pre></summary>
+	public partial class DeleteFilterRequest  : PlainRequestBase<DeleteFilterRequestParameters>, IDeleteFilterRequest
+	{
+		protected IDeleteFilterRequest Self => this;
+		Id IDeleteFilterRequest.FilterId => Self.RouteValues.Get<Id>("filter_id");
+			/// <summary>/_xpack/ml/filters/{filter_id}</summary>
+///<param name="filter_id">this parameter is required</param>
+		public DeleteFilterRequest(Id filter_id) : base(r=>r.Required("filter_id", filter_id)){}
+		
+
+			///<summary>Pretty format the returned JSON response.</summary>
+		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
+		
+		///<summary>Return human readable values for statistics.</summary>
+		public bool Human { get { return Q<bool>("human"); } set { Q("human", value); } }
+		
+		///<summary>Include the stack trace of returned errors.</summary>
+		public bool ErrorTrace { get { return Q<bool>("error_trace"); } set { Q("error_trace", value); } }
+		
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public string Source { get { return Q<string>("source"); } set { Q("source", value); } }
+		
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
+		
+		}
+	
+	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public partial interface IDeleteIndexRequest : IRequest<DeleteIndexRequestParameters> 
 	{
 		Indices Index { get; }
@@ -9565,40 +9597,6 @@ namespace Nest
 		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
 		
 		}
-	
-	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-	public partial interface IXpackMlDeleteFilterRequest : IRequest<XpackMlDeleteFilterRequestParameters> 
-	{
-		Id FilterId { get; }
-	 } 
-	///<summary>Request parameters for XpackMlDeleteFilter <pre></pre></summary>
-	public partial class XpackMlDeleteFilterRequest  : PlainRequestBase<XpackMlDeleteFilterRequestParameters>, IXpackMlDeleteFilterRequest
-	{
-		protected IXpackMlDeleteFilterRequest Self => this;
-		Id IXpackMlDeleteFilterRequest.FilterId => Self.RouteValues.Get<Id>("filter_id");
-			/// <summary>/_xpack/ml/filters/{filter_id}</summary>
-///<param name="filter_id">this parameter is required</param>
-		public XpackMlDeleteFilterRequest(Id filter_id) : base(r=>r.Required("filter_id", filter_id)){}
-		
-
-			///<summary>Pretty format the returned JSON response.</summary>
-		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
-		
-		///<summary>Return human readable values for statistics.</summary>
-		public bool Human { get { return Q<bool>("human"); } set { Q("human", value); } }
-		
-		///<summary>Include the stack trace of returned errors.</summary>
-		public bool ErrorTrace { get { return Q<bool>("error_trace"); } set { Q("error_trace", value); } }
-		
-		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public string Source { get { return Q<string>("source"); } set { Q("source", value); } }
-		
-		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
-		
-		//TODO THIS METHOD IS UNMAPPED!
-	
-	}
 	
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public partial interface IXpackMlGetJobsRequest : IRequest<XpackMlGetJobsRequestParameters> 

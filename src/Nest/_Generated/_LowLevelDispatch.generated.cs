@@ -3580,7 +3580,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlDeleteExpiredData", p, new [] { DELETE }, "/_xpack/ml/_delete_expired_data");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlDeleteFilterDispatch<T>(IRequest<XpackMlDeleteFilterRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlDeleteFilterDispatch<T>(IRequest<DeleteFilterRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -3592,7 +3592,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlDeleteFilter", p, new [] { DELETE }, "/_xpack/ml/filters/{filter_id}");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlDeleteFilterDispatchAsync<T>(IRequest<XpackMlDeleteFilterRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlDeleteFilterDispatchAsync<T>(IRequest<DeleteFilterRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{

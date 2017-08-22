@@ -8272,7 +8272,7 @@ namespace Elasticsearch.Net
 		///</summary>
 		///<param name="filter_id">The ID of the filter to delete</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		ElasticsearchResponse<T> XpackMlDeleteFilter<T>(string filter_id, Func<XpackMlDeleteFilterRequestParameters, XpackMlDeleteFilterRequestParameters> requestParameters = null) where T : class;
+		ElasticsearchResponse<T> XpackMlDeleteFilter<T>(string filter_id, Func<DeleteFilterRequestParameters, DeleteFilterRequestParameters> requestParameters = null) where T : class;
 		
 		///<summary>Represents a DELETE on /_xpack/ml/filters/{filter_id}
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -8285,7 +8285,7 @@ namespace Elasticsearch.Net
 		///</summary>
 		///<param name="filter_id">The ID of the filter to delete</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		Task<ElasticsearchResponse<T>> XpackMlDeleteFilterAsync<T>(string filter_id, Func<XpackMlDeleteFilterRequestParameters, XpackMlDeleteFilterRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<ElasticsearchResponse<T>> XpackMlDeleteFilterAsync<T>(string filter_id, Func<DeleteFilterRequestParameters, DeleteFilterRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
 		///<summary>Represents a DELETE on /_xpack/ml/anomaly_detectors/{job_id}
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
