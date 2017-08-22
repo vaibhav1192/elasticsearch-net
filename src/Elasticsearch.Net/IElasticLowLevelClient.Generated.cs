@@ -8808,7 +8808,7 @@ namespace Elasticsearch.Net
 		///</summary>
 		///<param name="job_id">The ID of the jobs to fetch</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		ElasticsearchResponse<T> XpackMlGetJobs<T>(string job_id, Func<XpackMlGetJobsRequestParameters, XpackMlGetJobsRequestParameters> requestParameters = null) where T : class;
+		ElasticsearchResponse<T> XpackMlGetJobs<T>(string job_id, Func<GetJobsRequestParameters, GetJobsRequestParameters> requestParameters = null) where T : class;
 		
 		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -8821,7 +8821,7 @@ namespace Elasticsearch.Net
 		///</summary>
 		///<param name="job_id">The ID of the jobs to fetch</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		Task<ElasticsearchResponse<T>> XpackMlGetJobsAsync<T>(string job_id, Func<XpackMlGetJobsRequestParameters, XpackMlGetJobsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<ElasticsearchResponse<T>> XpackMlGetJobsAsync<T>(string job_id, Func<GetJobsRequestParameters, GetJobsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
 		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
@@ -8833,7 +8833,7 @@ namespace Elasticsearch.Net
 		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html </para>
 		///</summary>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		ElasticsearchResponse<T> XpackMlGetJobs<T>(Func<XpackMlGetJobsRequestParameters, XpackMlGetJobsRequestParameters> requestParameters = null) where T : class;
+		ElasticsearchResponse<T> XpackMlGetJobs<T>(Func<GetJobsRequestParameters, GetJobsRequestParameters> requestParameters = null) where T : class;
 		
 		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -8845,7 +8845,7 @@ namespace Elasticsearch.Net
 		///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html </para>
 		///</summary>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		Task<ElasticsearchResponse<T>> XpackMlGetJobsAsync<T>(Func<XpackMlGetJobsRequestParameters, XpackMlGetJobsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<ElasticsearchResponse<T>> XpackMlGetJobsAsync<T>(Func<GetJobsRequestParameters, GetJobsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
 		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/_stats
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:

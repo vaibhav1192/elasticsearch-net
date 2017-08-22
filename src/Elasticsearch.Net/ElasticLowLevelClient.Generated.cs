@@ -9462,7 +9462,7 @@ namespace Elasticsearch.Net
 	    ///</summary>
 		///<param name="job_id">The ID of the jobs to fetch</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlGetJobs<T>(string job_id, Func<XpackMlGetJobsRequestParameters, XpackMlGetJobsRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlGetJobs<T>(string job_id, Func<GetJobsRequestParameters, GetJobsRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(GET, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}"), null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/{job_id}
@@ -9476,7 +9476,7 @@ namespace Elasticsearch.Net
 	    ///</summary>
 		///<param name="job_id">The ID of the jobs to fetch</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlGetJobsAsync<T>(string job_id, Func<XpackMlGetJobsRequestParameters, XpackMlGetJobsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlGetJobsAsync<T>(string job_id, Func<GetJobsRequestParameters, GetJobsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(GET, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}"), cancellationToken, null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/
@@ -9489,7 +9489,7 @@ namespace Elasticsearch.Net
 	    ///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html </para>
 	    ///</summary>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlGetJobs<T>(Func<XpackMlGetJobsRequestParameters, XpackMlGetJobsRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlGetJobs<T>(Func<GetJobsRequestParameters, GetJobsRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(GET, Url($"_xpack/ml/anomaly_detectors/"), null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/
@@ -9502,7 +9502,7 @@ namespace Elasticsearch.Net
 	    ///<para>See also: http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html </para>
 	    ///</summary>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlGetJobsAsync<T>(Func<XpackMlGetJobsRequestParameters, XpackMlGetJobsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlGetJobsAsync<T>(Func<GetJobsRequestParameters, GetJobsRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(GET, Url($"_xpack/ml/anomaly_detectors/"), cancellationToken, null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/anomaly_detectors/_stats

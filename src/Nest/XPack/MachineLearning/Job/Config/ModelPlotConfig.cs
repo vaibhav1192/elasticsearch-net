@@ -7,6 +7,7 @@ namespace Nest
 	/// Stores model information along with the results.
 	/// It provides a more detailed view into anomaly detection.
 	/// </summary>
+	[JsonConverter(typeof(ReadAsTypeJsonConverter<ModelPlotConfig>))]
 	public interface IModelPlotConfig
 	{
 		/// <summary>

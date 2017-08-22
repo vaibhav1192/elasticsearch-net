@@ -7284,28 +7284,28 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html
 	///</pre>
 	///</summary>
-	public class XpackMlGetJobsRequestParameters : FluentRequestParameters<XpackMlGetJobsRequestParameters> 
+	public class GetJobsRequestParameters : FluentRequestParameters<GetJobsRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.GET;
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetJobsRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public GetJobsRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetJobsRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public GetJobsRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetJobsRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public GetJobsRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetJobsRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public GetJobsRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetJobsRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public GetJobsRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

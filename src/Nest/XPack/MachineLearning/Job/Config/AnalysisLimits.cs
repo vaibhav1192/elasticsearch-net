@@ -8,6 +8,7 @@ namespace Nest
 	/// for example the Elasticsearch Java processes.
 	/// If necessary, you can increase the limits after the job is created.
 	/// </summary>
+	[JsonConverter(typeof(ReadAsTypeJsonConverter<AnalysisLimits>))]
 	public interface IAnalysisLimits
 	{
 		/// <summary>
