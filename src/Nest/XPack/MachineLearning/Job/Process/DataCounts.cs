@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Nest.XPack.MachineLearning.Job
+namespace Nest
 {
 	[JsonObject]
 	public class DataCounts

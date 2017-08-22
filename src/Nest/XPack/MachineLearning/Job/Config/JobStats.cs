@@ -1,6 +1,4 @@
-﻿using Nest.XPack.MachineLearning.Job;
-using Nest.XPack.MachineLearning.Job.Config;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Nest
 {

@@ -7130,108 +7130,60 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlGetModelSnapshots <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html</pre></summary>
-	public partial class XpackMlGetModelSnapshotsDescriptor  : RequestDescriptorBase<XpackMlGetModelSnapshotsDescriptor,XpackMlGetModelSnapshotsRequestParameters, IXpackMlGetModelSnapshotsRequest>, IXpackMlGetModelSnapshotsRequest
+	public partial class GetModelSnapshotsDescriptor  : RequestDescriptorBase<GetModelSnapshotsDescriptor,GetModelSnapshotsRequestParameters, IGetModelSnapshotsRequest>, IGetModelSnapshotsRequest
 	{ 
-		Id IXpackMlGetModelSnapshotsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
-		Id IXpackMlGetModelSnapshotsRequest.SnapshotId => Self.RouteValues.Get<Id>("snapshot_id");
+		Id IGetModelSnapshotsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Id IGetModelSnapshotsRequest.SnapshotId => Self.RouteValues.Get<Id>("snapshot_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}</summary>
 ///<param name="job_id"> this parameter is required</param>
-		public XpackMlGetModelSnapshotsDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		public GetModelSnapshotsDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
 			///<summary>The ID of the snapshot to fetch</summary>
-		public XpackMlGetModelSnapshotsDescriptor SnapshotId(Id snapshotId) => Assign(a=>a.RouteValues.Optional("snapshot_id", snapshotId));
+		public GetModelSnapshotsDescriptor SnapshotId(Id snapshotId) => Assign(a=>a.RouteValues.Optional("snapshot_id", snapshotId));
 
 	
-		///<summary>Skips a number of documents</summary>
-		public XpackMlGetModelSnapshotsDescriptor From(int from) => AssignParam(p=>p.From(from));
-
-		///<summary>The default number of documents returned in queries as a string.</summary>
-		public XpackMlGetModelSnapshotsDescriptor Size(int size) => AssignParam(p=>p.Size(size));
-
-		///<summary>The filter &#39;start&#39; query parameter</summary>
-		public XpackMlGetModelSnapshotsDescriptor Start(DateTimeOffset start) => AssignParam(p=>p.Start(start));
-
-		///<summary>The filter &#39;end&#39; query parameter</summary>
-		public XpackMlGetModelSnapshotsDescriptor End(DateTimeOffset end) => AssignParam(p=>p.End(end));
-
-		///<summary>Name of the field to sort on</summary>
-		public XpackMlGetModelSnapshotsDescriptor Sort(string sort) => AssignParam(p=>p.Sort(sort));
-
-		///<summary>True if the results should be sorted in descending order</summary>
-		public XpackMlGetModelSnapshotsDescriptor Desc(bool desc = true) => AssignParam(p=>p.Desc(desc));
-
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetModelSnapshotsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public GetModelSnapshotsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetModelSnapshotsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public GetModelSnapshotsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetModelSnapshotsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public GetModelSnapshotsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetModelSnapshotsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public GetModelSnapshotsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetModelSnapshotsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public GetModelSnapshotsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
 	///<summary>descriptor for XpackMlGetRecords <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-record.html</pre></summary>
-	public partial class XpackMlGetRecordsDescriptor  : RequestDescriptorBase<XpackMlGetRecordsDescriptor,XpackMlGetRecordsRequestParameters, IXpackMlGetRecordsRequest>, IXpackMlGetRecordsRequest
+	public partial class GetAnomalyRecordsDescriptor  : RequestDescriptorBase<GetAnomalyRecordsDescriptor,GetAnomalyRecordsRequestParameters, IGetAnomalyRecordsRequest>, IGetAnomalyRecordsRequest
 	{ 
-		Id IXpackMlGetRecordsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Id IGetAnomalyRecordsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/records</summary>
 ///<param name="job_id"> this parameter is required</param>
-		public XpackMlGetRecordsDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		public GetAnomalyRecordsDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
 		
-		///<summary>Exclude interim results</summary>
-		public XpackMlGetRecordsDescriptor ExcludeInterim(bool exclude_interim = true) => AssignParam(p=>p.ExcludeInterim(exclude_interim));
-
-		///<summary>skips a number of records</summary>
-		public XpackMlGetRecordsDescriptor From(int from) => AssignParam(p=>p.From(from));
-
-		///<summary>specifies a max number of records to get</summary>
-		public XpackMlGetRecordsDescriptor Size(int size) => AssignParam(p=>p.Size(size));
-
-		///<summary>Start time filter for records</summary>
-		public XpackMlGetRecordsDescriptor Start(string start) => AssignParam(p=>p.Start(start));
-
-		///<summary>End time filter for records</summary>
-		public XpackMlGetRecordsDescriptor End(string end) => AssignParam(p=>p.End(end));
-
-		///<summary></summary>
-		public XpackMlGetRecordsDescriptor RecordScore(double record_score) => AssignParam(p=>p.RecordScore(record_score));
-
-		///<summary>Sort records by a particular field</summary>
-		public XpackMlGetRecordsDescriptor Sort(string sort) => AssignParam(p=>p.Sort(sort));
-
-		///<summary>Set the sort direction</summary>
-		public XpackMlGetRecordsDescriptor Desc(bool desc = true) => AssignParam(p=>p.Desc(desc));
-
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetRecordsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public GetAnomalyRecordsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetRecordsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public GetAnomalyRecordsDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetRecordsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public GetAnomalyRecordsDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetRecordsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public GetAnomalyRecordsDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetRecordsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public GetAnomalyRecordsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
@@ -7263,38 +7215,35 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlPostData <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-data.html</pre></summary>
-	public partial class XpackMlPostDataDescriptor  : RequestDescriptorBase<XpackMlPostDataDescriptor,XpackMlPostDataRequestParameters, IXpackMlPostDataRequest>, IXpackMlPostDataRequest
+	public partial class PostJobDataDescriptor<T>  : RequestDescriptorBase<PostJobDataDescriptor<T>,PostJobDataRequestParameters, IPostJobDataRequest>, IPostJobDataRequest
 	{ 
-		Id IXpackMlPostDataRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Id IPostJobDataRequest.JobId => Self.RouteValues.Get<Id>("job_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/_data</summary>
 ///<param name="job_id"> this parameter is required</param>
-		public XpackMlPostDataDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		public PostJobDataDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
 		
 		///<summary>Optional parameter to specify the start of the bucket resetting range</summary>
-		public XpackMlPostDataDescriptor ResetStart(string reset_start) => AssignParam(p=>p.ResetStart(reset_start));
+		public PostJobDataDescriptor<T> ResetStart(string reset_start) => AssignParam(p=>p.ResetStart(reset_start));
 
 		///<summary>Optional parameter to specify the end of the bucket resetting range</summary>
-		public XpackMlPostDataDescriptor ResetEnd(string reset_end) => AssignParam(p=>p.ResetEnd(reset_end));
+		public PostJobDataDescriptor<T> ResetEnd(string reset_end) => AssignParam(p=>p.ResetEnd(reset_end));
 
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlPostDataDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public PostJobDataDescriptor<T> Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlPostDataDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public PostJobDataDescriptor<T> Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlPostDataDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public PostJobDataDescriptor<T> ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlPostDataDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public PostJobDataDescriptor<T> Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlPostDataDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public PostJobDataDescriptor<T> FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

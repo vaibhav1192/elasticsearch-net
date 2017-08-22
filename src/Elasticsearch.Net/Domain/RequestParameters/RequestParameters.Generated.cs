@@ -7344,52 +7344,28 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html
 	///</pre>
 	///</summary>
-	public class XpackMlGetModelSnapshotsRequestParameters : FluentRequestParameters<XpackMlGetModelSnapshotsRequestParameters> 
+	public class GetModelSnapshotsRequestParameters : FluentRequestParameters<GetModelSnapshotsRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
-		///<summary>Skips a number of documents</summary>
-		public XpackMlGetModelSnapshotsRequestParameters From(int from) => this.AddQueryString("from", from);
-		
-		
-		///<summary>The default number of documents returned in queries as a string.</summary>
-		public XpackMlGetModelSnapshotsRequestParameters Size(int size) => this.AddQueryString("size", size);
-		
-		
-		///<summary>The filter &#39;start&#39; query parameter</summary>
-		public XpackMlGetModelSnapshotsRequestParameters Start(DateTimeOffset start) => this.AddQueryString("start", start);
-		
-		
-		///<summary>The filter &#39;end&#39; query parameter</summary>
-		public XpackMlGetModelSnapshotsRequestParameters End(DateTimeOffset end) => this.AddQueryString("end", end);
-		
-		
-		///<summary>Name of the field to sort on</summary>
-		public XpackMlGetModelSnapshotsRequestParameters Sort(string sort) => this.AddQueryString("sort", sort);
-		
-		
-		///<summary>True if the results should be sorted in descending order</summary>
-		public XpackMlGetModelSnapshotsRequestParameters Desc(bool desc) => this.AddQueryString("desc", desc);
-		
-		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetModelSnapshotsRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public GetModelSnapshotsRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetModelSnapshotsRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public GetModelSnapshotsRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetModelSnapshotsRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public GetModelSnapshotsRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetModelSnapshotsRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public GetModelSnapshotsRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetModelSnapshotsRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public GetModelSnapshotsRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	
@@ -7398,60 +7374,28 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-record.html
 	///</pre>
 	///</summary>
-	public class XpackMlGetRecordsRequestParameters : FluentRequestParameters<XpackMlGetRecordsRequestParameters> 
+	public class GetAnomalyRecordsRequestParameters : FluentRequestParameters<GetAnomalyRecordsRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
-		///<summary>Exclude interim results</summary>
-		public XpackMlGetRecordsRequestParameters ExcludeInterim(bool exclude_interim) => this.AddQueryString("exclude_interim", exclude_interim);
-		
-		
-		///<summary>skips a number of records</summary>
-		public XpackMlGetRecordsRequestParameters From(int from) => this.AddQueryString("from", from);
-		
-		
-		///<summary>specifies a max number of records to get</summary>
-		public XpackMlGetRecordsRequestParameters Size(int size) => this.AddQueryString("size", size);
-		
-		
-		///<summary>Start time filter for records</summary>
-		public XpackMlGetRecordsRequestParameters Start(string start) => this.AddQueryString("start", start);
-		
-		
-		///<summary>End time filter for records</summary>
-		public XpackMlGetRecordsRequestParameters End(string end) => this.AddQueryString("end", end);
-		
-		
-		///<summary></summary>
-		public XpackMlGetRecordsRequestParameters RecordScore(double record_score) => this.AddQueryString("record_score", record_score);
-		
-		
-		///<summary>Sort records by a particular field</summary>
-		public XpackMlGetRecordsRequestParameters Sort(string sort) => this.AddQueryString("sort", sort);
-		
-		
-		///<summary>Set the sort direction</summary>
-		public XpackMlGetRecordsRequestParameters Desc(bool desc) => this.AddQueryString("desc", desc);
-		
-		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlGetRecordsRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public GetAnomalyRecordsRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlGetRecordsRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public GetAnomalyRecordsRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlGetRecordsRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public GetAnomalyRecordsRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlGetRecordsRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public GetAnomalyRecordsRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlGetRecordsRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public GetAnomalyRecordsRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	
@@ -7490,36 +7434,36 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-data.html
 	///</pre>
 	///</summary>
-	public class XpackMlPostDataRequestParameters : FluentRequestParameters<XpackMlPostDataRequestParameters> 
+	public class PostJobDataRequestParameters : FluentRequestParameters<PostJobDataRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
 		///<summary>Optional parameter to specify the start of the bucket resetting range</summary>
-		public XpackMlPostDataRequestParameters ResetStart(string reset_start) => this.AddQueryString("reset_start", reset_start);
+		public PostJobDataRequestParameters ResetStart(string reset_start) => this.AddQueryString("reset_start", reset_start);
 		
 		
 		///<summary>Optional parameter to specify the end of the bucket resetting range</summary>
-		public XpackMlPostDataRequestParameters ResetEnd(string reset_end) => this.AddQueryString("reset_end", reset_end);
+		public PostJobDataRequestParameters ResetEnd(string reset_end) => this.AddQueryString("reset_end", reset_end);
 		
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlPostDataRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public PostJobDataRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlPostDataRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public PostJobDataRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlPostDataRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public PostJobDataRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlPostDataRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public PostJobDataRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlPostDataRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public PostJobDataRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

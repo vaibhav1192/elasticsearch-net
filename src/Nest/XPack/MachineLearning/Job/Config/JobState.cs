@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Nest.XPack.MachineLearning.Job.Config
+namespace Nest
 {
 	/// <summary>
 	/// The state of a Machine Learning job

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Nest.XPack.MachineLearning.Job.Config
+namespace Nest
 {
 	[JsonObject]
 	public class MachineLearningFilter
