@@ -7532,28 +7532,28 @@ namespace Elasticsearch.Net
 	///
 	///</pre>
 	///</summary>
-	public class XpackMlPutFilterRequestParameters : FluentRequestParameters<XpackMlPutFilterRequestParameters> 
+	public class PutFilterRequestParameters : FluentRequestParameters<PutFilterRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.PUT;
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlPutFilterRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public PutFilterRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlPutFilterRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public PutFilterRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlPutFilterRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public PutFilterRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlPutFilterRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public PutFilterRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlPutFilterRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public PutFilterRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	
@@ -7592,32 +7592,28 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-revert-snapshot.html
 	///</pre>
 	///</summary>
-	public class XpackMlRevertModelSnapshotRequestParameters : FluentRequestParameters<XpackMlRevertModelSnapshotRequestParameters> 
+	public class RevertModelSnapshotRequestParameters : FluentRequestParameters<RevertModelSnapshotRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
-		///<summary>Should we reset the results back to the time of the snapshot?</summary>
-		public XpackMlRevertModelSnapshotRequestParameters DeleteInterveningResults(bool delete_intervening_results) => this.AddQueryString("delete_intervening_results", delete_intervening_results);
-		
-		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlRevertModelSnapshotRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public RevertModelSnapshotRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlRevertModelSnapshotRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public RevertModelSnapshotRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlRevertModelSnapshotRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public RevertModelSnapshotRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlRevertModelSnapshotRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public RevertModelSnapshotRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlRevertModelSnapshotRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public RevertModelSnapshotRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

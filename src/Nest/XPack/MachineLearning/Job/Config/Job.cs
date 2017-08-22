@@ -31,7 +31,7 @@ namespace Nest
 		/// The time the job was created.
 		/// </summary>
 		[JsonProperty("create_time")]
-		public DateTimeOffset? CreateTime { get; set; }
+		public DateTimeOffset CreateTime { get; set; }
 
 		/// <summary>
 		/// If the job closed or failed, this is the time the job finished, otherwise it is null.
@@ -90,8 +90,8 @@ namespace Nest
 		public string ResultsIndexName { get; set; }
 
 		/// <summary>
-		/// This advanced configuration option stores model information along with the results. T
-		/// his adds overhead to the performance of the system and is not feasible for jobs with many entities
+		/// This advanced configuration option stores model information along with the results.
+		/// This adds overhead to the performance of the system and is not feasible for jobs with many entities
 		/// </summary>
 		[JsonProperty("model_plot")]
 		public IModelPlotConfig ModelPlotConfig { get; set; }

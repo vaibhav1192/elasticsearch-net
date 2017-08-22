@@ -7302,32 +7302,29 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlPutFilter <pre></pre></summary>
-	public partial class XpackMlPutFilterDescriptor  : RequestDescriptorBase<XpackMlPutFilterDescriptor,XpackMlPutFilterRequestParameters, IXpackMlPutFilterRequest>, IXpackMlPutFilterRequest
+	public partial class PutFilterDescriptor  : RequestDescriptorBase<PutFilterDescriptor,PutFilterRequestParameters, IPutFilterRequest>, IPutFilterRequest
 	{ 
-		Id IXpackMlPutFilterRequest.FilterId => Self.RouteValues.Get<Id>("filter_id");
+		Id IPutFilterRequest.FilterId => Self.RouteValues.Get<Id>("filter_id");
 			/// <summary>/_xpack/ml/filters/{filter_id}</summary>
 ///<param name="filter_id"> this parameter is required</param>
-		public XpackMlPutFilterDescriptor(Id filter_id) : base(r=>r.Required("filter_id", filter_id)){}
+		public PutFilterDescriptor(Id filter_id) : base(r=>r.Required("filter_id", filter_id)){}
 		
 
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlPutFilterDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public PutFilterDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlPutFilterDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public PutFilterDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlPutFilterDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public PutFilterDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlPutFilterDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public PutFilterDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlPutFilterDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public PutFilterDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
@@ -7359,39 +7356,31 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlRevertModelSnapshot <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-revert-snapshot.html</pre></summary>
-	public partial class XpackMlRevertModelSnapshotDescriptor  : RequestDescriptorBase<XpackMlRevertModelSnapshotDescriptor,XpackMlRevertModelSnapshotRequestParameters, IXpackMlRevertModelSnapshotRequest>, IXpackMlRevertModelSnapshotRequest
+	public partial class RevertModelSnapshotDescriptor  : RequestDescriptorBase<RevertModelSnapshotDescriptor,RevertModelSnapshotRequestParameters, IRevertModelSnapshotRequest>, IRevertModelSnapshotRequest
 	{ 
-		Id IXpackMlRevertModelSnapshotRequest.JobId => Self.RouteValues.Get<Id>("job_id");
-		Id IXpackMlRevertModelSnapshotRequest.SnapshotId => Self.RouteValues.Get<Id>("snapshot_id");
+		Id IRevertModelSnapshotRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Id IRevertModelSnapshotRequest.SnapshotId => Self.RouteValues.Get<Id>("snapshot_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert</summary>
-///<param name="job_id"> this parameter is required</param>
-		public XpackMlRevertModelSnapshotDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+///<param name="job_id"> this parameter is required</param>		
+///<param name="snapshot_id"> this parameter is required</param>
+		public RevertModelSnapshotDescriptor(Id job_id, Id snapshot_id) : base(r=>r.Required("job_id", job_id).Required("snapshot_id", snapshot_id)){}
 		
 
-			///<summary>The ID of the snapshot to revert to</summary>
-		public XpackMlRevertModelSnapshotDescriptor SnapshotId(Id snapshotId) => Assign(a=>a.RouteValues.Optional("snapshot_id", snapshotId));
-
-	
-		///<summary>Should we reset the results back to the time of the snapshot?</summary>
-		public XpackMlRevertModelSnapshotDescriptor DeleteInterveningResults(bool delete_intervening_results = true) => AssignParam(p=>p.DeleteInterveningResults(delete_intervening_results));
-
+		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlRevertModelSnapshotDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public RevertModelSnapshotDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlRevertModelSnapshotDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public RevertModelSnapshotDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlRevertModelSnapshotDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public RevertModelSnapshotDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlRevertModelSnapshotDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public RevertModelSnapshotDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlRevertModelSnapshotDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public RevertModelSnapshotDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

@@ -4064,7 +4064,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlPutDatafeed", p, new [] { PUT }, "/_xpack/ml/datafeeds/{datafeed_id}");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlPutFilterDispatch<T>(IRequest<XpackMlPutFilterRequestParameters> p , PostData<object> body) where T : class
+		internal ElasticsearchResponse<T> XpackMlPutFilterDispatch<T>(IRequest<PutFilterRequestParameters> p , PostData<object> body) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -4076,7 +4076,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlPutFilter", p, new [] { PUT }, "/_xpack/ml/filters/{filter_id}");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlPutFilterDispatchAsync<T>(IRequest<XpackMlPutFilterRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlPutFilterDispatchAsync<T>(IRequest<PutFilterRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -4112,24 +4112,24 @@ namespace Nest
 			throw InvalidDispatch("XpackMlPutJob", p, new [] { PUT }, "/_xpack/ml/anomaly_detectors/{job_id}");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlRevertModelSnapshotDispatch<T>(IRequest<XpackMlRevertModelSnapshotRequestParameters> p , PostData<object> body) where T : class
+		internal ElasticsearchResponse<T> XpackMlRevertModelSnapshotDispatch<T>(IRequest<RevertModelSnapshotRequestParameters> p , PostData<object> body) where T : class
 		{
 			switch(p.HttpMethod)
 			{
 				case POST:
-					if (AllSet(p.RouteValues.JobId, p.RouteValues.SnapshotId)) return _lowLevel.XpackMlRevertModelSnapshot<T>(p.RouteValues.JobId,p.RouteValues.SnapshotId,body,u => p.RequestParameters);
+					if (AllSetNoFallback(p.RouteValues.JobId, p.RouteValues.SnapshotId)) return _lowLevel.XpackMlRevertModelSnapshot<T>(p.RouteValues.JobId,p.RouteValues.SnapshotId,body,u => p.RequestParameters);
 					break;
 
 			}
 			throw InvalidDispatch("XpackMlRevertModelSnapshot", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlRevertModelSnapshotDispatchAsync<T>(IRequest<XpackMlRevertModelSnapshotRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlRevertModelSnapshotDispatchAsync<T>(IRequest<RevertModelSnapshotRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
 				case POST:
-					if (AllSet(p.RouteValues.JobId, p.RouteValues.SnapshotId)) return _lowLevel.XpackMlRevertModelSnapshotAsync<T>(p.RouteValues.JobId,p.RouteValues.SnapshotId,body,u => p.RequestParameters,cancellationToken);
+					if (AllSetNoFallback(p.RouteValues.JobId, p.RouteValues.SnapshotId)) return _lowLevel.XpackMlRevertModelSnapshotAsync<T>(p.RouteValues.JobId,p.RouteValues.SnapshotId,body,u => p.RequestParameters,cancellationToken);
 					break;
 
 			}

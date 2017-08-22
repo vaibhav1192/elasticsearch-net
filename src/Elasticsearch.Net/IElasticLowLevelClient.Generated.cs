@@ -9183,7 +9183,7 @@ namespace Elasticsearch.Net
 		///<param name="filter_id">The ID of the filter to create</param>
 		///<param name="body">The filter details</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		ElasticsearchResponse<T> XpackMlPutFilter<T>(string filter_id, PostData<object> body, Func<XpackMlPutFilterRequestParameters, XpackMlPutFilterRequestParameters> requestParameters = null) where T : class;
+		ElasticsearchResponse<T> XpackMlPutFilter<T>(string filter_id, PostData<object> body, Func<PutFilterRequestParameters, PutFilterRequestParameters> requestParameters = null) where T : class;
 		
 		///<summary>Represents a PUT on /_xpack/ml/filters/{filter_id}
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -9197,7 +9197,7 @@ namespace Elasticsearch.Net
 		///<param name="filter_id">The ID of the filter to create</param>
 		///<param name="body">The filter details</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		Task<ElasticsearchResponse<T>> XpackMlPutFilterAsync<T>(string filter_id, PostData<object> body, Func<XpackMlPutFilterRequestParameters, XpackMlPutFilterRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<ElasticsearchResponse<T>> XpackMlPutFilterAsync<T>(string filter_id, PostData<object> body, Func<PutFilterRequestParameters, PutFilterRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
 		///<summary>Represents a PUT on /_xpack/ml/anomaly_detectors/{job_id}
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
@@ -9240,7 +9240,7 @@ namespace Elasticsearch.Net
 		///<param name="snapshot_id">The ID of the snapshot to revert to</param>
 		///<param name="body">Reversion options</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		ElasticsearchResponse<T> XpackMlRevertModelSnapshot<T>(string job_id, string snapshot_id, PostData<object> body, Func<XpackMlRevertModelSnapshotRequestParameters, XpackMlRevertModelSnapshotRequestParameters> requestParameters = null) where T : class;
+		ElasticsearchResponse<T> XpackMlRevertModelSnapshot<T>(string job_id, string snapshot_id, PostData<object> body, Func<RevertModelSnapshotRequestParameters, RevertModelSnapshotRequestParameters> requestParameters = null) where T : class;
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -9255,7 +9255,7 @@ namespace Elasticsearch.Net
 		///<param name="snapshot_id">The ID of the snapshot to revert to</param>
 		///<param name="body">Reversion options</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		Task<ElasticsearchResponse<T>> XpackMlRevertModelSnapshotAsync<T>(string job_id, string snapshot_id, PostData<object> body, Func<XpackMlRevertModelSnapshotRequestParameters, XpackMlRevertModelSnapshotRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<ElasticsearchResponse<T>> XpackMlRevertModelSnapshotAsync<T>(string job_id, string snapshot_id, PostData<object> body, Func<RevertModelSnapshotRequestParameters, RevertModelSnapshotRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
 		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_start
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
