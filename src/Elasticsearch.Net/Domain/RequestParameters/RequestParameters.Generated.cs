@@ -7686,28 +7686,28 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html
 	///</pre>
 	///</summary>
-	public class XpackMlUpdateDatafeedRequestParameters : FluentRequestParameters<XpackMlUpdateDatafeedRequestParameters> 
+	public class UpdateDatafeedRequestParameters : FluentRequestParameters<UpdateDatafeedRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlUpdateDatafeedRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public UpdateDatafeedRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlUpdateDatafeedRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public UpdateDatafeedRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlUpdateDatafeedRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public UpdateDatafeedRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlUpdateDatafeedRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public UpdateDatafeedRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlUpdateDatafeedRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public UpdateDatafeedRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	
@@ -7716,28 +7716,28 @@ namespace Elasticsearch.Net
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html
 	///</pre>
 	///</summary>
-	public class XpackMlUpdateJobRequestParameters : FluentRequestParameters<XpackMlUpdateJobRequestParameters> 
+	public class UpdateJobRequestParameters : FluentRequestParameters<UpdateJobRequestParameters> 
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlUpdateJobRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
+		public UpdateJobRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
 		
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlUpdateJobRequestParameters Human(bool human) => this.AddQueryString("human", human);
+		public UpdateJobRequestParameters Human(bool human) => this.AddQueryString("human", human);
 		
 		
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlUpdateJobRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
+		public UpdateJobRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
 		
 		
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlUpdateJobRequestParameters Source(string source) => this.AddQueryString("source", source);
+		public UpdateJobRequestParameters Source(string source) => this.AddQueryString("source", source);
 		
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlUpdateJobRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
+		public UpdateJobRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

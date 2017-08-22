@@ -53,4 +53,38 @@ namespace Nest
 		/// <inheritdoc />
 		public ModelPlotConfigDescriptor<T> Terms(Fields fields) => Assign(a => a.Terms = fields);
 	}
+
+	/// <summary>
+	/// Stores model information along with the results.
+	/// It provides a more detailed view into anomaly detection.
+	/// </summary>
+	[JsonConverter(typeof(ReadAsTypeJsonConverter<ModelPlotConfigEnabled>))]
+	public interface IModelPlotConfigEnabled
+	{
+		/// <summary>
+		/// Enables calculation and storage of the model bounds for each entity that is being analyzed.
+		/// By default, this is not enabled.
+		/// </summary>
+		[JsonProperty("enabled")]
+		bool? Enabled { get; set; }
+	}
+
+	/// <inheritdoc />
+	public class ModelPlotConfigEnabled : IModelPlotConfigEnabled
+	{
+		/// <inheritdoc />
+		public bool? Enabled { get; set; }
+	}
+
+	/// <inheritdoc />
+	public class ModelPlotConfigEnabledDescriptor<T> : DescriptorBase<ModelPlotConfigEnabledDescriptor<T>, IModelPlotConfigEnabled>, IModelPlotConfigEnabled where T : class
+	{
+		bool? IModelPlotConfigEnabled.Enabled { get; set; }
+
+		/// <inheritdoc />
+		public ModelPlotConfigEnabledDescriptor<T> Enabled(bool enabled = true) => Assign(a => a.Enabled = enabled);
+
+		/// <inheritdoc />
+		public ModelPlotConfigEnabledDescriptor<T> Terms(Fields fields) => Assign(a => a.Terms = fields);
+	}
 }

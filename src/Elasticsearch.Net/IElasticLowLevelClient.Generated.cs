@@ -9323,7 +9323,7 @@ namespace Elasticsearch.Net
 		///<param name="datafeed_id">The ID of the datafeed to update</param>
 		///<param name="body">The datafeed update settings</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		ElasticsearchResponse<T> XpackMlUpdateDatafeed<T>(string datafeed_id, PostData<object> body, Func<XpackMlUpdateDatafeedRequestParameters, XpackMlUpdateDatafeedRequestParameters> requestParameters = null) where T : class;
+		ElasticsearchResponse<T> XpackMlUpdateDatafeed<T>(string datafeed_id, PostData<object> body, Func<UpdateDatafeedRequestParameters, UpdateDatafeedRequestParameters> requestParameters = null) where T : class;
 		
 		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_update
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -9337,7 +9337,7 @@ namespace Elasticsearch.Net
 		///<param name="datafeed_id">The ID of the datafeed to update</param>
 		///<param name="body">The datafeed update settings</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		Task<ElasticsearchResponse<T>> XpackMlUpdateDatafeedAsync<T>(string datafeed_id, PostData<object> body, Func<XpackMlUpdateDatafeedRequestParameters, XpackMlUpdateDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<ElasticsearchResponse<T>> XpackMlUpdateDatafeedAsync<T>(string datafeed_id, PostData<object> body, Func<UpdateDatafeedRequestParameters, UpdateDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_update
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
@@ -9351,7 +9351,7 @@ namespace Elasticsearch.Net
 		///<param name="job_id">The ID of the job to create</param>
 		///<param name="body">The job update settings</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		ElasticsearchResponse<T> XpackMlUpdateJob<T>(string job_id, PostData<object> body, Func<XpackMlUpdateJobRequestParameters, XpackMlUpdateJobRequestParameters> requestParameters = null) where T : class;
+		ElasticsearchResponse<T> XpackMlUpdateJob<T>(string job_id, PostData<object> body, Func<UpdateJobRequestParameters, UpdateJobRequestParameters> requestParameters = null) where T : class;
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_update
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -9365,7 +9365,7 @@ namespace Elasticsearch.Net
 		///<param name="job_id">The ID of the job to create</param>
 		///<param name="body">The job update settings</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		Task<ElasticsearchResponse<T>> XpackMlUpdateJobAsync<T>(string job_id, PostData<object> body, Func<XpackMlUpdateJobRequestParameters, XpackMlUpdateJobRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<ElasticsearchResponse<T>> XpackMlUpdateJobAsync<T>(string job_id, PostData<object> body, Func<UpdateJobRequestParameters, UpdateJobRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:

@@ -4184,7 +4184,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlStopDatafeed", p, new [] { POST }, "/_xpack/ml/datafeeds/{datafeed_id}/_stop");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlUpdateDatafeedDispatch<T>(IRequest<XpackMlUpdateDatafeedRequestParameters> p , PostData<object> body) where T : class
+		internal ElasticsearchResponse<T> XpackMlUpdateDatafeedDispatch<T>(IRequest<UpdateDatafeedRequestParameters> p , PostData<object> body) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -4196,7 +4196,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlUpdateDatafeed", p, new [] { POST }, "/_xpack/ml/datafeeds/{datafeed_id}/_update");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlUpdateDatafeedDispatchAsync<T>(IRequest<XpackMlUpdateDatafeedRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlUpdateDatafeedDispatchAsync<T>(IRequest<UpdateDatafeedRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -4208,7 +4208,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlUpdateDatafeed", p, new [] { POST }, "/_xpack/ml/datafeeds/{datafeed_id}/_update");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlUpdateJobDispatch<T>(IRequest<XpackMlUpdateJobRequestParameters> p , PostData<object> body) where T : class
+		internal ElasticsearchResponse<T> XpackMlUpdateJobDispatch<T>(IRequest<UpdateJobRequestParameters> p , PostData<object> body) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -4220,7 +4220,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlUpdateJob", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/{job_id}/_update");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlUpdateJobDispatchAsync<T>(IRequest<XpackMlUpdateJobRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlUpdateJobDispatchAsync<T>(IRequest<UpdateJobRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{

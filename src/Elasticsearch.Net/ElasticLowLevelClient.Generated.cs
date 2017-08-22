@@ -10015,7 +10015,7 @@ namespace Elasticsearch.Net
 		///<param name="datafeed_id">The ID of the datafeed to update</param>
 		///<param name="body">The datafeed update settings</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlUpdateDatafeed<T>(string datafeed_id, PostData<object> body, Func<XpackMlUpdateDatafeedRequestParameters, XpackMlUpdateDatafeedRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlUpdateDatafeed<T>(string datafeed_id, PostData<object> body, Func<UpdateDatafeedRequestParameters, UpdateDatafeedRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(POST, Url($"_xpack/ml/datafeeds/{datafeed_id.NotNull("datafeed_id")}/_update"), body, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/datafeeds/{datafeed_id}/_update
@@ -10030,7 +10030,7 @@ namespace Elasticsearch.Net
 		///<param name="datafeed_id">The ID of the datafeed to update</param>
 		///<param name="body">The datafeed update settings</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlUpdateDatafeedAsync<T>(string datafeed_id, PostData<object> body, Func<XpackMlUpdateDatafeedRequestParameters, XpackMlUpdateDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlUpdateDatafeedAsync<T>(string datafeed_id, PostData<object> body, Func<UpdateDatafeedRequestParameters, UpdateDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(POST, Url($"_xpack/ml/datafeeds/{datafeed_id.NotNull("datafeed_id")}/_update"), cancellationToken, body, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_update
@@ -10045,7 +10045,7 @@ namespace Elasticsearch.Net
 		///<param name="job_id">The ID of the job to create</param>
 		///<param name="body">The job update settings</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlUpdateJob<T>(string job_id, PostData<object> body, Func<XpackMlUpdateJobRequestParameters, XpackMlUpdateJobRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlUpdateJob<T>(string job_id, PostData<object> body, Func<UpdateJobRequestParameters, UpdateJobRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(POST, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}/_update"), body, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/_update
@@ -10060,7 +10060,7 @@ namespace Elasticsearch.Net
 		///<param name="job_id">The ID of the job to create</param>
 		///<param name="body">The job update settings</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlUpdateJobAsync<T>(string job_id, PostData<object> body, Func<XpackMlUpdateJobRequestParameters, XpackMlUpdateJobRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlUpdateJobAsync<T>(string job_id, PostData<object> body, Func<UpdateJobRequestParameters, UpdateJobRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(POST, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}/_update"), cancellationToken, body, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update

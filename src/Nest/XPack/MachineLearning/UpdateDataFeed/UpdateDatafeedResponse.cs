@@ -3,9 +3,9 @@
 namespace Nest
 {
 	/// <summary>
-	/// The response from creating a datafeed
+	/// The response from updating a datafeed
 	/// </summary>
-	public partial interface IPutDatafeedResponse : IResponse
+	public partial interface IUpdateDatafeedResponse : IResponse
 	{
 		/// <summary>
 		/// The datafeed id
@@ -59,7 +59,7 @@ namespace Nest
 
 		/// <summary>
 		/// Specifies scripts that evaluate custom expressions and returns script fields to the datafeed. T
-		/// The detector configuration in a job can contain functions that use these script fields.
+		/// the detector configuration in a job can contain functions that use these script fields.
 		/// </summary>
 		[JsonProperty("script_fields")]
 		IScriptFields ScriptFields { get; }
@@ -75,7 +75,7 @@ namespace Nest
 		Types Types { get;  }
 	}
 
-	public class PutDatafeedResponse : ResponseBase, IPutDatafeedResponse
+	public class UpdateDatafeedResponse : ResponseBase, IUpdateDatafeedResponse
 	{
 		public string DatafeedId { get; internal set; }
 		public AggregationDictionary Aggregations { get; internal set; }

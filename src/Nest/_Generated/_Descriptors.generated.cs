@@ -7450,62 +7450,56 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlUpdateDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html</pre></summary>
-	public partial class XpackMlUpdateDatafeedDescriptor  : RequestDescriptorBase<XpackMlUpdateDatafeedDescriptor,XpackMlUpdateDatafeedRequestParameters, IXpackMlUpdateDatafeedRequest>, IXpackMlUpdateDatafeedRequest
+	public partial class UpdateDatafeedDescriptor<T>  : RequestDescriptorBase<UpdateDatafeedDescriptor<T>,UpdateDatafeedRequestParameters, IUpdateDatafeedRequest>, IUpdateDatafeedRequest
 	{ 
-		Id IXpackMlUpdateDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+		Id IUpdateDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
 			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_update</summary>
 ///<param name="datafeed_id"> this parameter is required</param>
-		public XpackMlUpdateDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		public UpdateDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
 		
 
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlUpdateDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public UpdateDatafeedDescriptor<T> Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlUpdateDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public UpdateDatafeedDescriptor<T> Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlUpdateDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public UpdateDatafeedDescriptor<T> ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlUpdateDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public UpdateDatafeedDescriptor<T> Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlUpdateDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public UpdateDatafeedDescriptor<T> FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
 	///<summary>descriptor for XpackMlUpdateJob <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html</pre></summary>
-	public partial class XpackMlUpdateJobDescriptor  : RequestDescriptorBase<XpackMlUpdateJobDescriptor,XpackMlUpdateJobRequestParameters, IXpackMlUpdateJobRequest>, IXpackMlUpdateJobRequest
+	public partial class UpdateJobDescriptor<T>  : RequestDescriptorBase<UpdateJobDescriptor<T>,UpdateJobRequestParameters, IUpdateJobRequest>, IUpdateJobRequest
 	{ 
-		Id IXpackMlUpdateJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
+		Id IUpdateJobRequest.JobId => Self.RouteValues.Get<Id>("job_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/_update</summary>
 ///<param name="job_id"> this parameter is required</param>
-		public XpackMlUpdateJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
+		public UpdateJobDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlUpdateJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public UpdateJobDescriptor<T> Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlUpdateJobDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public UpdateJobDescriptor<T> Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlUpdateJobDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public UpdateJobDescriptor<T> ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlUpdateJobDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public UpdateJobDescriptor<T> Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlUpdateJobDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public UpdateJobDescriptor<T> FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

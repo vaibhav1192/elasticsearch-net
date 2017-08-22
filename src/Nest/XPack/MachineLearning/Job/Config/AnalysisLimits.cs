@@ -52,4 +52,36 @@ namespace Nest
 		public AnalysisLimitsDescriptor ModelMemoryLimit(long modelMemoryLimit) =>
 			Assign(a => a.ModelMemoryLimit = modelMemoryLimit);
 	}
+
+	/// <summary>
+	/// Limits applied for the resources required to hold the mathematical models in memory.
+	/// </summary>
+	[JsonConverter(typeof(ReadAsTypeJsonConverter<AnalysisMemoryLimit>))]
+	public interface IAnalysisMemoryLimit
+	{
+		/// <summary>
+		///  The approximate maximum amount of memory resources that are required for analytical processing,
+		/// in MiB. Once this limit is approached, data pruning becomes more aggressive.
+		/// Upon exceeding this limit, new entities are not modeled. The default value is 4096.
+		/// </summary>
+		[JsonProperty("model_memory_limit")]
+		long? ModelMemoryLimit { get; set; }
+	}
+
+	/// <inheritdoc />
+	public class AnalysisMemoryLimit : IAnalysisMemoryLimit
+	{
+		/// <inheritdoc />
+		public long? ModelMemoryLimit { get; set; }
+	}
+
+	/// <inheritdoc />
+	public class AnalysisMemoryLimitDescriptor : DescriptorBase<AnalysisMemoryLimitDescriptor, IAnalysisMemoryLimit>, IAnalysisMemoryLimit
+	{
+		long? IAnalysisMemoryLimit.ModelMemoryLimit { get; set; }
+
+		/// <inheritdoc />
+		public AnalysisMemoryLimitDescriptor ModelMemoryLimit(long modelMemoryLimit) =>
+			Assign(a => a.ModelMemoryLimit = modelMemoryLimit);
+	}
 }
