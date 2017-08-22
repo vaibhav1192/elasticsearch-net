@@ -6546,6 +6546,38 @@ namespace Nest
 		}
 	
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+	public partial interface IPreviewDatafeedRequest : IRequest<PreviewDatafeedRequestParameters> 
+	{
+		Id DatafeedId { get; }
+	 } 
+	///<summary>Request parameters for XpackMlPreviewDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html</pre></summary>
+	public partial class PreviewDatafeedRequest  : PlainRequestBase<PreviewDatafeedRequestParameters>, IPreviewDatafeedRequest
+	{
+		protected IPreviewDatafeedRequest Self => this;
+		Id IPreviewDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_preview</summary>
+///<param name="datafeed_id">this parameter is required</param>
+		public PreviewDatafeedRequest(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		
+
+			///<summary>Pretty format the returned JSON response.</summary>
+		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
+		
+		///<summary>Return human readable values for statistics.</summary>
+		public bool Human { get { return Q<bool>("human"); } set { Q("human", value); } }
+		
+		///<summary>Include the stack trace of returned errors.</summary>
+		public bool ErrorTrace { get { return Q<bool>("error_trace"); } set { Q("error_trace", value); } }
+		
+		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
+		public string Source { get { return Q<string>("source"); } set { Q("source", value); } }
+		
+		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
+		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
+		
+		}
+	
+	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public partial interface IPutAliasRequest : IRequest<PutAliasRequestParameters> 
 	{
 		Indices Index { get; }
@@ -9774,40 +9806,6 @@ namespace Nest
 		public string ResetEnd { get { return Q<string>("reset_end"); } set { Q("reset_end", value); } }
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
-		
-		///<summary>Return human readable values for statistics.</summary>
-		public bool Human { get { return Q<bool>("human"); } set { Q("human", value); } }
-		
-		///<summary>Include the stack trace of returned errors.</summary>
-		public bool ErrorTrace { get { return Q<bool>("error_trace"); } set { Q("error_trace", value); } }
-		
-		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public string Source { get { return Q<string>("source"); } set { Q("source", value); } }
-		
-		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public  string[] FilterPath { get { return Q< string[]>("filter_path"); } set { Q("filter_path", value); } }
-		
-		//TODO THIS METHOD IS UNMAPPED!
-	
-	}
-	
-	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-	public partial interface IXpackMlPreviewDatafeedRequest : IRequest<XpackMlPreviewDatafeedRequestParameters> 
-	{
-		Id DatafeedId { get; }
-	 } 
-	///<summary>Request parameters for XpackMlPreviewDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html</pre></summary>
-	public partial class XpackMlPreviewDatafeedRequest  : PlainRequestBase<XpackMlPreviewDatafeedRequestParameters>, IXpackMlPreviewDatafeedRequest
-	{
-		protected IXpackMlPreviewDatafeedRequest Self => this;
-		Id IXpackMlPreviewDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
-			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_preview</summary>
-///<param name="datafeed_id">this parameter is required</param>
-		public XpackMlPreviewDatafeedRequest(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
-		
-
-			///<summary>Pretty format the returned JSON response.</summary>
 		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
 		
 		///<summary>Return human readable values for statistics.</summary>

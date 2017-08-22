@@ -9128,7 +9128,7 @@ namespace Elasticsearch.Net
 		///</summary>
 		///<param name="datafeed_id">The ID of the datafeed to preview</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		ElasticsearchResponse<T> XpackMlPreviewDatafeed<T>(string datafeed_id, Func<XpackMlPreviewDatafeedRequestParameters, XpackMlPreviewDatafeedRequestParameters> requestParameters = null) where T : class;
+		ElasticsearchResponse<T> XpackMlPreviewDatafeed<T>(string datafeed_id, Func<PreviewDatafeedRequestParameters, PreviewDatafeedRequestParameters> requestParameters = null) where T : class;
 		
 		///<summary>Represents a GET on /_xpack/ml/datafeeds/{datafeed_id}/_preview
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -9141,7 +9141,7 @@ namespace Elasticsearch.Net
 		///</summary>
 		///<param name="datafeed_id">The ID of the datafeed to preview</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		Task<ElasticsearchResponse<T>> XpackMlPreviewDatafeedAsync<T>(string datafeed_id, Func<XpackMlPreviewDatafeedRequestParameters, XpackMlPreviewDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<ElasticsearchResponse<T>> XpackMlPreviewDatafeedAsync<T>(string datafeed_id, Func<PreviewDatafeedRequestParameters, PreviewDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 		
 		///<summary>Represents a PUT on /_xpack/ml/datafeeds/{datafeed_id}
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:

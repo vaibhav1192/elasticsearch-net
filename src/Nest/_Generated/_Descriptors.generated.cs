@@ -7299,32 +7299,29 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlPreviewDatafeed <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html</pre></summary>
-	public partial class XpackMlPreviewDatafeedDescriptor  : RequestDescriptorBase<XpackMlPreviewDatafeedDescriptor,XpackMlPreviewDatafeedRequestParameters, IXpackMlPreviewDatafeedRequest>, IXpackMlPreviewDatafeedRequest
+	public partial class PreviewDatafeedDescriptor  : RequestDescriptorBase<PreviewDatafeedDescriptor,PreviewDatafeedRequestParameters, IPreviewDatafeedRequest>, IPreviewDatafeedRequest
 	{ 
-		Id IXpackMlPreviewDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
+		Id IPreviewDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
 			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_preview</summary>
 ///<param name="datafeed_id"> this parameter is required</param>
-		public XpackMlPreviewDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		public PreviewDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
 		
 
 		
 		///<summary>Pretty format the returned JSON response.</summary>
-		public XpackMlPreviewDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public PreviewDatafeedDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public XpackMlPreviewDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public PreviewDatafeedDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public XpackMlPreviewDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public PreviewDatafeedDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public XpackMlPreviewDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
+		public PreviewDatafeedDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public XpackMlPreviewDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-
-		//TODO THIS METHOD IS UNMAPPED!
-		
+		public PreviewDatafeedDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

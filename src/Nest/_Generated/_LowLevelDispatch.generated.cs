@@ -4016,7 +4016,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlPostData", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/{job_id}/_data");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlPreviewDatafeedDispatch<T>(IRequest<XpackMlPreviewDatafeedRequestParameters> p ) where T : class
+		internal ElasticsearchResponse<T> XpackMlPreviewDatafeedDispatch<T>(IRequest<PreviewDatafeedRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -4028,7 +4028,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlPreviewDatafeed", p, new [] { GET }, "/_xpack/ml/datafeeds/{datafeed_id}/_preview");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlPreviewDatafeedDispatchAsync<T>(IRequest<XpackMlPreviewDatafeedRequestParameters> p , CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlPreviewDatafeedDispatchAsync<T>(IRequest<PreviewDatafeedRequestParameters> p , CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{

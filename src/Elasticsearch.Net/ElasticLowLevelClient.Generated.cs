@@ -9806,7 +9806,7 @@ namespace Elasticsearch.Net
 	    ///</summary>
 		///<param name="datafeed_id">The ID of the datafeed to preview</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlPreviewDatafeed<T>(string datafeed_id, Func<XpackMlPreviewDatafeedRequestParameters, XpackMlPreviewDatafeedRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlPreviewDatafeed<T>(string datafeed_id, Func<PreviewDatafeedRequestParameters, PreviewDatafeedRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(GET, Url($"_xpack/ml/datafeeds/{datafeed_id.NotNull("datafeed_id")}/_preview"), null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_xpack/ml/datafeeds/{datafeed_id}/_preview
@@ -9820,7 +9820,7 @@ namespace Elasticsearch.Net
 	    ///</summary>
 		///<param name="datafeed_id">The ID of the datafeed to preview</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlPreviewDatafeedAsync<T>(string datafeed_id, Func<XpackMlPreviewDatafeedRequestParameters, XpackMlPreviewDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlPreviewDatafeedAsync<T>(string datafeed_id, Func<PreviewDatafeedRequestParameters, PreviewDatafeedRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(GET, Url($"_xpack/ml/datafeeds/{datafeed_id.NotNull("datafeed_id")}/_preview"), cancellationToken, null, _params(requestParameters));
 		
 		///<summary>Represents a PUT on /_xpack/ml/datafeeds/{datafeed_id}
