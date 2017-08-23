@@ -32,7 +32,7 @@ namespace Nest
 		public IFlushJobResponse FlushJob(IFlushJobRequest request) =>
 			this.Dispatcher.Dispatch<IFlushJobRequest, FlushJobRequestParameters, FlushJobResponse>(
 				request,
-				(p, d) => this.LowLevelDispatch.XpackMlFlushJobDispatch<FlushJobResponse>(p)
+				this.LowLevelDispatch.XpackMlFlushJobDispatch<FlushJobResponse>
 			);
 
 		/// <inheritdoc/>
@@ -44,7 +44,7 @@ namespace Nest
 			this.Dispatcher.DispatchAsync<IFlushJobRequest, FlushJobRequestParameters, FlushJobResponse, IFlushJobResponse>(
 				request,
 				cancellationToken,
-				(p, d, c) => this.LowLevelDispatch.XpackMlFlushJobDispatchAsync<FlushJobResponse>(p, c)
+				this.LowLevelDispatch.XpackMlFlushJobDispatchAsync<FlushJobResponse>
 			);
 	}
 }

@@ -18,6 +18,7 @@ namespace Nest
 	/// <inheritdoc />
 	public partial class GetCategoriesRequest
 	{
+		/// <inheritdoc />
 		public IPage Page { get; set; }
 	}
 

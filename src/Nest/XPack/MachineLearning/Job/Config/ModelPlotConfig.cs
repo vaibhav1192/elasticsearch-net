@@ -83,8 +83,5 @@ namespace Nest
 
 		/// <inheritdoc />
 		public ModelPlotConfigEnabledDescriptor<T> Enabled(bool enabled = true) => Assign(a => a.Enabled = enabled);
-
-		/// <inheritdoc />
-		public ModelPlotConfigEnabledDescriptor<T> Terms(Fields fields) => Assign(a => a.Terms = fields);
 	}
 }

@@ -69,14 +69,14 @@ namespace Nest
 	/// <inheritdoc />
 	public partial class UpdateJobRequest
 	{
-		IAnalysisMemoryLimit AnalysisLimits { get; set; }
-		Time BackgroundPersistInterval { get; set; }
-		Dictionary<string, object> CustomSettings { get; set; }
-		string Description { get; set; }
-		IModelPlotConfigEnabled ModelPlotConfig { get; set; }
-		long? ModelSnapshotRetentionDays { get; set; }
-		long? RenormalizationWindowDays { get; set; }
-		long? ResultsRetentionDays { get; set; }
+		public IAnalysisMemoryLimit AnalysisLimits { get; set; }
+		public Time BackgroundPersistInterval { get; set; }
+		public Dictionary<string, object> CustomSettings { get; set; }
+		public string Description { get; set; }
+		public IModelPlotConfigEnabled ModelPlotConfig { get; set; }
+		public long? ModelSnapshotRetentionDays { get; set; }
+		public long? RenormalizationWindowDays { get; set; }
+		public long? ResultsRetentionDays { get; set; }
 	}
 
 	/// <inheritdoc />

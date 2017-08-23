@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using Elasticsearch.Net;
 using Newtonsoft.Json;
 
 namespace Nest
@@ -20,7 +17,7 @@ namespace Nest
 	public partial class PostJobDataRequest
 	{
 		/// <inheritdoc />
-		IEnumerable<object> Data { get; set; }
+		public IEnumerable<object> Data { get; set; }
 	}
 
 	/// <inheritdoc />

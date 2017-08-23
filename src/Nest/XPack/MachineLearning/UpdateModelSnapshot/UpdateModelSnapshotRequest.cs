@@ -25,10 +25,10 @@ namespace Nest
 	public partial class UpdateModelSnapshotRequest
 	{
 		/// <inheritdoc />
-		string Description { get; set; }
+		public string Description { get; set; }
 
 		/// <inheritdoc />
-		bool Retain { get; set; }
+		public bool Retain { get; set; }
 	}
 
 	/// <inheritdoc />

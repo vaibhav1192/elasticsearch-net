@@ -15,6 +15,7 @@ namespace Nest
 	/// <inheritdoc />
 	public partial class ValidateDetectorRequest
 	{
+		/// <inheritdoc />
 		public IDetector Detector { get; set; }
 	}
 
