@@ -28,6 +28,7 @@ namespace Nest
 		/// Contains custom meta data about the job.
 		/// </summary>
 		[JsonProperty("custom_settings")]
+		[JsonConverter(typeof(VerbatimDictionaryKeysJsonConverter<string, object>))]
 		Dictionary<string, object> CustomSettings { get; set; }
 
 		/// <summary>
@@ -100,8 +101,8 @@ namespace Nest
 			Assign(a => a.BackgroundPersistInterval = backgroundPersistInterval);
 
 		/// <inheritdoc />
-		public UpdateJobDescriptor<T> CustomSettings(Dictionary<string, object> customSettings) =>
-			Assign(a => a.CustomSettings = customSettings);
+		public UpdateJobDescriptor<T> CustomSettings(Func<FluentDictionary<string, object>, FluentDictionary<string, object>> customSettingsDictionary) =>
+			Assign(a => a.CustomSettings = customSettingsDictionary(new FluentDictionary<string, object>()));
 
 		/// <inheritdoc />
 		public UpdateJobDescriptor<T> Description(string description) =>
@@ -112,15 +113,15 @@ namespace Nest
 			Assign(a => a.ModelPlotConfig = selector?.Invoke(new ModelPlotConfigEnabledDescriptor<T>()));
 
 		/// <inheritdoc />
-		public UpdateJobDescriptor<T> ModelSnapshotRetentionDays(long? modelSnapshotRetentionDays) =>
+		public UpdateJobDescriptor<T> ModelSnapshotRetentionDays(long modelSnapshotRetentionDays) =>
 			Assign(a => a.ModelSnapshotRetentionDays = modelSnapshotRetentionDays);
 
 		/// <inheritdoc />
-		public UpdateJobDescriptor<T> RenormalizationWindowDays(long? renormalizationWindowDays) =>
+		public UpdateJobDescriptor<T> RenormalizationWindowDays(long renormalizationWindowDays) =>
 			Assign(a => a.RenormalizationWindowDays = renormalizationWindowDays);
 
 		/// <inheritdoc />
-		public UpdateJobDescriptor<T> ResultsRetentionDays(long? resultsRetentionDays) =>
+		public UpdateJobDescriptor<T> ResultsRetentionDays(long resultsRetentionDays) =>
 			Assign(a => a.ResultsRetentionDays = resultsRetentionDays);
 	}
 }

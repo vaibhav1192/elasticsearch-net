@@ -7215,7 +7215,7 @@ namespace Nest
 	}
 	
 	///<summary>descriptor for XpackMlPostData <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-data.html</pre></summary>
-	public partial class PostJobDataDescriptor<T>  : RequestDescriptorBase<PostJobDataDescriptor<T>,PostJobDataRequestParameters, IPostJobDataRequest>, IPostJobDataRequest
+	public partial class PostJobDataDescriptor  : RequestDescriptorBase<PostJobDataDescriptor,PostJobDataRequestParameters, IPostJobDataRequest>, IPostJobDataRequest
 	{ 
 		Id IPostJobDataRequest.JobId => Self.RouteValues.Get<Id>("job_id");
 			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/_data</summary>
@@ -7225,25 +7225,25 @@ namespace Nest
 
 		
 		///<summary>Optional parameter to specify the start of the bucket resetting range</summary>
-		public PostJobDataDescriptor<T> ResetStart(string reset_start) => AssignParam(p=>p.ResetStart(reset_start));
+		public PostJobDataDescriptor ResetStart(string reset_start) => AssignParam(p=>p.ResetStart(reset_start));
 
 		///<summary>Optional parameter to specify the end of the bucket resetting range</summary>
-		public PostJobDataDescriptor<T> ResetEnd(string reset_end) => AssignParam(p=>p.ResetEnd(reset_end));
+		public PostJobDataDescriptor ResetEnd(string reset_end) => AssignParam(p=>p.ResetEnd(reset_end));
 
 		///<summary>Pretty format the returned JSON response.</summary>
-		public PostJobDataDescriptor<T> Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
+		public PostJobDataDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
 		///<summary>Return human readable values for statistics.</summary>
-		public PostJobDataDescriptor<T> Human(bool human = true) => AssignParam(p=>p.Human(human));
+		public PostJobDataDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
 
 		///<summary>Include the stack trace of returned errors.</summary>
-		public PostJobDataDescriptor<T> ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
+		public PostJobDataDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
 
 		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public PostJobDataDescriptor<T> Source(string source) => AssignParam(p=>p.Source(source));
+		public PostJobDataDescriptor Source(string source) => AssignParam(p=>p.Source(source));
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public PostJobDataDescriptor<T> FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
+		public PostJobDataDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	

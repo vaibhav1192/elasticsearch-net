@@ -1,10 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Runtime.Serialization;
-using Elasticsearch.Net;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace Nest
 {

@@ -37,6 +37,7 @@ namespace Nest
 		public string DatafeedId => GetResolved("datafeed_id");
 		public string FilterId => GetResolved("filter_id");
 		public string SnapshotId => GetResolved("snapshot_id");
+		public string CategoryId => GetResolved("category_id");
 		public string Timestamp => GetResolved("timestamp");
 		public WatcherStatsMetric? WatcherStatsMetric => GetResolved("watcher_stats_metric").ToEnum<WatcherStatsMetric>();
 
