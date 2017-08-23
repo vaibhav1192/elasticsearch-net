@@ -10,13 +10,13 @@ namespace Nest
 		/// <summary>
 		/// Reverts a specific snapshot for a Machine Learning job
 		/// </summary>
-		IRevertModelSnapshotResponse RevertModelSnapshot(Id jobId, Id snapshotId, Func<RevertModelSnapshotDescriptor, IRevertModelSnapshotRequest> selector = null) where T : class;
+		IRevertModelSnapshotResponse RevertModelSnapshot(Id jobId, Id snapshotId, Func<RevertModelSnapshotDescriptor, IRevertModelSnapshotRequest> selector = null);
 
 		/// <inheritdoc/>
 		IRevertModelSnapshotResponse RevertModelSnapshot(IRevertModelSnapshotRequest request);
 
 		/// <inheritdoc/>
-		Task<IRevertModelSnapshotResponse> RevertModelSnapshotAsync(Id jobId, Id snapshotId, Func<RevertModelSnapshotDescriptor, IRevertModelSnapshotRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<IRevertModelSnapshotResponse> RevertModelSnapshotAsync(Id jobId, Id snapshotId, Func<RevertModelSnapshotDescriptor, IRevertModelSnapshotRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <inheritdoc/>
 		Task<IRevertModelSnapshotResponse> RevertModelSnapshotAsync(IRevertModelSnapshotRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -25,7 +25,7 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IRevertModelSnapshotResponse RevertModelSnapshot(Id jobId, Id snapshotId, Func<RevertModelSnapshotDescriptor, IRevertModelSnapshotRequest> selector) where T : class =>
+		public IRevertModelSnapshotResponse RevertModelSnapshot(Id jobId, Id snapshotId, Func<RevertModelSnapshotDescriptor, IRevertModelSnapshotRequest> selector) =>
 			this.RevertModelSnapshot(selector.InvokeOrDefault(new RevertModelSnapshotDescriptor(jobId, snapshotId)));
 
 		/// <inheritdoc/>
@@ -36,7 +36,7 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IRevertModelSnapshotResponse> RevertModelSnapshotAsync(Id jobId, Id snapshotId, Func<RevertModelSnapshotDescriptor, IRevertModelSnapshotRequest> selector, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
+		public Task<IRevertModelSnapshotResponse> RevertModelSnapshotAsync(Id jobId, Id snapshotId, Func<RevertModelSnapshotDescriptor, IRevertModelSnapshotRequest> selector, CancellationToken cancellationToken = default(CancellationToken)) =>
 			this.RevertModelSnapshotAsync(selector.InvokeOrDefault(new RevertModelSnapshotDescriptor(jobId, snapshotId)), cancellationToken);
 
 		/// <inheritdoc/>
