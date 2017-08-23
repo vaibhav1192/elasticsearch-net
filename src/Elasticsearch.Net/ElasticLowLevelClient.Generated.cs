@@ -10076,7 +10076,7 @@ namespace Elasticsearch.Net
 		///<param name="snapshot_id">The ID of the snapshot to update</param>
 		///<param name="body">The model snapshot properties to update</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public ElasticsearchResponse<T> XpackMlUpdateModelSnapshot<T>(string job_id, string snapshot_id, PostData<object> body, Func<XpackMlUpdateModelSnapshotRequestParameters, XpackMlUpdateModelSnapshotRequestParameters> requestParameters = null)
+		public ElasticsearchResponse<T> XpackMlUpdateModelSnapshot<T>(string job_id, string snapshot_id, PostData<object> body, Func<UpdateModelSnapshotRequestParameters, UpdateModelSnapshotRequestParameters> requestParameters = null)
 			where T : class => this.DoRequest<T>(POST, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}/model_snapshots/{snapshot_id.NotNull("snapshot_id")}/_update"), body, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update
@@ -10092,7 +10092,7 @@ namespace Elasticsearch.Net
 		///<param name="snapshot_id">The ID of the snapshot to update</param>
 		///<param name="body">The model snapshot properties to update</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
-		public Task<ElasticsearchResponse<T>> XpackMlUpdateModelSnapshotAsync<T>(string job_id, string snapshot_id, PostData<object> body, Func<XpackMlUpdateModelSnapshotRequestParameters, XpackMlUpdateModelSnapshotRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<ElasticsearchResponse<T>> XpackMlUpdateModelSnapshotAsync<T>(string job_id, string snapshot_id, PostData<object> body, Func<UpdateModelSnapshotRequestParameters, UpdateModelSnapshotRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
 			where T : class => this.DoRequestAsync<T>(POST, Url($"_xpack/ml/anomaly_detectors/{job_id.NotNull("job_id")}/model_snapshots/{snapshot_id.NotNull("snapshot_id")}/_update"), cancellationToken, body, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_xpack/ml/anomaly_detectors/_validate

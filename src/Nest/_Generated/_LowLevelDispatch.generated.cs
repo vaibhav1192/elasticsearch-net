@@ -4232,7 +4232,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlUpdateJob", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/{job_id}/_update");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlUpdateModelSnapshotDispatch<T>(IRequest<XpackMlUpdateModelSnapshotRequestParameters> p , PostData<object> body) where T : class
+		internal ElasticsearchResponse<T> XpackMlUpdateModelSnapshotDispatch<T>(IRequest<UpdateModelSnapshotRequestParameters> p , PostData<object> body) where T : class
 		{
 			switch(p.HttpMethod)
 			{
@@ -4244,7 +4244,7 @@ namespace Nest
 			throw InvalidDispatch("XpackMlUpdateModelSnapshot", p, new [] { POST }, "/_xpack/ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update");
 		}
 		
-		internal Task<ElasticsearchResponse<T>> XpackMlUpdateModelSnapshotDispatchAsync<T>(IRequest<XpackMlUpdateModelSnapshotRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
+		internal Task<ElasticsearchResponse<T>> XpackMlUpdateModelSnapshotDispatchAsync<T>(IRequest<UpdateModelSnapshotRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
 		{
 			switch(p.HttpMethod)
 			{
