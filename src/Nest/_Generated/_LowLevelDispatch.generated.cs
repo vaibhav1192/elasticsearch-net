@@ -3717,12 +3717,12 @@ namespace Nest
 			switch(p.HttpMethod)
 			{
 				case GET:
-					if (AllSet(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategories<T>(p.RouteValues.JobId,p.RouteValues.CategoryId,u => p.RequestParameters);
+					if (AllSet(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategories<T>(p.RouteValues.JobId,long.Parse(p.RouteValues.CategoryId),u => p.RequestParameters);
 					if (AllSetNoFallback(p.RouteValues.JobId)) return _lowLevel.XpackMlGetCategories<T>(p.RouteValues.JobId,u => p.RequestParameters);
 					break;
 
 				case POST:
-					if (AllSet(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategories<T>(p.RouteValues.JobId,p.RouteValues.CategoryId,body,u => p.RequestParameters);
+					if (AllSet(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategories<T>(p.RouteValues.JobId,long.Parse(p.RouteValues.CategoryId),body,u => p.RequestParameters);
 					if (AllSetNoFallback(p.RouteValues.JobId)) return _lowLevel.XpackMlGetCategories<T>(p.RouteValues.JobId,body,u => p.RequestParameters);
 					break;
 
@@ -3735,12 +3735,12 @@ namespace Nest
 			switch(p.HttpMethod)
 			{
 				case GET:
-					if (AllSet(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategoriesAsync<T>(p.RouteValues.JobId,p.RouteValues.CategoryId,u => p.RequestParameters,cancellationToken);
+					if (AllSet(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategoriesAsync<T>(p.RouteValues.JobId,long.Parse(p.RouteValues.CategoryId),u => p.RequestParameters,cancellationToken);
 					if (AllSetNoFallback(p.RouteValues.JobId)) return _lowLevel.XpackMlGetCategoriesAsync<T>(p.RouteValues.JobId,u => p.RequestParameters,cancellationToken);
 					break;
 
 				case POST:
-					if (AllSet(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategoriesAsync<T>(p.RouteValues.JobId,p.RouteValues.CategoryId,body,u => p.RequestParameters,cancellationToken);
+					if (AllSet(p.RouteValues.JobId, p.RouteValues.CategoryId)) return _lowLevel.XpackMlGetCategoriesAsync<T>(p.RouteValues.JobId,long.Parse(p.RouteValues.CategoryId),body,u => p.RequestParameters,cancellationToken);
 					if (AllSetNoFallback(p.RouteValues.JobId)) return _lowLevel.XpackMlGetCategoriesAsync<T>(p.RouteValues.JobId,body,u => p.RequestParameters,cancellationToken);
 					break;
 
