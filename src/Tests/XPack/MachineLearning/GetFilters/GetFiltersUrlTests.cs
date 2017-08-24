@@ -10,7 +10,7 @@ namespace Tests.XPack.MachineLearning.GetFilters
 	{
 		[U] public async Task Urls()
 		{
-			await GET("/_xpack/ml/filters")
+			await GET("/_xpack/ml/filters/")
 				.Fluent(c => c.GetFilters())
 				.Request(c => c.GetFilters(new GetFiltersRequest()))
 				.FluentAsync(c => c.GetFiltersAsync())

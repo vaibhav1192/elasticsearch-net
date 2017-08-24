@@ -3,8 +3,6 @@ using Newtonsoft.Json;
 
 namespace Nest
 {
-	/// <summary>
-	/// </summary>
 	[JsonConverter(typeof(ValidateDetectorRequestConverter))]
 	public partial interface IValidateDetectorRequest
 	{

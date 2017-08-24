@@ -79,7 +79,10 @@ namespace Nest
 
 	/// <inheritdoc />
 	[DescriptorFor("XpackMlGetInfluencers")]
-	public partial class GetInfluencersDescriptor {
+	public partial class GetInfluencersDescriptor
+	{
+		public GetInfluencersDescriptor() : base(){ }
+
 		bool? IGetInfluencersRequest.Desc { get; set; }
 		DateTimeOffset? IGetInfluencersRequest.End { get; set; }
 		bool? IGetInfluencersRequest.ExcludeInterim { get; set; }
@@ -101,8 +104,7 @@ namespace Nest
 		public GetInfluencersDescriptor ExcludeInterim(bool excludeInterim = true) => Assign(a => a.ExcludeInterim = excludeInterim);
 
 		/// <inheritdoc />
-		public GetInfluencersDescriptor Page(Func<PageDescriptor, IPage> selector) =>
-			Assign(a => a.Page = selector?.Invoke(new PageDescriptor()));
+		public GetInfluencersDescriptor Page(Func<PageDescriptor, IPage> selector) => Assign(a => a.Page = selector?.Invoke(new PageDescriptor()));
 
 		/// <inheritdoc />
 		public GetInfluencersDescriptor Sort(Field field) => Assign(a => a.Sort = field);

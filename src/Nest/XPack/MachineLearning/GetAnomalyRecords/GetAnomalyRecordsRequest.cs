@@ -82,6 +82,8 @@ namespace Nest
 	[DescriptorFor("XpackMlGetRecords")]
 	public partial class GetAnomalyRecordsDescriptor
 	{
+		public GetAnomalyRecordsDescriptor() : base() { }
+
 		bool? IGetAnomalyRecordsRequest.Desc { get; set; }
 		DateTimeOffset? IGetAnomalyRecordsRequest.End { get; set; }
 		IPage IGetAnomalyRecordsRequest.Page { get; set; }

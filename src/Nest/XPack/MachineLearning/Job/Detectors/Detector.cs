@@ -143,7 +143,6 @@ namespace Nest
 
 	public interface IPartitionFieldNameDetector : IDetector
 	{
-
 		[JsonProperty("partition_field_name")]
 		Field PartitionFieldName { get; set; }
 	}

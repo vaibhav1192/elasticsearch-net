@@ -10,7 +10,7 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 	{
 		[U] public async Task Urls()
 		{
-			await GET("/_xpack/ml/datafeeds/")
+			await GET("/_xpack/ml/datafeeds")
 				.Fluent(c => c.GetDatafeeds())
 				.Request(c => c.GetDatafeeds(new GetDatafeedsRequest()))
 				.FluentAsync(c => c.GetDatafeedsAsync())

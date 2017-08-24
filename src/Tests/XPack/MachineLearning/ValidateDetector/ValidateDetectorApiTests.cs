@@ -41,6 +41,9 @@ namespace Tests.XPack.MachineLearning.ValidateDetector
 				detector_index = 0
 			};
 
+
+		protected override ValidateDetectorDescriptor<Project> NewDescriptor() => new ValidateDetectorDescriptor<Project>();
+
 		protected override Func<ValidateDetectorDescriptor<Project>, IValidateDetectorRequest> Fluent => f => f
 			.Count(c => c
 				.DetectorDescription("detector description")

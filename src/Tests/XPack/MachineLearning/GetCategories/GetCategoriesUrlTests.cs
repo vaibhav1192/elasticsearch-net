@@ -18,8 +18,8 @@ namespace Tests.XPack.MachineLearning.GetCategories
 				;
 
 			await GET("_xpack/ml/anomaly_detectors/job_id/results/categories/1")
-				.Fluent(c => c.GetCategories("job_id", r => r.CategoryId(1)))
 				.Request(c => c.GetCategories(new GetCategoriesRequest("job_id", 1)))
+				.Fluent(c => c.GetCategories("job_id", r => r.CategoryId(1)))
 				.FluentAsync(c => c.GetCategoriesAsync("job_id", r => r.CategoryId(1)))
 				.RequestAsync(c => c.GetCategoriesAsync(new GetCategoriesRequest("job_id", 1)))
 				;
