@@ -27,7 +27,7 @@ namespace Tests.XPack.MachineLearning.ValidateDetector
 
 		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/_validate/detector";
 
-		protected override bool SupportsDeserialization => true;
+		protected override bool SupportsDeserialization => false;
 
 		protected override object ExpectJson => new
 			{
@@ -40,9 +40,6 @@ namespace Tests.XPack.MachineLearning.ValidateDetector
 				use_null = true,
 				detector_index = 0
 			};
-
-
-		protected override ValidateDetectorDescriptor<Project> NewDescriptor() => new ValidateDetectorDescriptor<Project>();
 
 		protected override Func<ValidateDetectorDescriptor<Project>, IValidateDetectorRequest> Fluent => f => f
 			.Count(c => c

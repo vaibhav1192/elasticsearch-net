@@ -16,7 +16,6 @@ namespace Tests.XPack.MachineLearning.DeleteModelSnapshot
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
 			// TODO: create a model snapshot, to allow it to be deleted
-
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
