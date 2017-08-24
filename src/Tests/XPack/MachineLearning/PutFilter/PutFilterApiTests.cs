@@ -26,7 +26,7 @@ namespace Tests.XPack.MachineLearning.PutFilter
 
 		protected override string UrlPath => $"/_xpack/ml/filters/{CallIsolatedValue}";
 
-		protected override bool SupportsDeserialization => true;
+		protected override bool SupportsDeserialization => false;
 
 		protected override PutFilterDescriptor NewDescriptor() => new PutFilterDescriptor(CallIsolatedValue);
 

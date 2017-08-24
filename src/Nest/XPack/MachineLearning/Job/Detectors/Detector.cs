@@ -27,7 +27,7 @@ namespace Nest
 		int? DetectorIndex { get; set; }
 	}
 
-	public class DetectorConverter : JsonConverter
+	internal class DetectorConverter : JsonConverter
 	{
 		public override bool CanWrite => false;
 

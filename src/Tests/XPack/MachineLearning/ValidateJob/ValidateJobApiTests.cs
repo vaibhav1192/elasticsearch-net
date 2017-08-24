@@ -30,7 +30,7 @@ namespace Tests.XPack.MachineLearning.ValidateJob
 
 		protected override bool SupportsDeserialization => true;
 
-		protected override object ExpectJson => null
+		protected override object ExpectJson => null;
 
 		protected override Func<ValidateJobDescriptor<Project>, IValidateJobRequest> Fluent => f => f
 			;

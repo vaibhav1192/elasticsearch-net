@@ -25,7 +25,7 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IValidateDetectorResponse ValidateDetector<T>(Func<ValidateDetectorDescriptor<T>, IValidateDetectorRequest> selector = null) where T : class =>
+		public IValidateDetectorResponse ValidateDetector<T>(Func<ValidateDetectorDescriptor<T>, IValidateDetectorRequest> selector) where T : class =>
 			this.ValidateDetector(selector.InvokeOrDefault(new ValidateDetectorDescriptor<T>()));
 
 		/// <inheritdoc/>
@@ -36,7 +36,7 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IValidateDetectorResponse> ValidateDetectorAsync<T>(Func<ValidateDetectorDescriptor<T>, IValidateDetectorRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
+		public Task<IValidateDetectorResponse> ValidateDetectorAsync<T>(Func<ValidateDetectorDescriptor<T>, IValidateDetectorRequest> selector, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
 			this.ValidateDetectorAsync(selector.InvokeOrDefault(new ValidateDetectorDescriptor<T>()), cancellationToken);
 
 		/// <inheritdoc/>

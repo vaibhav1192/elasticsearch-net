@@ -50,7 +50,7 @@ namespace Tests.XPack.MachineLearning.GetBuckets
 
 	public class GetBucketsWithTimestampApiTests : ApiIntegrationTestBase<XPackCluster, IGetBucketsResponse, IGetBucketsRequest, GetBucketsDescriptor, GetBucketsRequest>
 	{
-		public GetBucketsApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetBucketsWithTimestampApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

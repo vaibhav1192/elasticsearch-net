@@ -14,9 +14,9 @@ namespace Nest
 	{
 	}
 
-	public class TimeDetectorBase : DetectorBase, ITimeDetector
+	public abstract class TimeDetectorBase : DetectorBase, ITimeDetector
 	{
-		public TimeDetectorBase(string function) : base(function) {}
+		protected TimeDetectorBase(string function) : base(function) {}
 
 		public Field ByFieldName { get; set; }
 		public Field OverFieldName { get; set; }

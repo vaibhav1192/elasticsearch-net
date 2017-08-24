@@ -31,12 +31,14 @@ namespace Tests.XPack.MachineLearning.RevertModelSnapshot
 
 		protected override string UrlPath => $"/_xpack/ml/anomaly_detectors/{CallIsolatedValue}/model_snapshots/{CallIsolatedValue}/_revert";
 
-		protected override bool SupportsDeserialization => true;
+		protected override bool SupportsDeserialization => false;
 
 		protected override object ExpectJson => new
 		{
 			delete_intervening_results = true
 		};
+
+		protected override RevertModelSnapshotDescriptor NewDescriptor() => new RevertModelSnapshotDescriptor(CallIsolatedValue, CallIsolatedValue);
 
 		protected override Func<RevertModelSnapshotDescriptor, IRevertModelSnapshotRequest> Fluent => f => f
 			.DeleteInterveningResults();

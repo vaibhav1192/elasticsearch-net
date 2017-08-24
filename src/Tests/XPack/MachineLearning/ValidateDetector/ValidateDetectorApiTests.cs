@@ -31,7 +31,7 @@ namespace Tests.XPack.MachineLearning.ValidateDetector
 
 		protected override object ExpectJson => new
 			{
-				description_description = "detector description",
+				detector_description = "detector description",
 				function = "count",
 				by_field_name = "numberOfCommits",
 				over_field_name = "branches",
@@ -57,7 +57,7 @@ namespace Tests.XPack.MachineLearning.ValidateDetector
 			{
 				Detector = new CountDetector
 				{
-					DetectorDescription = "detector desecription",
+					DetectorDescription = "detector description",
 					ByFieldName = Field<Project>(p => p.NumberOfCommits),
 					OverFieldName = Field<Project>(p => p.Branches),
 					PartitionFieldName = Field<Project>(p => p.LeadDeveloper),

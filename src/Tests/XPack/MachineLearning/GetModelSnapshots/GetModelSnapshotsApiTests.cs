@@ -37,6 +37,8 @@ namespace Tests.XPack.MachineLearning.GetModelSnapshots
 
 		protected override Func<GetModelSnapshotsDescriptor, IGetModelSnapshotsRequest> Fluent => f => f;
 
+		protected override GetModelSnapshotsDescriptor NewDescriptor() => new GetModelSnapshotsDescriptor(CallIsolatedValue);
+
 		protected override GetModelSnapshotsRequest Initializer => new GetModelSnapshotsRequest(CallIsolatedValue);
 
 		protected override void ExpectResponse(IGetModelSnapshotsResponse response)
@@ -73,6 +75,8 @@ namespace Tests.XPack.MachineLearning.GetModelSnapshots
 
 		protected override Func<GetModelSnapshotsDescriptor, IGetModelSnapshotsRequest> Fluent => f => f
 			.SnapshotId(CallIsolatedValue);
+
+		protected override GetModelSnapshotsDescriptor NewDescriptor() => new GetModelSnapshotsDescriptor(CallIsolatedValue);
 
 		protected override GetModelSnapshotsRequest Initializer =>
 			new GetModelSnapshotsRequest(CallIsolatedValue, CallIsolatedValue);

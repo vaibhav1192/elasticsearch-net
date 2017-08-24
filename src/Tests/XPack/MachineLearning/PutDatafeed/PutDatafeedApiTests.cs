@@ -24,7 +24,7 @@ namespace Tests.XPack.MachineLearning.PutDatafeed
 		protected override int ExpectStatusCode => 201;
 		protected override HttpMethod HttpMethod => HttpMethod.PUT;
 
-		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/{CallIsolatedValue}";
+		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}";
 
 		protected override bool SupportsDeserialization => true;
 

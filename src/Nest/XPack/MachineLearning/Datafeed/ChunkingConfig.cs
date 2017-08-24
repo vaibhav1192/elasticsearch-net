@@ -54,7 +54,7 @@ namespace Nest
 	/// <summary>
 	/// The chunking mode
 	/// </summary>
-	[ContractJsonConverter(typeof(StringEnumConverter))]
+	[JsonConverter(typeof(StringEnumConverter))]
 	public enum ChunkingMode
 	{
 		/// <summary>
