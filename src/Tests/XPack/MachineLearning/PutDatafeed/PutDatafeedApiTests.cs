@@ -9,9 +9,9 @@ using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning.PutDatafeed
 {
-	public class PutDatafeedApiTests : ApiIntegrationTestBase<XPackCluster, IPutDatafeedResponse, IPutDatafeedRequest, PutDatafeedDescriptor<Project>, PutDatafeedRequest>
+	public class PutDatafeedApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IPutDatafeedResponse, IPutDatafeedRequest, PutDatafeedDescriptor<Project>, PutDatafeedRequest>
 	{
-		public PutDatafeedApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public PutDatafeedApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override LazyResponses ClientUsage() => Calls(
 			fluent: (client, f) => client.PutDatafeed(CallIsolatedValue, f),

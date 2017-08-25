@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.DeleteJob
 {
-	public class DeleteJobApiTests : ApiIntegrationTestBase<XPackCluster, IDeleteJobResponse, IDeleteJobRequest, DeleteJobDescriptor, DeleteJobRequest>
+	public class DeleteJobApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IDeleteJobResponse, IDeleteJobRequest, DeleteJobDescriptor, DeleteJobRequest>
 	{
-		public DeleteJobApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public DeleteJobApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

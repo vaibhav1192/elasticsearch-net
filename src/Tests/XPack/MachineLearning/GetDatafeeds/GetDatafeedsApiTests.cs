@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.GetDatafeeds
 {
-	public class GetDatafeedsApiTests : ApiIntegrationTestBase<XPackCluster, IGetDatafeedsResponse, IGetDatafeedsRequest, GetDatafeedsDescriptor, GetDatafeedsRequest>
+	public class GetDatafeedsApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetDatafeedsResponse, IGetDatafeedsRequest, GetDatafeedsDescriptor, GetDatafeedsRequest>
 	{
-		public GetDatafeedsApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetDatafeedsApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
@@ -43,9 +43,9 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 		}
 	}
 
-	public class GetDatafeedsWithDatafeedIdApiTests : ApiIntegrationTestBase<XPackCluster, IGetDatafeedsResponse, IGetDatafeedsRequest, GetDatafeedsDescriptor, GetDatafeedsRequest>
+	public class GetDatafeedsWithDatafeedIdApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetDatafeedsResponse, IGetDatafeedsRequest, GetDatafeedsDescriptor, GetDatafeedsRequest>
 	{
-		public GetDatafeedsWithDatafeedIdApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetDatafeedsWithDatafeedIdApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.DeleteExpiredData
 {
-	public class DeleteExpiredDataApiTests : ApiIntegrationTestBase<XPackCluster, IDeleteExpiredDataResponse, IDeleteExpiredDataRequest, DeleteExpiredDataDescriptor, DeleteExpiredDataRequest>
+	public class DeleteExpiredDataApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IDeleteExpiredDataResponse, IDeleteExpiredDataRequest, DeleteExpiredDataDescriptor, DeleteExpiredDataRequest>
 	{
-		public DeleteExpiredDataApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public DeleteExpiredDataApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

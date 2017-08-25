@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.GetAnomalyRecords
 {
-	public class GetAnomalyRecordsApiTests : ApiIntegrationTestBase<XPackCluster, IGetAnomalyRecordsResponse, IGetAnomalyRecordsRequest, GetAnomalyRecordsDescriptor, GetAnomalyRecordsRequest>
+	public class GetAnomalyRecordsApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetAnomalyRecordsResponse, IGetAnomalyRecordsRequest, GetAnomalyRecordsDescriptor, GetAnomalyRecordsRequest>
 	{
-		public GetAnomalyRecordsApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetAnomalyRecordsApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

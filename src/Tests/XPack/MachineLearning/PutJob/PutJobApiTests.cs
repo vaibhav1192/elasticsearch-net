@@ -9,9 +9,9 @@ using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning.PutJob
 {
-	public class PutJobApiTests : ApiIntegrationTestBase<XPackCluster, IPutJobResponse, IPutJobRequest, PutJobDescriptor<Project>, PutJobRequest>
+	public class PutJobApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IPutJobResponse, IPutJobRequest, PutJobDescriptor<Project>, PutJobRequest>
 	{
-		public PutJobApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public PutJobApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override LazyResponses ClientUsage() => Calls(
 			fluent: (client, f) => client.PutJob(CallIsolatedValue, f),
@@ -43,8 +43,6 @@ namespace Tests.XPack.MachineLearning.PutJob
 		protected override void ExpectResponse(IPutJobResponse response)
 		{
 			response.ShouldBeValid();
-
-
 		}
 	}
 }

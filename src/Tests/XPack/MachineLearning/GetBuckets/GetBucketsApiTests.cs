@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.GetBuckets
 {
-	public class GetBucketsApiTests : ApiIntegrationTestBase<XPackCluster, IGetBucketsResponse, IGetBucketsRequest, GetBucketsDescriptor, GetBucketsRequest>
+	public class GetBucketsApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetBucketsResponse, IGetBucketsRequest, GetBucketsDescriptor, GetBucketsRequest>
 	{
-		public GetBucketsApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetBucketsApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
@@ -48,9 +48,9 @@ namespace Tests.XPack.MachineLearning.GetBuckets
 		}
 	}
 
-	public class GetBucketsWithTimestampApiTests : ApiIntegrationTestBase<XPackCluster, IGetBucketsResponse, IGetBucketsRequest, GetBucketsDescriptor, GetBucketsRequest>
+	public class GetBucketsWithTimestampApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetBucketsResponse, IGetBucketsRequest, GetBucketsDescriptor, GetBucketsRequest>
 	{
-		public GetBucketsWithTimestampApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetBucketsWithTimestampApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

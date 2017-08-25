@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.RevertModelSnapshot
 {
-	public class RevertModelSnapshotApiTests : ApiIntegrationTestBase<XPackCluster, IRevertModelSnapshotResponse, IRevertModelSnapshotRequest, RevertModelSnapshotDescriptor, RevertModelSnapshotRequest>
+	public class RevertModelSnapshotApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IRevertModelSnapshotResponse, IRevertModelSnapshotRequest, RevertModelSnapshotDescriptor, RevertModelSnapshotRequest>
 	{
-		public RevertModelSnapshotApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public RevertModelSnapshotApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

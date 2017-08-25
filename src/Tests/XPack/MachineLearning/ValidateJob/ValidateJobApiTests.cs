@@ -11,9 +11,9 @@ using static Nest.Infer;
 namespace Tests.XPack.MachineLearning.ValidateJob
 {
 	//TODO: Implement
-	public class ValidateJobApiTests : ApiIntegrationTestBase<XPackCluster, IValidateJobResponse, IValidateJobRequest, ValidateJobDescriptor<Project>, ValidateJobRequest>
+	public class ValidateJobApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IValidateJobResponse, IValidateJobRequest, ValidateJobDescriptor<Project>, ValidateJobRequest>
 	{
-		public ValidateJobApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public ValidateJobApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override LazyResponses ClientUsage() => Calls(
 			fluent: (client, f) => client.ValidateJob(f),

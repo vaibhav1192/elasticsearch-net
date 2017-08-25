@@ -9,9 +9,9 @@ using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning.PutFilter
 {
-	public class PutFilterApiTests : ApiIntegrationTestBase<XPackCluster, IPutFilterResponse, IPutFilterRequest, PutFilterDescriptor, PutFilterRequest>
+	public class PutFilterApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IPutFilterResponse, IPutFilterRequest, PutFilterDescriptor, PutFilterRequest>
 	{
-		public PutFilterApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public PutFilterApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override LazyResponses ClientUsage() => Calls(
 			fluent: (client, f) => client.PutFilter(CallIsolatedValue, f),

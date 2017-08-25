@@ -2,12 +2,14 @@
 using System.Linq;
 using Nest;
 using Tests.Framework.Integration;
+using Tests.Framework.ManagedElasticsearch.Nodes;
 using Tests.Framework.ManagedElasticsearch.NodeSeeders;
 using Tests.Framework.ManagedElasticsearch.Plugins;
 using Tests.Framework.ManagedElasticsearch.Tasks.InstallationTasks;
 
 namespace Tests.Framework.ManagedElasticsearch.Clusters
 {
+	// TODO! inherit from XPackCluster
 	[RequiresPlugin(ElasticsearchPlugin.XPack)]
 	public class XPackMachineLearningCluster : ClusterBase
 	{
@@ -20,8 +22,16 @@ namespace Tests.Framework.ManagedElasticsearch.Clusters
 		public override ConnectionSettings ClusterConnectionSettings(ConnectionSettings s) =>
 			s.BasicAuthentication("es_admin", "es_admin");
 
-		protected override void SeedNode() => new DefaultSeeder(this.Node).SeedNode();
+		protected override void SeedNode()
+		{
+			Console.WriteLine("Running SeedNode");
+			new DefaultSeeder(this.Node).SeedNode();
+			new MachineLearningSeeder(this.Node).SeedNode();
+		}
 
-		protected override InstallationTaskBase[] AdditionalInstallationTasks => new InstallationTaskBase[] { new DownloadMachineLearningSampleDataDistribution() };
+		protected override InstallationTaskBase[] AdditionalInstallationTasks => new []
+		{
+			new DownloadMachineLearningSampleDataDistribution()
+		};
 	}
 }

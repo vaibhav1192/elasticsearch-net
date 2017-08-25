@@ -54,6 +54,5 @@ namespace Tests.Framework.ManagedElasticsearch.Clusters
 			this.Node?.Dispose();
 			this.TaskRunner?.Dispose();
 		}
-
 	}
 }

@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.CloseJob
 {
-	public class CloseJobApiTests : ApiIntegrationTestBase<XPackCluster, ICloseJobResponse, ICloseJobRequest, CloseJobDescriptor, CloseJobRequest>
+	public class CloseJobApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, ICloseJobResponse, ICloseJobRequest, CloseJobDescriptor, CloseJobRequest>
 	{
-		public CloseJobApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public CloseJobApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.GetFilters
 {
-	public class GetFiltersApiTests : ApiIntegrationTestBase<XPackCluster, IGetFiltersResponse, IGetFiltersRequest, GetFiltersDescriptor, GetFiltersRequest>
+	public class GetFiltersApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetFiltersResponse, IGetFiltersRequest, GetFiltersDescriptor, GetFiltersRequest>
 	{
-		public GetFiltersApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetFiltersApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
@@ -43,9 +43,9 @@ namespace Tests.XPack.MachineLearning.GetFilters
 		}
 	}
 
-	public class GetFiltersWithFilterIdApiTests : ApiIntegrationTestBase<XPackCluster, IGetFiltersResponse, IGetFiltersRequest, GetFiltersDescriptor, GetFiltersRequest>
+	public class GetFiltersWithFilterIdApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetFiltersResponse, IGetFiltersRequest, GetFiltersDescriptor, GetFiltersRequest>
 	{
-		public GetFiltersWithFilterIdApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetFiltersWithFilterIdApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.FlushJob
 {
-	public class FlushJobApiTests : ApiIntegrationTestBase<XPackCluster, IFlushJobResponse, IFlushJobRequest, FlushJobDescriptor, FlushJobRequest>
+	public class FlushJobApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IFlushJobResponse, IFlushJobRequest, FlushJobDescriptor, FlushJobRequest>
 	{
-		public FlushJobApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public FlushJobApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

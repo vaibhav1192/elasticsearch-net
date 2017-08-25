@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.DeleteDatafeed
 {
-	public class DeleteDatafeedApiTests : ApiIntegrationTestBase<XPackCluster, IDeleteDatafeedResponse, IDeleteDatafeedRequest, DeleteDatafeedDescriptor, DeleteDatafeedRequest>
+	public class DeleteDatafeedApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IDeleteDatafeedResponse, IDeleteDatafeedRequest, DeleteDatafeedDescriptor, DeleteDatafeedRequest>
 	{
-		public DeleteDatafeedApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public DeleteDatafeedApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

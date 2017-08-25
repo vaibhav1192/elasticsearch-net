@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.DeleteModelSnapshot
 {
-	public class DeleteModelSnapshotApiTests : ApiIntegrationTestBase<XPackCluster, IDeleteModelSnapshotResponse, IDeleteModelSnapshotRequest, DeleteModelSnapshotDescriptor, DeleteModelSnapshotRequest>
+	public class DeleteModelSnapshotApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IDeleteModelSnapshotResponse, IDeleteModelSnapshotRequest, DeleteModelSnapshotDescriptor, DeleteModelSnapshotRequest>
 	{
-		public DeleteModelSnapshotApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public DeleteModelSnapshotApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.GetJobStats
 {
-	public class GetJobStatsApiTests : ApiIntegrationTestBase<XPackCluster, IGetJobStatsResponse, IGetJobStatsRequest, GetJobStatsDescriptor, GetJobStatsRequest>
+	public class GetJobStatsApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetJobStatsResponse, IGetJobStatsRequest, GetJobStatsDescriptor, GetJobStatsRequest>
 	{
-		public GetJobStatsApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetJobStatsApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
@@ -45,9 +45,9 @@ namespace Tests.XPack.MachineLearning.GetJobStats
 		}
 	}
 
-	public class GetJobStatsWithJobIdApiTests : ApiIntegrationTestBase<XPackCluster, IGetJobStatsResponse, IGetJobStatsRequest, GetJobStatsDescriptor, GetJobStatsRequest>
+	public class GetJobStatsWithJobIdApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetJobStatsResponse, IGetJobStatsRequest, GetJobStatsDescriptor, GetJobStatsRequest>
 	{
-		public GetJobStatsWithJobIdApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetJobStatsWithJobIdApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

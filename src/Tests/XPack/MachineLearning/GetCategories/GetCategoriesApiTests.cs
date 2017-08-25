@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.GetCategories
 {
-	public class GetCategoriesApiTests : ApiIntegrationTestBase<XPackCluster, IGetCategoriesResponse, IGetCategoriesRequest, GetCategoriesDescriptor, GetCategoriesRequest>
+	public class GetCategoriesApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetCategoriesResponse, IGetCategoriesRequest, GetCategoriesDescriptor, GetCategoriesRequest>
 	{
-		public GetCategoriesApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetCategoriesApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
@@ -48,9 +48,9 @@ namespace Tests.XPack.MachineLearning.GetCategories
 		}
 	}
 
-	public class GetCategoriesWithCategoriesApiTests : ApiIntegrationTestBase<XPackCluster, IGetCategoriesResponse, IGetCategoriesRequest, GetCategoriesDescriptor, GetCategoriesRequest>
+	public class GetCategoriesWithCategoriesApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetCategoriesResponse, IGetCategoriesRequest, GetCategoriesDescriptor, GetCategoriesRequest>
 	{
-		public GetCategoriesWithCategoriesApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetCategoriesWithCategoriesApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.GetInfluencers
 {
-	public class GetInfluencersApiTests : ApiIntegrationTestBase<XPackCluster, IGetInfluencersResponse, IGetInfluencersRequest, GetInfluencersDescriptor, GetInfluencersRequest>
+	public class GetInfluencersApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetInfluencersResponse, IGetInfluencersRequest, GetInfluencersDescriptor, GetInfluencersRequest>
 	{
-		public GetInfluencersApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public GetInfluencersApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{

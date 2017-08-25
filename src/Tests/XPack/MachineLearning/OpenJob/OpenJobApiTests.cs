@@ -9,9 +9,9 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.OpenJob
 {
-	public class OpenJobApiTests : ApiIntegrationTestBase<XPackCluster, IOpenJobResponse, IOpenJobRequest, OpenJobDescriptor, OpenJobRequest>
+	public class OpenJobApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IOpenJobResponse, IOpenJobRequest, OpenJobDescriptor, OpenJobRequest>
 	{
-		public OpenJobApiTests(XPackCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public OpenJobApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
