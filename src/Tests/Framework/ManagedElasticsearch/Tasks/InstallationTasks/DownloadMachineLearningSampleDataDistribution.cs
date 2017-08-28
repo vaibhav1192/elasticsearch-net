@@ -8,11 +8,8 @@ namespace Tests.Framework.ManagedElasticsearch.Tasks.InstallationTasks
 {
 	public class DownloadMachineLearningSampleDataDistribution : InstallationTaskBase
 	{
-
 		public override void Run(NodeConfiguration config, NodeFileSystem fileSystem)
 		{
-			Console.WriteLine("Running DownloadMachineLearningSampleDataDistribution.Run()");
-
 			var to = Path.Combine(config.FileSystem.RoamingFolder, "server_metrics.tar.gz");
 			if (!File.Exists(to)){
 				var from = "https://download.elasticsearch.org/demos/machine_learning/gettingstarted/server_metrics.tar.gz";
@@ -21,11 +18,12 @@ namespace Tests.Framework.ManagedElasticsearch.Tasks.InstallationTasks
 				Console.WriteLine($"Downloaded machine learning sample data to: {to}");
 			}
 
-			var directoryTarget = Path.Combine(config.FileSystem.RoamingFolder, "/server_metrics/");
+			var directoryTarget = Path.Combine(config.FileSystem.RoamingFolder, "server_metrics");
+			Console.WriteLine("Checking for: " + directoryTarget);
 			if (!Directory.Exists(directoryTarget))
 			{
 				Directory.CreateDirectory(directoryTarget);
-				Console.WriteLine($"Unzipping machine learning sample data: {to} ...");
+				Console.WriteLine($"Unzipping machine learning sample data: {directoryTarget} ...");
 				using (var inStream = File.OpenRead(to))
 				using (var gzipStream = new GZipInputStream(inStream))
 				using (var tarArchive = TarArchive.CreateInputTarArchive(gzipStream))

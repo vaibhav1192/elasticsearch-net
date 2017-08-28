@@ -98,8 +98,5 @@ namespace Tests.Framework.ManagedElasticsearch.Tasks
 				if (log) this.LogTasks(taskLog);
 			}
 		}
-
-
-
 	}
 }

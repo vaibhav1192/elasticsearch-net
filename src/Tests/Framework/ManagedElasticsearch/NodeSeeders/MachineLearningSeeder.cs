@@ -53,10 +53,11 @@ namespace Tests.Framework.ManagedElasticsearch.NodeSeeders
 		private void SeedIndexData()
 		{
 			Console.WriteLine("Bulk importing starting ...");
-			this.Client.LowLevel.Bulk<BulkResponse>(File.ReadAllBytes(Path.Combine(this.RoamingFolder, "server-metrics_1.json")));
-			this.Client.LowLevel.Bulk<BulkResponse>(File.ReadAllBytes(Path.Combine(this.RoamingFolder, "server-metrics_2.json")));
-			this.Client.LowLevel.Bulk<BulkResponse>(File.ReadAllBytes(Path.Combine(this.RoamingFolder, "server-metrics_3.json")));
-			this.Client.LowLevel.Bulk<BulkResponse>(File.ReadAllBytes(Path.Combine(this.RoamingFolder, "server-metrics_4.json")));
+			var folder = Path.Combine(this.RoamingFolder, "server_metrics");
+			this.Client.LowLevel.Bulk<BulkResponse>(File.ReadAllBytes(Path.Combine(folder, "server-metrics_1.json")));
+			this.Client.LowLevel.Bulk<BulkResponse>(File.ReadAllBytes(Path.Combine(folder, "server-metrics_2.json")));
+			this.Client.LowLevel.Bulk<BulkResponse>(File.ReadAllBytes(Path.Combine(folder, "server-metrics_3.json")));
+			this.Client.LowLevel.Bulk<BulkResponse>(File.ReadAllBytes(Path.Combine(folder, "server-metrics_4.json")));
 			Console.WriteLine("Bulk importing finished.");
 		}
 
