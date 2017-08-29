@@ -81,7 +81,7 @@ namespace Tests.Framework.ManagedElasticsearch.NodeSeeders
 			createProjectIndex.ShouldBeValid();
 		}
 
-		private class Metric
+		public class Metric
 		{
 			public DateTime Timestamp { get; set; }
 

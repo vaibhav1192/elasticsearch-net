@@ -8,7 +8,7 @@ namespace Nest
 {
 	// TODO: Detector.java has detection rules, but these are not listed in the docs:
 	// TODO: Investigate of these can be set wherever a detector can be passed
-	[JsonConverter(typeof(DetectorConverter))]
+	[ContractJsonConverter(typeof(DetectorConverter))]
 	public interface IDetector
 	{
 		[JsonProperty("detector_description")]
@@ -45,77 +45,76 @@ namespace Nest
 			switch (function)
 			{
 				case "count":
-					return jObject.ToObject<CountDetector>(serializer);
+					return jObject.ToObject<CountDetector>(ElasticContractResolver.Empty);
 				case "high_count":
-					return jObject.ToObject<HighCountDetector>(serializer);
+					return jObject.ToObject<HighCountDetector>(ElasticContractResolver.Empty);
 				case "low_count":
-					return jObject.ToObject<LowCountDetector>(serializer);
+					return jObject.ToObject<LowCountDetector>(ElasticContractResolver.Empty);
 				case "non_zero_count":
-					return jObject.ToObject<NonZeroCountDetector>(serializer);
+					return jObject.ToObject<NonZeroCountDetector>(ElasticContractResolver.Empty);
 				case "high_non_zero_count":
-					return jObject.ToObject<HighNonZeroCountDetector>(serializer);
+					return jObject.ToObject<HighNonZeroCountDetector>(ElasticContractResolver.Empty);
 				case "low_non_zero_count":
-					return jObject.ToObject<LowNonZeroCountDetector>(serializer);
+					return jObject.ToObject<LowNonZeroCountDetector>(ElasticContractResolver.Empty);
 				case "distinct_count":
-					return jObject.ToObject<DistinctCountDetector>(serializer);
+					return jObject.ToObject<DistinctCountDetector>(ElasticContractResolver.Empty);
 				case "high_distinct_count":
-					return jObject.ToObject<HighDistinctCountDetector>(serializer);
+					return jObject.ToObject<HighDistinctCountDetector>(ElasticContractResolver.Empty);
 				case "low_distinct_count":
-					return jObject.ToObject<LowDistinctCountDetector>(serializer);
+					return jObject.ToObject<LowDistinctCountDetector>(ElasticContractResolver.Empty);
 				case "lat_long":
-					return jObject.ToObject<LatLongDetector>(serializer);
+					return jObject.ToObject<LatLongDetector>(ElasticContractResolver.Empty);
 				case "info_content":
-					return jObject.ToObject<InfoContentDetector>(serializer);
+					return jObject.ToObject<InfoContentDetector>(ElasticContractResolver.Empty);
 				case "high_info_content":
-					return jObject.ToObject<HighInfoContentDetector>(serializer);
+					return jObject.ToObject<HighInfoContentDetector>(ElasticContractResolver.Empty);
 				case "low_info_content":
-					return jObject.ToObject<LowInfoContentDetector>(serializer);
+					return jObject.ToObject<LowInfoContentDetector>(ElasticContractResolver.Empty);
 				case "min":
-					return jObject.ToObject<MinDetector>(serializer);
+					return jObject.ToObject<MinDetector>(ElasticContractResolver.Empty);
 				case "max":
-					return jObject.ToObject<MaxDetector>(serializer);
+					return jObject.ToObject<MaxDetector>(ElasticContractResolver.Empty);
 				case "median":
-					return jObject.ToObject<MedianDetector>(serializer);
+					return jObject.ToObject<MedianDetector>(ElasticContractResolver.Empty);
 				case "high_median":
-					return jObject.ToObject<HighMedianDetector>(serializer);
+					return jObject.ToObject<HighMedianDetector>(ElasticContractResolver.Empty);
 				case "low_median":
-					return jObject.ToObject<LowMedianDetector>(serializer);
+					return jObject.ToObject<LowMedianDetector>(ElasticContractResolver.Empty);
 				case "mean":
-					return jObject.ToObject<MeanDetector>(serializer);
+					return jObject.ToObject<MeanDetector>(ElasticContractResolver.Empty);
 				case "high_mean":
-					return jObject.ToObject<HighMeanDetector>(serializer);
+					return jObject.ToObject<HighMeanDetector>(ElasticContractResolver.Empty);
 				case "low_mean":
-					return jObject.ToObject<LowMeanDetector>(serializer);
+					return jObject.ToObject<LowMeanDetector>(ElasticContractResolver.Empty);
 				case "metric":
-					return jObject.ToObject<MetricDetector>(serializer);
+					return jObject.ToObject<MetricDetector>(ElasticContractResolver.Empty);
 				case "varp":
-					return jObject.ToObject<VarpDetector>(serializer);
+					return jObject.ToObject<VarpDetector>(ElasticContractResolver.Empty);
 				case "high_varp":
-					return jObject.ToObject<HighVarpDetector>(serializer);
+					return jObject.ToObject<HighVarpDetector>(ElasticContractResolver.Empty);
 				case "low_varp":
-					return jObject.ToObject<LowVarpDetector>(serializer);
+					return jObject.ToObject<LowVarpDetector>(ElasticContractResolver.Empty);
 				case "rare":
-					return jObject.ToObject<RareDetector>(serializer);
+					return jObject.ToObject<RareDetector>(ElasticContractResolver.Empty);
 				case "freq_rare":
-					return jObject.ToObject<FreqRareDetector>(serializer);
+					return jObject.ToObject<FreqRareDetector>(ElasticContractResolver.Empty);
 				case "sum":
-					return jObject.ToObject<SumDetector>(serializer);
+					 return jObject.ToObject<SumDetector>(ElasticContractResolver.Empty);
 				case "high_sum":
-					return jObject.ToObject<HighSumDetector>(serializer);
+					return jObject.ToObject<HighSumDetector>(ElasticContractResolver.Empty);
 				case "low_sum":
-					return jObject.ToObject<LowSumDetector>(serializer);
+					return jObject.ToObject<LowSumDetector>(ElasticContractResolver.Empty);
 				case "non_null_sum":
-					return jObject.ToObject<NonNullSumDetector>(serializer);
+					return jObject.ToObject<NonNullSumDetector>(ElasticContractResolver.Empty);
 				case "high_non_null_sum":
-					return jObject.ToObject<HighNonNullSumDetector>(serializer);
+					return jObject.ToObject<HighNonNullSumDetector>(ElasticContractResolver.Empty);
 				case "low_non_null_sum":
-					return jObject.ToObject<LowNonNullSumDetector>(serializer);
+					return jObject.ToObject<LowNonNullSumDetector>(ElasticContractResolver.Empty);
 				case "time_of_day":
-					return jObject.ToObject<TimeOfDayDetector>(serializer);
+					return jObject.ToObject<TimeOfDayDetector>(ElasticContractResolver.Empty);
 				case "time_of_week":
-					return jObject.ToObject<TimeOfWeekDetector>(serializer);
+					return jObject.ToObject<TimeOfWeekDetector>(ElasticContractResolver.Empty);
 				default:
-
 					throw new JsonSerializationException($"Cannot deserialize detector for unknown function '{function}");
 			}
 		}
