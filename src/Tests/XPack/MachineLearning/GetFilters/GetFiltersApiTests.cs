@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Threading;
 using Elasticsearch.Net;
-using FluentAssertions;
 using Nest;
 using Tests.Framework;
 using Tests.Framework.Integration;
@@ -9,13 +7,16 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.GetFilters
 {
-	public class GetFiltersApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetFiltersResponse, IGetFiltersRequest, GetFiltersDescriptor, GetFiltersRequest>
+	public class GetFiltersApiTests : MachineLearningIntegrationTestBase<IGetFiltersResponse, IGetFiltersRequest, GetFiltersDescriptor, GetFiltersRequest>
 	{
 		public GetFiltersApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
-			// TODO: create a filter
+			foreach (var callUniqueValue in values)
+			{
+				PutJob(client, callUniqueValue.Value);
+			}
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
@@ -28,13 +29,9 @@ namespace Tests.XPack.MachineLearning.GetFilters
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.GET;
-
 		protected override string UrlPath => $"/_xpack/ml/filters/";
-
 		protected override bool SupportsDeserialization => true;
-
 		protected override object ExpectJson => null;
-
 		protected override Func<GetFiltersDescriptor, IGetFiltersRequest> Fluent => f => f;
 
 		protected override void ExpectResponse(IGetFiltersResponse response)
@@ -43,13 +40,16 @@ namespace Tests.XPack.MachineLearning.GetFilters
 		}
 	}
 
-	public class GetFiltersWithFilterIdApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetFiltersResponse, IGetFiltersRequest, GetFiltersDescriptor, GetFiltersRequest>
+	public class GetFiltersWithFilterIdApiTests : MachineLearningIntegrationTestBase<IGetFiltersResponse, IGetFiltersRequest, GetFiltersDescriptor, GetFiltersRequest>
 	{
 		public GetFiltersWithFilterIdApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
-			// TODO: create a filter
+			foreach (var callUniqueValue in values)
+			{
+				PutJob(client, callUniqueValue.Value);
+			}
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
@@ -62,16 +62,10 @@ namespace Tests.XPack.MachineLearning.GetFilters
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.GET;
-
 		protected override string UrlPath => $"_xpack/ml/filters/{CallIsolatedValue}";
-
 		protected override bool SupportsDeserialization => true;
-
 		protected override object ExpectJson => null;
-
-		protected override Func<GetFiltersDescriptor, IGetFiltersRequest> Fluent => f => f
-			.FilterId(CallIsolatedValue);
-
+		protected override Func<GetFiltersDescriptor, IGetFiltersRequest> Fluent => f => f.FilterId(CallIsolatedValue);
 		protected override GetFiltersRequest Initializer => new GetFiltersRequest(CallIsolatedValue);
 
 		protected override void ExpectResponse(IGetFiltersResponse response)

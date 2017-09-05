@@ -2,6 +2,7 @@
 using System.IO;
 using Nest;
 using Tests.Framework.ManagedElasticsearch.Nodes;
+using Tests.Framework.MockData;
 
 namespace Tests.Framework.ManagedElasticsearch.NodeSeeders
 {
@@ -79,23 +80,6 @@ namespace Tests.Framework.ManagedElasticsearch.NodeSeeders
 				)
 			);
 			createProjectIndex.ShouldBeValid();
-		}
-
-		public class Metric
-		{
-			public DateTime Timestamp { get; set; }
-
-			public long Accept { get; set; }
-
-			public long Deny { get; set; }
-
-			public string Host { get; set; }
-
-			public float Response { get; set; }
-
-			public string Service { get; set; }
-
-			public long Total { get; set; }
 		}
 
 		private void CreateIndexTemplate()

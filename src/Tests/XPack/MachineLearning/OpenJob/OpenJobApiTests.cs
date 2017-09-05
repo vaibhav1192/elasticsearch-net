@@ -1,22 +1,24 @@
 ﻿using System;
-using System.Threading;
 using Elasticsearch.Net;
 using FluentAssertions;
 using Nest;
 using Tests.Framework;
 using Tests.Framework.Integration;
 using Tests.Framework.ManagedElasticsearch.Clusters;
+using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning.OpenJob
 {
-	public class OpenJobApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IOpenJobResponse, IOpenJobRequest, OpenJobDescriptor, OpenJobRequest>
+	public class OpenJobApiTests : MachineLearningIntegrationTestBase<IOpenJobResponse, IOpenJobRequest, OpenJobDescriptor, OpenJobRequest>
 	{
 		public OpenJobApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
-			// TODO: create a job, to allow it to be opened
-
+			foreach (var callUniqueValue in values)
+			{
+				PutJob(client, callUniqueValue.Value);
+			}
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
@@ -29,19 +31,12 @@ namespace Tests.XPack.MachineLearning.OpenJob
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
-
 		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/{CallIsolatedValue}/_open";
-
 		protected override bool SupportsDeserialization => true;
-
 		protected override OpenJobDescriptor NewDescriptor() => new OpenJobDescriptor(CallIsolatedValue);
-
 		protected override object ExpectJson => null;
-
 		protected override Func<OpenJobDescriptor, IOpenJobRequest> Fluent => f => f;
-
-		protected override OpenJobRequest Initializer =>
-			new OpenJobRequest(CallIsolatedValue);
+		protected override OpenJobRequest Initializer => new OpenJobRequest(CallIsolatedValue);
 
 		protected override void ExpectResponse(IOpenJobResponse response)
 		{

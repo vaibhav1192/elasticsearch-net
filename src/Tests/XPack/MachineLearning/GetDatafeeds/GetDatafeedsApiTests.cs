@@ -6,16 +6,20 @@ using Nest;
 using Tests.Framework;
 using Tests.Framework.Integration;
 using Tests.Framework.ManagedElasticsearch.Clusters;
+using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning.GetDatafeeds
 {
-	public class GetDatafeedsApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetDatafeedsResponse, IGetDatafeedsRequest, GetDatafeedsDescriptor, GetDatafeedsRequest>
+	public class GetDatafeedsApiTests : MachineLearningIntegrationTestBase<IGetDatafeedsResponse, IGetDatafeedsRequest, GetDatafeedsDescriptor, GetDatafeedsRequest>
 	{
 		public GetDatafeedsApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
-			// TODO: run a job in order to get bucket results
+			foreach (var callUniqueValue in values)
+			{
+				PutJob(client, callUniqueValue.Value);
+			}
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
@@ -28,13 +32,9 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.GET;
-
 		protected override string UrlPath => $"_xpack/ml/datafeeds";
-
 		protected override bool SupportsDeserialization => true;
-
 		protected override object ExpectJson => null;
-
 		protected override Func<GetDatafeedsDescriptor, IGetDatafeedsRequest> Fluent => f => f;
 
 		protected override void ExpectResponse(IGetDatafeedsResponse response)
@@ -43,13 +43,16 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 		}
 	}
 
-	public class GetDatafeedsWithDatafeedIdApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetDatafeedsResponse, IGetDatafeedsRequest, GetDatafeedsDescriptor, GetDatafeedsRequest>
+	public class GetDatafeedsWithDatafeedIdApiTests : MachineLearningIntegrationTestBase<IGetDatafeedsResponse, IGetDatafeedsRequest, GetDatafeedsDescriptor, GetDatafeedsRequest>
 	{
 		public GetDatafeedsWithDatafeedIdApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
-			// TODO: run a job in order to get bucket results
+			foreach (var callUniqueValue in values)
+			{
+				PutJob(client, callUniqueValue.Value);
+			}
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
@@ -62,16 +65,10 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.GET;
-
 		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}";
-
 		protected override bool SupportsDeserialization => true;
-
 		protected override object ExpectJson => null;
-
-		protected override Func<GetDatafeedsDescriptor, IGetDatafeedsRequest> Fluent => f => f
-			.DatafeedId(CallIsolatedValue);
-
+		protected override Func<GetDatafeedsDescriptor, IGetDatafeedsRequest> Fluent => f => f.DatafeedId(CallIsolatedValue);
 		protected override GetDatafeedsRequest Initializer => new GetDatafeedsRequest(CallIsolatedValue);
 
 		protected override void ExpectResponse(IGetDatafeedsResponse response)

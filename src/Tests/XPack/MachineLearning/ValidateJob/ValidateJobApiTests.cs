@@ -10,8 +10,7 @@ using static Nest.Infer;
 
 namespace Tests.XPack.MachineLearning.ValidateJob
 {
-	//TODO: Implement
-	public class ValidateJobApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IValidateJobResponse, IValidateJobRequest, ValidateJobDescriptor<Project>, ValidateJobRequest>
+	public class ValidateJobApiTests : MachineLearningIntegrationTestBase<IValidateJobResponse, IValidateJobRequest, ValidateJobDescriptor<Metric>, ValidateJobRequest>
 	{
 		public ValidateJobApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
@@ -25,18 +24,11 @@ namespace Tests.XPack.MachineLearning.ValidateJob
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
-
 		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/_validate";
-
 		protected override bool SupportsDeserialization => true;
-
 		protected override object ExpectJson => null;
-
-		protected override Func<ValidateJobDescriptor<Project>, IValidateJobRequest> Fluent => f => f
-			;
-
-		protected override ValidateJobRequest Initializer =>
-			new ValidateJobRequest();
+		protected override Func<ValidateJobDescriptor<Metric>, IValidateJobRequest> Fluent => f => f;
+		protected override ValidateJobRequest Initializer => new ValidateJobRequest();
 
 		protected override void ExpectResponse(IValidateJobResponse response)
 		{

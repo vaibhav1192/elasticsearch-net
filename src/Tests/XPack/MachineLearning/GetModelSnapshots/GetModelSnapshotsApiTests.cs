@@ -9,13 +9,16 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.GetModelSnapshots
 {
-	public class GetModelSnapshotsApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetModelSnapshotsResponse, IGetModelSnapshotsRequest, GetModelSnapshotsDescriptor, GetModelSnapshotsRequest>
+	public class GetModelSnapshotsApiTests : MachineLearningIntegrationTestBase<IGetModelSnapshotsResponse, IGetModelSnapshotsRequest, GetModelSnapshotsDescriptor, GetModelSnapshotsRequest>
 	{
 		public GetModelSnapshotsApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
-			// TODO: create a job
+			foreach (var callUniqueValue in values)
+			{
+				PutJob(client, callUniqueValue.Value);
+			}
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
@@ -28,17 +31,11 @@ namespace Tests.XPack.MachineLearning.GetModelSnapshots
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
-
 		protected override string UrlPath => $"/_xpack/ml/anomaly_detectors/{CallIsolatedValue}/model_snapshots";
-
 		protected override bool SupportsDeserialization => true;
-
 		protected override object ExpectJson => null;
-
 		protected override Func<GetModelSnapshotsDescriptor, IGetModelSnapshotsRequest> Fluent => f => f;
-
 		protected override GetModelSnapshotsDescriptor NewDescriptor() => new GetModelSnapshotsDescriptor(CallIsolatedValue);
-
 		protected override GetModelSnapshotsRequest Initializer => new GetModelSnapshotsRequest(CallIsolatedValue);
 
 		protected override void ExpectResponse(IGetModelSnapshotsResponse response)
@@ -47,13 +44,16 @@ namespace Tests.XPack.MachineLearning.GetModelSnapshots
 		}
 	}
 
-	public class GetModelSnapshotsWithSnapshotIdApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IGetModelSnapshotsResponse, IGetModelSnapshotsRequest, GetModelSnapshotsDescriptor, GetModelSnapshotsRequest>
+	public class GetModelSnapshotsWithSnapshotIdApiTests : MachineLearningIntegrationTestBase<IGetModelSnapshotsResponse, IGetModelSnapshotsRequest, GetModelSnapshotsDescriptor, GetModelSnapshotsRequest>
 	{
 		public GetModelSnapshotsWithSnapshotIdApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
-			// TODO: create a job
+			foreach (var callUniqueValue in values)
+			{
+				PutJob(client, callUniqueValue.Value);
+			}
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
@@ -66,20 +66,12 @@ namespace Tests.XPack.MachineLearning.GetModelSnapshots
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
-
 		protected override string UrlPath => $"/_xpack/ml/anomaly_detectors/{CallIsolatedValue}/model_snapshots/{CallIsolatedValue}";
-
 		protected override bool SupportsDeserialization => true;
-
 		protected override object ExpectJson => null;
-
-		protected override Func<GetModelSnapshotsDescriptor, IGetModelSnapshotsRequest> Fluent => f => f
-			.SnapshotId(CallIsolatedValue);
-
+		protected override Func<GetModelSnapshotsDescriptor, IGetModelSnapshotsRequest> Fluent => f => f.SnapshotId(CallIsolatedValue);
 		protected override GetModelSnapshotsDescriptor NewDescriptor() => new GetModelSnapshotsDescriptor(CallIsolatedValue);
-
-		protected override GetModelSnapshotsRequest Initializer =>
-			new GetModelSnapshotsRequest(CallIsolatedValue, CallIsolatedValue);
+		protected override GetModelSnapshotsRequest Initializer => new GetModelSnapshotsRequest(CallIsolatedValue, CallIsolatedValue);
 
 		protected override void ExpectResponse(IGetModelSnapshotsResponse response)
 		{

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using Elasticsearch.Net;
 using FluentAssertions;
 using Nest;
@@ -9,14 +8,17 @@ using Tests.Framework.ManagedElasticsearch.Clusters;
 
 namespace Tests.XPack.MachineLearning.CloseJob
 {
-	public class CloseJobApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, ICloseJobResponse, ICloseJobRequest, CloseJobDescriptor, CloseJobRequest>
+	public class CloseJobApiTests : MachineLearningIntegrationTestBase<ICloseJobResponse, ICloseJobRequest, CloseJobDescriptor, CloseJobRequest>
 	{
 		public CloseJobApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
-			// TODO: open a job, to allow it to be closed
-
+			foreach (var callUniqueValue in values)
+			{
+				PutJob(client, callUniqueValue.Value);
+				OpenJob(client, callUniqueValue.Value);
+			}
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
@@ -29,19 +31,12 @@ namespace Tests.XPack.MachineLearning.CloseJob
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
-
 		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/{CallIsolatedValue}/_close";
-
 		protected override bool SupportsDeserialization => true;
-
 		protected override CloseJobDescriptor NewDescriptor() => new CloseJobDescriptor(CallIsolatedValue);
-
 		protected override object ExpectJson => null;
-
 		protected override Func<CloseJobDescriptor, ICloseJobRequest> Fluent => f => f;
-
-		protected override CloseJobRequest Initializer =>
-			new CloseJobRequest(CallIsolatedValue);
+		protected override CloseJobRequest Initializer => new CloseJobRequest(CallIsolatedValue);
 
 		protected override void ExpectResponse(ICloseJobResponse response)
 		{

@@ -5,11 +5,10 @@ using Nest;
 using Tests.Framework;
 using Tests.Framework.Integration;
 using Tests.Framework.ManagedElasticsearch.Clusters;
-using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning.PutFilter
 {
-	public class PutFilterApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IPutFilterResponse, IPutFilterRequest, PutFilterDescriptor, PutFilterRequest>
+	public class PutFilterApiTests : MachineLearningIntegrationTestBase<IPutFilterResponse, IPutFilterRequest, PutFilterDescriptor, PutFilterRequest>
 	{
 		public PutFilterApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
@@ -21,19 +20,20 @@ namespace Tests.XPack.MachineLearning.PutFilter
 		);
 
 		protected override bool ExpectIsValid => true;
-		protected override int ExpectStatusCode => 201;
+		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.PUT;
-
 		protected override string UrlPath => $"/_xpack/ml/filters/{CallIsolatedValue}";
-
 		protected override bool SupportsDeserialization => false;
-
 		protected override PutFilterDescriptor NewDescriptor() => new PutFilterDescriptor(CallIsolatedValue);
 
 		protected override object ExpectJson => new
 		{
 			type = "filter_type",
-			items = new[] { "item_1", "item_2" }
+			items = new[]
+			{
+				"item_1",
+				"item_2"
+			}
 		};
 
 		protected override Func<PutFilterDescriptor, IPutFilterRequest> Fluent => f => f
@@ -44,7 +44,11 @@ namespace Tests.XPack.MachineLearning.PutFilter
 			new PutFilterRequest(CallIsolatedValue)
 			{
 				Type = "filter_type",
-				Items = new[] { "item_1", "item_2" }
+				Items = new[]
+				{
+					"item_1",
+					"item_2"
+				}
 			};
 
 		protected override void ExpectResponse(IPutFilterResponse response)

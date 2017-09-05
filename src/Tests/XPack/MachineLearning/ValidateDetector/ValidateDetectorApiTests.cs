@@ -10,7 +10,7 @@ using static Nest.Infer;
 
 namespace Tests.XPack.MachineLearning.ValidateDetector
 {
-	public class ValidateDetectorApiTests : ApiIntegrationTestBase<XPackMachineLearningCluster, IValidateDetectorResponse, IValidateDetectorRequest, ValidateDetectorDescriptor<Project>, ValidateDetectorRequest>
+	public class ValidateDetectorApiTests : MachineLearningIntegrationTestBase<IValidateDetectorResponse, IValidateDetectorRequest, ValidateDetectorDescriptor<Project>, ValidateDetectorRequest>
 	{
 		public ValidateDetectorApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 

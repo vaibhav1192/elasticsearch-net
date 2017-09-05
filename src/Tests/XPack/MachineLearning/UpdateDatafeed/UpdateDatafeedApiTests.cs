@@ -7,20 +7,20 @@ using Tests.Framework.Integration;
 using Tests.Framework.ManagedElasticsearch.Clusters;
 using Tests.Framework.MockData;
 
-namespace Tests.XPack.MachineLearning.PutDatafeed
+namespace Tests.XPack.MachineLearning.UpdateDatafeed
 {
-	public class PutDatafeedApiTests : MachineLearningIntegrationTestBase<IPutDatafeedResponse,
-		IPutDatafeedRequest, PutDatafeedDescriptor<Project>, PutDatafeedRequest>
+	public class UpdateDatafeedApiTests : MachineLearningIntegrationTestBase<IUpdateDatafeedResponse,
+		IUpdateDatafeedRequest, UpdateDatafeedDescriptor<Project>, UpdateDatafeedRequest>
 	{
-		public PutDatafeedApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage)
+		public UpdateDatafeedApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage)
 		{
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
-			fluent: (client, f) => client.PutDatafeed(CallIsolatedValue, f),
-			fluentAsync: (client, f) => client.PutDatafeedAsync(CallIsolatedValue, f),
-			request: (client, r) => client.PutDatafeed(r),
-			requestAsync: (client, r) => client.PutDatafeedAsync(r)
+			fluent: (client, f) => client.UpdateDatafeed(CallIsolatedValue + "-datafeed", f),
+			fluentAsync: (client, f) => client.UpdateDatafeedAsync(CallIsolatedValue + "-datafeed", f),
+			request: (client, r) => client.UpdateDatafeed(r),
+			requestAsync: (client, r) => client.UpdateDatafeedAsync(r)
 		);
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
@@ -28,15 +28,16 @@ namespace Tests.XPack.MachineLearning.PutDatafeed
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				PutDatafeed(client, callUniqueValue.Value);
 			}
 		}
 
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.PUT;
-		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}";
+		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}-datafeed/_update";
 		protected override bool SupportsDeserialization => true;
-		protected override PutDatafeedDescriptor<Project> NewDescriptor() => new PutDatafeedDescriptor<Project>(CallIsolatedValue);
+		protected override UpdateDatafeedDescriptor<Project> NewDescriptor() => new UpdateDatafeedDescriptor<Project>(CallIsolatedValue);
 
 		protected override object ExpectJson => new
 		{
@@ -46,32 +47,32 @@ namespace Tests.XPack.MachineLearning.PutDatafeed
 			{
 				match_all = new
 				{
-					boost = 1.0
+					boost = 2.0
 				}
 			},
 			types = new [] { "metric" }
 		};
 
-		protected override Func<PutDatafeedDescriptor<Project>, IPutDatafeedRequest> Fluent => f => f
+		protected override Func<UpdateDatafeedDescriptor<Project>, IUpdateDatafeedRequest> Fluent => f => f
 			.JobId(CallIsolatedValue)
 			.Indices(Nest.Indices.Parse("server-metrics"))
 			.Types(Types.Parse("metric"))
 			.Query(q => q.MatchAll(m => m.Boost(1)))
 			;
 
-		protected override PutDatafeedRequest Initializer =>
-			new PutDatafeedRequest(CallIsolatedValue)
+		protected override UpdateDatafeedRequest Initializer =>
+			new UpdateDatafeedRequest(CallIsolatedValue + "-datafeed")
 			{
 				JobId = CallIsolatedValue,
 				Indices = Nest.Indices.Parse("server-metrics"),
 				Types = Types.Parse("metric"),
 				Query = new QueryContainer(new MatchAllQuery
 				{
-					Boost = 1
+					Boost = 2
 				})
 			};
 
-		protected override void ExpectResponse(IPutDatafeedResponse response)
+		protected override void ExpectResponse(IUpdateDatafeedResponse response)
 		{
 			response.ShouldBeValid();
 
