@@ -14,7 +14,7 @@ namespace Nest
 
 	public class GetJobStatsResponse : ResponseBase, IGetJobStatsResponse
 	{
-		public long Count { get; }
+		public long Count { get; internal set; }
 
 		public IReadOnlyCollection<JobStats> Jobs { get; internal set; } = EmptyReadOnly<JobStats>.Collection;
 	}

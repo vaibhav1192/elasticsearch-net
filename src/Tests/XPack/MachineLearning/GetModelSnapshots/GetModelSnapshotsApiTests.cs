@@ -40,7 +40,9 @@ namespace Tests.XPack.MachineLearning.GetModelSnapshots
 
 		protected override void ExpectResponse(IGetModelSnapshotsResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.ModelSnapshots.Should().BeEmpty();
+			response.Count.Should().Be(0);
 		}
 	}
 
@@ -53,6 +55,8 @@ namespace Tests.XPack.MachineLearning.GetModelSnapshots
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+
+				// TODO! Add snapshots (as per DeleteModelSnapshot)
 			}
 		}
 
@@ -66,16 +70,18 @@ namespace Tests.XPack.MachineLearning.GetModelSnapshots
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
-		protected override string UrlPath => $"/_xpack/ml/anomaly_detectors/{CallIsolatedValue}/model_snapshots/{CallIsolatedValue}";
+		protected override string UrlPath => $"/_xpack/ml/anomaly_detectors/{CallIsolatedValue}/model_snapshots/1";
 		protected override bool SupportsDeserialization => true;
 		protected override object ExpectJson => null;
-		protected override Func<GetModelSnapshotsDescriptor, IGetModelSnapshotsRequest> Fluent => f => f.SnapshotId(CallIsolatedValue);
+		protected override Func<GetModelSnapshotsDescriptor, IGetModelSnapshotsRequest> Fluent => f => f.SnapshotId(1);
 		protected override GetModelSnapshotsDescriptor NewDescriptor() => new GetModelSnapshotsDescriptor(CallIsolatedValue);
-		protected override GetModelSnapshotsRequest Initializer => new GetModelSnapshotsRequest(CallIsolatedValue, CallIsolatedValue);
+		protected override GetModelSnapshotsRequest Initializer => new GetModelSnapshotsRequest(CallIsolatedValue, 1);
 
 		protected override void ExpectResponse(IGetModelSnapshotsResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.ModelSnapshots.Should().BeEmpty();
+			response.Count.Should().Be(0);
 		}
 	}
 }

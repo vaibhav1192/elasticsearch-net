@@ -1,5 +1,6 @@
 ﻿using System;
 using Elasticsearch.Net;
+using FluentAssertions;
 using Nest;
 using Tests.Framework;
 using Tests.Framework.Integration;
@@ -15,7 +16,12 @@ namespace Tests.XPack.MachineLearning.GetFilters
 		{
 			foreach (var callUniqueValue in values)
 			{
-				PutJob(client, callUniqueValue.Value);
+				var putFilterResponse = client.PutFilter(callUniqueValue.Value, f => f
+					.Type("filter_type")
+					.Items("item_1", "item_2"));
+
+				if (!putFilterResponse.IsValid)
+					throw new Exception("Problem setting up PutFilter for integration test");
 			}
 		}
 
@@ -36,7 +42,9 @@ namespace Tests.XPack.MachineLearning.GetFilters
 
 		protected override void ExpectResponse(IGetFiltersResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Filters.Count.Should().BeGreaterOrEqualTo(1);
+			response.Count.Should().BeGreaterOrEqualTo(1);
 		}
 	}
 
@@ -48,7 +56,12 @@ namespace Tests.XPack.MachineLearning.GetFilters
 		{
 			foreach (var callUniqueValue in values)
 			{
-				PutJob(client, callUniqueValue.Value);
+				var putFilterResponse = client.PutFilter(callUniqueValue.Value, f => f
+					.Type("filter_type")
+					.Items("item_1", "item_2"));
+
+				if (!putFilterResponse.IsValid)
+					throw new Exception("Problem setting up PutFilter for integration test");
 			}
 		}
 
@@ -70,7 +83,9 @@ namespace Tests.XPack.MachineLearning.GetFilters
 
 		protected override void ExpectResponse(IGetFiltersResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Filters.Count.Should().BeGreaterOrEqualTo(1);
+			response.Filters.Count.Should().Be(1);
 		}
 	}
 }

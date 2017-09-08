@@ -14,7 +14,7 @@ namespace Nest
 
 	public class GetFiltersResponse : ResponseBase, IGetFiltersResponse
 	{
-		public long Count { get; }
+		public long Count { get; internal set; }
 
 		public IReadOnlyCollection<MachineLearningFilter> Filters { get; internal set; } = EmptyReadOnly<MachineLearningFilter>.Collection;
 	}

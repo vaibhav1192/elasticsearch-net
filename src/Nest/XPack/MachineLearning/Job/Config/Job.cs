@@ -31,6 +31,7 @@ namespace Nest
 		/// The time the job was created.
 		/// </summary>
 		[JsonProperty("create_time")]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		public DateTimeOffset CreateTime { get; set; }
 
 		/// <summary>

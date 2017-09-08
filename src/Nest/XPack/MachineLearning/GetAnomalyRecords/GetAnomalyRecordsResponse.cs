@@ -14,7 +14,7 @@ namespace Nest
 
 	public class GetAnomalyRecordsResponse : ResponseBase, IGetAnomalyRecordsResponse
 	{
-		public long Count { get; }
+		public long Count { get; internal set; }
 
 		public IReadOnlyCollection<AnomalyRecord> Records { get; internal set; } = EmptyReadOnly<AnomalyRecord>.Collection;
 	}

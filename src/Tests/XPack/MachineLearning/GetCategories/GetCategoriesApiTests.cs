@@ -36,12 +36,22 @@ namespace Tests.XPack.MachineLearning.GetCategories
 		protected override bool SupportsDeserialization => true;
 		protected override GetCategoriesDescriptor NewDescriptor() => new GetCategoriesDescriptor(CallIsolatedValue);
 		protected override object ExpectJson => null;
-		protected override Func<GetCategoriesDescriptor, IGetCategoriesRequest> Fluent => f => f;
-		protected override GetCategoriesRequest Initializer => new GetCategoriesRequest(CallIsolatedValue);
+		protected override Func<GetCategoriesDescriptor, IGetCategoriesRequest> Fluent => f => f.Page(p => p.From(0).Size(10));
+
+		protected override GetCategoriesRequest Initializer => new GetCategoriesRequest(CallIsolatedValue)
+		{
+			Page = new Page
+			{
+				From = 0,
+				Size = 10
+			}
+		};
 
 		protected override void ExpectResponse(IGetCategoriesResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Categories.Should().BeEmpty();
+			response.Count.Should().Be(0);
 		}
 	}
 
@@ -76,7 +86,9 @@ namespace Tests.XPack.MachineLearning.GetCategories
 
 		protected override void ExpectResponse(IGetCategoriesResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Categories.Should().BeEmpty();
+			response.Count.Should().Be(0);
 		}
 	}
 }

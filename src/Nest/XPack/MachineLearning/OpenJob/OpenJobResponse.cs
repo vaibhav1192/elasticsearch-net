@@ -10,6 +10,6 @@ namespace Nest
 
 	public class OpenJobResponse : ResponseBase, IOpenJobResponse
 	{
-		public bool Opened { get; set; }
+		public bool Opened { get; internal set; }
 	}
 }

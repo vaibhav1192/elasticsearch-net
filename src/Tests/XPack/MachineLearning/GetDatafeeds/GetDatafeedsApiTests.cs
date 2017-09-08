@@ -39,7 +39,9 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 
 		protected override void ExpectResponse(IGetDatafeedsResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Datafeeds.Should().BeEmpty();
+			response.Count.Should().Be(0);
 		}
 	}
 
@@ -73,7 +75,9 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 
 		protected override void ExpectResponse(IGetDatafeedsResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Datafeeds.Should().BeEmpty();
+			response.Count.Should().Be(0);
 		}
 	}
 }

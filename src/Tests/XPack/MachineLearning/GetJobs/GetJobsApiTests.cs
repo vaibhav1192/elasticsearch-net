@@ -1,5 +1,6 @@
 ﻿using System;
 using Elasticsearch.Net;
+using FluentAssertions;
 using Nest;
 using Tests.Framework;
 using Tests.Framework.Integration;
@@ -37,7 +38,9 @@ namespace Tests.XPack.MachineLearning.GetJobs
 
 		protected override void ExpectResponse(IGetJobsResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Count.Should().BeGreaterOrEqualTo(1);
+			response.Jobs.Count.Should().BeGreaterOrEqualTo(1);
 		}
 	}
 
@@ -71,7 +74,9 @@ namespace Tests.XPack.MachineLearning.GetJobs
 
 		protected override void ExpectResponse(IGetJobsResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Count.Should().Be(1);
+			response.Jobs.Count.Should().Be(1);
 		}
 	}
 }

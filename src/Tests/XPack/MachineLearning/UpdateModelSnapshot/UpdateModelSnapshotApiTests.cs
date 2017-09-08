@@ -8,7 +8,7 @@ using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning.UpdateModelSnapshot
 {
-	public class UpdateModelSnapshotApiTests : MachineLearningIntegrationTestBase<IUpdateModelSnapshotResponse, IUpdateModelSnapshotRequest, UpdateModelSnapshotDescriptor<Metric>, UpdateModelSnapshotRequest>
+	public class UpdateModelSnapshotApiTests : MachineLearningIntegrationTestBase<IUpdateModelSnapshotResponse, IUpdateModelSnapshotRequest, UpdateModelSnapshotDescriptor, UpdateModelSnapshotRequest>
 	{
 		public UpdateModelSnapshotApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 

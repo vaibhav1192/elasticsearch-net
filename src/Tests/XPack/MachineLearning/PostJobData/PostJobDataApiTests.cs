@@ -5,6 +5,7 @@ using Nest;
 using Tests.Framework;
 using Tests.Framework.Integration;
 using Tests.Framework.ManagedElasticsearch.Clusters;
+using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning.PostJobData
 {
@@ -17,6 +18,7 @@ namespace Tests.XPack.MachineLearning.PostJobData
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				OpenJob(client, callUniqueValue.Value);
 			}
 		}
 
@@ -28,17 +30,67 @@ namespace Tests.XPack.MachineLearning.PostJobData
 		);
 
 		protected override bool ExpectIsValid => true;
-		protected override int ExpectStatusCode => 200;
+		protected override int ExpectStatusCode => 202;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
 		protected override string UrlPath => $"/_xpack/ml/anomaly_detectors/{CallIsolatedValue}/_data";
 		protected override bool SupportsDeserialization => false;
 		protected override PostJobDataDescriptor NewDescriptor() => new PostJobDataDescriptor(CallIsolatedValue);
-		protected override object ExpectJson => null;
-		protected override Func<PostJobDataDescriptor, IPostJobDataRequest> Fluent => f => f;
-		protected override PostJobDataRequest Initializer => new PostJobDataRequest(CallIsolatedValue);
+
+		protected override object ExpectJson => new
+		{
+			timestamp = new DateTime(2017, 9, 1),
+			accept = 36320,
+			deny = 4156,
+			host = "server_2",
+			response = 2.455821,
+			service = "app_3",
+			total = 40476
+		};
+
+		protected override Func<PostJobDataDescriptor, IPostJobDataRequest> Fluent => f => f.Data(new Metric
+		{
+			Timestamp = new DateTime(2017, 9, 1),
+			Accept = 36320,
+			Deny = 4156,
+			Host = "server_2",
+			Response = 2.455821f,
+			Service = "app_3",
+			Total  = 40476
+		});
+
+		protected override PostJobDataRequest Initializer => new PostJobDataRequest(CallIsolatedValue)
+		{
+			Data = new[]
+			{
+				new Metric
+				{
+					Timestamp = new DateTime(2017, 9, 1),
+					Accept = 36320,
+					Deny = 4156,
+					Host = "server_2",
+					Response = 2.4558210155f,
+					Service = "app_3",
+					Total  = 40476
+				}
+			}
+		};
 
 		protected override void ExpectResponse(IPostJobDataResponse response)
 		{
+			response.ShouldBeValid();
+			response.JobId.Should().Be(CallIsolatedValue);
+			response.ProcessedRecordCount.Should().Be(0);
+			response.ProcessedFieldCount.Should().Be(0);
+			response.InputBytes.Should().BeGreaterOrEqualTo(1);
+			response.InputFieldCount.Should().Be(6);
+			response.InvalidDateCount.Should().Be(1);
+			response.MissingFieldCount.Should().Be(0);
+			response.OutOfOrderTimestampCount.Should().Be(0);
+			response.EmptyBucketCount.Should().Be(0);
+			response.SparseBucketCount.Should().Be(0);
+			response.BucketCount.Should().Be(0);
+			response.LastDataTime.Should().BeAfter(new DateTime(2017, 9, 1));
+			response.InputRecordCount.Should().Be(1);
 		}
 	}
 }

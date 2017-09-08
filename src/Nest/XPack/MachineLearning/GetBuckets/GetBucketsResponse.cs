@@ -16,7 +16,6 @@ namespace Nest
 	{
 		public long Count { get; internal set; }
 
-		public IReadOnlyCollection<Bucket> Buckets { get; internal set; } =
-			EmptyReadOnly<Bucket>.Collection;
+		public IReadOnlyCollection<Bucket> Buckets { get; internal set; } = EmptyReadOnly<Bucket>.Collection;
 	}
 }

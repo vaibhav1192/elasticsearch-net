@@ -19,18 +19,35 @@ namespace Tests.XPack.MachineLearning.DeleteModelSnapshot
 			{
 				PutJob(client, callUniqueValue.Value);
 
-				var getModelSnapshotResponse = client.GetModelSnapshots(callUniqueValue.Value, f => f);
+				// Insert two snapshot documents
+				client.LowLevel.Index<object>(".ml-anomalies-get-model-snapshots", "doc", "get-model-snapshots-1", (object)new
+				{
+					job_id = callUniqueValue.Value,
+					snapshot_id = "1",
+					timestamp = "2016-06-02T00:00:00Z",
+					snapshot_doc_count = 1
+				});
+				client.LowLevel.Index<object>(".ml-anomalies-get-model-snapshots", "doc", "get-model-snapshots-2", (object)new
+				{
+					job_id = callUniqueValue.Value,
+					snapshot_id = "2",
+					timestamp = "2016-06-01T00:00:00Z",
+					snapshot_doc_count = 2
+				});
 
-				Console.Write(getModelSnapshotResponse.ModelSnapshots.First().SnapshotId);
+				// Force index refreshL
+				client.Refresh(".ml-anomalies-get-model-snapshots");
 
-				if (!getModelSnapshotResponse.IsValid)
-					throw new Exception("Problem setting up GetModelSnapshots for integration test");
+				// Check GetModelSnapshots returns the two documents
+				var getModelSnapshotsResponse = client.GetModelSnapshots(callUniqueValue.Value);
+				//getModelSnapshotsResponse.Count.Should().Be(2);
+				//getModelSnapshotsResponse.ModelSnapshots.Should().HaveCount(2);
 			}
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
-			fluent: (client, f) => client.DeleteModelSnapshot(CallIsolatedValue, CallIsolatedValue, f),
-			fluentAsync: (client, f) => client.DeleteModelSnapshotAsync(CallIsolatedValue, CallIsolatedValue, f),
+			fluent: (client, f) => client.DeleteModelSnapshot(CallIsolatedValue, "1", f),
+			fluentAsync: (client, f) => client.DeleteModelSnapshotAsync(CallIsolatedValue, "1", f),
 			request: (client, r) => client.DeleteModelSnapshot(r),
 			requestAsync: (client, r) => client.DeleteModelSnapshotAsync(r)
 		);
@@ -38,12 +55,12 @@ namespace Tests.XPack.MachineLearning.DeleteModelSnapshot
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.DELETE;
-		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/{CallIsolatedValue}/model_snapshots/{CallIsolatedValue}";
+		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/{CallIsolatedValue}/model_snapshots/1";
 		protected override bool SupportsDeserialization => true;
-		protected override DeleteModelSnapshotDescriptor NewDescriptor() =>	new DeleteModelSnapshotDescriptor(CallIsolatedValue, CallIsolatedValue);
+		protected override DeleteModelSnapshotDescriptor NewDescriptor() =>	new DeleteModelSnapshotDescriptor(CallIsolatedValue, "1");
 		protected override object ExpectJson => null;
 		protected override Func<DeleteModelSnapshotDescriptor, IDeleteModelSnapshotRequest> Fluent => f => f;
-		protected override DeleteModelSnapshotRequest Initializer => new DeleteModelSnapshotRequest(CallIsolatedValue, CallIsolatedValue);
+		protected override DeleteModelSnapshotRequest Initializer => new DeleteModelSnapshotRequest(CallIsolatedValue, "1");
 
 		protected override void ExpectResponse(IDeleteModelSnapshotResponse response)
 		{

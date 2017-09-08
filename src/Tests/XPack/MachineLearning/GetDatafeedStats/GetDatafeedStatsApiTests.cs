@@ -18,6 +18,7 @@ namespace Tests.XPack.MachineLearning.GetDatafeedStats
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				PutDatafeed(client, callUniqueValue.Value);
 			}
 		}
 
@@ -38,7 +39,8 @@ namespace Tests.XPack.MachineLearning.GetDatafeedStats
 
 		protected override void ExpectResponse(IGetDatafeedStatsResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Count.Should().Be(1);
 		}
 	}
 
@@ -51,6 +53,7 @@ namespace Tests.XPack.MachineLearning.GetDatafeedStats
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				PutDatafeed(client, callUniqueValue.Value);
 			}
 		}
 
@@ -64,15 +67,16 @@ namespace Tests.XPack.MachineLearning.GetDatafeedStats
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.GET;
-		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}/_stats";
+		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}-datafeed/_stats";
 		protected override bool SupportsDeserialization => true;
 		protected override object ExpectJson => null;
-		protected override Func<GetDatafeedStatsDescriptor, IGetDatafeedStatsRequest> Fluent => f => f.DatafeedId(CallIsolatedValue);
-		protected override GetDatafeedStatsRequest Initializer => new GetDatafeedStatsRequest(CallIsolatedValue);
+		protected override Func<GetDatafeedStatsDescriptor, IGetDatafeedStatsRequest> Fluent => f => f.DatafeedId(CallIsolatedValue + "-datafeed");
+		protected override GetDatafeedStatsRequest Initializer => new GetDatafeedStatsRequest(CallIsolatedValue + "-datafeed");
 
 		protected override void ExpectResponse(IGetDatafeedStatsResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Count.Should().Be(1);
 		}
 	}
 }

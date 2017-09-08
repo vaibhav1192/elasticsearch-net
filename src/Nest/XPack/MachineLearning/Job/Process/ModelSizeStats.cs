@@ -63,6 +63,7 @@ namespace Nest
 		/// The timestamp according to server time.
 		/// </summary>
 		[JsonProperty("log_time")]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		public DateTimeOffset LogTime { get; internal set; }
 
 		/// <summary>

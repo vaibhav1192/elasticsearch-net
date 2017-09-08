@@ -10,6 +10,6 @@ namespace Nest
 
 	public class CloseJobResponse : ResponseBase, ICloseJobResponse
 	{
-		public bool Closed { get; set; }
+		public bool Closed { get; internal set; }
 	}
 }

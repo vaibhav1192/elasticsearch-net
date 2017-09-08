@@ -39,7 +39,9 @@ namespace Tests.XPack.MachineLearning.GetInfluencers
 
 		protected override void ExpectResponse(IGetInfluencersResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Influencers.Should().BeEmpty();
+			response.Count.Should().Be(0);
 		}
 	}
 }

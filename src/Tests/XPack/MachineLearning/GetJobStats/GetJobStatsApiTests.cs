@@ -39,7 +39,9 @@ namespace Tests.XPack.MachineLearning.GetJobStats
 
 		protected override void ExpectResponse(IGetJobStatsResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Count.Should().BeGreaterOrEqualTo(1);
+			response.Jobs.Count.Should().BeGreaterOrEqualTo(1);
 		}
 	}
 
@@ -73,7 +75,9 @@ namespace Tests.XPack.MachineLearning.GetJobStats
 
 		protected override void ExpectResponse(IGetJobStatsResponse response)
 		{
-			// TODO: Implement
+			response.ShouldBeValid();
+			response.Count.Should().Be(1);
+			response.Jobs.Count.Should().Be(1);
 		}
 	}
 }

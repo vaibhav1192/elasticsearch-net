@@ -16,7 +16,7 @@ namespace Nest
 
 	public class GetInfluencersResponse : ResponseBase, IGetInfluencersResponse
 	{
-		public long Count { get; }
+		public long Count { get; internal set; }
 
 		public IReadOnlyCollection<BucketInfluencer> Influencers { get; internal set; } = EmptyReadOnly<BucketInfluencer>.Collection;
 	}

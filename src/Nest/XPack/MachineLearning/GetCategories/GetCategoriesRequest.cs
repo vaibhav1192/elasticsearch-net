@@ -31,6 +31,5 @@ namespace Nest
 		/// <inheritdoc />
 		public GetCategoriesDescriptor Page(Func<PageDescriptor, IPage> selector) =>
 			Assign(a => a.Page = selector?.Invoke(new PageDescriptor()));
-
 	}
 }
