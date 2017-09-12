@@ -26,9 +26,62 @@ namespace Tests.XPack.MachineLearning.ValidateJob
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
 		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/_validate";
 		protected override bool SupportsDeserialization => true;
-		protected override object ExpectJson => null;
-		protected override Func<ValidateJobDescriptor<Metric>, IValidateJobRequest> Fluent => f => f;
-		protected override ValidateJobRequest Initializer => new ValidateJobRequest();
+
+		protected override object ExpectJson => new
+		{
+			analysis_config = new
+			{
+				bucket_span = "30m",
+				detectors = new[]
+				{
+					new
+					{
+						function = "sum",
+						field_name = "total"
+					}
+				},
+				latency = "0s",
+			},
+			data_description = new
+			{
+				time_field = "timestamp"
+			},
+			description = "Lab 1 - Simple example",
+			results_index_name = "server-metrics"
+		};
+
+		protected override Func<ValidateJobDescriptor<Metric>, IValidateJobRequest> Fluent => f => f
+			.Description("Lab 1 - Simple example")
+			.ResultsIndexName("server-metrics")
+			.AnalysisConfig(a => a
+				.BucketSpan(new Time("30m"))
+				.Latency("0s")
+				.Detectors(d => d.Sum(c => c.FieldName(r => r.Total)))
+			)
+			.DataDescription(d => d.TimeField(r => r.Timestamp));
+
+		protected override ValidateJobRequest Initializer =>
+			new ValidateJobRequest()
+			{
+				Description = "Lab 1 - Simple example",
+				ResultsIndexName = "server-metrics",
+				AnalysisConfig = new AnalysisConfig
+				{
+					BucketSpan = new Time("30m"),
+					Latency = "0s",
+					Detectors = new []
+					{
+						new SumDetector
+						{
+							FieldName = "total"
+						}
+					}
+				},
+				DataDescription = new DataDescription
+				{
+					TimeField = "timestamp"
+				}
+			};
 
 		protected override void ExpectResponse(IValidateJobResponse response)
 		{

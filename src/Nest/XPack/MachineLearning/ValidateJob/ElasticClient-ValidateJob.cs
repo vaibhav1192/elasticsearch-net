@@ -10,13 +10,13 @@ namespace Nest
 		/// <summary>
 		/// Validates a Machine Learning job
 		/// </summary>
-		IValidateJobResponse ValidateJob<T>(Func<ValidateJobDescriptor<T>, IValidateJobRequest> selector);
+		IValidateJobResponse ValidateJob<T>(Func<ValidateJobDescriptor<T>, IValidateJobRequest> selector) where T : class;
 
 		/// <inheritdoc/>
 		IValidateJobResponse ValidateJob(IValidateJobRequest request);
 
 		/// <inheritdoc/>
-		Task<IValidateJobResponse> ValidateJobAsync<T>(Func<ValidateJobDescriptor<T>, IValidateJobRequest> selector, CancellationToken cancellationToken = default(CancellationToken));
+		Task<IValidateJobResponse> ValidateJobAsync<T>(Func<ValidateJobDescriptor<T>, IValidateJobRequest> selector, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 
 		/// <inheritdoc/>
 		Task<IValidateJobResponse> ValidateJobAsync(IValidateJobRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -25,7 +25,7 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IValidateJobResponse ValidateJob<T>(Func<ValidateJobDescriptor<T>, IValidateJobRequest> selector) =>
+		public IValidateJobResponse ValidateJob<T>(Func<ValidateJobDescriptor<T>, IValidateJobRequest> selector) where T : class =>
 			this.ValidateJob(selector.InvokeOrDefault(new ValidateJobDescriptor<T>()));
 
 		/// <inheritdoc/>
@@ -36,7 +36,7 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IValidateJobResponse> ValidateJobAsync<T>(Func<ValidateJobDescriptor<T>, IValidateJobRequest> selector, CancellationToken cancellationToken = default(CancellationToken)) =>
+		public Task<IValidateJobResponse> ValidateJobAsync<T>(Func<ValidateJobDescriptor<T>, IValidateJobRequest> selector, CancellationToken cancellationToken = default(CancellationToken))  where T : class =>
 			this.ValidateJobAsync(selector.InvokeOrDefault(new ValidateJobDescriptor<T>()), cancellationToken);
 
 		/// <inheritdoc/>
