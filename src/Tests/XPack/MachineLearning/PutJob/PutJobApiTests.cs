@@ -113,7 +113,7 @@ namespace Tests.XPack.MachineLearning.PutJob
 			response.DataDescription.TimeFormat.Should().Be("epoch_ms");
 
 			response.ModelSnapshotRetentionDays.Should().Be(1);
-			response.ResultsIndexName.Should().Be("custom-server-metrics");
+			response.ResultsIndexName.Should().Be("shared");
 		}
 	}
 }

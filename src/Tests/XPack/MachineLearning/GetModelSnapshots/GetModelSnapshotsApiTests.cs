@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using Elasticsearch.Net;
 using FluentAssertions;
@@ -18,6 +19,7 @@ namespace Tests.XPack.MachineLearning.GetModelSnapshots
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				IndexSnapshot(client, callUniqueValue.Value, "1");
 			}
 		}
 
@@ -41,8 +43,14 @@ namespace Tests.XPack.MachineLearning.GetModelSnapshots
 		protected override void ExpectResponse(IGetModelSnapshotsResponse response)
 		{
 			response.ShouldBeValid();
-			response.ModelSnapshots.Should().BeEmpty();
-			response.Count.Should().Be(0);
+			response.ModelSnapshots.Should().HaveCount(1);
+			response.Count.Should().Be(1);
+
+			response.ModelSnapshots.First().JobId.Should().Be(CallIsolatedValue);
+			response.ModelSnapshots.First().Timestamp.Should().Be(new DateTimeOffset(2016, 6, 2, 00, 00, 00, TimeSpan.Zero));
+			response.ModelSnapshots.First().SnapshotId.Should().Be("1");
+			response.ModelSnapshots.First().SnapshotDocCount.Should().Be(1);
+			response.ModelSnapshots.First().Retain.Should().Be(false);
 		}
 	}
 

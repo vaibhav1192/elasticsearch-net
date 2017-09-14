@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using Elasticsearch.Net;
 using FluentAssertions;
@@ -40,7 +41,8 @@ namespace Tests.XPack.MachineLearning.GetDatafeedStats
 		protected override void ExpectResponse(IGetDatafeedStatsResponse response)
 		{
 			response.ShouldBeValid();
-			response.Count.Should().Be(1);
+			response.Count.Should().BeGreaterOrEqualTo(1);
+			response.Datafeeds.First().State.Should().Be(DatafeedState.Stopped);
 		}
 	}
 
@@ -76,7 +78,8 @@ namespace Tests.XPack.MachineLearning.GetDatafeedStats
 		protected override void ExpectResponse(IGetDatafeedStatsResponse response)
 		{
 			response.ShouldBeValid();
-			response.Count.Should().Be(1);
+			response.Count.Should().BeGreaterOrEqualTo(1);
+			response.Datafeeds.First().State.Should().Be(DatafeedState.Stopped);
 		}
 	}
 }

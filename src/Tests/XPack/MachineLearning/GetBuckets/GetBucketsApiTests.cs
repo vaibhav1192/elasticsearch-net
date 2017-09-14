@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using Elasticsearch.Net;
 using FluentAssertions;
@@ -6,7 +7,6 @@ using Nest;
 using Tests.Framework;
 using Tests.Framework.Integration;
 using Tests.Framework.ManagedElasticsearch.Clusters;
-using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning.GetBuckets
 {
@@ -19,6 +19,7 @@ namespace Tests.XPack.MachineLearning.GetBuckets
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				IndexBucket(client, callUniqueValue.Value, new DateTimeOffset(2016, 6, 2, 00, 00, 00, TimeSpan.Zero));
 			}
 		}
 
@@ -42,8 +43,19 @@ namespace Tests.XPack.MachineLearning.GetBuckets
 		protected override void ExpectResponse(IGetBucketsResponse response)
 		{
 			response.ShouldBeValid();
-			response.Buckets.Should().BeEmpty();
-			response.Count.Should().Be(0);
+			response.Buckets.Should().HaveCount(1);
+			response.Count.Should().Be(1);
+
+			response.Buckets.Should().HaveCount(1);
+			response.Buckets.First().ResultType.Should().Be("bucket");
+			response.Buckets.First().AnomalyScore.Should().Be(90);
+			response.Buckets.First().BucketSpan.Should().Be(1);
+			response.Buckets.First().InitialAnomalyScore.Should().Be(0);
+			response.Buckets.First().EventCount.Should().Be(0);
+			response.Buckets.First().IsInterim.Should().Be(true);
+			response.Buckets.First().BucketInfluencers.Should().BeEmpty();
+			response.Buckets.First().ProcessingTimeMs.Should().Be(0);
+			response.Buckets.First().Timestamp.Should().BeBefore(DateTimeOffset.UtcNow);
 		}
 	}
 
@@ -56,6 +68,7 @@ namespace Tests.XPack.MachineLearning.GetBuckets
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				IndexBucket(client, callUniqueValue.Value, new DateTimeOffset(2016, 6, 2, 00, 00, 00, TimeSpan.Zero));
 			}
 		}
 
@@ -69,18 +82,32 @@ namespace Tests.XPack.MachineLearning.GetBuckets
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
-		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/{CallIsolatedValue}/results/buckets/1454943900000";
+		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/{CallIsolatedValue}/results/buckets";
 		protected override bool SupportsDeserialization => true;
 		protected override GetBucketsDescriptor NewDescriptor() => new GetBucketsDescriptor(CallIsolatedValue);
 		protected override object ExpectJson => null;
-		protected override Func<GetBucketsDescriptor, IGetBucketsRequest> Fluent => f => f.Timestamp(new DateTime(2017, 08, 09));
-		protected override GetBucketsRequest Initializer => new GetBucketsRequest(CallIsolatedValue, new DateTime(2017, 08, 09));
+		protected override Func<GetBucketsDescriptor, IGetBucketsRequest> Fluent => f => f.Timestamp(new DateTimeOffset(2016, 6, 2, 00, 00, 00, TimeSpan.Zero));
+		protected override GetBucketsRequest Initializer => new GetBucketsRequest(CallIsolatedValue)
+		{
+			Timestamp = new DateTimeOffset(2016, 6, 2, 00, 00, 00, TimeSpan.Zero)
+		};
 
 		protected override void ExpectResponse(IGetBucketsResponse response)
 		{
 			response.ShouldBeValid();
-			response.Buckets.Should().BeEmpty();
-			response.Count.Should().Be(0);
+			response.Buckets.Should().HaveCount(1);
+			response.Count.Should().Be(1);
+
+			response.Buckets.Should().HaveCount(1);
+			response.Buckets.First().ResultType.Should().Be("bucket");
+			response.Buckets.First().AnomalyScore.Should().Be(90);
+			response.Buckets.First().BucketSpan.Should().Be(1);
+			response.Buckets.First().InitialAnomalyScore.Should().Be(0);
+			response.Buckets.First().EventCount.Should().Be(0);
+			response.Buckets.First().IsInterim.Should().Be(true);
+			response.Buckets.First().BucketInfluencers.Should().BeEmpty();
+			response.Buckets.First().ProcessingTimeMs.Should().Be(0);
+			response.Buckets.First().Timestamp.Should().BeBefore(DateTimeOffset.UtcNow);
 		}
 	}
 }

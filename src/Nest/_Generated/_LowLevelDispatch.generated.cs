@@ -3681,17 +3681,15 @@ namespace Nest
 			switch(p.HttpMethod)
 			{
 				case GET:
-					if (AllSet(p.RouteValues.JobId, p.RouteValues.Timestamp)) return _lowLevel.XpackMlGetBuckets<T>(p.RouteValues.JobId,p.RouteValues.Timestamp,u => p.RequestParameters);
 					if (AllSetNoFallback(p.RouteValues.JobId)) return _lowLevel.XpackMlGetBuckets<T>(p.RouteValues.JobId,u => p.RequestParameters);
 					break;
 
 				case POST:
-					if (AllSet(p.RouteValues.JobId, p.RouteValues.Timestamp)) return _lowLevel.XpackMlGetBuckets<T>(p.RouteValues.JobId,p.RouteValues.Timestamp,body,u => p.RequestParameters);
 					if (AllSetNoFallback(p.RouteValues.JobId)) return _lowLevel.XpackMlGetBuckets<T>(p.RouteValues.JobId,body,u => p.RequestParameters);
 					break;
 
 			}
-			throw InvalidDispatch("XpackMlGetBuckets", p, new [] { GET, POST }, "/_xpack/ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}", "/_xpack/ml/anomaly_detectors/{job_id}/results/buckets");
+			throw InvalidDispatch("XpackMlGetBuckets", p, new [] { GET, POST }, "/_xpack/ml/anomaly_detectors/{job_id}/results/buckets");
 		}
 		
 		internal Task<ElasticsearchResponse<T>> XpackMlGetBucketsDispatchAsync<T>(IRequest<GetBucketsRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
@@ -3699,17 +3697,15 @@ namespace Nest
 			switch(p.HttpMethod)
 			{
 				case GET:
-					if (AllSet(p.RouteValues.JobId, p.RouteValues.Timestamp)) return _lowLevel.XpackMlGetBucketsAsync<T>(p.RouteValues.JobId,p.RouteValues.Timestamp,u => p.RequestParameters,cancellationToken);
 					if (AllSetNoFallback(p.RouteValues.JobId)) return _lowLevel.XpackMlGetBucketsAsync<T>(p.RouteValues.JobId,u => p.RequestParameters,cancellationToken);
 					break;
 
 				case POST:
-					if (AllSet(p.RouteValues.JobId, p.RouteValues.Timestamp)) return _lowLevel.XpackMlGetBucketsAsync<T>(p.RouteValues.JobId,p.RouteValues.Timestamp,body,u => p.RequestParameters,cancellationToken);
 					if (AllSetNoFallback(p.RouteValues.JobId)) return _lowLevel.XpackMlGetBucketsAsync<T>(p.RouteValues.JobId,body,u => p.RequestParameters,cancellationToken);
 					break;
 
 			}
-			throw InvalidDispatch("XpackMlGetBuckets", p, new [] { GET, POST }, "/_xpack/ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}", "/_xpack/ml/anomaly_detectors/{job_id}/results/buckets");
+			throw InvalidDispatch("XpackMlGetBuckets", p, new [] { GET, POST }, "/_xpack/ml/anomaly_detectors/{job_id}/results/buckets");
 		}
 		
 		internal ElasticsearchResponse<T> XpackMlGetCategoriesDispatch<T>(IRequest<GetCategoriesRequestParameters> p , PostData<object> body) where T : class

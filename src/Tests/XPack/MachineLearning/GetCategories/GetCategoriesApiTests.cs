@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using Elasticsearch.Net;
 using FluentAssertions;
@@ -19,6 +20,7 @@ namespace Tests.XPack.MachineLearning.GetCategories
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				IndexCategory(client, callUniqueValue.Value);
 			}
 		}
 
@@ -50,8 +52,15 @@ namespace Tests.XPack.MachineLearning.GetCategories
 		protected override void ExpectResponse(IGetCategoriesResponse response)
 		{
 			response.ShouldBeValid();
-			response.Categories.Should().BeEmpty();
-			response.Count.Should().Be(0);
+			response.Categories.Should().HaveCount(1);
+			response.Count.Should().Be(1);
+
+			response.Categories.First().JobId.Should().Be(CallIsolatedValue);
+			response.Categories.First().CategoryId.Should().Be(1);
+			response.Categories.First().Terms.Should().Be("");
+			response.Categories.First().Regex.Should().Be("");
+			response.Categories.First().MaxMatchingLength.Should().Be(0);
+			response.Categories.First().Examples.Should().HaveCount(0);
 		}
 	}
 
@@ -64,6 +73,7 @@ namespace Tests.XPack.MachineLearning.GetCategories
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				IndexCategory(client, callUniqueValue.Value);
 			}
 		}
 
@@ -87,8 +97,15 @@ namespace Tests.XPack.MachineLearning.GetCategories
 		protected override void ExpectResponse(IGetCategoriesResponse response)
 		{
 			response.ShouldBeValid();
-			response.Categories.Should().BeEmpty();
-			response.Count.Should().Be(0);
+			response.Categories.Should().HaveCount(1);
+			response.Count.Should().Be(1);
+
+			response.Categories.First().JobId.Should().Be(CallIsolatedValue);
+			response.Categories.First().CategoryId.Should().Be(1);
+			response.Categories.First().Terms.Should().Be("");
+			response.Categories.First().Regex.Should().Be("");
+			response.Categories.First().MaxMatchingLength.Should().Be(0);
+			response.Categories.First().Examples.Should().HaveCount(0);
 		}
 	}
 }

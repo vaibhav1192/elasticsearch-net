@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using Elasticsearch.Net;
 using FluentAssertions;
@@ -19,6 +20,7 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				PutDatafeed(client, callUniqueValue.Value);
 			}
 		}
 
@@ -40,8 +42,29 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 		protected override void ExpectResponse(IGetDatafeedsResponse response)
 		{
 			response.ShouldBeValid();
-			response.Datafeeds.Should().BeEmpty();
-			response.Count.Should().Be(0);
+			response.Count.Should().BeGreaterOrEqualTo(1);
+
+			response.Datafeeds.First().DatafeedId.Should().NotBeNullOrWhiteSpace();
+			response.Datafeeds.First().JobId.Should().NotBeNullOrWhiteSpace();
+
+			response.Datafeeds.First().QueryDelay.Should().NotBeNull("QueryDelay");
+			response.Datafeeds.First().QueryDelay.Should().Be(new Time("1m"));
+
+//			Indices are not deserialising...
+//			response.Datafeeds.First().Indices.Should().NotBeNull("Indices");
+//			response.Datafeeds.First().Indices.Should().Be(Nest.Indices.Parse("server-metrics"));
+
+			response.Datafeeds.First().Types.Should().NotBeNull("Types");
+			response.Datafeeds.First().Types.Should().Be(Types.Parse("metric"));
+
+			response.Datafeeds.First().ScrollSize.Should().Be(1000);
+
+			response.Datafeeds.First().ChunkingConfig.Should().NotBeNull();
+			response.Datafeeds.First().ChunkingConfig.Mode.Should().Be(ChunkingMode.Auto);
+
+			response.Datafeeds.First().Query.Should().NotBeNull();
+
+			response.ShouldBeValid();
 		}
 	}
 
@@ -54,6 +77,7 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				PutDatafeed(client, callUniqueValue.Value);
 			}
 		}
 
@@ -67,17 +91,38 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.GET;
-		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}";
+		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}-datafeed";
 		protected override bool SupportsDeserialization => true;
 		protected override object ExpectJson => null;
-		protected override Func<GetDatafeedsDescriptor, IGetDatafeedsRequest> Fluent => f => f.DatafeedId(CallIsolatedValue);
-		protected override GetDatafeedsRequest Initializer => new GetDatafeedsRequest(CallIsolatedValue);
+		protected override Func<GetDatafeedsDescriptor, IGetDatafeedsRequest> Fluent => f => f.DatafeedId(CallIsolatedValue + "-datafeed");
+		protected override GetDatafeedsRequest Initializer => new GetDatafeedsRequest(CallIsolatedValue + "-datafeed");
 
 		protected override void ExpectResponse(IGetDatafeedsResponse response)
 		{
 			response.ShouldBeValid();
-			response.Datafeeds.Should().BeEmpty();
-			response.Count.Should().Be(0);
+			response.Count.Should().BeGreaterOrEqualTo(1);
+
+			response.Datafeeds.First().DatafeedId.Should().NotBeNullOrWhiteSpace();
+			response.Datafeeds.First().JobId.Should().NotBeNullOrWhiteSpace();
+
+			response.Datafeeds.First().QueryDelay.Should().NotBeNull("QueryDelay");
+			response.Datafeeds.First().QueryDelay.Should().Be(new Time("1m"));
+
+//			Indices are not deserialising...
+//			response.Datafeeds.First().Indices.Should().NotBeNull("Indices");
+//			response.Datafeeds.First().Indices.Should().Be(Nest.Indices.Parse("server-metrics"));
+
+			response.Datafeeds.First().Types.Should().NotBeNull("Types");
+			response.Datafeeds.First().Types.Should().Be(Types.Parse("metric"));
+
+			response.Datafeeds.First().ScrollSize.Should().Be(1000);
+
+			response.Datafeeds.First().ChunkingConfig.Should().NotBeNull();
+			response.Datafeeds.First().ChunkingConfig.Mode.Should().Be(ChunkingMode.Auto);
+
+			response.Datafeeds.First().Query.Should().NotBeNull();
+
+			response.ShouldBeValid();
 		}
 	}
 }

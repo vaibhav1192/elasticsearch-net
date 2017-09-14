@@ -10,7 +10,7 @@ namespace Nest
 		public string JobId { get; internal set; }
 
 		[JsonProperty("timestamp")]
-		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		public DateTimeOffset Timestamp { get; internal set; }
 
 		[JsonProperty("anomaly_score")]
@@ -29,15 +29,13 @@ namespace Nest
 		public bool IsInterim { get; internal set; }
 
 		[JsonProperty("bucket_influencers")]
-		public IReadOnlyCollection<BucketInfluencer> BucketInfluencers { get; internal set; } =
-			EmptyReadOnly<BucketInfluencer>.Collection;
+		public IReadOnlyCollection<BucketInfluencer> BucketInfluencers { get; internal set; } = EmptyReadOnly<BucketInfluencer>.Collection;
 
 		[JsonProperty("processing_time_ms")]
 		public double ProcessingTimeMs { get; internal set; }
 
 		[JsonProperty("partition_scores")]
-		public IReadOnlyCollection<PartitionScore> PartitionScores { get; internal set; } =
-			EmptyReadOnly<PartitionScore>.Collection;
+		public IReadOnlyCollection<PartitionScore> PartitionScores { get; internal set; } = EmptyReadOnly<PartitionScore>.Collection;
 
 		[JsonProperty("result_type")]
 		public string ResultType { get; internal set; }

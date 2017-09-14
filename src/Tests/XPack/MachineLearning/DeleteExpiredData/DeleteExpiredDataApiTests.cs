@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using Elasticsearch.Net;
 using FluentAssertions;
 using Nest;

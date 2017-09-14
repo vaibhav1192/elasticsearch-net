@@ -20,7 +20,6 @@ namespace Tests.XPack.MachineLearning
 		{
 			var putJobResponse = client.PutJob<Metric>(jobId, f => f
 				.Description("Lab 1 - Simple example")
-				.ResultsIndexName(jobId + "-results")
 				.AnalysisConfig(a => a
 					.BucketSpan(new Time("30m"))
 					.Latency("0s")
@@ -38,9 +37,17 @@ namespace Tests.XPack.MachineLearning
 		protected IOpenJobResponse OpenJob(IElasticClient client, string jobId)
 		{
 			var openJobResponse = client.OpenJob(jobId, f => f);
-			if (!openJobResponse.IsValid)
+			if (!openJobResponse.IsValid || openJobResponse.Opened == false)
 				throw new Exception("Problem setting up OpenJob for integration test");
 			return openJobResponse;
+		}
+
+		protected ICloseJobResponse CloseJob(IElasticClient client, string jobId)
+		{
+			var closeJobResponse = client.CloseJob(jobId, f => f);
+			if (!closeJobResponse.IsValid || closeJobResponse.Closed == false)
+				throw new Exception("Problem setting up OpenJob for integration test");
+			return closeJobResponse;
 		}
 
 		protected IPutDatafeedResponse PutDatafeed(IElasticClient client, string jobId)
@@ -51,7 +58,7 @@ namespace Tests.XPack.MachineLearning
 				.Types(Types.Parse("metric"))
 				.Query(q => q.MatchAll(m => m.Boost(1))));
 
-			if (!putDataFeedResponse.IsValid)
+			if (!putDataFeedResponse.IsValid || putDataFeedResponse.IsValid == false)
 				throw new Exception("Problem setting up PutDatafeed for integration test");
 
 			return putDataFeedResponse;
@@ -60,11 +67,84 @@ namespace Tests.XPack.MachineLearning
 		protected IStartDatafeedResponse StartDatafeed(IElasticClient client, string jobId)
 		{
 			var startDatafeedResponse = client.StartDatafeed(jobId + "-datafeed", f => f);
-
-			if (!startDatafeedResponse.IsValid)
+			if (!startDatafeedResponse.IsValid || startDatafeedResponse.Started == false)
 				throw new Exception("Problem setting up StartDatafeed for integration test");
-
 			return startDatafeedResponse;
+		}
+
+		protected void IndexSnapshot(IElasticClient client, string jobId, string snapshotId)
+		{
+			var index = ".ml-anomalies-" + jobId;
+			client.LowLevel.Index<object>(index, "doc", (object)new
+			{
+				job_id = jobId,
+				snapshot_id = snapshotId,
+				timestamp = "2016-06-02T00:00:00Z",
+				snapshot_doc_count = 1
+			});
+
+			client.Refresh(index);
+		}
+
+		protected void IndexAnomalyRecord(IElasticClient client, string jobId, DateTimeOffset timestamp)
+		{
+			var index = ".ml-anomalies-" + jobId;
+			client.LowLevel.Index<object>(index, "doc", (object)new
+			{
+				job_id = jobId,
+				result_type = "record",
+				timestamp = timestamp.ToString("o"),
+				record_score = 80.0,
+				bucket_span = 1,
+				is_interim = true
+			});
+
+			client.Refresh(index);
+		}
+
+		protected void IndexBucket(IElasticClient client, string jobId, DateTimeOffset timestamp)
+		{
+			var index = ".ml-anomalies-" + jobId;
+			client.LowLevel.Index<object>(index, "doc", (object)new
+			{
+				job_id = jobId,
+				result_type = "bucket",
+				timestamp = timestamp.ToString("o"),
+				anomaly_score = 90.0,
+				bucket_span = 1,
+				is_interim = true
+			});
+
+			client.Refresh(index);
+		}
+
+		protected void IndexCategory(IElasticClient client, string jobId)
+		{
+			var index = ".ml-anomalies-" + jobId;
+			client.LowLevel.Index<object>(index, "doc", (object)new
+			{
+				job_id = jobId,
+				category_id = "1"
+			});
+
+			client.Refresh(index);
+		}
+
+		protected void IndexInfluencer(IElasticClient client, string jobId, DateTimeOffset timestamp)
+		{
+			var index = ".ml-anomalies-" + jobId;
+			client.LowLevel.Index<object>(index, "doc", (object)new
+			{
+				job_id = jobId,
+				timestamp = timestamp.ToString("o"),
+				influencer_field_name = "foo",
+				influencer_field_value = "bar",
+				influencer_score = 50,
+				result_type = "influencer",
+				bucket_span = 1
+			});
+
+			client.Refresh(index);
 		}
 	}
 }

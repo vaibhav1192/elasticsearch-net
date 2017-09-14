@@ -6893,16 +6893,12 @@ namespace Nest
 	public partial class GetBucketsDescriptor  : RequestDescriptorBase<GetBucketsDescriptor,GetBucketsRequestParameters, IGetBucketsRequest>, IGetBucketsRequest
 	{ 
 		Id IGetBucketsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
-		Timestamp IGetBucketsRequest.Timestamp => Self.RouteValues.Get<Timestamp>("timestamp");
-			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}</summary>
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/buckets</summary>
 ///<param name="job_id"> this parameter is required</param>
 		public GetBucketsDescriptor(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
-			///<summary>The timestamp of the desired single bucket result</summary>
-		public GetBucketsDescriptor Timestamp(Timestamp timestamp) => Assign(a=>a.RouteValues.Optional("timestamp", timestamp));
-
-	
+		
 		///<summary>Pretty format the returned JSON response.</summary>
 		public GetBucketsDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 

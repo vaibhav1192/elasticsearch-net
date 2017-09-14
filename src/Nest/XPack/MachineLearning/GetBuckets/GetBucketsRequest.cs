@@ -24,7 +24,7 @@ namespace Nest
 		/// Returns buckets with timestamps earlier than this time.
 		/// </summary>
 		[JsonProperty("end")]
-		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		DateTimeOffset? End { get; set; }
 
 		/// <summary>
@@ -55,8 +55,15 @@ namespace Nest
 		/// Returns buckets with timestamps after this time.
 		/// </summary>
 		[JsonProperty("start")]
-		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		DateTimeOffset? Start { get; set; }
+
+		/// <summary>
+		/// Returns buckets with matching timestamps.
+		/// </summary>
+		[JsonProperty("timestamp")]
+		//[JsonConverter(typeof(EpochStringMillisecondsDateTimeJsonConverter))]
+		DateTimeOffset? Timestamp { get; set; }
 	}
 
 	/// <inheritdoc />
@@ -78,6 +85,8 @@ namespace Nest
 		public Field Sort { get; set; }
 		/// <inheritdoc />
 		public DateTimeOffset? Start { get; set; }
+		/// <inheritdoc />
+		public DateTimeOffset? Timestamp { get; set; }
 	}
 
 	public interface IPage
@@ -124,6 +133,7 @@ namespace Nest
 		IPage IGetBucketsRequest.Page { get; set; }
 		Field IGetBucketsRequest.Sort { get; set; }
 		DateTimeOffset? IGetBucketsRequest.Start { get; set; }
+		DateTimeOffset? IGetBucketsRequest.Timestamp { get; set; }
 
 		/// <inheritdoc />
 		public GetBucketsDescriptor AnomalyScore(double anomalyScore) => Assign(a => a.AnomalyScore = anomalyScore);
@@ -148,6 +158,9 @@ namespace Nest
 		public GetBucketsDescriptor Sort(Field field) => Assign(a => a.Sort = field);
 
 		/// <inheritdoc />
-		public GetBucketsDescriptor Start(DateTimeOffset end) => Assign(a => a.Start = end);
+		public GetBucketsDescriptor Start(DateTimeOffset start) => Assign(a => a.Start = start);
+
+		/// <inheritdoc />
+		public GetBucketsDescriptor Timestamp(DateTimeOffset timestamp) => Assign(a => a.Timestamp = timestamp);
 	}
 }

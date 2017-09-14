@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using System.Threading;
 using Elasticsearch.Net;
 using FluentAssertions;
 using Nest;
@@ -18,30 +18,9 @@ namespace Tests.XPack.MachineLearning.DeleteModelSnapshot
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				IndexSnapshot(client, callUniqueValue.Value, "1");
 
-				// Insert two snapshot documents
-				client.LowLevel.Index<object>(".ml-anomalies-get-model-snapshots", "doc", "get-model-snapshots-1", (object)new
-				{
-					job_id = callUniqueValue.Value,
-					snapshot_id = "1",
-					timestamp = "2016-06-02T00:00:00Z",
-					snapshot_doc_count = 1
-				});
-				client.LowLevel.Index<object>(".ml-anomalies-get-model-snapshots", "doc", "get-model-snapshots-2", (object)new
-				{
-					job_id = callUniqueValue.Value,
-					snapshot_id = "2",
-					timestamp = "2016-06-01T00:00:00Z",
-					snapshot_doc_count = 2
-				});
-
-				// Force index refreshL
-				client.Refresh(".ml-anomalies-get-model-snapshots");
-
-				// Check GetModelSnapshots returns the two documents
-				var getModelSnapshotsResponse = client.GetModelSnapshots(callUniqueValue.Value);
-				//getModelSnapshotsResponse.Count.Should().Be(2);
-				//getModelSnapshotsResponse.ModelSnapshots.Should().HaveCount(2);
+				client.GetModelSnapshots(callUniqueValue.Value).Count.Should().Be(1);
 			}
 		}
 

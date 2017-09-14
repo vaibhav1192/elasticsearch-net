@@ -15,14 +15,14 @@ namespace Nest
 		/// The time that the datafeed should begin. This value is inclusive.
 		/// </summary>
 		[JsonProperty("start")]
-		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		DateTimeOffset? Start { get; set; }
 
 		/// <summary>
 		/// The time that the datafeed should end. This value is exclusive.
 		/// </summary>
 		[JsonProperty("end")]
-		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		DateTimeOffset? End { get; set; }
 	}
 

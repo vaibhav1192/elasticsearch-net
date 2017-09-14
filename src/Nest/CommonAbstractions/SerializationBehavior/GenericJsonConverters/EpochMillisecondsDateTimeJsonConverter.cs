@@ -4,7 +4,7 @@ using Newtonsoft.Json.Converters;
 
 namespace Nest
 {
-	internal class EpochStringMillisecondssDateTimeJsonConverter : DateTimeConverterBase
+	internal class EpochStringMillisecondsDateTimeJsonConverter : DateTimeConverterBase
 	{
 		private static readonly DateTimeOffset Epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, 0, TimeSpan.Zero);
 

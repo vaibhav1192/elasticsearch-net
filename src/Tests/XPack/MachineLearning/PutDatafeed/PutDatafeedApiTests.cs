@@ -56,8 +56,7 @@ namespace Tests.XPack.MachineLearning.PutDatafeed
 			.JobId(CallIsolatedValue)
 			.Indices(Nest.Indices.Parse("server-metrics"))
 			.Types(Types.Parse("metric"))
-			.Query(q => q.MatchAll(m => m.Boost(1)))
-			;
+			.Query(q => q.MatchAll(m => m.Boost(1)));
 
 		protected override PutDatafeedRequest Initializer =>
 			new PutDatafeedRequest(CallIsolatedValue)

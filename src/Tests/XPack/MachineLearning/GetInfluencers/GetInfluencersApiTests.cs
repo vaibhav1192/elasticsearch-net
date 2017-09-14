@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using Elasticsearch.Net;
 using FluentAssertions;
@@ -18,6 +19,7 @@ namespace Tests.XPack.MachineLearning.GetInfluencers
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				IndexInfluencer(client, callUniqueValue.Value, new DateTimeOffset(2016, 6, 2, 00, 00, 00, TimeSpan.Zero));
 			}
 		}
 
@@ -40,8 +42,19 @@ namespace Tests.XPack.MachineLearning.GetInfluencers
 		protected override void ExpectResponse(IGetInfluencersResponse response)
 		{
 			response.ShouldBeValid();
-			response.Influencers.Should().BeEmpty();
-			response.Count.Should().Be(0);
+			response.Influencers.Should().HaveCount(1);
+			response.Count.Should().Be(1);
+
+			response.Influencers.First().JobId.Should().Be(CallIsolatedValue);
+			response.Influencers.First().ResultType.Should().Be("influencer");
+			response.Influencers.First().InfluencerFieldName.Should().Be("foo");
+			response.Influencers.First().InfluencerFieldValue.Should().Be("bar");
+			response.Influencers.First().InfluencerScore.Should().Be(50);
+			response.Influencers.First().InitialInfluencerScore.Should().Be(0);
+			response.Influencers.First().Probability.Should().Be(0);
+			response.Influencers.First().BucketSpan.Should().Be(1);
+			response.Influencers.First().IsInterim.Should().Be(false);
+			response.Influencers.First().Timestamp.Should().Be(new DateTimeOffset(2016, 6, 2, 00, 00, 00, TimeSpan.Zero));
 		}
 	}
 }

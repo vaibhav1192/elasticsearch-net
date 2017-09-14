@@ -4170,21 +4170,13 @@ namespace Nest
 	public partial interface IGetBucketsRequest : IRequest<GetBucketsRequestParameters> 
 	{
 		Id JobId { get; }
-		Timestamp Timestamp { get; }
 	 } 
 	///<summary>Request parameters for XpackMlGetBuckets <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html</pre></summary>
 	public partial class GetBucketsRequest  : PlainRequestBase<GetBucketsRequestParameters>, IGetBucketsRequest
 	{
 		protected IGetBucketsRequest Self => this;
 		Id IGetBucketsRequest.JobId => Self.RouteValues.Get<Id>("job_id");
-		Timestamp IGetBucketsRequest.Timestamp => Self.RouteValues.Get<Timestamp>("timestamp");
-			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}</summary>
-///<param name="job_id">this parameter is required</param>		
-///<param name="timestamp">Optional, accepts null</param>
-		public GetBucketsRequest(Id job_id, Timestamp timestamp) : base(r=>r.Required("job_id", job_id).Optional("timestamp", timestamp)){}
-		
-
-		/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/buckets</summary>
+			/// <summary>/_xpack/ml/anomaly_detectors/{job_id}/results/buckets</summary>
 ///<param name="job_id">this parameter is required</param>
 		public GetBucketsRequest(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		

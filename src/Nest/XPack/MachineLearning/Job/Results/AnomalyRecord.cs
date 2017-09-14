@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Nest
@@ -58,13 +59,14 @@ namespace Nest
 		/// based on partial input data.
 		/// </summary>
 		[JsonProperty("is_interim")]
-		public string IsInterim { get; internal set; }
+		public bool IsInterim { get; internal set; }
 
 		/// <summary>
 		/// The start time of the bucket for which these results were calculated.
 		/// </summary>
 		[JsonProperty("timestamp")]
-		public string Timestamp { get; internal set; }
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
+		public DateTimeOffset Timestamp { get; internal set; }
 
 		/// <summary>
 		/// The function in which the anomaly occurs, as specified in the detector configuration.

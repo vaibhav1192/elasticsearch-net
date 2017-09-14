@@ -19,7 +19,7 @@ namespace Nest
 		IAnalysisConfig AnalysisConfig { get; set; }
 
 		/// <summary>
-		/// Optionally specifies runtime limits for the job.
+		/// Defines approximate limits on the memory resource requirements for the job.
 		/// </summary>
 		[JsonProperty("analysis_limits")]
 		IAnalysisLimits AnalysisLimits { get; set; }

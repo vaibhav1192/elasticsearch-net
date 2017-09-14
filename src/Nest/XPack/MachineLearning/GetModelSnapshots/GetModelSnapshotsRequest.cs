@@ -18,7 +18,7 @@ namespace Nest
 		/// Returns snapshots with timestamps earlier than this time.
 		/// </summary>
 		[JsonProperty("end")]
-		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		DateTimeOffset? End { get; set; }
 
 		/// <summary>
@@ -37,7 +37,7 @@ namespace Nest
 		/// Returns snapshots with timestamps after this time.
 		/// </summary>
 		[JsonProperty("start")]
-		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		DateTimeOffset? Start { get; set; }
 	}
 
@@ -84,6 +84,6 @@ namespace Nest
 		public GetModelSnapshotsDescriptor Sort(Field field) => Assign(a => a.Sort = field);
 
 		/// <inheritdoc />
-		public GetModelSnapshotsDescriptor Start(DateTimeOffset end) => Assign(a => a.Start = end);
+		public GetModelSnapshotsDescriptor Start(DateTimeOffset start) => Assign(a => a.Start = start);
 	}
 }

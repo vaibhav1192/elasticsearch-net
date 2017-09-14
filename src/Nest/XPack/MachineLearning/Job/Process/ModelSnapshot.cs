@@ -16,7 +16,7 @@ namespace Nest
 		/// The creation timestamp for the snapshot.
 		/// </summary>
 		[JsonProperty("timestamp")]
-		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		public DateTimeOffset Timestamp { get; internal set; }
 
 		/// <summary>
@@ -47,14 +47,14 @@ namespace Nest
 		/// The timestamp of the latest processed record.
 		/// </summary>
 		[JsonProperty("latest_record_time_stamp")]
-		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		public DateTimeOffset? LatestRecordTimeStamp{ get; internal set; }
 
 		/// <summary>
 		/// The timestamp of the latest bucket result.
 		/// </summary>
 		[JsonProperty("latest_result_time_stamp")]
-		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		public DateTimeOffset? LatestResultTimeStamp{ get; internal set; }
 
 		/// <summary>

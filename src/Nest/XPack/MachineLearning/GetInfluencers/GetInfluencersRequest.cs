@@ -17,7 +17,7 @@ namespace Nest
 		/// Returns influencers with timestamps earlier than this time.
 		/// </summary>
 		[JsonProperty("end")]
-		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		DateTimeOffset? End { get; set; }
 
 		/// <summary>
@@ -48,7 +48,7 @@ namespace Nest
 		/// Returns influencers with timestamps after this time.
 		/// </summary>
 		[JsonProperty("start")]
-		[JsonConverter(typeof(EpochSecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		DateTimeOffset? Start { get; set; }
 	}
 
