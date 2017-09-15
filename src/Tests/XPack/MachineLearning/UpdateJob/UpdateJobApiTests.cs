@@ -33,12 +33,13 @@ namespace Tests.XPack.MachineLearning.UpdateJob
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
 		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/{CallIsolatedValue}/_update";
-		protected override bool SupportsDeserialization => true;
+		protected override bool SupportsDeserialization => false;
 		protected override UpdateJobDescriptor<Metric> NewDescriptor() => new UpdateJobDescriptor<Metric>(CallIsolatedValue);
 
 		protected override object ExpectJson => new
 			{
-				description = "Lab 1 - Simple example modified"
+				description = "Lab 1 - Simple example modified",
+				background_persist_interval = "6h"
 			};
 
 		protected override Func<UpdateJobDescriptor<Metric>, IUpdateJobRequest> Fluent => f => f

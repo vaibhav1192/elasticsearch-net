@@ -35,7 +35,7 @@ namespace Tests.XPack.MachineLearning.PutDatafeed
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.PUT;
 		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}";
-		protected override bool SupportsDeserialization => true;
+		protected override bool SupportsDeserialization => false;
 		protected override PutDatafeedDescriptor<Project> NewDescriptor() => new PutDatafeedDescriptor<Project>(CallIsolatedValue);
 
 		protected override object ExpectJson => new

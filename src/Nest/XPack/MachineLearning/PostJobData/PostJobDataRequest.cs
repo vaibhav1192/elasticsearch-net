@@ -38,7 +38,7 @@ namespace Nest
 		/// <inheritdoc />
 		public PostJobDataDescriptor Data(params object[] data) => Assign(a =>
 		{
-			if(data?.Length == 1 && data[0] is IEnumerable)
+			if(data != null && data.Length == 1 && data[0] is IEnumerable)
 			{
 				a.Data = ((IEnumerable)data[0]).Cast<object>();
 			}
@@ -53,7 +53,7 @@ namespace Nest
 		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
 		{
 			var request = (IPostJobDataRequest) value;
-			if (request == null)
+			if (request?.Data == null)
 			{
 				writer.WriteNull();
 				return;

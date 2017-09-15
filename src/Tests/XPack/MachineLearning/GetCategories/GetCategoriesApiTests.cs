@@ -34,7 +34,7 @@ namespace Tests.XPack.MachineLearning.GetCategories
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
-		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/{CallIsolatedValue}/results/categories";
+		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/{CallIsolatedValue}/results/categories/";
 		protected override bool SupportsDeserialization => true;
 		protected override GetCategoriesDescriptor NewDescriptor() => new GetCategoriesDescriptor(CallIsolatedValue);
 		protected override object ExpectJson => null;

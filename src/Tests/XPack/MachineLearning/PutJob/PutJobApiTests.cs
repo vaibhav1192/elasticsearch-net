@@ -25,7 +25,7 @@ namespace Tests.XPack.MachineLearning.PutJob
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.PUT;
 		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/{CallIsolatedValue}";
-		protected override bool SupportsDeserialization => true;
+		protected override bool SupportsDeserialization => false;
 		protected override PutJobDescriptor<Metric> NewDescriptor() => new PutJobDescriptor<Metric>(CallIsolatedValue);
 
 		protected override object ExpectJson => new

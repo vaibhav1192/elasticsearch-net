@@ -25,7 +25,7 @@ namespace Tests.XPack.MachineLearning.ValidateJob
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
 		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/_validate";
-		protected override bool SupportsDeserialization => true;
+		protected override bool SupportsDeserialization => false;
 
 		protected override object ExpectJson => new
 		{

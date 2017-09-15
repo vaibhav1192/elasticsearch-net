@@ -36,7 +36,7 @@ namespace Tests.XPack.MachineLearning.UpdateDatafeed
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
 		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}-datafeed/_update";
-		protected override bool SupportsDeserialization => true;
+		protected override bool SupportsDeserialization => false;
 		protected override UpdateDatafeedDescriptor<Project> NewDescriptor() => new UpdateDatafeedDescriptor<Project>(CallIsolatedValue);
 
 		protected override object ExpectJson => new
@@ -55,21 +55,23 @@ namespace Tests.XPack.MachineLearning.UpdateDatafeed
 
 		protected override Func<UpdateDatafeedDescriptor<Project>, IUpdateDatafeedRequest> Fluent => f => f
 			.JobId(CallIsolatedValue)
-			.Indices(Nest.Indices.Parse("server-metrics"))
-			.Types(Types.Parse("metric"))
-			.Query(q => q.MatchAll(m => m.Boost(1)))
+			.Indices("server-metrics")
+			.Types("metric")
+			.Query(q => q
+				.MatchAll(m => m.Boost(2))
+			)
 			;
 
 		protected override UpdateDatafeedRequest Initializer =>
 			new UpdateDatafeedRequest(CallIsolatedValue + "-datafeed")
 			{
 				JobId = CallIsolatedValue,
-				Indices = Nest.Indices.Parse("server-metrics"),
-				Types = Types.Parse("metric"),
-				Query = new QueryContainer(new MatchAllQuery
+				Indices = "server-metrics",
+				Types = "metric",
+				Query = new MatchAllQuery
 				{
 					Boost = 2
-				})
+				}
 			};
 
 		protected override void ExpectResponse(IUpdateDatafeedResponse response)
@@ -82,9 +84,9 @@ namespace Tests.XPack.MachineLearning.UpdateDatafeed
 			response.QueryDelay.Should().NotBeNull("QueryDelay");
 			response.QueryDelay.Should().Be(new Time("1m"));
 
-//			Indices are not deserialising...
-//			response.Indices.Should().NotBeNull("Indices");
-//			response.Indices.Should().Be(Nest.Indices.Parse("server-metrics"));
+			//Indices are not deserialising...
+			response.Indices.Should().NotBeNull("Indices");
+			response.Indices.Should().Be(Nest.Indices.Parse("server-metrics"));
 
 			response.Types.Should().NotBeNull("Types");
 			response.Types.Should().Be(Types.Parse("metric"));

@@ -4,6 +4,7 @@ using System.Reflection;
 using FluentAssertions;
 using Nest;
 using Tests.Framework;
+using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning
 {
@@ -12,20 +13,21 @@ namespace Tests.XPack.MachineLearning
 		[U]
 		public void CanSerializeAndDeserializeAllDetectors()
 		{
-			var processorTypes =
+			var detectorTypes =
 				from t in typeof(IDetector).Assembly().Types()
-				where typeof(IDetector).IsAssignableFrom(t) && !t.IsAbstract()
+				where typeof(IDetector).IsAssignableFrom(t) &&
+				      !t.IsAbstract() &&
+				      !typeof(IDescriptor).IsAssignableFrom(t)
 				select t;
 
-			var detectors = processorTypes
-				.Select(processorType => (IDetector)Activator.CreateInstance(processorType))
+			var detectors = detectorTypes
+				.Select(detectorType => (IDetector)Activator.CreateInstance(detectorType))
 				.ToList();
 
 			var analysisConfig = new AnalysisConfig { Detectors = detectors };
 			var deserialized = this.Deserialize<AnalysisConfig>(this.Serialize(analysisConfig));
 
-			deserialized.Detectors.Should().HaveCount(detectors.Count);
-			deserialized.Detectors.Select(p => p.Function).Distinct().Should().HaveCount(detectors.Count);
+			deserialized.Detectors.Select(d => d.Function).Distinct().Should().HaveCount(detectors.Count);
 		}
 	}
 }

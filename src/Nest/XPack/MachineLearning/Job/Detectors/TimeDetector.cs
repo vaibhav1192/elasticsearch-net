@@ -6,7 +6,7 @@ namespace Nest
 	public class TimeFunctions
 	{
 		public static string TimeOfDay = "time_of_day";
-		public static string TimeOfWeek = "time_of_day";
+		public static string TimeOfWeek = "time_of_week";
 	}
 
 	public interface ITimeDetector : IDetector, IByFieldNameDetector, IOverFieldNameDetector,
