@@ -34,7 +34,7 @@ namespace Tests.XPack.MachineLearning.UpdateDatafeed
 
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
-		protected override HttpMethod HttpMethod => HttpMethod.PUT;
+		protected override HttpMethod HttpMethod => HttpMethod.POST;
 		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}-datafeed/_update";
 		protected override bool SupportsDeserialization => true;
 		protected override UpdateDatafeedDescriptor<Project> NewDescriptor() => new UpdateDatafeedDescriptor<Project>(CallIsolatedValue);

@@ -18,7 +18,7 @@ namespace Nest
 		/// Note that this snapshot will still be deleted when the job is deleted.
 		/// </summary>
 		[JsonProperty("retain")]
-		bool Retain { get; set; }
+		bool? Retain { get; set; }
 	}
 
 	/// <inheritdoc />
@@ -28,7 +28,7 @@ namespace Nest
 		public string Description { get; set; }
 
 		/// <inheritdoc />
-		public bool Retain { get; set; }
+		public bool? Retain { get; set; }
 	}
 
 	/// <inheritdoc />
@@ -36,14 +36,14 @@ namespace Nest
 	public partial class UpdateModelSnapshotDescriptor
 	{
 		string IUpdateModelSnapshotRequest.Description { get; set; }
-		bool IUpdateModelSnapshotRequest.Retain { get; set; }
+		bool? IUpdateModelSnapshotRequest.Retain { get; set; }
 
 		/// <inheritdoc />
 		public UpdateModelSnapshotDescriptor Description(string description) =>
 			Assign(a => a.Description = description);
 
 		/// <inheritdoc />
-		public UpdateModelSnapshotDescriptor Retain(bool retain) =>
+		public UpdateModelSnapshotDescriptor Retain(bool retain = true) =>
 			Assign(a => a.Retain = retain);
 	}
 }

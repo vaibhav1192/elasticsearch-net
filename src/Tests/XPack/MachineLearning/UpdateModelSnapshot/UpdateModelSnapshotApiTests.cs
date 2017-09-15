@@ -26,7 +26,7 @@ namespace Tests.XPack.MachineLearning.UpdateModelSnapshot
 
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
-		protected override HttpMethod HttpMethod => HttpMethod.PUT;
+		protected override HttpMethod HttpMethod => HttpMethod.POST;
 		protected override string UrlPath => $"/_xpack/ml/anomaly_detectors/{CallIsolatedValue}/model_snapshots/{CallIsolatedValue}-snapshot/_update";
 		protected override bool SupportsDeserialization => true;
 		protected override UpdateModelSnapshotDescriptor NewDescriptor() => new UpdateModelSnapshotDescriptor(CallIsolatedValue, CallIsolatedValue + "-snapshot");
