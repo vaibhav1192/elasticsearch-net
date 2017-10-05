@@ -18,7 +18,7 @@ namespace Nest
 		/// If true, the buckets are sorted in descending order.
 		/// </summary>
 		[JsonProperty("desc")]
-		bool? Desc { get; set; }
+		bool? Descending { get; set; }
 
 		/// <summary>
 		/// Returns buckets with timestamps earlier than this time.
@@ -62,7 +62,7 @@ namespace Nest
 		/// Returns buckets with matching timestamps.
 		/// </summary>
 		[JsonProperty("timestamp")]
-		//[JsonConverter(typeof(EpochStringMillisecondsDateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		DateTimeOffset? Timestamp { get; set; }
 	}
 
@@ -72,7 +72,7 @@ namespace Nest
 		/// <inheritdoc />
 		public double? AnomalyScore { get; set; }
 		/// <inheritdoc />
-		public bool? Desc { get; set; }
+		public bool? Descending { get; set; }
 		/// <inheritdoc />
 		public DateTimeOffset? End { get; set; }
 		/// <inheritdoc />
@@ -126,7 +126,7 @@ namespace Nest
 	public partial class GetBucketsDescriptor
 	{
 		double? IGetBucketsRequest.AnomalyScore { get; set; }
-		bool? IGetBucketsRequest.Desc { get; set; }
+		bool? IGetBucketsRequest.Descending { get; set; }
 		DateTimeOffset? IGetBucketsRequest.End { get; set; }
 		bool? IGetBucketsRequest.ExcludeInterim { get; set; }
 		bool? IGetBucketsRequest.Expand { get; set; }
@@ -139,7 +139,7 @@ namespace Nest
 		public GetBucketsDescriptor AnomalyScore(double anomalyScore) => Assign(a => a.AnomalyScore = anomalyScore);
 
 		/// <inheritdoc />
-		public GetBucketsDescriptor Desc(bool desc = true) => Assign(a => a.Desc = desc);
+		public GetBucketsDescriptor Desc(bool descending = true) => Assign(a => a.Descending = descending);
 
 		/// <inheritdoc />
 		public GetBucketsDescriptor End(DateTimeOffset end) => Assign(a => a.End = end);
@@ -151,8 +151,7 @@ namespace Nest
 		public GetBucketsDescriptor Expand(bool expand = true) => Assign(a => a.Expand = expand);
 
 		/// <inheritdoc />
-		public GetBucketsDescriptor Page(Func<PageDescriptor, IPage> selector) =>
-			Assign(a => a.Page = selector?.Invoke(new PageDescriptor()));
+		public GetBucketsDescriptor Page(Func<PageDescriptor, IPage> selector) => Assign(a => a.Page = selector?.Invoke(new PageDescriptor()));
 
 		/// <inheritdoc />
 		public GetBucketsDescriptor Sort(Field field) => Assign(a => a.Sort = field);

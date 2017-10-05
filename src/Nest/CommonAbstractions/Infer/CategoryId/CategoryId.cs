@@ -12,10 +12,8 @@ namespace Nest
 			_categoryId = categoryId;
 		}
 
-		public static implicit operator CategoryId(long categoryId) =>
-			new CategoryId(categoryId);
+		public static implicit operator CategoryId(long categoryId) => new CategoryId(categoryId);
 
-		public string GetString(IConnectionConfigurationValues settings) =>
-			_categoryId.ToString(CultureInfo.InvariantCulture);
+		public string GetString(IConnectionConfigurationValues settings) => _categoryId.ToString(CultureInfo.InvariantCulture);
 	}
 }

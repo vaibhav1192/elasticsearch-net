@@ -174,17 +174,13 @@ namespace Nest
 
 		protected DetectorDescriptorBase(string function) => _function = function;
 
-		public TDetectorDescriptor DetectorDescription(string description) =>
-			Assign(a => a.DetectorDescription = description);
+		public TDetectorDescriptor DetectorDescription(string description) => Assign(a => a.DetectorDescription = description);
 
-		public TDetectorDescriptor ExcludeFrequent(ExcludeFrequent excludeFrequent) =>
-			Assign(a => a.ExcludeFrequent = excludeFrequent);
+		public TDetectorDescriptor ExcludeFrequent(ExcludeFrequent excludeFrequent) => Assign(a => a.ExcludeFrequent = excludeFrequent);
 
-		public TDetectorDescriptor UseNull(bool useNull = true) =>
-			Assign(a => a.UseNull = useNull);
+		public TDetectorDescriptor UseNull(bool useNull = true) => Assign(a => a.UseNull = useNull);
 
-		public TDetectorDescriptor DetectorIndex(int detectorIndex) =>
-			Assign(a => a.DetectorIndex = detectorIndex);
+		public TDetectorDescriptor DetectorIndex(int detectorIndex) => Assign(a => a.DetectorIndex = detectorIndex);
 	}
 
 	public class DetectorsDescriptor<T> : DescriptorPromiseBase<DetectorsDescriptor<T>, IList<IDetector>> where T : class

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 
 namespace Nest
@@ -51,6 +52,6 @@ namespace Nest
 		/// </summary>
 		[JsonProperty("attributes")]
 		[JsonConverter(typeof(VerbatimDictionaryKeysJsonConverter<string, string>))]
-		public Dictionary<string, string> Attributes { get; internal set; }
+		public IReadOnlyDictionary<string, string> Attributes { get; internal set; } = EmptyReadOnly<string, string>.Dictionary;
 	}
 }

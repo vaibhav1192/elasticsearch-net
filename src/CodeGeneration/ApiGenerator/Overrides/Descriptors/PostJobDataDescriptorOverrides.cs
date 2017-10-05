@@ -8,9 +8,8 @@ namespace ApiGenerator.Overrides.Descriptors
 	{
 		public override IEnumerable<string> SkipQueryStringParams => new string[]
 		{
-			// TODO: figure out if needed
-			//"reset_start",
-			//"reset_end"
+			"reset_start",
+			"reset_end"
 		};
 	}
 }

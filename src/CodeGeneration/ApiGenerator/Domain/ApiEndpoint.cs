@@ -19,10 +19,7 @@ namespace ApiGenerator.Domain
 				var methodArgs = CsharpMethod.Parts
 					.Select(p =>
 					{
-						if (p.Name == "body")
-						{
-							return "body";
-						}
+						if (p.Name == "body") return "body";
 
 						switch (p.Type)
 						{

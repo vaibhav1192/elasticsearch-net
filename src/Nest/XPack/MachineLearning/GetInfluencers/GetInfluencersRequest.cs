@@ -11,7 +11,7 @@ namespace Nest
 		/// <summary>
 		/// If true, the results are sorted in descending order.
 		/// </summary>
-		bool? Desc { get; set; }
+		bool? Descending { get; set; }
 
 		/// <summary>
 		/// Returns influencers with timestamps earlier than this time.
@@ -56,7 +56,7 @@ namespace Nest
 	public partial class GetInfluencersRequest
 	{
 		/// <inheritdoc />
-		public bool? Desc { get; set; }
+		public bool? Descending { get; set; }
 
 		/// <inheritdoc />
 		public DateTimeOffset? End { get; set; }
@@ -81,9 +81,9 @@ namespace Nest
 	[DescriptorFor("XpackMlGetInfluencers")]
 	public partial class GetInfluencersDescriptor
 	{
-		public GetInfluencersDescriptor() : base(){ }
+		public GetInfluencersDescriptor() {}
 
-		bool? IGetInfluencersRequest.Desc { get; set; }
+		bool? IGetInfluencersRequest.Descending { get; set; }
 		DateTimeOffset? IGetInfluencersRequest.End { get; set; }
 		bool? IGetInfluencersRequest.ExcludeInterim { get; set; }
 		double? IGetInfluencersRequest.InfluencerScore { get; set; }
@@ -95,7 +95,7 @@ namespace Nest
 		public GetInfluencersDescriptor InfluencerScore(double influencerScore) => Assign(a => a.InfluencerScore = influencerScore);
 
 		/// <inheritdoc />
-		public GetInfluencersDescriptor Desc(bool desc = true) => Assign(a => a.Desc = desc);
+		public GetInfluencersDescriptor Desc(bool descending = true) => Assign(a => a.Descending = descending);
 
 		/// <inheritdoc />
 		public GetInfluencersDescriptor End(DateTimeOffset end) => Assign(a => a.End = end);
