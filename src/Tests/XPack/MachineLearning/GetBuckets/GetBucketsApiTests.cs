@@ -43,19 +43,19 @@ namespace Tests.XPack.MachineLearning.GetBuckets
 		protected override void ExpectResponse(IGetBucketsResponse response)
 		{
 			response.ShouldBeValid();
-			response.Buckets.Should().HaveCount(1);
 			response.Count.Should().Be(1);
-
 			response.Buckets.Should().HaveCount(1);
-			response.Buckets.First().ResultType.Should().Be("bucket");
-			response.Buckets.First().AnomalyScore.Should().Be(90);
-			response.Buckets.First().BucketSpan.Should().Be(1);
-			response.Buckets.First().InitialAnomalyScore.Should().Be(0);
-			response.Buckets.First().EventCount.Should().Be(0);
-			response.Buckets.First().IsInterim.Should().Be(true);
-			response.Buckets.First().BucketInfluencers.Should().BeEmpty();
-			response.Buckets.First().ProcessingTimeMs.Should().Be(0);
-			response.Buckets.First().Timestamp.Should().BeBefore(DateTimeOffset.UtcNow);
+
+			var bucket = response.Buckets.First();
+			bucket.ResultType.Should().Be("bucket");
+			bucket.AnomalyScore.Should().Be(90);
+			bucket.BucketSpan.Should().Be(1);
+			bucket.InitialAnomalyScore.Should().Be(0);
+			bucket.EventCount.Should().Be(0);
+			bucket.IsInterim.Should().Be(true);
+			bucket.BucketInfluencers.Should().BeEmpty();
+			bucket.ProcessingTimeMs.Should().Be(0);
+			bucket.Timestamp.Should().BeBefore(DateTimeOffset.UtcNow);
 		}
 	}
 
@@ -95,19 +95,19 @@ namespace Tests.XPack.MachineLearning.GetBuckets
 		protected override void ExpectResponse(IGetBucketsResponse response)
 		{
 			response.ShouldBeValid();
-			response.Buckets.Should().HaveCount(1);
 			response.Count.Should().Be(1);
-
 			response.Buckets.Should().HaveCount(1);
-			response.Buckets.First().ResultType.Should().Be("bucket");
-			response.Buckets.First().AnomalyScore.Should().Be(90);
-			response.Buckets.First().BucketSpan.Should().Be(1);
-			response.Buckets.First().InitialAnomalyScore.Should().Be(0);
-			response.Buckets.First().EventCount.Should().Be(0);
-			response.Buckets.First().IsInterim.Should().Be(true);
-			response.Buckets.First().BucketInfluencers.Should().BeEmpty();
-			response.Buckets.First().ProcessingTimeMs.Should().Be(0);
-			response.Buckets.First().Timestamp.Should().BeBefore(DateTimeOffset.UtcNow);
+
+			var bucket = response.Buckets.First();
+			bucket.ResultType.Should().Be("bucket");
+			bucket.AnomalyScore.Should().Be(90);
+			bucket.BucketSpan.Should().Be(1);
+			bucket.InitialAnomalyScore.Should().Be(0);
+			bucket.EventCount.Should().Be(0);
+			bucket.IsInterim.Should().Be(true);
+			bucket.BucketInfluencers.Should().BeEmpty();
+			bucket.ProcessingTimeMs.Should().Be(0);
+			bucket.Timestamp.Should().BeBefore(DateTimeOffset.UtcNow);
 		}
 	}
 }

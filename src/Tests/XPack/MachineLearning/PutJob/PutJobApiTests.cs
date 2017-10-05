@@ -7,6 +7,7 @@ using Tests.Framework;
 using Tests.Framework.Integration;
 using Tests.Framework.ManagedElasticsearch.Clusters;
 using Tests.Framework.MockData;
+using static Nest.Infer;
 
 namespace Tests.XPack.MachineLearning.PutJob
 {
@@ -55,7 +56,7 @@ namespace Tests.XPack.MachineLearning.PutJob
 			.Description("Lab 1 - Simple example")
 			.ResultsIndexName("server-metrics")
 			.AnalysisConfig(a => a
-				.BucketSpan(new Time("30m"))
+				.BucketSpan("30m")
 				.Latency("0s")
 				.Detectors(d => d.Sum(c => c.FieldName(r => r.Total)))
 			)
@@ -68,19 +69,19 @@ namespace Tests.XPack.MachineLearning.PutJob
 				ResultsIndexName = "server-metrics",
 				AnalysisConfig = new AnalysisConfig
 				{
-					BucketSpan = new Time("30m"),
+					BucketSpan = "30m",
 					Latency = "0s",
 					Detectors = new []
 					{
 						new SumDetector
 						{
-							FieldName = "total"
+							FieldName = Field<Metric>(f => f.Total)
 						}
 					}
 				},
 				DataDescription = new DataDescription
 				{
-					TimeField = "timestamp"
+					TimeField = Field<Metric>(f => f.Timestamp)
 				}
 			};
 
@@ -113,7 +114,9 @@ namespace Tests.XPack.MachineLearning.PutJob
 			response.DataDescription.TimeFormat.Should().Be("epoch_ms");
 
 			response.ModelSnapshotRetentionDays.Should().Be(1);
-			response.ResultsIndexName.Should().Be("shared");
+
+			// User-defined names are prepended with "custom-" by X-Pack ML
+			response.ResultsIndexName.Should().Be("custom-server-metrics");
 		}
 	}
 }

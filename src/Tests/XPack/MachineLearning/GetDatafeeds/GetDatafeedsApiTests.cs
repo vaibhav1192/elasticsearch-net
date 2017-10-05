@@ -44,25 +44,27 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 			response.ShouldBeValid();
 			response.Count.Should().BeGreaterOrEqualTo(1);
 
-			response.Datafeeds.First().DatafeedId.Should().NotBeNullOrWhiteSpace();
-			response.Datafeeds.First().JobId.Should().NotBeNullOrWhiteSpace();
+			var firstDatafeed = response.Datafeeds.FirstOrDefault();
 
-			response.Datafeeds.First().QueryDelay.Should().NotBeNull("QueryDelay");
-			response.Datafeeds.First().QueryDelay.Should().Be(new Time("1m"));
+			firstDatafeed.Should().NotBeNull();
+			firstDatafeed.DatafeedId.Should().NotBeNullOrWhiteSpace();
+			firstDatafeed.JobId.Should().NotBeNullOrWhiteSpace();
 
-//			Indices are not deserialising...
-//			response.Datafeeds.First().Indices.Should().NotBeNull("Indices");
-//			response.Datafeeds.First().Indices.Should().Be(Nest.Indices.Parse("server-metrics"));
+			firstDatafeed.QueryDelay.Should().NotBeNull("QueryDelay");
+			firstDatafeed.QueryDelay.Should().Be(new Time("1m"));
 
-			response.Datafeeds.First().Types.Should().NotBeNull("Types");
-			response.Datafeeds.First().Types.Should().Be(Types.Parse("metric"));
+			firstDatafeed.Indices.Should().NotBeNull("Indices");
+			firstDatafeed.Indices.Should().Be(Nest.Indices.Parse("server-metrics"));
 
-			response.Datafeeds.First().ScrollSize.Should().Be(1000);
+			firstDatafeed.Types.Should().NotBeNull("Types");
+			firstDatafeed.Types.Should().Be(Types.Parse("metric"));
 
-			response.Datafeeds.First().ChunkingConfig.Should().NotBeNull();
-			response.Datafeeds.First().ChunkingConfig.Mode.Should().Be(ChunkingMode.Auto);
+			firstDatafeed.ScrollSize.Should().Be(1000);
 
-			response.Datafeeds.First().Query.Should().NotBeNull();
+			firstDatafeed.ChunkingConfig.Should().NotBeNull();
+			firstDatafeed.ChunkingConfig.Mode.Should().Be(ChunkingMode.Auto);
+
+			firstDatafeed.Query.Should().NotBeNull();
 
 			response.ShouldBeValid();
 		}
@@ -102,25 +104,27 @@ namespace Tests.XPack.MachineLearning.GetDatafeeds
 			response.ShouldBeValid();
 			response.Count.Should().BeGreaterOrEqualTo(1);
 
-			response.Datafeeds.First().DatafeedId.Should().NotBeNullOrWhiteSpace();
-			response.Datafeeds.First().JobId.Should().NotBeNullOrWhiteSpace();
+			var firstDatafeed = response.Datafeeds.FirstOrDefault();
 
-			response.Datafeeds.First().QueryDelay.Should().NotBeNull("QueryDelay");
-			response.Datafeeds.First().QueryDelay.Should().Be(new Time("1m"));
+			firstDatafeed.Should().NotBeNull();
+			firstDatafeed.DatafeedId.Should().NotBeNullOrWhiteSpace();
+			firstDatafeed.JobId.Should().NotBeNullOrWhiteSpace();
 
-//			Indices are not deserialising...
-//			response.Datafeeds.First().Indices.Should().NotBeNull("Indices");
-//			response.Datafeeds.First().Indices.Should().Be(Nest.Indices.Parse("server-metrics"));
+			firstDatafeed.QueryDelay.Should().NotBeNull("QueryDelay");
+			firstDatafeed.QueryDelay.Should().Be(new Time("1m"));
 
-			response.Datafeeds.First().Types.Should().NotBeNull("Types");
-			response.Datafeeds.First().Types.Should().Be(Types.Parse("metric"));
+			firstDatafeed.Indices.Should().NotBeNull("Indices");
+			firstDatafeed.Indices.Should().Be(Nest.Indices.Parse("server-metrics"));
 
-			response.Datafeeds.First().ScrollSize.Should().Be(1000);
+			firstDatafeed.Types.Should().NotBeNull("Types");
+			firstDatafeed.Types.Should().Be(Types.Parse("metric"));
 
-			response.Datafeeds.First().ChunkingConfig.Should().NotBeNull();
-			response.Datafeeds.First().ChunkingConfig.Mode.Should().Be(ChunkingMode.Auto);
+			firstDatafeed.ScrollSize.Should().Be(1000);
 
-			response.Datafeeds.First().Query.Should().NotBeNull();
+			firstDatafeed.ChunkingConfig.Should().NotBeNull();
+			firstDatafeed.ChunkingConfig.Mode.Should().Be(ChunkingMode.Auto);
+
+			firstDatafeed.Query.Should().NotBeNull();
 
 			response.ShouldBeValid();
 		}
