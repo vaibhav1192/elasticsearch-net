@@ -52,7 +52,7 @@ namespace Nest
 		public Time Frequency { get; internal set; }
 
 		///<summary>A list of index names to search within. Wildcards are supported</summary>
-		[JsonProperty("indices")] // TODO: Check property name. Looks like indices in code, indexes in docs
+		[JsonProperty("indices")]
 		public Indices Indices { get; internal set; }
 
 		/// <summary>
