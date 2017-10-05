@@ -7,7 +7,7 @@ using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning
 {
-	[SkipVersion("<=5.4.0", "Machine Learning does not exist in previous versions")]
+	[SkipVersion("<5.4.0", "Machine Learning does not exist in previous versions")]
 	public abstract class MachineLearningIntegrationTestBase<TResponse, TInterface, TDescriptor, TInitializer>
 		: ApiIntegrationTestBase<XPackMachineLearningCluster, TResponse, TInterface, TDescriptor, TInitializer>
 		where TResponse : class, IResponse
@@ -30,7 +30,7 @@ namespace Tests.XPack.MachineLearning
 			);
 
 			if (!putJobResponse.IsValid)
-				throw new Exception("Problem setting up PutJob for integration test");
+				throw new Exception($"Problem putting job {jobId} for integration test");
 
 			return putJobResponse;
 		}
@@ -39,7 +39,7 @@ namespace Tests.XPack.MachineLearning
 		{
 			var openJobResponse = client.OpenJob(jobId);
 			if (!openJobResponse.IsValid || openJobResponse.Opened == false)
-				throw new Exception("Problem setting up OpenJob for integration test");
+				throw new Exception($"Problem opening job {jobId} for integration test");
 			return openJobResponse;
 		}
 
@@ -47,17 +47,25 @@ namespace Tests.XPack.MachineLearning
 		{
 			var closeJobResponse = client.CloseJob(jobId);
 			if (!closeJobResponse.IsValid || closeJobResponse.Closed == false)
-				throw new Exception("Problem setting up OpenJob for integration test");
+				throw new Exception($"Problem closing job {jobId} for integration test");
 			return closeJobResponse;
+		}
+
+		protected IDeleteJobResponse DeleteJob(IElasticClient client, string jobId)
+		{
+			var deleteJobResponse = client.DeleteJob(jobId);
+			if (!deleteJobResponse.IsValid || !deleteJobResponse.Acknowledged)
+				throw new Exception($"Problem deleting job {jobId} for integration test");
+			return deleteJobResponse;
 		}
 
 		protected IPutDatafeedResponse PutDatafeed(IElasticClient client, string jobId)
 		{
 			var putDataFeedResponse = client.PutDatafeed<Metric>(jobId + "-datafeed", f => f
-				.Query(q => q.MatchAll(m => m.Boost(1))));
+				.Query(q => q.MatchAll()));
 
 			if (!putDataFeedResponse.IsValid)
-				throw new Exception("Problem setting up PutDatafeed for integration test");
+				throw new Exception($"Problem putting datafeed for job {jobId} for integration test");
 
 			return putDataFeedResponse;
 		}
@@ -66,7 +74,7 @@ namespace Tests.XPack.MachineLearning
 		{
 			var startDatafeedResponse = client.StartDatafeed(jobId + "-datafeed", f => f);
 			if (!startDatafeedResponse.IsValid || startDatafeedResponse.Started == false)
-				throw new Exception("Problem setting up StartDatafeed for integration test");
+				throw new Exception($"Problem starting datafeed for job {jobId} for integration test");
 			return startDatafeedResponse;
 		}
 

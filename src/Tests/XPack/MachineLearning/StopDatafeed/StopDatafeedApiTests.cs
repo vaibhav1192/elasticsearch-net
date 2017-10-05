@@ -23,6 +23,15 @@ namespace Tests.XPack.MachineLearning.StopDatafeed
 			}
 		}
 
+		protected override void IntegrationTeardown(IElasticClient client, CallUniqueValues values)
+		{
+			foreach (var callUniqueValue in values)
+			{
+				CloseJob(client, callUniqueValue.Value);
+				DeleteJob(client, callUniqueValue.Value);
+			}
+		}
+
 		protected override LazyResponses ClientUsage() => Calls(
 			fluent: (client, f) => client.StopDatafeed(CallIsolatedValue + "-datafeed", f),
 			fluentAsync: (client, f) => client.StopDatafeedAsync(CallIsolatedValue + "-datafeed", f),

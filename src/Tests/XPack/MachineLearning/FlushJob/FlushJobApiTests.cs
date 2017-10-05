@@ -21,6 +21,15 @@ namespace Tests.XPack.MachineLearning.FlushJob
 			}
 		}
 
+		protected override void IntegrationTeardown(IElasticClient client, CallUniqueValues values)
+		{
+			foreach (var callUniqueValue in values)
+			{
+				CloseJob(client, callUniqueValue.Value);
+				DeleteJob(client, callUniqueValue.Value);
+			}
+		}
+
 		protected override LazyResponses ClientUsage() => Calls(
 			fluent: (client, f) => client.FlushJob(CallIsolatedValue, f),
 			fluentAsync: (client, f) => client.FlushJobAsync(CallIsolatedValue, f),
