@@ -7220,12 +7220,6 @@ namespace Nest
 		
 
 		
-		///<summary>Optional parameter to specify the start of the bucket resetting range</summary>
-		public PostJobDataDescriptor ResetStart(string reset_start) => AssignParam(p=>p.ResetStart(reset_start));
-
-		///<summary>Optional parameter to specify the end of the bucket resetting range</summary>
-		public PostJobDataDescriptor ResetEnd(string reset_end) => AssignParam(p=>p.ResetEnd(reset_end));
-
 		///<summary>Pretty format the returned JSON response.</summary>
 		public PostJobDataDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 

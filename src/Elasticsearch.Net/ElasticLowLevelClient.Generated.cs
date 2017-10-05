@@ -6959,7 +6959,7 @@ namespace Elasticsearch.Net
 		///<param name="task_id">The task id to rethrottle</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
 		public ElasticsearchResponse<T> ReindexRethrottle<T>(string task_id, Func<ReindexRethrottleRequestParameters, ReindexRethrottleRequestParameters> requestParameters = null)
-			where T : class => this.DoRequest<T>(POST, Url($"_reindex/{task_id}/_rethrottle"), null, _params(requestParameters));
+			where T : class => this.DoRequest<T>(POST, Url($"_reindex/{task_id.NotNull("task_id")}/_rethrottle"), null, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_reindex/{task_id}/_rethrottle
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -6973,7 +6973,7 @@ namespace Elasticsearch.Net
 		///<param name="task_id">The task id to rethrottle</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
 		public Task<ElasticsearchResponse<T>> ReindexRethrottleAsync<T>(string task_id, Func<ReindexRethrottleRequestParameters, ReindexRethrottleRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
-			where T : class => this.DoRequestAsync<T>(POST, Url($"_reindex/{task_id}/_rethrottle"), cancellationToken, null, _params(requestParameters));
+			where T : class => this.DoRequestAsync<T>(POST, Url($"_reindex/{task_id.NotNull("task_id")}/_rethrottle"), cancellationToken, null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_remote/info
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
@@ -8247,7 +8247,7 @@ namespace Elasticsearch.Net
 		///<param name="task_id">Cancel the task with specified task id (node_id:task_number)</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
 		public ElasticsearchResponse<T> TasksCancel<T>(string task_id, Func<CancelTasksRequestParameters, CancelTasksRequestParameters> requestParameters = null)
-			where T : class => this.DoRequest<T>(POST, Url($"_tasks/{task_id}/_cancel"), null, _params(requestParameters));
+			where T : class => this.DoRequest<T>(POST, Url($"_tasks/{task_id.NotNull("task_id")}/_cancel"), null, _params(requestParameters));
 		
 		///<summary>Represents a POST on /_tasks/{task_id}/_cancel
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -8261,7 +8261,7 @@ namespace Elasticsearch.Net
 		///<param name="task_id">Cancel the task with specified task id (node_id:task_number)</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
 		public Task<ElasticsearchResponse<T>> TasksCancelAsync<T>(string task_id, Func<CancelTasksRequestParameters, CancelTasksRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
-			where T : class => this.DoRequestAsync<T>(POST, Url($"_tasks/{task_id}/_cancel"), cancellationToken, null, _params(requestParameters));
+			where T : class => this.DoRequestAsync<T>(POST, Url($"_tasks/{task_id.NotNull("task_id")}/_cancel"), cancellationToken, null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_tasks/{task_id}
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:
@@ -8275,7 +8275,7 @@ namespace Elasticsearch.Net
 		///<param name="task_id">Return the task with specified id (node_id:task_number)</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
 		public ElasticsearchResponse<T> TasksGet<T>(string task_id, Func<GetTaskRequestParameters, GetTaskRequestParameters> requestParameters = null)
-			where T : class => this.DoRequest<T>(GET, Url($"_tasks/{task_id}"), null, _params(requestParameters));
+			where T : class => this.DoRequest<T>(GET, Url($"_tasks/{task_id.NotNull("task_id")}"), null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_tasks/{task_id}
 		///<para></para>Returns: A task of ElasticsearchResponse&lt;T&gt; where the behaviour depends on the type of T:
@@ -8289,7 +8289,7 @@ namespace Elasticsearch.Net
 		///<param name="task_id">Return the task with specified id (node_id:task_number)</param>
 		///<param name="requestParameters">A func that allows you to describe the querystring parameters &amp; request specific connection settings.</param>
 		public Task<ElasticsearchResponse<T>> TasksGetAsync<T>(string task_id, Func<GetTaskRequestParameters, GetTaskRequestParameters> requestParameters = null, CancellationToken cancellationToken = default(CancellationToken))
-			where T : class => this.DoRequestAsync<T>(GET, Url($"_tasks/{task_id}"), cancellationToken, null, _params(requestParameters));
+			where T : class => this.DoRequestAsync<T>(GET, Url($"_tasks/{task_id.NotNull("task_id")}"), cancellationToken, null, _params(requestParameters));
 		
 		///<summary>Represents a GET on /_tasks
 		///<para></para>Returns: ElasticsearchResponse&lt;T&gt; where the behavior depends on the type of T:

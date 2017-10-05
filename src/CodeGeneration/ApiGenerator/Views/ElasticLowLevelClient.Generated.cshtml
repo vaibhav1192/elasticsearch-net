@@ -33,19 +33,17 @@ namespace Elasticsearch.Net
 	{
 		var endpoint = kv.Value;
 		var methods = endpoint.GetCsharpMethods().ToList();
-		var notNullParts = new HashSet<string> {"category_id", "task_id"};	
+		var partsNotToReplace = new HashSet<string> {"category_id"};	
 		foreach (var method in methods)
 		{
 			var url = method.Path.Split(new[] {'/'}, 2).Last();
-			var patchedUrl = url;
-			if (!url.Contains("{task_id}"))
-			{
-				var partNames = method.Url.Parts != null
-					? string.Join("|", method.Url.Parts.Where(p => !notNullParts.Contains(p.Key)).Select(p => p.Key))
-					: @"\w+";
-				var pattern = string.IsNullOrEmpty(partNames) ? @"\w+" : partNames;
-				patchedUrl = Regex.Replace(url, "{(" + pattern + ")}", "{$1.NotNull(\"$1\")}");
-			}			
+			// Don't replace certain url parts e.g. category_id is defined as a long parameter
+			// which is .ToString()'ed as part of the URL. A .NotNull() method on long doesn't really make sense.
+			var partNames = method.Url.Parts != null
+				? string.Join("|", method.Url.Parts.Where(p => !partsNotToReplace.Contains(p.Key)).Select(p => p.Key))
+				: @"\w+";
+			var pattern = string.IsNullOrEmpty(partNames) ? @"\w+" : partNames;
+			var patchedUrl = Regex.Replace(url, "{(" + pattern + ")}", "{$1.NotNull(\"$1\")}");		
 			bool isAsync = method.ReturnType.StartsWith("Task<");
 			string requestMethod = isAsync ? "DoRequestAsync" : "DoRequest";
 		<text>///<summary>Represents a @method.HttpMethod on @method.Path

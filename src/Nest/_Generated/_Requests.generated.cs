@@ -6596,13 +6596,7 @@ namespace Nest
 		public PostJobDataRequest(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
-			///<summary>Optional parameter to specify the start of the bucket resetting range</summary>
-		public string ResetStart { get { return Q<string>("reset_start"); } set { Q("reset_start", value); } }
-		
-		///<summary>Optional parameter to specify the end of the bucket resetting range</summary>
-		public string ResetEnd { get { return Q<string>("reset_end"); } set { Q("reset_end", value); } }
-		
-		///<summary>Pretty format the returned JSON response.</summary>
+			///<summary>Pretty format the returned JSON response.</summary>
 		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
 		
 		///<summary>Return human readable values for statistics.</summary>

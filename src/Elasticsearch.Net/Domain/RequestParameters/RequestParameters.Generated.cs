@@ -7438,14 +7438,6 @@ namespace Elasticsearch.Net
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
-		///<summary>Optional parameter to specify the start of the bucket resetting range</summary>
-		public PostJobDataRequestParameters ResetStart(string reset_start) => this.AddQueryString("reset_start", reset_start);
-		
-		
-		///<summary>Optional parameter to specify the end of the bucket resetting range</summary>
-		public PostJobDataRequestParameters ResetEnd(string reset_end) => this.AddQueryString("reset_end", reset_end);
-		
-		
 		///<summary>Pretty format the returned JSON response.</summary>
 		public PostJobDataRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
