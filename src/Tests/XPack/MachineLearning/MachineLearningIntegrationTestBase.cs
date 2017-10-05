@@ -7,6 +7,7 @@ using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning
 {
+	[SkipVersion("<=5.4.0", "Machine Learning does not exist in previous versions")]
 	public abstract class MachineLearningIntegrationTestBase<TResponse, TInterface, TDescriptor, TInitializer>
 		: ApiIntegrationTestBase<XPackMachineLearningCluster, TResponse, TInterface, TDescriptor, TInitializer>
 		where TResponse : class, IResponse
@@ -14,14 +15,14 @@ namespace Tests.XPack.MachineLearning
 		where TInitializer : class, TInterface
 		where TInterface : class
 	{
-		public MachineLearningIntegrationTestBase(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		protected MachineLearningIntegrationTestBase(ClusterBase cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected IPutJobResponse PutJob(IElasticClient client, string jobId)
 		{
 			var putJobResponse = client.PutJob<Metric>(jobId, f => f
 				.Description("Lab 1 - Simple example")
 				.AnalysisConfig(a => a
-					.BucketSpan(new Time("30m"))
+					.BucketSpan("30m")
 					.Latency("0s")
 					.Detectors(d => d.Sum(c => c.FieldName(r => r.Total)))
 				)
@@ -36,7 +37,7 @@ namespace Tests.XPack.MachineLearning
 
 		protected IOpenJobResponse OpenJob(IElasticClient client, string jobId)
 		{
-			var openJobResponse = client.OpenJob(jobId, f => f);
+			var openJobResponse = client.OpenJob(jobId);
 			if (!openJobResponse.IsValid || openJobResponse.Opened == false)
 				throw new Exception("Problem setting up OpenJob for integration test");
 			return openJobResponse;
@@ -44,7 +45,7 @@ namespace Tests.XPack.MachineLearning
 
 		protected ICloseJobResponse CloseJob(IElasticClient client, string jobId)
 		{
-			var closeJobResponse = client.CloseJob(jobId, f => f);
+			var closeJobResponse = client.CloseJob(jobId);
 			if (!closeJobResponse.IsValid || closeJobResponse.Closed == false)
 				throw new Exception("Problem setting up OpenJob for integration test");
 			return closeJobResponse;
@@ -53,12 +54,9 @@ namespace Tests.XPack.MachineLearning
 		protected IPutDatafeedResponse PutDatafeed(IElasticClient client, string jobId)
 		{
 			var putDataFeedResponse = client.PutDatafeed<Metric>(jobId + "-datafeed", f => f
-				.JobId(jobId)
-				.Indices(Nest.Indices.Parse("server-metrics"))
-				.Types(Types.Parse("metric"))
 				.Query(q => q.MatchAll(m => m.Boost(1))));
 
-			if (!putDataFeedResponse.IsValid || putDataFeedResponse.IsValid == false)
+			if (!putDataFeedResponse.IsValid)
 				throw new Exception("Problem setting up PutDatafeed for integration test");
 
 			return putDataFeedResponse;
