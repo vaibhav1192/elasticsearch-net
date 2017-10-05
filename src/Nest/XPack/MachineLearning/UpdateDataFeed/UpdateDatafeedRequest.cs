@@ -159,8 +159,7 @@ namespace Nest
 		public UpdateDatafeedDescriptor<T> Types(Types types) => Assign(a => a.Types = types);
 
 		///<summary>a shortcut into calling Types(typeof(TOther))</summary>
-		public UpdateDatafeedDescriptor<T> Types<TOther>() =>
-			Assign(a => a.Types = (Types)typeof(TOther));
+		public UpdateDatafeedDescriptor<T> Types<TOther>() => Assign(a => a.Types = (Types)typeof(TOther));
 
 		///<summary>a shortcut into calling Types(Types.All)</summary>
 		public UpdateDatafeedDescriptor<T> AllTypes() => this.Types(Nest.Types.All);

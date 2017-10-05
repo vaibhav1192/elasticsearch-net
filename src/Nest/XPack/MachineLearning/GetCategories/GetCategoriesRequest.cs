@@ -29,7 +29,6 @@ namespace Nest
 		IPage IGetCategoriesRequest.Page { get; set; }
 
 		/// <inheritdoc />
-		public GetCategoriesDescriptor Page(Func<PageDescriptor, IPage> selector) =>
-			Assign(a => a.Page = selector?.Invoke(new PageDescriptor()));
+		public GetCategoriesDescriptor Page(Func<PageDescriptor, IPage> selector) => Assign(a => a.Page = selector?.Invoke(new PageDescriptor()));
 	}
 }

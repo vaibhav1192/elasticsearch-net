@@ -15,12 +15,12 @@ namespace Tests.Framework.ManagedElasticsearch.Clusters
 		protected override void SeedNode()
 		{
 			base.SeedNode();
-			//new MachineLearningSeeder(this.Node).SeedNode();
+			new MachineLearningSeeder(this.Node).SeedNode();
 		}
 
 		protected override InstallationTaskBase[] AdditionalInstallationTasks => new InstallationTaskBase[]
 		{
-			//new DownloadMachineLearningSampleDataDistribution()
+			new DownloadMachineLearningSampleDataDistribution()
 		};
 	}
 }

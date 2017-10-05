@@ -11,7 +11,8 @@ namespace Tests.Framework.ManagedElasticsearch.Tasks.InstallationTasks
 		public override void Run(NodeConfiguration config, NodeFileSystem fileSystem)
 		{
 			var to = Path.Combine(config.FileSystem.RoamingFolder, "server_metrics.tar.gz");
-			if (!File.Exists(to)){
+			if (!File.Exists(to))
+			{
 				var from = "https://download.elasticsearch.org/demos/machine_learning/gettingstarted/server_metrics.tar.gz";
 				Console.WriteLine($"Download machine learning sample data from: {from}");
 				this.DownloadFile(from, to);
@@ -20,17 +21,17 @@ namespace Tests.Framework.ManagedElasticsearch.Tasks.InstallationTasks
 
 			var directoryTarget = Path.Combine(config.FileSystem.RoamingFolder, "server_metrics");
 			Console.WriteLine("Checking for: " + directoryTarget);
-			if (!Directory.Exists(directoryTarget))
+
+			if (Directory.Exists(directoryTarget)) return;
+
+			Directory.CreateDirectory(directoryTarget);
+			Console.WriteLine($"Unzipping machine learning sample data: {directoryTarget} ...");
+			using (var inStream = File.OpenRead(to))
+			using (var gzipStream = new GZipInputStream(inStream))
+			using (var tarArchive = TarArchive.CreateInputTarArchive(gzipStream))
 			{
-				Directory.CreateDirectory(directoryTarget);
-				Console.WriteLine($"Unzipping machine learning sample data: {directoryTarget} ...");
-				using (var inStream = File.OpenRead(to))
-				using (var gzipStream = new GZipInputStream(inStream))
-				using (var tarArchive = TarArchive.CreateInputTarArchive(gzipStream))
-				{
-					tarArchive.ExtractContents(directoryTarget);
-					tarArchive.Close();
-				}
+				tarArchive.ExtractContents(directoryTarget);
+				tarArchive.Close();
 			}
 		}
 	}

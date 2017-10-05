@@ -142,8 +142,7 @@ namespace Nest
 		public PutDatafeedDescriptor<T> JobId(Id jobId) => Assign(a => a.JobId = jobId);
 
 		/// <inheritdoc />
-		public PutDatafeedDescriptor<T> Query(Func<QueryContainerDescriptor<T>, QueryContainer> query) =>
-			Assign(a => a.Query = query?.Invoke(new QueryContainerDescriptor<T>()));
+		public PutDatafeedDescriptor<T> Query(Func<QueryContainerDescriptor<T>, QueryContainer> query) => Assign(a => a.Query = query?.Invoke(new QueryContainerDescriptor<T>()));
 
 		/// <inheritdoc />
 		public PutDatafeedDescriptor<T> QueryDelay(Time queryDelay) => Assign(a => a.QueryDelay = queryDelay);
@@ -159,8 +158,7 @@ namespace Nest
 		public PutDatafeedDescriptor<T> Types(Types types) => Assign(a => a.Types = types);
 
 		///<summary>a shortcut into calling Types(typeof(TOther))</summary>
-		public PutDatafeedDescriptor<T> Types<TOther>() =>
-			Assign(a => a.Types = (Types)typeof(TOther));
+		public PutDatafeedDescriptor<T> Types<TOther>() => Assign(a => a.Types = (Types)typeof(TOther));
 
 		///<summary>a shortcut into calling Types(Types.All)</summary>
 		public PutDatafeedDescriptor<T> AllTypes() => this.Types(Nest.Types.All);
