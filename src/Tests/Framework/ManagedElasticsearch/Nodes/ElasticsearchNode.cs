@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
@@ -52,7 +53,11 @@ namespace Tests.Framework.ManagedElasticsearch.Nodes
 			get
 			{
 				if (!this.Started && TestClient.Configuration.RunIntegrationTests)
-					throw new Exception("can not request a client from an ElasticsearchNode if that node hasn't started yet");
+				{
+					var logFile = Path.Combine(this.FileSystem.LogsPath, $"{this._config.NodeName}.log");
+					throw new Exception($"cannot request a client from an ElasticsearchNode that hasn't started yet. " +
+					                    $"Check the log at {logFile} to see if there was an issue starting");
+				}
 
 				if (this._client != null) return this._client;
 
