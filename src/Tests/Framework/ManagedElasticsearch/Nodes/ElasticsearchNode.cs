@@ -72,7 +72,7 @@ namespace Tests.Framework.ManagedElasticsearch.Nodes
 			}
 		}
 
-		public void Start(string[] settings)
+		public void Start(string[] settings, TimeSpan startTimeout)
 		{
 			if (!this._config.RunIntegrationTests || this.Started) return;
 			lock (_lock)
@@ -87,7 +87,6 @@ namespace Tests.Framework.ManagedElasticsearch.Nodes
 					return;
 				}
 
-				var timeout = TimeSpan.FromMinutes(1);
 				var handle = new XplatManualResetEvent(false);
 				var booted = false;
 				var process = new ObservableProcess(this.FileSystem.Binary, settings);
@@ -100,8 +99,8 @@ namespace Tests.Framework.ManagedElasticsearch.Nodes
 						.Subscribe(s => this.HandleConsoleMessage(s, handle), e => throw e, () => handle.Set());
 					this._composite.Add(subscription);
 
-					if (!handle.WaitOne(timeout, true))
-						throw new Exception($"Could not start elasticsearch within {timeout}");
+					if (!handle.WaitOne(startTimeout, true))
+						throw new Exception($"Could not start elasticsearch within {startTimeout}");
 
 					booted = true;
 				}

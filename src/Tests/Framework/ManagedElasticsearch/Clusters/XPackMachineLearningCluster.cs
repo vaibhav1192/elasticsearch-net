@@ -20,13 +20,11 @@ namespace Tests.Framework.ManagedElasticsearch.Clusters
 			}
 			: new string[] {} ;
 
-		protected override void SeedNode()
-		{
-			base.SeedNode();
-			new MachineLearningSeeder(this.Node).SeedNode();
-		}
+		protected override void SeedNode() => new MachineLearningSeeder(this.Node).SeedNode();
 
 		public override int MaxConcurrency => 1;
+
+		public override TimeSpan StartTimeout => TimeSpan.FromMinutes(3);
 
 		protected override string[] AdditionalServerSettings => base.AdditionalServerSettings.Concat(this.XPackMachineLearningSettings).ToArray();
 

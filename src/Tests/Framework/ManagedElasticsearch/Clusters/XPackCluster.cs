@@ -18,7 +18,5 @@ namespace Tests.Framework.ManagedElasticsearch.Clusters
 
 		public override ConnectionSettings ClusterConnectionSettings(ConnectionSettings s) =>
 			s.BasicAuthentication("es_admin", "es_admin");
-
-		protected override void SeedNode() => new DefaultSeeder(this.Node).SeedNode();
 	}
 }
