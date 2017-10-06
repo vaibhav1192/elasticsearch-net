@@ -26,6 +26,8 @@ namespace Tests.Framework.ManagedElasticsearch.Clusters
 			new MachineLearningSeeder(this.Node).SeedNode();
 		}
 
+		public override int MaxConcurrency => 1;
+
 		protected override string[] AdditionalServerSettings => base.AdditionalServerSettings.Concat(this.XPackMachineLearningSettings).ToArray();
 
 		protected override InstallationTaskBase[] AdditionalInstallationTasks => new InstallationTaskBase[]

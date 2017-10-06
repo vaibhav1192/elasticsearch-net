@@ -30,7 +30,7 @@ namespace Tests.XPack.MachineLearning
 			);
 
 			if (!putJobResponse.IsValid)
-				throw new Exception($"Problem putting job {jobId} for integration test");
+				throw new Exception($"Problem putting job {jobId} for integration test: {putJobResponse.DebugInformation}");
 
 			return putJobResponse;
 		}
@@ -39,7 +39,7 @@ namespace Tests.XPack.MachineLearning
 		{
 			var openJobResponse = client.OpenJob(jobId);
 			if (!openJobResponse.IsValid || openJobResponse.Opened == false)
-				throw new Exception($"Problem opening job {jobId} for integration test");
+				throw new Exception($"Problem opening job {jobId} for integration test: {openJobResponse.DebugInformation}");
 			return openJobResponse;
 		}
 
@@ -47,7 +47,7 @@ namespace Tests.XPack.MachineLearning
 		{
 			var closeJobResponse = client.CloseJob(jobId);
 			if (!closeJobResponse.IsValid || closeJobResponse.Closed == false)
-				throw new Exception($"Problem closing job {jobId} for integration test");
+				throw new Exception($"Problem closing job {jobId} for integration test: : {closeJobResponse.DebugInformation}");
 			return closeJobResponse;
 		}
 
@@ -55,7 +55,7 @@ namespace Tests.XPack.MachineLearning
 		{
 			var deleteJobResponse = client.DeleteJob(jobId);
 			if (!deleteJobResponse.IsValid || !deleteJobResponse.Acknowledged)
-				throw new Exception($"Problem deleting job {jobId} for integration test");
+				throw new Exception($"Problem deleting job {jobId} for integration test: {deleteJobResponse.DebugInformation}");
 			return deleteJobResponse;
 		}
 
@@ -65,7 +65,7 @@ namespace Tests.XPack.MachineLearning
 				.Query(q => q.MatchAll()));
 
 			if (!putDataFeedResponse.IsValid)
-				throw new Exception($"Problem putting datafeed for job {jobId} for integration test");
+				throw new Exception($"Problem putting datafeed for job {jobId} for integration test: {putDataFeedResponse.DebugInformation}");
 
 			return putDataFeedResponse;
 		}
@@ -74,7 +74,7 @@ namespace Tests.XPack.MachineLearning
 		{
 			var startDatafeedResponse = client.StartDatafeed(jobId + "-datafeed", f => f);
 			if (!startDatafeedResponse.IsValid || startDatafeedResponse.Started == false)
-				throw new Exception($"Problem starting datafeed for job {jobId} for integration test");
+				throw new Exception($"Problem starting datafeed for job {jobId} for integration test: {startDatafeedResponse.DebugInformation}");
 			return startDatafeedResponse;
 		}
 
