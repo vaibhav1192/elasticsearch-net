@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Elasticsearch.Net;
@@ -11,41 +13,47 @@ namespace Nest
 		/// Preview a Machine Learning datafeed.
 		/// This preview shows the structure of the data that will be passed to the anomaly detection engine.
 		/// </summary>
-		IPreviewDatafeedResponse PreviewDatafeed(Id id, Func<PreviewDatafeedDescriptor, IPreviewDatafeedRequest> selector = null);
+		IPreviewDatafeedResponse<T> PreviewDatafeed<T>(Id id, Func<PreviewDatafeedDescriptor, IPreviewDatafeedRequest> selector = null);
 
 		/// <inheritdoc/>
-		IPreviewDatafeedResponse PreviewDatafeed(IPreviewDatafeedRequest request);
+		IPreviewDatafeedResponse<T> PreviewDatafeed<T>(IPreviewDatafeedRequest request);
 
 		/// <inheritdoc/>
-		Task<IPreviewDatafeedResponse> PreviewDatafeedAsync(Id id, Func<PreviewDatafeedDescriptor, IPreviewDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task<IPreviewDatafeedResponse<T>> PreviewDatafeedAsync<T>(Id id, Func<PreviewDatafeedDescriptor, IPreviewDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <inheritdoc/>
-		Task<IPreviewDatafeedResponse> PreviewDatafeedAsync(IPreviewDatafeedRequest request, CancellationToken cancellationToken = default(CancellationToken));
+		Task<IPreviewDatafeedResponse<T>> PreviewDatafeedAsync<T>(IPreviewDatafeedRequest request, CancellationToken cancellationToken = default(CancellationToken));
 	}
 
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IPreviewDatafeedResponse PreviewDatafeed(Id id, Func<PreviewDatafeedDescriptor, IPreviewDatafeedRequest> selector = null) =>
-			this.PreviewDatafeed(selector.InvokeOrDefault(new PreviewDatafeedDescriptor(id)));
+		public IPreviewDatafeedResponse<T> PreviewDatafeed<T>(Id id, Func<PreviewDatafeedDescriptor, IPreviewDatafeedRequest> selector = null) =>
+			this.PreviewDatafeed<T>(selector.InvokeOrDefault(new PreviewDatafeedDescriptor(id)));
 
 		/// <inheritdoc/>
-		public IPreviewDatafeedResponse PreviewDatafeed(IPreviewDatafeedRequest request) =>
-			this.Dispatcher.Dispatch<IPreviewDatafeedRequest, PreviewDatafeedRequestParameters, PreviewDatafeedResponse>(
+		public IPreviewDatafeedResponse<T> PreviewDatafeed<T>(IPreviewDatafeedRequest request) =>
+			this.Dispatcher.Dispatch<IPreviewDatafeedRequest, PreviewDatafeedRequestParameters, PreviewDatafeedResponse<T>>(
 				request,
-				(p, d) => this.LowLevelDispatch.XpackMlPreviewDatafeedDispatch<PreviewDatafeedResponse>(p)
+				this.PreviewDatafeedResponse<T>,
+				(p, d) => this.LowLevelDispatch.XpackMlPreviewDatafeedDispatch<PreviewDatafeedResponse<T>>(p)
 			);
 
 		/// <inheritdoc/>
-		public Task<IPreviewDatafeedResponse> PreviewDatafeedAsync(Id id, Func<PreviewDatafeedDescriptor, IPreviewDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
-			this.PreviewDatafeedAsync(selector.InvokeOrDefault(new PreviewDatafeedDescriptor(id)), cancellationToken);
+		public Task<IPreviewDatafeedResponse<T>> PreviewDatafeedAsync<T>(Id id, Func<PreviewDatafeedDescriptor, IPreviewDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
+			this.PreviewDatafeedAsync<T>(selector.InvokeOrDefault(new PreviewDatafeedDescriptor(id)), cancellationToken);
 
 		/// <inheritdoc/>
-		public Task<IPreviewDatafeedResponse> PreviewDatafeedAsync(IPreviewDatafeedRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>
-			this.Dispatcher.DispatchAsync<IPreviewDatafeedRequest, PreviewDatafeedRequestParameters, PreviewDatafeedResponse, IPreviewDatafeedResponse>(
+		public Task<IPreviewDatafeedResponse<T>> PreviewDatafeedAsync<T>(IPreviewDatafeedRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>
+			this.Dispatcher.DispatchAsync<IPreviewDatafeedRequest, PreviewDatafeedRequestParameters, PreviewDatafeedResponse<T>, IPreviewDatafeedResponse<T>>(
 				request,
 				cancellationToken,
-				(p, d, c) => this.LowLevelDispatch.XpackMlPreviewDatafeedDispatchAsync<PreviewDatafeedResponse>(p, c)
+				this.PreviewDatafeedResponse<T>,
+				(p, d, c) => this.LowLevelDispatch.XpackMlPreviewDatafeedDispatchAsync<PreviewDatafeedResponse<T>>(p, c)
 			);
+
+		private PreviewDatafeedResponse<T> PreviewDatafeedResponse<T>(IApiCallDetails response, Stream stream) => response.Success
+			? new PreviewDatafeedResponse<T> { Data = this.ConnectionSettings.Serializer.Deserialize<IReadOnlyCollection<T>>(stream) }
+			: new PreviewDatafeedResponse<T>();
 	}
 }
