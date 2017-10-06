@@ -8,15 +8,8 @@ namespace Nest
 	/// It provides a more detailed view into anomaly detection.
 	/// </summary>
 	[JsonConverter(typeof(ReadAsTypeJsonConverter<ModelPlotConfig>))]
-	public interface IModelPlotConfig
+	public interface IModelPlotConfig : IModelPlotConfigEnabled
 	{
-		/// <summary>
-		/// Enables calculation and storage of the model bounds for each entity that is being analyzed.
-		/// By default, this is not enabled.
-		/// </summary>
-		[JsonProperty("enabled")]
-		bool? Enabled { get; set; }
-
 		/// <summary>
 		/// Limits data collection to this list of partition or by field values.
 		/// If terms are not specified, no filtering is applied.
@@ -40,7 +33,7 @@ namespace Nest
 	/// <inheritdoc />
 	public class ModelPlotConfigDescriptor<T> : DescriptorBase<ModelPlotConfigDescriptor<T>, IModelPlotConfig>, IModelPlotConfig where T : class
 	{
-		bool? IModelPlotConfig.Enabled { get; set; }
+		bool? IModelPlotConfigEnabled.Enabled { get; set; }
 		Fields IModelPlotConfig.Terms { get; set; }
 
 		/// <inheritdoc />

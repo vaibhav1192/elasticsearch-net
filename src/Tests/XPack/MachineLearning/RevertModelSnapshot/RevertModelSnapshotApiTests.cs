@@ -18,12 +18,20 @@ namespace Tests.XPack.MachineLearning.RevertModelSnapshot
 			foreach (var callUniqueValue in values)
 			{
 				PutJob(client, callUniqueValue.Value);
+				OpenJob(client, callUniqueValue.Value);
+				CloseJob(client, callUniqueValue.Value);
+
+				IndexSnapshot(client, callUniqueValue.Value, "first");
+				IndexSnapshot(client, callUniqueValue.Value, "second", "2016-06-01T00:00:00Z");
+
+				client.GetModelSnapshots(callUniqueValue.Value).Count.Should().Be(2);
+				client.Refresh(".ml-state");
 			}
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
-			fluent: (client, f) => client.RevertModelSnapshot(CallIsolatedValue, CallIsolatedValue, f),
-			fluentAsync: (client, f) => client.RevertModelSnapshotAsync(CallIsolatedValue, CallIsolatedValue, f),
+			fluent: (client, f) => client.RevertModelSnapshot(CallIsolatedValue, "first", f),
+			fluentAsync: (client, f) => client.RevertModelSnapshotAsync(CallIsolatedValue, "first", f),
 			request: (client, r) => client.RevertModelSnapshot(r),
 			requestAsync: (client, r) => client.RevertModelSnapshotAsync(r)
 		);
@@ -31,7 +39,7 @@ namespace Tests.XPack.MachineLearning.RevertModelSnapshot
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
-		protected override string UrlPath => $"/_xpack/ml/anomaly_detectors/{CallIsolatedValue}/model_snapshots/{CallIsolatedValue}/_revert";
+		protected override string UrlPath => $"/_xpack/ml/anomaly_detectors/{CallIsolatedValue}/model_snapshots/first/_revert";
 		protected override bool SupportsDeserialization => false;
 
 		protected override object ExpectJson => new
@@ -39,12 +47,12 @@ namespace Tests.XPack.MachineLearning.RevertModelSnapshot
 			delete_intervening_results = true
 		};
 
-		protected override RevertModelSnapshotDescriptor NewDescriptor() => new RevertModelSnapshotDescriptor(CallIsolatedValue, CallIsolatedValue);
+		protected override RevertModelSnapshotDescriptor NewDescriptor() => new RevertModelSnapshotDescriptor(CallIsolatedValue, "first");
 
 		protected override Func<RevertModelSnapshotDescriptor, IRevertModelSnapshotRequest> Fluent => f => f
 			.DeleteInterveningResults();
 
-		protected override RevertModelSnapshotRequest Initializer => new RevertModelSnapshotRequest(CallIsolatedValue, CallIsolatedValue)
+		protected override RevertModelSnapshotRequest Initializer => new RevertModelSnapshotRequest(CallIsolatedValue, "first")
 		{
 			DeleteInterveningResults = true
 		};

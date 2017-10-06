@@ -78,16 +78,37 @@ namespace Tests.XPack.MachineLearning
 			return startDatafeedResponse;
 		}
 
-		protected void IndexSnapshot(IElasticClient client, string jobId, string snapshotId)
+		protected void IndexSnapshot(IElasticClient client, string jobId, string snapshotId, string timestamp = "2016-06-02T00:00:00Z")
 		{
 			var index = ".ml-anomalies-" + jobId;
 			client.LowLevel.Index<object>(index, "doc", (object)new
 			{
 				job_id = jobId,
+				timestamp = timestamp,
 				snapshot_id = snapshotId,
-				timestamp = "2016-06-02T00:00:00Z",
+				latest_record_time_stamp = timestamp,
+				latest_result_time_stamp = timestamp,
 				snapshot_doc_count = 1
 			});
+
+//
+//			{
+//				"job_id": "revert-model-snapshot",
+//				"timestamp": "2016-06-02T00:00:00Z",
+//				"snapshot_id": "first",
+//				"description": "first snapshot",
+//
+//				"model_size_stats": {
+//					"job_id": "revert-model-snapshot",
+//					"model_bytes": 10,
+//					"log_time": "2016-06-02T00:00:00Z"
+//				},
+//				"quantiles": {
+//					"job_id": "revert-model-snapshot",
+//					"timestamp": 1464825600000,
+//					"quantile_state": "quantiles-1"
+//				}
+//			}
 
 			client.Refresh(index);
 		}
