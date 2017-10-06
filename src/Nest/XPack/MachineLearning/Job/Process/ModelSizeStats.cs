@@ -70,6 +70,7 @@ namespace Nest
 		/// The timestamp according to the timestamp of the data.
 		/// </summary>
 		[JsonProperty("timestamp")]
-		public DateTimeOffset Timestamp { get; internal set; }
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
+		public DateTimeOffset? Timestamp { get; internal set; }
 	}
 }
