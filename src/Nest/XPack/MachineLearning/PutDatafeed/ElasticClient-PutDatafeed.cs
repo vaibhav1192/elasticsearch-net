@@ -27,7 +27,7 @@ namespace Nest
 	{
 		/// <inheritdoc/>
 		public IPutDatafeedResponse PutDatafeed<T>(Id id, Func<PutDatafeedDescriptor<T>, IPutDatafeedRequest> selector = null) where T : class =>
-			this.PutDatafeed(selector.InvokeOrDefault(new PutDatafeedDescriptor<T>(id)));
+			this.PutDatafeed(selector.InvokeOrDefault(new PutDatafeedDescriptor<T>(id).Indices<T>().Types<T>()));
 
 		/// <inheritdoc/>
 		public IPutDatafeedResponse PutDatafeed(IPutDatafeedRequest request) =>
@@ -38,7 +38,7 @@ namespace Nest
 
 		/// <inheritdoc/>
 		public Task<IPutDatafeedResponse> PutDatafeedAsync<T>(Id id, Func<PutDatafeedDescriptor<T>, IPutDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
-			this.PutDatafeedAsync(selector.InvokeOrDefault(new PutDatafeedDescriptor<T>(id)), cancellationToken);
+			this.PutDatafeedAsync(selector.InvokeOrDefault(new PutDatafeedDescriptor<T>(id).Indices<T>().Types<T>()), cancellationToken);
 
 		/// <inheritdoc/>
 		public Task<IPutDatafeedResponse> PutDatafeedAsync(IPutDatafeedRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>

@@ -10,7 +10,7 @@ using Tests.Framework.MockData;
 namespace Tests.XPack.MachineLearning.UpdateDatafeed
 {
 	public class UpdateDatafeedApiTests : MachineLearningIntegrationTestBase<IUpdateDatafeedResponse,
-		IUpdateDatafeedRequest, UpdateDatafeedDescriptor<Project>, UpdateDatafeedRequest>
+		IUpdateDatafeedRequest, UpdateDatafeedDescriptor<Metric>, UpdateDatafeedRequest>
 	{
 		public UpdateDatafeedApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage)
 		{
@@ -37,7 +37,7 @@ namespace Tests.XPack.MachineLearning.UpdateDatafeed
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
 		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}-datafeed/_update";
 		protected override bool SupportsDeserialization => false;
-		protected override UpdateDatafeedDescriptor<Project> NewDescriptor() => new UpdateDatafeedDescriptor<Project>(CallIsolatedValue);
+		protected override UpdateDatafeedDescriptor<Metric> NewDescriptor() => new UpdateDatafeedDescriptor<Metric>(CallIsolatedValue);
 
 		protected override object ExpectJson => new
 		{
@@ -53,10 +53,8 @@ namespace Tests.XPack.MachineLearning.UpdateDatafeed
 			types = new [] { "metric" }
 		};
 
-		protected override Func<UpdateDatafeedDescriptor<Project>, IUpdateDatafeedRequest> Fluent => f => f
+		protected override Func<UpdateDatafeedDescriptor<Metric>, IUpdateDatafeedRequest> Fluent => f => f
 			.JobId(CallIsolatedValue)
-			.Indices("server-metrics")
-			.Types("metric")
 			.Query(q => q
 				.MatchAll(m => m.Boost(2))
 			)
@@ -82,7 +80,7 @@ namespace Tests.XPack.MachineLearning.UpdateDatafeed
 			response.JobId.Should().Be(CallIsolatedValue);
 
 			response.QueryDelay.Should().NotBeNull("QueryDelay");
-			response.QueryDelay.Should().Be(new Time("1m"));
+			response.QueryDelay.Should().BeGreaterThan(new Time("1nanos"));
 
 			//Indices are not deserialising...
 			response.Indices.Should().NotBeNull("Indices");

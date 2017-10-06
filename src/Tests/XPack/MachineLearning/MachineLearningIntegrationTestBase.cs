@@ -1,4 +1,5 @@
 using System;
+using Elasticsearch.Net;
 using Nest;
 using Tests.Framework;
 using Tests.Framework.Integration;
@@ -51,17 +52,10 @@ namespace Tests.XPack.MachineLearning
 			return closeJobResponse;
 		}
 
-		protected IDeleteJobResponse DeleteJob(IElasticClient client, string jobId)
-		{
-			var deleteJobResponse = client.DeleteJob(jobId);
-			if (!deleteJobResponse.IsValid || !deleteJobResponse.Acknowledged)
-				throw new Exception($"Problem deleting job {jobId} for integration test: {deleteJobResponse.DebugInformation}");
-			return deleteJobResponse;
-		}
-
 		protected IPutDatafeedResponse PutDatafeed(IElasticClient client, string jobId)
 		{
 			var putDataFeedResponse = client.PutDatafeed<Metric>(jobId + "-datafeed", f => f
+				.JobId(jobId)
 				.Query(q => q.MatchAll()));
 
 			if (!putDataFeedResponse.IsValid)
@@ -72,30 +66,37 @@ namespace Tests.XPack.MachineLearning
 
 		protected IStartDatafeedResponse StartDatafeed(IElasticClient client, string jobId)
 		{
-			var startDatafeedResponse = client.StartDatafeed(jobId + "-datafeed", f => f);
+			var startDatafeedResponse = client.StartDatafeed(jobId + "-datafeed");
 			if (!startDatafeedResponse.IsValid || startDatafeedResponse.Started == false)
 				throw new Exception($"Problem starting datafeed for job {jobId} for integration test: {startDatafeedResponse.DebugInformation}");
 			return startDatafeedResponse;
 		}
 
+		protected IStopDatafeedResponse StopDatafeed(IElasticClient client, string jobId)
+		{
+			var stopDatafeedResponse = client.StopDatafeed(jobId + "-datafeed");
+			if (!stopDatafeedResponse.IsValid || stopDatafeedResponse.Stopped == false)
+				throw new Exception($"Problem stopping datafeed for job {jobId} for integration test: {stopDatafeedResponse.DebugInformation}");
+			return stopDatafeedResponse;
+		}
+
 		protected void IndexSnapshot(IElasticClient client, string jobId, string snapshotId)
 		{
 			var index = ".ml-anomalies-" + jobId;
-			client.LowLevel.Index<object>(index, "doc", (object)new
+			client.Index<object>(new
 			{
 				job_id = jobId,
 				snapshot_id = snapshotId,
 				timestamp = "2016-06-02T00:00:00Z",
 				snapshot_doc_count = 1
-			});
-
-			client.Refresh(index);
+			}, i => i.Type("doc").Index(index).Refresh(Refresh.WaitFor));
 		}
 
 		protected void IndexAnomalyRecord(IElasticClient client, string jobId, DateTimeOffset timestamp)
 		{
 			var index = ".ml-anomalies-" + jobId;
-			client.LowLevel.Index<object>(index, "doc", (object)new
+
+			client.Index<object>(new
 			{
 				job_id = jobId,
 				result_type = "record",
@@ -103,15 +104,13 @@ namespace Tests.XPack.MachineLearning
 				record_score = 80.0,
 				bucket_span = 1,
 				is_interim = true
-			});
-
-			client.Refresh(index);
+			}, i => i.Type("doc").Index(index).Refresh(Refresh.WaitFor));
 		}
 
 		protected void IndexBucket(IElasticClient client, string jobId, DateTimeOffset timestamp)
 		{
 			var index = ".ml-anomalies-" + jobId;
-			client.LowLevel.Index<object>(index, "doc", (object)new
+			client.Index<object>(new
 			{
 				job_id = jobId,
 				result_type = "bucket",
@@ -119,27 +118,23 @@ namespace Tests.XPack.MachineLearning
 				anomaly_score = 90.0,
 				bucket_span = 1,
 				is_interim = true
-			});
-
-			client.Refresh(index);
+			}, i => i.Type("doc").Index(index).Refresh(Refresh.WaitFor));
 		}
 
 		protected void IndexCategory(IElasticClient client, string jobId)
 		{
 			var index = ".ml-anomalies-" + jobId;
-			client.LowLevel.Index<object>(index, "doc", (object)new
+			client.Index<object>(new
 			{
 				job_id = jobId,
 				category_id = "1"
-			});
-
-			client.Refresh(index);
+			}, i => i.Type("doc").Index(index).Refresh(Refresh.WaitFor));
 		}
 
 		protected void IndexInfluencer(IElasticClient client, string jobId, DateTimeOffset timestamp)
 		{
 			var index = ".ml-anomalies-" + jobId;
-			client.LowLevel.Index<object>(index, "doc", (object)new
+			client.Index<object>(new
 			{
 				job_id = jobId,
 				timestamp = timestamp.ToString("o"),
@@ -148,9 +143,7 @@ namespace Tests.XPack.MachineLearning
 				influencer_score = 50,
 				result_type = "influencer",
 				bucket_span = 1
-			});
-
-			client.Refresh(index);
+			}, i => i.Type("doc").Index(index).Refresh(Refresh.WaitFor));
 		}
 	}
 }

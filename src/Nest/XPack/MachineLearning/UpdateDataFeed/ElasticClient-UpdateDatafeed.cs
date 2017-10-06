@@ -26,7 +26,7 @@ namespace Nest
 	{
 		/// <inheritdoc/>
 		public IUpdateDatafeedResponse UpdateDatafeed<T>(Id id, Func<UpdateDatafeedDescriptor<T>, IUpdateDatafeedRequest> selector = null) where T : class =>
-			this.UpdateDatafeed(selector.InvokeOrDefault(new UpdateDatafeedDescriptor<T>(id)));
+			this.UpdateDatafeed(selector.InvokeOrDefault(new UpdateDatafeedDescriptor<T>(id).Indices<T>().Types<T>()));
 
 		/// <inheritdoc/>
 		public IUpdateDatafeedResponse UpdateDatafeed(IUpdateDatafeedRequest request) =>
@@ -37,7 +37,7 @@ namespace Nest
 
 		/// <inheritdoc/>
 		public Task<IUpdateDatafeedResponse> UpdateDatafeedAsync<T>(Id id, Func<UpdateDatafeedDescriptor<T>, IUpdateDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
-			this.UpdateDatafeedAsync(selector.InvokeOrDefault(new UpdateDatafeedDescriptor<T>(id)), cancellationToken);
+			this.UpdateDatafeedAsync(selector.InvokeOrDefault(new UpdateDatafeedDescriptor<T>(id).Indices<T>().Types<T>()), cancellationToken);
 
 		/// <inheritdoc/>
 		public Task<IUpdateDatafeedResponse> UpdateDatafeedAsync(IUpdateDatafeedRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>

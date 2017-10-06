@@ -27,7 +27,6 @@ namespace Tests.XPack.MachineLearning.PostJobData
 			foreach (var callUniqueValue in values)
 			{
 				CloseJob(client, callUniqueValue.Value);
-				DeleteJob(client, callUniqueValue.Value);
 			}
 		}
 
