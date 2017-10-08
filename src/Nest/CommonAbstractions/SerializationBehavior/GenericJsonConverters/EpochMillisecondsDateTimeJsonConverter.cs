@@ -84,17 +84,19 @@ namespace Nest
 				if (objectType == typeof(DateTimeOffset?) || objectType == typeof(DateTime?))
 					return null;
 
-				return objectType == typeof(DateTimeOffset)
-					? default(DateTimeOffset)
-					: default(DateTime);
+				if (objectType == typeof(DateTimeOffset))
+					return default(DateTimeOffset);
+
+				return default(DateTime);
 			}
 
 			var millisecondsSinceEpoch = Convert.ToDouble(reader.Value);
 			var dateTimeOffset = Epoch.AddMilliseconds(millisecondsSinceEpoch);
 
-			return objectType == typeof(DateTimeOffset) || objectType == typeof(DateTimeOffset?)
-				? dateTimeOffset
-				: dateTimeOffset.DateTime;
+			if (objectType == typeof(DateTimeOffset) || objectType == typeof(DateTimeOffset?))
+				return dateTimeOffset;
+
+			return dateTimeOffset.DateTime;
 		}
 	}
 }

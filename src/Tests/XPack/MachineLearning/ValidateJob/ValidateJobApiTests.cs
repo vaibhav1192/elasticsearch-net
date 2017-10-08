@@ -44,7 +44,7 @@ namespace Tests.XPack.MachineLearning.ValidateJob
 			},
 			data_description = new
 			{
-				time_field = "timestamp"
+				time_field = "@timestamp"
 			},
 			description = "Lab 1 - Simple example",
 			results_index_name = "server-metrics"

@@ -79,7 +79,7 @@ namespace Nest
 
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
-			if (reader.TokenType != JsonToken.Float)
+			if (reader.TokenType != JsonToken.Float && reader.TokenType != JsonToken.Integer)
 			{
 				if (objectType == typeof(DateTimeOffset?) || objectType == typeof(DateTime?))
 					return null;
@@ -92,9 +92,10 @@ namespace Nest
 			var secondsSinceEpoch = (double)reader.Value;
 			var dateTimeOffset = Epoch.AddSeconds(secondsSinceEpoch);
 
-			return objectType == typeof(DateTimeOffset) || objectType == typeof(DateTimeOffset?)
-				? dateTimeOffset
-				: dateTimeOffset.DateTime;
+			if (objectType == typeof(DateTimeOffset) || objectType == typeof(DateTimeOffset?))
+				return dateTimeOffset;
+
+			return dateTimeOffset.DateTime;
 		}
 	}
 }

@@ -38,6 +38,7 @@ namespace Nest
 		/// If the job closed or failed, this is the time the job finished, otherwise it is null.
 		/// </summary>
 		[JsonProperty("finished_time")]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		public DateTimeOffset? FinishedTime { get; set; }
 
 		/// <summary>

@@ -24,7 +24,7 @@ namespace Tests.Framework.ManagedElasticsearch.Clusters
 
 		public override int MaxConcurrency => 1;
 
-		public override TimeSpan StartTimeout => TimeSpan.FromMinutes(3);
+		public override TimeSpan StartTimeout => TimeSpan.FromMinutes(5);
 
 		protected override string[] AdditionalServerSettings => base.AdditionalServerSettings.Concat(this.XPackMachineLearningSettings).ToArray();
 
