@@ -46,7 +46,7 @@ namespace Tests.XPack.MachineLearning.PutJob
 				},
 				data_description = new
 				{
-					time_field = "timestamp"
+					time_field = "@timestamp"
 				},
 				description = "Lab 1 - Simple example",
 				results_index_name = "server-metrics"
@@ -110,7 +110,7 @@ namespace Tests.XPack.MachineLearning.PutJob
 
 			response.AnalysisConfig.Influencers.Should().BeEmpty();
 
-			response.DataDescription.TimeField.Name.Should().Be("timestamp");
+			response.DataDescription.TimeField.Name.Should().Be("@timestamp");
 			response.DataDescription.TimeFormat.Should().Be("epoch_ms");
 
 			response.ModelSnapshotRetentionDays.Should().Be(1);

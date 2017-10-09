@@ -54,7 +54,7 @@ namespace Tests.XPack.MachineLearning.GetBuckets
 			bucket.EventCount.Should().Be(0);
 			bucket.IsInterim.Should().Be(true);
 			bucket.BucketInfluencers.Should().BeEmpty();
-			bucket.ProcessingTimeMs.Should().Be(0);
+			bucket.ProcessingTimeMilliseconds.Should().Be(0);
 			bucket.Timestamp.Should().BeBefore(DateTimeOffset.UtcNow);
 		}
 	}
@@ -106,7 +106,7 @@ namespace Tests.XPack.MachineLearning.GetBuckets
 			bucket.EventCount.Should().Be(0);
 			bucket.IsInterim.Should().Be(true);
 			bucket.BucketInfluencers.Should().BeEmpty();
-			bucket.ProcessingTimeMs.Should().Be(0);
+			bucket.ProcessingTimeMilliseconds.Should().Be(0);
 			bucket.Timestamp.Should().BeBefore(DateTimeOffset.UtcNow);
 		}
 	}

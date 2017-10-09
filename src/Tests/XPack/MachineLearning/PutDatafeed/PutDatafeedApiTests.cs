@@ -38,7 +38,7 @@ namespace Tests.XPack.MachineLearning.PutDatafeed
 
 		protected override object ExpectJson => new
 		{
-			indices = "server-metrics",
+			indices = new[] { "server-metrics" },
 			job_id = CallIsolatedValue,
 			query = new
 			{
@@ -82,8 +82,6 @@ namespace Tests.XPack.MachineLearning.PutDatafeed
 			response.ChunkingConfig.Mode.Should().Be(ChunkingMode.Auto);
 
 			response.Query.Should().NotBeNull();
-
-			response.ShouldBeValid();
 		}
 	}
 }

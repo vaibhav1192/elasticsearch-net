@@ -74,7 +74,6 @@ namespace Tests.Framework.ManagedElasticsearch.NodeSeeders
 					// only use the Audit trail as failed bulk items will be YUGE
 					var sb = new StringBuilder();
 					ResponseStatics.DebugAuditTrail(bulkResponse.AuditTrail, sb);
-
 					throw new Exception($"Problem seeding server-metrics data for Machine Learning: {sb}");
 				}
 			});

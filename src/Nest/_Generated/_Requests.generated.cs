@@ -6596,7 +6596,13 @@ namespace Nest
 		public PostJobDataRequest(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
-			///<summary>Pretty format the returned JSON response.</summary>
+			///<summary></summary>
+		public DateTimeOffset ResetStart { get { return DateTimeOffset.Parse(Q<string>("reset_start")); } set { Q("reset_start", value.ToString("o")); } }
+		
+		///<summary></summary>
+		public DateTimeOffset ResetEnd { get { return DateTimeOffset.Parse(Q<string>("reset_end")); } set { Q("reset_end", value.ToString("o")); } }
+		
+		///<summary>Pretty format the returned JSON response.</summary>
 		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
 		
 		///<summary>Return human readable values for statistics.</summary>

@@ -2,6 +2,7 @@
 using Elasticsearch.Net;
 using FluentAssertions;
 using Nest;
+using Newtonsoft.Json.Linq;
 using Tests.Framework;
 using Tests.Framework.Integration;
 using Tests.Framework.ManagedElasticsearch.Clusters;
@@ -44,15 +45,15 @@ namespace Tests.XPack.MachineLearning.PostJobData
 		protected override bool SupportsDeserialization => false;
 		protected override PostJobDataDescriptor NewDescriptor() => new PostJobDataDescriptor(CallIsolatedValue);
 
-		protected override object ExpectJson => new
+		protected override object ExpectJson => new JObject
 		{
-			timestamp = new DateTime(2017, 9, 1),
-			accept = 36320,
-			deny = 4156,
-			host = "server_2",
-			response = 2.455821,
-			service = "app_3",
-			total = 40476
+			{ "@timestamp", new DateTime(2017, 9, 1) },
+			{ "accept", 36320 },
+			{ "deny", 4156 },
+			{ "host", "server_2" },
+			{ "response", 2.455821 },
+			{ "service", "app_3" },
+			{ "total", 40476 }
 		};
 
 		protected override Func<PostJobDataDescriptor, IPostJobDataRequest> Fluent => f => f.Data(new Metric

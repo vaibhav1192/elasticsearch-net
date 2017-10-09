@@ -86,30 +86,35 @@ namespace Nest
 		/// The timestamp of the earliest chronologically ordered record.
 		/// </summary>
 		[JsonProperty("earliest_record_timestamp")]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		public DateTimeOffset? EarliestRecordTimestamp { get; internal set; }
 
 		/// <summary>
 		/// The timestamp of the last processed record.
 		/// </summary>
 		[JsonProperty("latest_record_timestamp")]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		public DateTimeOffset LatestRecordTimestamp { get; internal set; }
 
 		/// <summary>
 		/// The timestamp of the last bucket that did not contain any data.
 		/// </summary>
 		[JsonProperty("latest_empty_bucket_timestamp")]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		public DateTimeOffset LatestEmptyBucketTimestamp { get; internal set; }
 
 		/// <summary>
 		/// The timestamp at which data was last analyzed, according to server time.
 		/// </summary>
 		[JsonProperty("last_data_time")]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		public DateTimeOffset LastDataTime { get; internal set; }
 
 		/// <summary>
 		/// The timestamp of the last bucket that was considered sparse.
 		/// </summary>
 		[JsonProperty("latest_sparse_bucket_timestamp")]
+		[JsonConverter(typeof(EpochMillisecondsDateTimeJsonConverter))]
 		public DateTimeOffset LatestSparseBucketTimestamp { get; internal set; }
 
 		/// <summary>

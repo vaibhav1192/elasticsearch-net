@@ -22,9 +22,14 @@ namespace Tests.Framework.ManagedElasticsearch.Clusters
 
 		protected override void SeedNode()
 		{
-			base.SeedNode();
-			new MachineLearningSeeder(this.Node).SeedNode();
+			// TODO: seem to be seeding data on unit tests too in ClusterBase.Start?
+			if (TestClient.Configuration.RunIntegrationTests)
+				new MachineLearningSeeder(this.Node).SeedNode();
 		}
+
+		public override int MaxConcurrency => 1;
+
+		public override TimeSpan StartTimeout => TimeSpan.FromMinutes(5);
 
 		protected override string[] AdditionalServerSettings => base.AdditionalServerSettings.Concat(this.XPackMachineLearningSettings).ToArray();
 

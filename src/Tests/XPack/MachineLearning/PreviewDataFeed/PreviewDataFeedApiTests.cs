@@ -5,10 +5,11 @@ using Nest;
 using Tests.Framework;
 using Tests.Framework.Integration;
 using Tests.Framework.ManagedElasticsearch.Clusters;
+using Tests.Framework.MockData;
 
 namespace Tests.XPack.MachineLearning.PreviewDatafeed
 {
-	public class PreviewDatafeedApiTests : MachineLearningIntegrationTestBase<IPreviewDatafeedResponse, IPreviewDatafeedRequest, PreviewDatafeedDescriptor, PreviewDatafeedRequest>
+	public class PreviewDatafeedApiTests : MachineLearningIntegrationTestBase<IPreviewDatafeedResponse<Metric>, IPreviewDatafeedRequest, PreviewDatafeedDescriptor, PreviewDatafeedRequest>
 	{
 		public PreviewDatafeedApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
@@ -22,10 +23,10 @@ namespace Tests.XPack.MachineLearning.PreviewDatafeed
 		}
 
 		protected override LazyResponses ClientUsage() => Calls(
-			fluent: (client, f) => client.PreviewDatafeed(CallIsolatedValue + "-datafeed", f),
-			fluentAsync: (client, f) => client.PreviewDatafeedAsync(CallIsolatedValue + "-datafeed", f),
-			request: (client, r) => client.PreviewDatafeed(r),
-			requestAsync: (client, r) => client.PreviewDatafeedAsync(r)
+			fluent: (client, f) => client.PreviewDatafeed<Metric>(CallIsolatedValue + "-datafeed", f),
+			fluentAsync: (client, f) => client.PreviewDatafeedAsync<Metric>(CallIsolatedValue + "-datafeed", f),
+			request: (client, r) => client.PreviewDatafeed<Metric>(r),
+			requestAsync: (client, r) => client.PreviewDatafeedAsync<Metric>(r)
 		);
 
 		protected override bool ExpectIsValid => true;
@@ -38,9 +39,11 @@ namespace Tests.XPack.MachineLearning.PreviewDatafeed
 		protected override Func<PreviewDatafeedDescriptor, IPreviewDatafeedRequest> Fluent => f => f;
 		protected override PreviewDatafeedRequest Initializer => new PreviewDatafeedRequest(CallIsolatedValue + "-datafeed");
 
-		protected override void ExpectResponse(IPreviewDatafeedResponse response)
+		protected override void ExpectResponse(IPreviewDatafeedResponse<Metric> response)
 		{
 			response.IsValid.Should().BeTrue();
+
+			response.Data.Count.Should().BeGreaterThan(0);
 		}
 	}
 }
