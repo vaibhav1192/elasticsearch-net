@@ -7438,6 +7438,14 @@ namespace Elasticsearch.Net
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
+		///<summary></summary>
+		public PostJobDataRequestParameters ResetStart(DateTimeOffset reset_start) => this.AddQueryString("reset_start", reset_start.ToString("o"));
+		
+		
+		///<summary></summary>
+		public PostJobDataRequestParameters ResetEnd(DateTimeOffset reset_end) => this.AddQueryString("reset_end", reset_end.ToString("o"));
+		
+		
 		///<summary>Pretty format the returned JSON response.</summary>
 		public PostJobDataRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		

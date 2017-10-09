@@ -63,7 +63,7 @@ namespace Tests.XPack.MachineLearning.GetJobs
 
 			response.Jobs.First().AnalysisConfig.Influencers.Should().BeEmpty();
 
-			response.Jobs.First().DataDescription.TimeField.Name.Should().Be("timestamp");
+			response.Jobs.First().DataDescription.TimeField.Name.Should().Be("@timestamp");
 			response.Jobs.First().DataDescription.TimeFormat.Should().Be("epoch_ms");
 
 			response.Jobs.First().ModelSnapshotRetentionDays.Should().Be(1);
@@ -125,7 +125,7 @@ namespace Tests.XPack.MachineLearning.GetJobs
 
 			response.Jobs.First().AnalysisConfig.Influencers.Should().BeEmpty();
 
-			response.Jobs.First().DataDescription.TimeField.Name.Should().Be("timestamp");
+			response.Jobs.First().DataDescription.TimeField.Name.Should().Be("@timestamp");
 			response.Jobs.First().DataDescription.TimeFormat.Should().Be("epoch_ms");
 
 			response.Jobs.First().ModelSnapshotRetentionDays.Should().Be(1);

@@ -73,13 +73,13 @@ namespace Tests.XPack.MachineLearning.ValidateJob
 					{
 						new SumDetector
 						{
-							FieldName = "total"
+							FieldName = Field<Metric>(f => f.Total)
 						}
 					}
 				},
 				DataDescription = new DataDescription
 				{
-					TimeField = "timestamp"
+					TimeField = Field<Metric>(f => f.Timestamp)
 				}
 			};
 

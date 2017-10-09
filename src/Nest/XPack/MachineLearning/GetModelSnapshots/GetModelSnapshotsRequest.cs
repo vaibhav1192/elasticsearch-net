@@ -12,7 +12,7 @@ namespace Nest
 		/// If true, the results are sorted in descending order.
 		/// </summary>
 		[JsonProperty("desc")]
-		bool? Desc { get; set; }
+		bool? Descending { get; set; }
 
 		/// <summary>
 		/// Returns snapshots with timestamps earlier than this time.
@@ -45,7 +45,7 @@ namespace Nest
 	public partial class GetModelSnapshotsRequest
 	{
 		/// <inheritdoc />
-		public bool? Desc { get; set; }
+		public bool? Descending { get; set; }
 
 		/// <inheritdoc />
 		public DateTimeOffset? End { get; set; }
@@ -64,14 +64,14 @@ namespace Nest
 	[DescriptorFor("XpackMlGetModelSnapshots")]
 	public partial class GetModelSnapshotsDescriptor
 	{
-		bool? IGetModelSnapshotsRequest.Desc { get; set; }
+		bool? IGetModelSnapshotsRequest.Descending { get; set; }
 		DateTimeOffset? IGetModelSnapshotsRequest.End { get; set; }
 		IPage IGetModelSnapshotsRequest.Page { get; set; }
 		Field IGetModelSnapshotsRequest.Sort { get; set; }
 		DateTimeOffset? IGetModelSnapshotsRequest.Start { get; set; }
 
 		/// <inheritdoc />
-		public GetModelSnapshotsDescriptor Desc(bool desc = true) => Assign(a => a.Desc = desc);
+		public GetModelSnapshotsDescriptor Descending(bool desc = true) => Assign(a => a.Descending = desc);
 
 		/// <inheritdoc />
 		public GetModelSnapshotsDescriptor End(DateTimeOffset end) => Assign(a => a.End = end);

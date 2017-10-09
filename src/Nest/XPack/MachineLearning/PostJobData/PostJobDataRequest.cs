@@ -12,8 +12,11 @@ namespace Nest
 	public partial interface IPostJobDataRequest
 	{
 		/// <summary>
-		/// The job must have a state of open to receive and process the data.
+		/// The job data.
 		/// </summary>
+		/// <remarks>
+		/// The job must have a state of open to receive and process the data.
+		/// </remarks>
 		[JsonIgnore]
 		IEnumerable<object> Data { get; set; }
 	}

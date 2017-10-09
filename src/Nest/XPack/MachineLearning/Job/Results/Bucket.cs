@@ -59,7 +59,7 @@ namespace Nest
 		/// The amount of time, in milliseconds, that it took to analyze the bucket contents and calculate results.
 		/// </summary>
 		[JsonProperty("processing_time_ms")]
-		public double ProcessingTimeMs { get; internal set; }
+		public double ProcessingTimeMilliseconds { get; internal set; }
 
 		/// <summary>
 		/// An array of partition score objects.

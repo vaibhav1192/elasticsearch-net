@@ -30,6 +30,7 @@ namespace Nest
 
 		///<summary>A list of index names to search within. Wildcards are supported</summary>
 		[JsonProperty("indices")]
+		[JsonConverter(typeof(IndicesJsonConverter))]
 		Indices Indices { get; set; }
 
 		/// <summary>
@@ -67,6 +68,7 @@ namespace Nest
 
 		///<summary>A list of types to search for within the specified indices</summary>
 		[JsonProperty("types")]
+		[JsonConverter(typeof(TypesJsonConverter))]
 		Types Types { get; set; }
 	}
 
@@ -133,7 +135,7 @@ namespace Nest
 		public PutDatafeedDescriptor<T> Indices(Indices indices) => Assign(a => a.Indices = indices);
 
 		///<summary>a shortcut into calling Indices(typeof(TOther))</summary>
-		public PutDatafeedDescriptor<T> Indices<TOther>() => Assign(a => a.Indices = (Indices)typeof(TOther));
+		public PutDatafeedDescriptor<T> Indices<TOther>() => Assign(a => a.Indices = typeof(TOther));
 
 		///<summary>A shortcut into calling Indices(Indices.All)</summary>
 		public PutDatafeedDescriptor<T> AllIndices() => this.Indices(Nest.Indices.All);
@@ -158,7 +160,7 @@ namespace Nest
 		public PutDatafeedDescriptor<T> Types(Types types) => Assign(a => a.Types = types);
 
 		///<summary>a shortcut into calling Types(typeof(TOther))</summary>
-		public PutDatafeedDescriptor<T> Types<TOther>() => Assign(a => a.Types = (Types)typeof(TOther));
+		public PutDatafeedDescriptor<T> Types<TOther>() => Assign(a => a.Types = typeof(TOther));
 
 		///<summary>a shortcut into calling Types(Types.All)</summary>
 		public PutDatafeedDescriptor<T> AllTypes() => this.Types(Nest.Types.All);

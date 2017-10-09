@@ -7220,6 +7220,12 @@ namespace Nest
 		
 
 		
+		///<summary></summary>
+		public PostJobDataDescriptor ResetStart(DateTimeOffset reset_start) => AssignParam(p=>p.ResetStart(reset_start));
+
+		///<summary></summary>
+		public PostJobDataDescriptor ResetEnd(DateTimeOffset reset_end) => AssignParam(p=>p.ResetEnd(reset_end));
+
 		///<summary>Pretty format the returned JSON response.</summary>
 		public PostJobDataDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
@@ -7268,9 +7274,9 @@ namespace Nest
 	public partial class PutDatafeedDescriptor<T>  : RequestDescriptorBase<PutDatafeedDescriptor<T>,PutDatafeedRequestParameters, IPutDatafeedRequest>, IPutDatafeedRequest
 	{ 
 		Id IPutDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
-			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}</summary>
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}. Will infer the index and type from the generic type</summary>
 ///<param name="datafeed_id"> this parameter is required</param>
-		public PutDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		public PutDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){ Self.Indices = typeof(T); Self.Types = typeof(T); }
 		
 
 		
@@ -7432,9 +7438,9 @@ namespace Nest
 	public partial class UpdateDatafeedDescriptor<T>  : RequestDescriptorBase<UpdateDatafeedDescriptor<T>,UpdateDatafeedRequestParameters, IUpdateDatafeedRequest>, IUpdateDatafeedRequest
 	{ 
 		Id IUpdateDatafeedRequest.DatafeedId => Self.RouteValues.Get<Id>("datafeed_id");
-			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_update</summary>
+			/// <summary>/_xpack/ml/datafeeds/{datafeed_id}/_update. Will infer the index and type from the generic type</summary>
 ///<param name="datafeed_id"> this parameter is required</param>
-		public UpdateDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){}
+		public UpdateDatafeedDescriptor(Id datafeed_id) : base(r=>r.Required("datafeed_id", datafeed_id)){ Self.Indices = typeof(T); Self.Types = typeof(T); }
 		
 
 		

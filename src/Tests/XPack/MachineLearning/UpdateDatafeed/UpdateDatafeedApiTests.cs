@@ -41,7 +41,7 @@ namespace Tests.XPack.MachineLearning.UpdateDatafeed
 
 		protected override object ExpectJson => new
 		{
-			indices = "server-metrics",
+			indices = new [] { "server-metrics" },
 			job_id = CallIsolatedValue,
 			query = new
 			{
@@ -82,7 +82,6 @@ namespace Tests.XPack.MachineLearning.UpdateDatafeed
 			response.QueryDelay.Should().NotBeNull("QueryDelay");
 			response.QueryDelay.Should().BeGreaterThan(new Time("1nanos"));
 
-			//Indices are not deserialising...
 			response.Indices.Should().NotBeNull("Indices");
 			response.Indices.Should().Be(Nest.Indices.Parse("server-metrics"));
 
@@ -95,8 +94,6 @@ namespace Tests.XPack.MachineLearning.UpdateDatafeed
 			response.ChunkingConfig.Mode.Should().Be(ChunkingMode.Auto);
 
 			response.Query.Should().NotBeNull();
-
-			response.ShouldBeValid();
 		}
 	}
 }
