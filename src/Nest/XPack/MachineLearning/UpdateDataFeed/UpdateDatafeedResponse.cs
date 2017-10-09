@@ -35,6 +35,7 @@ namespace Nest
 
 		///<summary>A list of index names to search within. Wildcards are supported</summary>
 		[JsonProperty("indices")]
+		[JsonConverter(typeof(IndicesJsonConverter))]
 		Indices Indices { get; }
 
 		/// <summary>
@@ -72,6 +73,7 @@ namespace Nest
 
 		///<summary>A list of types to search for within the specified indices</summary>
 		[JsonProperty("types")]
+		[JsonConverter(typeof(TypesJsonConverter))]
 		Types Types { get;  }
 	}
 
