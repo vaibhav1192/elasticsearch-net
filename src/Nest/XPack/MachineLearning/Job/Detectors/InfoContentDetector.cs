@@ -3,11 +3,29 @@ using System.Linq.Expressions;
 
 namespace Nest
 {
-	public class InfoContentFunctions
+	public enum InfoContentFunction
 	{
-		public static string InfoContent = "info_content";
-		public static string HighInfoContent = "high_info_content";
-		public static string LowInfoContent = "low_info_content";
+		InfoContent,
+		HighInfoContent,
+		LowInfoContent
+	}
+
+	public static class InfoContentFunctions
+	{
+		public static string GetStringValue(this InfoContentFunction infoContentFunction)
+		{
+			switch (infoContentFunction)
+			{
+				case InfoContentFunction.InfoContent:
+					return "info_content";
+				case InfoContentFunction.HighInfoContent:
+					return "high_info_content";
+				case InfoContentFunction.LowInfoContent:
+					return "low_info_content";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(infoContentFunction), infoContentFunction, null);
+			}
+		}
 	}
 
 	public interface IInfoContentDetector : IDetector, IByFieldNameDetector, IOverFieldNameDetector,
@@ -17,7 +35,7 @@ namespace Nest
 
 	public abstract class InfoContentDetectorBase : DetectorBase, IInfoContentDetector
 	{
-		protected InfoContentDetectorBase(string function) : base(function) {}
+		protected InfoContentDetectorBase(InfoContentFunction function) : base(function.ToString()) {}
 
 		public Field ByFieldName { get; set; }
 		public Field OverFieldName { get; set; }
@@ -27,17 +45,17 @@ namespace Nest
 
 	public class InfoContentDetector : InfoContentDetectorBase
 	{
-		public InfoContentDetector() : base(InfoContentFunctions.InfoContent) {}
+		public InfoContentDetector() : base(InfoContentFunction.InfoContent) {}
 	}
 
 	public class HighInfoContentDetector : InfoContentDetectorBase
 	{
-		public HighInfoContentDetector() : base(InfoContentFunctions.HighInfoContent) {}
+		public HighInfoContentDetector() : base(InfoContentFunction.HighInfoContent) {}
 	}
 
 	public class LowInfoContentDetector : InfoContentDetectorBase
 	{
-		public LowInfoContentDetector() : base(InfoContentFunctions.LowInfoContent) {}
+		public LowInfoContentDetector() : base(InfoContentFunction.LowInfoContent) {}
 	}
 
 	public class InfoContentDetectorDescriptor<T> : DetectorDescriptorBase<InfoContentDetectorDescriptor<T>, IInfoContentDetector>, IInfoContentDetector where T : class
@@ -47,7 +65,7 @@ namespace Nest
 		Field IPartitionFieldNameDetector.PartitionFieldName { get; set; }
 		Field IFieldNameDetector.FieldName { get; set; }
 
-		public InfoContentDetectorDescriptor(string function) : base(function) {}
+		public InfoContentDetectorDescriptor(InfoContentFunction function) : base(function.GetStringValue()) {}
 
 		public InfoContentDetectorDescriptor<T> FieldName(Field fieldName) => Assign(a => a.FieldName = fieldName);
 

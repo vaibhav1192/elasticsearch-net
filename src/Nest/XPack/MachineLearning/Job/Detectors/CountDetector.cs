@@ -5,17 +5,47 @@ using Newtonsoft.Json;
 
 namespace Nest
 {
-	public class CountFunctions
+	public enum CountFunction
 	{
-		public static string Count = "count";
-		public static string HighCount = "high_count";
-		public static string LowCount = "low_count";
-		public static string NonZeroCount = "non_zero_count";
-		public static string LowNonZeroCount = "low_non_zero_count";
-		public static string HighNonZeroCount = "high_non_zero_count";
-		public static string DistinctCount = "distinct_count";
-		public static string LowDistinctCount = "low_distinct_count";
-		public static string HighDistinctCount = "high_distinct_count";
+		Count ,
+		HighCount,
+		LowCount,
+		NonZeroCount,
+		LowNonZeroCount,
+		HighNonZeroCount,
+		DistinctCount,
+		LowDistinctCount,
+		HighDistinctCount
+	}
+
+	public static class CountFunctionExtensions
+	{
+		public static string GetStringValue(this CountFunction countFunction)
+		{
+			switch (countFunction)
+			{
+				case CountFunction.Count:
+					return "count";
+				case CountFunction.HighCount:
+					return "high_count";
+				case CountFunction.LowCount:
+					return "low_count";
+				case CountFunction.NonZeroCount:
+					return  "non_zero_count";
+				case CountFunction.LowNonZeroCount:
+					return  "low_non_zero_count";
+				case CountFunction.HighNonZeroCount:
+					return"high_non_zero_count";
+				case CountFunction.DistinctCount:
+					return "distinct_count";
+				case CountFunction.LowDistinctCount:
+					return  "low_distinct_count";
+				case CountFunction.HighDistinctCount:
+					return  "high_distinct_count";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(countFunction), countFunction, null);
+			}
+		}
 	}
 
 	public interface ICountDetector : IDetector, IByFieldNameDetector, IOverFieldNameDetector,
@@ -38,7 +68,7 @@ namespace Nest
 		public Field OverFieldName { get; set; }
 		public Field PartitionFieldName { get; set; }
 
-		protected CountDetectorBase(string function) : base(function)
+		protected CountDetectorBase(CountFunction function) : base(function.GetStringValue())
 		{
 		}
 	}
@@ -48,7 +78,7 @@ namespace Nest
 		public Field ByFieldName { get; set; }
 		public Field PartitionFieldName { get; set; }
 
-		protected NonZeroCountDetectorBase(string function) : base(function)
+		protected NonZeroCountDetectorBase(CountFunction function) : base(function.GetStringValue())
 		{
 		}
 	}
@@ -60,7 +90,7 @@ namespace Nest
 		public Field OverFieldName { get; set; }
 		public Field FieldName { get; set; }
 
-		protected DistinctCountDetectorBase(string function) : base(function)
+		protected DistinctCountDetectorBase(CountFunction function) : base(function.GetStringValue())
 		{
 		}
 	}
@@ -71,7 +101,7 @@ namespace Nest
 		Field IOverFieldNameDetector.OverFieldName { get; set; }
 		Field IPartitionFieldNameDetector.PartitionFieldName { get; set; }
 
-		public CountDetectorDescriptor(string function) : base(function) {}
+		public CountDetectorDescriptor(CountFunction function) : base(function.GetStringValue()) {}
 
 		public CountDetectorDescriptor<T> ByFieldName(Field byFieldName) => Assign(a => a.ByFieldName = byFieldName);
 
@@ -91,7 +121,7 @@ namespace Nest
 		Field IByFieldNameDetector.ByFieldName { get; set; }
 		Field IPartitionFieldNameDetector.PartitionFieldName { get; set; }
 
-		public NonZeroCountDetectorDescriptor(string function) : base(function) {}
+		public NonZeroCountDetectorDescriptor(CountFunction function) : base(function.GetStringValue()) {}
 
 		public NonZeroCountDetectorDescriptor<T> ByFieldName(Field byFieldName) => Assign(a => a.ByFieldName = byFieldName);
 
@@ -109,7 +139,7 @@ namespace Nest
 		Field IPartitionFieldNameDetector.PartitionFieldName { get; set; }
 		Field IFieldNameDetector.FieldName { get; set; }
 
-		public DistinctCountDetectorDescriptor(string function) : base(function) {}
+		public DistinctCountDetectorDescriptor(CountFunction function) : base(function.GetStringValue()) {}
 
 		public DistinctCountDetectorDescriptor<T> FieldName(Field fieldName) => Assign(a => a.FieldName = fieldName);
 
@@ -130,17 +160,17 @@ namespace Nest
 
 	public class CountDetector : CountDetectorBase
 	{
-		public CountDetector() : base(CountFunctions.Count) {}
+		public CountDetector() : base(CountFunction.Count) {}
 	}
 
 	public class HighCountDetector : CountDetectorBase
 	{
-		public HighCountDetector() : base(CountFunctions.HighCount) {}
+		public HighCountDetector() : base(CountFunction.HighCount) {}
 	}
 
 	public class LowCountDetector : CountDetectorBase
 	{
-		public LowCountDetector() : base(CountFunctions.LowCount) {}
+		public LowCountDetector() : base(CountFunction.LowCount) {}
 	}
 
 	/// <summary>
@@ -149,7 +179,7 @@ namespace Nest
 	/// </summary>
 	public class NonZeroCountDetector : NonZeroCountDetectorBase
 	{
-		public NonZeroCountDetector() : base(CountFunctions.NonZeroCount) {}
+		public NonZeroCountDetector() : base(CountFunction.NonZeroCount) {}
 	}
 
 	/// <summary>
@@ -157,22 +187,22 @@ namespace Nest
 	/// </summary>
 	public class HighNonZeroCountDetector : NonZeroCountDetectorBase
 	{
-		public HighNonZeroCountDetector() : base(CountFunctions.HighNonZeroCount) {}
+		public HighNonZeroCountDetector() : base(CountFunction.HighNonZeroCount) {}
 	}
 
 	public class DistinctCountDetector : DistinctCountDetectorBase
 	{
-		public DistinctCountDetector() : base(CountFunctions.DistinctCount) {}
+		public DistinctCountDetector() : base(CountFunction.DistinctCount) {}
 	}
 
 	public class HighDistinctCountDetector : DistinctCountDetectorBase
 	{
-		public HighDistinctCountDetector() : base(CountFunctions.HighDistinctCount) {}
+		public HighDistinctCountDetector() : base(CountFunction.HighDistinctCount) {}
 	}
 
 	public class LowDistinctCountDetector : DistinctCountDetectorBase
 	{
-		public LowDistinctCountDetector() : base(CountFunctions.LowDistinctCount) {}
+		public LowDistinctCountDetector() : base(CountFunction.LowDistinctCount) {}
 	}
 
 	/// <summary>
@@ -180,6 +210,6 @@ namespace Nest
 	/// </summary>
 	public class LowNonZeroCountDetector : NonZeroCountDetectorBase
 	{
-		public LowNonZeroCountDetector() : base(CountFunctions.LowNonZeroCount) {}
+		public LowNonZeroCountDetector() : base(CountFunction.LowNonZeroCount) {}
 	}
 }

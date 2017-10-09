@@ -3,9 +3,23 @@ using System.Linq.Expressions;
 
 namespace Nest
 {
-	public class GeographicFunctions
+	public enum GeographicFunction
 	{
-		public static string LatLong = "lat_long";
+		LatLong
+	}
+
+	public static class GeographicFunctionsExtensions
+	{
+		public static string GetStringValue(this GeographicFunction geographicFunction)
+		{
+			switch (geographicFunction)
+			{
+				case GeographicFunction.LatLong:
+					return "lat_long";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(geographicFunction), geographicFunction, null);
+			}
+		}
 	}
 
 	public interface IGeographicDetector : IDetector, IByFieldNameDetector, IOverFieldNameDetector,
@@ -15,7 +29,7 @@ namespace Nest
 
 	public class LatLongDetector : DetectorBase, IGeographicDetector
 	{
-		public LatLongDetector() : base(GeographicFunctions.LatLong) {}
+		public LatLongDetector() : base(GeographicFunction.LatLong.GetStringValue()) {}
 
 		public Field ByFieldName { get; set; }
 		public Field OverFieldName { get; set; }

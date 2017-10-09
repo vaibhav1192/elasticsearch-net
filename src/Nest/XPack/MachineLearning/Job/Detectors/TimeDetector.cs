@@ -3,10 +3,26 @@ using System.Linq.Expressions;
 
 namespace Nest
 {
-	public class TimeFunctions
+	public enum TimeFunction
 	{
-		public static string TimeOfDay = "time_of_day";
-		public static string TimeOfWeek = "time_of_week";
+		TimeOfDay,
+		TimeOfWeek
+	}
+
+	public static class TimeFunctionsExtensions
+	{
+		public static string GetStringValue(this TimeFunction timeFunction)
+		{
+			switch(timeFunction)
+			{
+				case TimeFunction.TimeOfDay:
+					return "time_of_day";
+				case TimeFunction.TimeOfWeek:
+					return  "time_of_week";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(timeFunction), timeFunction, null);
+			}
+		}
 	}
 
 	public interface ITimeDetector : IDetector, IByFieldNameDetector, IOverFieldNameDetector,
@@ -16,7 +32,7 @@ namespace Nest
 
 	public abstract class TimeDetectorBase : DetectorBase, ITimeDetector
 	{
-		protected TimeDetectorBase(string function) : base(function) {}
+		protected TimeDetectorBase(TimeFunction function) : base(function.GetStringValue()) {}
 
 		public Field ByFieldName { get; set; }
 		public Field OverFieldName { get; set; }
@@ -25,12 +41,12 @@ namespace Nest
 
 	public class TimeOfDayDetector : TimeDetectorBase
 	{
-		public TimeOfDayDetector() : base(TimeFunctions.TimeOfDay) {}
+		public TimeOfDayDetector() : base(TimeFunction.TimeOfDay) {}
 	}
 
 	public class TimeOfWeekDetector : TimeDetectorBase
 	{
-		public TimeOfWeekDetector() : base(TimeFunctions.TimeOfWeek) {}
+		public TimeOfWeekDetector() : base(TimeFunction.TimeOfWeek) {}
 	}
 
 	public class TimeDetectorDescriptor<T> : DetectorDescriptorBase<TimeDetectorDescriptor<T>, ITimeDetector>, ITimeDetector where T : class
@@ -39,7 +55,7 @@ namespace Nest
 		Field IOverFieldNameDetector.OverFieldName { get; set; }
 		Field IPartitionFieldNameDetector.PartitionFieldName { get; set; }
 
-		public TimeDetectorDescriptor(string function) : base(function) {}
+		public TimeDetectorDescriptor(TimeFunction function) : base(function.GetStringValue()) {}
 
 		public TimeDetectorDescriptor<T> ByFieldName(Field byFieldName) => Assign(a => a.ByFieldName = byFieldName);
 

@@ -5,14 +5,38 @@ using Newtonsoft.Json;
 
 namespace Nest
 {
-	public class SumFunctions
+	public enum SumFunction
 	{
-		public static string Sum = "sum";
-		public static string HighSum = "high_sum";
-		public static string LowSum = "low_sum";
-		public static string NonNullSum = "non_null_sum";
-		public static string HighNonNullSum = "high_non_null_sum";
-		public static string LowNonNullSum = "low_non_null_sum";
+		Sum,
+		HighSum,
+		LowSum,
+		NonNullSum,
+		HighNonNullSum,
+		LowNonNullSum
+	}
+
+	public static class SumFunctionsExtensions
+	{
+		public static string GetStringValue(this SumFunction sumFunction)
+		{
+			switch (sumFunction)
+			{
+				case SumFunction.Sum:
+					return "sum";
+				case SumFunction.HighSum:
+					return  "high_sum";
+				case SumFunction.LowSum:
+					return "low_sum";
+				case SumFunction.NonNullSum:
+					return "non_null_sum";
+				case SumFunction.HighNonNullSum:
+					return "high_non_null_sum";
+				case SumFunction.LowNonNullSum:
+					return "low_non_null_sum";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(sumFunction), sumFunction, null);
+			}
+		}
 	}
 
 	public interface ISumDetector : IDetector, IFieldNameDetector, IByFieldNameDetector, IOverFieldNameDetector,
@@ -31,7 +55,7 @@ namespace Nest
 		public Field OverFieldName { get; set; }
 		public Field PartitionFieldName { get; set; }
 
-		protected SumDetectorBase(string function) : base(function)
+		protected SumDetectorBase(SumFunction function) : base(function.GetStringValue())
 		{
 		}
 	}
@@ -42,39 +66,39 @@ namespace Nest
 		public Field ByFieldName { get; set; }
 		public Field PartitionFieldName { get; set; }
 
-		protected NonNullSumDetectorBase(string function) : base(function)
+		protected NonNullSumDetectorBase(SumFunction function) : base(function.GetStringValue())
 		{
 		}
 	}
 
 	public class SumDetector : SumDetectorBase
 	{
-		public SumDetector() : base(SumFunctions.Sum) {}
+		public SumDetector() : base(SumFunction.Sum) {}
 	}
 
 	public class HighSumDetector : SumDetectorBase
 	{
-		public HighSumDetector() : base(SumFunctions.HighSum) {}
+		public HighSumDetector() : base(SumFunction.HighSum) {}
 	}
 
 	public class LowSumDetector : SumDetectorBase
 	{
-		public LowSumDetector() : base(SumFunctions.LowSum) {}
+		public LowSumDetector() : base(SumFunction.LowSum) {}
 	}
 
 	public class NonNullSumDetector : NonNullSumDetectorBase
 	{
-		public NonNullSumDetector() : base(SumFunctions.NonNullSum) {}
+		public NonNullSumDetector() : base(SumFunction.NonNullSum) {}
 	}
 
 	public class HighNonNullSumDetector : NonNullSumDetectorBase
 	{
-		public HighNonNullSumDetector() : base(SumFunctions.HighNonNullSum) {}
+		public HighNonNullSumDetector() : base(SumFunction.HighNonNullSum) {}
 	}
 
 	public class LowNonNullSumDetector : NonNullSumDetectorBase
 	{
-		public LowNonNullSumDetector() : base(SumFunctions.LowNonNullSum) {}
+		public LowNonNullSumDetector() : base(SumFunction.LowNonNullSum) {}
 	}
 
 	public class SumDetectorDescriptor<T> : DetectorDescriptorBase<SumDetectorDescriptor<T>, ISumDetector>, ISumDetector where T : class
@@ -84,7 +108,7 @@ namespace Nest
 		Field IPartitionFieldNameDetector.PartitionFieldName { get; set; }
 		Field IFieldNameDetector.FieldName { get; set; }
 
-		public SumDetectorDescriptor(string function) : base(function) {}
+		public SumDetectorDescriptor(SumFunction function) : base(function.GetStringValue()) {}
 
 		public SumDetectorDescriptor<T> FieldName(Field fieldName) => Assign(a => a.FieldName = fieldName);
 
@@ -109,7 +133,7 @@ namespace Nest
 		Field IPartitionFieldNameDetector.PartitionFieldName { get; set; }
 		Field IFieldNameDetector.FieldName { get; set; }
 
-		public NonNullSumDetectorDescriptor(string function) : base(function) {}
+		public NonNullSumDetectorDescriptor(SumFunction function) : base(function.GetStringValue()) {}
 
 		public NonNullSumDetectorDescriptor<T> FieldName(Field fieldName) => Assign(a => a.FieldName = fieldName);
 

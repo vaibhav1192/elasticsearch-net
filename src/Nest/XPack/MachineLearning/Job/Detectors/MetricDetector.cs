@@ -3,20 +3,56 @@ using System.Linq.Expressions;
 
 namespace Nest
 {
-	public class MetricFunctions
+	public enum MetricFunction
 	{
-		public static string Min = "min";
-		public static string Max = "max";
-		public static string Median = "median";
-		public static string HighMedian = "high_median";
-		public static string LowMedian = "low_median";
-		public static string Mean = "mean";
-		public static string HighMean = "high_mean";
-		public static string LowMean = "low_mean";
-		public static string Metric = "metric";
-		public static string Varp = "varp";
-		public static string HighVarp = "high_varp";
-		public static string LowVarp = "low_varp";
+		Min,
+		Max,
+		Median,
+		HighMedian,
+		LowMedian,
+		Mean,
+		HighMean,
+		LowMean,
+		Metric,
+		Varp,
+		HighVarp,
+		LowVarp
+	}
+
+	public static class MetricFunctionsExtensions
+	{
+		public static string GetStringValue(this MetricFunction metricFunction)
+		{
+			switch (metricFunction)
+			{
+				case MetricFunction.Min:
+					return  "min";
+				case MetricFunction.Max:
+					return "max";
+				case MetricFunction.Median:
+					return  "median";
+				case MetricFunction.HighMedian:
+				return  "high_median";
+				case MetricFunction.LowMedian:
+					return "low_median";
+				case MetricFunction.Mean:
+					return  "mean";
+				case MetricFunction.HighMean:
+					return "high_mean";
+				case MetricFunction.LowMean:
+					return "low_mean";
+				case MetricFunction.Metric:
+					return "metric";
+				case MetricFunction.Varp:
+					return "varp";
+				case MetricFunction.HighVarp:
+					return  "high_varp";
+				case MetricFunction.LowVarp:
+					return "low_varp";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(metricFunction), metricFunction, null);
+			}
+		}
 	}
 
 	public interface IMetricDetector : IDetector, IByFieldNameDetector, IOverFieldNameDetector,
@@ -26,7 +62,7 @@ namespace Nest
 
 	public abstract class MetricDetectorBase : DetectorBase, IGeographicDetector
 	{
-		protected MetricDetectorBase(string function) : base(function) {}
+		protected MetricDetectorBase(MetricFunction function) : base(function.GetStringValue()) {}
 
 		public Field ByFieldName { get; set; }
 		public Field OverFieldName { get; set; }
@@ -36,62 +72,62 @@ namespace Nest
 
 	public class MinDetector : MetricDetectorBase
 	{
-		public MinDetector() : base(MetricFunctions.Min) {}
+		public MinDetector() : base(MetricFunction.Min) {}
 	}
 
 	public class MaxDetector : MetricDetectorBase
 	{
-		public MaxDetector() : base(MetricFunctions.Max) {}
+		public MaxDetector() : base(MetricFunction.Max) {}
 	}
 
 	public class MedianDetector : MetricDetectorBase
 	{
-		public MedianDetector() : base(MetricFunctions.Median) {}
+		public MedianDetector() : base(MetricFunction.Median) {}
 	}
 
 	public class HighMedianDetector : MetricDetectorBase
 	{
-		public HighMedianDetector() : base(MetricFunctions.HighMedian) {}
+		public HighMedianDetector() : base(MetricFunction.HighMedian) {}
 	}
 
 	public class LowMedianDetector : MetricDetectorBase
 	{
-		public LowMedianDetector() : base(MetricFunctions.LowMedian) {}
+		public LowMedianDetector() : base(MetricFunction.LowMedian) {}
 	}
 
 	public class MeanDetector : MetricDetectorBase
 	{
-		public MeanDetector() : base(MetricFunctions.Mean) {}
+		public MeanDetector() : base(MetricFunction.Mean) {}
 	}
 
 	public class HighMeanDetector : MetricDetectorBase
 	{
-		public HighMeanDetector() : base(MetricFunctions.HighMean) {}
+		public HighMeanDetector() : base(MetricFunction.HighMean) {}
 	}
 
 	public class LowMeanDetector : MetricDetectorBase
 	{
-		public LowMeanDetector() : base(MetricFunctions.LowMean) {}
+		public LowMeanDetector() : base(MetricFunction.LowMean) {}
 	}
 
 	public class MetricDetector : MetricDetectorBase
 	{
-		public MetricDetector() : base(MetricFunctions.Metric) {}
+		public MetricDetector() : base(MetricFunction.Metric) {}
 	}
 
 	public class VarpDetector : MetricDetectorBase
 	{
-		public VarpDetector() : base(MetricFunctions.Varp) {}
+		public VarpDetector() : base(MetricFunction.Varp) {}
 	}
 
 	public class HighVarpDetector : MetricDetectorBase
 	{
-		public HighVarpDetector() : base(MetricFunctions.HighVarp) {}
+		public HighVarpDetector() : base(MetricFunction.HighVarp) {}
 	}
 
 	public class LowVarpDetector : MetricDetectorBase
 	{
-		public LowVarpDetector() : base(MetricFunctions.LowVarp) {}
+		public LowVarpDetector() : base(MetricFunction.LowVarp) {}
 	}
 
 	public class MetricDetectorDescriptor<T> : DetectorDescriptorBase<MetricDetectorDescriptor<T>, IMetricDetector>, IMetricDetector where T : class
@@ -101,7 +137,7 @@ namespace Nest
 		Field IPartitionFieldNameDetector.PartitionFieldName { get; set; }
 		Field IFieldNameDetector.FieldName { get; set; }
 
-		public MetricDetectorDescriptor(string function) : base(function) {}
+		public MetricDetectorDescriptor(MetricFunction function) : base(function.GetStringValue()) {}
 
 		public MetricDetectorDescriptor<T> FieldName(Field fieldName) => Assign(a => a.FieldName = fieldName);
 
