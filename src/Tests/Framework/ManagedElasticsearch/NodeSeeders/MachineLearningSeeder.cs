@@ -1,5 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Text;
+using Elasticsearch.Net;
 using Nest;
 using Tests.Framework.ManagedElasticsearch.Nodes;
 using Tests.Framework.MockData;
@@ -55,10 +58,26 @@ namespace Tests.Framework.ManagedElasticsearch.NodeSeeders
 		{
 			Console.WriteLine("Bulk importing starting ...");
 			var folder = Path.Combine(this.RoamingFolder, "server_metrics");
-			this.Client.LowLevel.Bulk<BulkResponse>(File.ReadAllBytes(Path.Combine(folder, "server-metrics_1.json")));
-			this.Client.LowLevel.Bulk<BulkResponse>(File.ReadAllBytes(Path.Combine(folder, "server-metrics_2.json")));
-			this.Client.LowLevel.Bulk<BulkResponse>(File.ReadAllBytes(Path.Combine(folder, "server-metrics_3.json")));
-			this.Client.LowLevel.Bulk<BulkResponse>(File.ReadAllBytes(Path.Combine(folder, "server-metrics_4.json")));
+			Enumerable.Range(1, 4).ToList().ForEach(i =>
+			{
+				var bulkResponse = this.Client.LowLevel.Bulk<BulkResponse>(
+					File.ReadAllBytes(Path.Combine(folder, $"server-metrics_{i}.json")),
+					r => r
+						.RequestConfiguration(rc => rc
+							.RequestTimeout(TimeSpan.FromMinutes(3)
+						)
+					)
+				);
+
+				if (!bulkResponse.Success || (bulkResponse.Body != null && !bulkResponse.Body.IsValid))
+				{
+					// only use the Audit trail as failed bulk items will be YUGE
+					var sb = new StringBuilder();
+					ResponseStatics.DebugAuditTrail(bulkResponse.AuditTrail, sb);
+
+					throw new Exception($"Problem seeding server-metrics data for Machine Learning: {sb}");
+				}
+			});
 			Console.WriteLine("Bulk importing finished.");
 		}
 

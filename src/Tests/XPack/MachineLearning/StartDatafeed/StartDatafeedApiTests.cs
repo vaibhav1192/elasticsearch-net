@@ -26,8 +26,8 @@ namespace Tests.XPack.MachineLearning.StartDatafeed
 		{
 			foreach (var callUniqueValue in values)
 			{
+				StopDatafeed(client, callUniqueValue.Value);
 				CloseJob(client, callUniqueValue.Value);
-				DeleteJob(client, callUniqueValue.Value);
 			}
 		}
 

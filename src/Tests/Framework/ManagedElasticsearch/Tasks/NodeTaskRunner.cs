@@ -90,7 +90,6 @@ namespace Tests.Framework.ManagedElasticsearch.Tasks
 				{
 					var name = task.GetType().Name;
 					if (log && taskLog.Contains(name)) continue;
-					Console.WriteLine("Running: " + name);
 					act(task,this.NodeConfiguration, this.NodeConfiguration.FileSystem);
 					if (log) taskLog.Add(name);
 				}

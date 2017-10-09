@@ -10,11 +10,9 @@ using Tests.Framework.MockData;
 namespace Tests.XPack.MachineLearning.PutDatafeed
 {
 	public class PutDatafeedApiTests : MachineLearningIntegrationTestBase<IPutDatafeedResponse,
-		IPutDatafeedRequest, PutDatafeedDescriptor<Project>, PutDatafeedRequest>
+		IPutDatafeedRequest, PutDatafeedDescriptor<Metric>, PutDatafeedRequest>
 	{
-		public PutDatafeedApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage)
-		{
-		}
+		public PutDatafeedApiTests(XPackMachineLearningCluster cluster, EndpointUsage usage) : base(cluster, usage) {}
 
 		protected override LazyResponses ClientUsage() => Calls(
 			fluent: (client, f) => client.PutDatafeed(CallIsolatedValue, f),
@@ -36,7 +34,7 @@ namespace Tests.XPack.MachineLearning.PutDatafeed
 		protected override HttpMethod HttpMethod => HttpMethod.PUT;
 		protected override string UrlPath => $"_xpack/ml/datafeeds/{CallIsolatedValue}";
 		protected override bool SupportsDeserialization => false;
-		protected override PutDatafeedDescriptor<Project> NewDescriptor() => new PutDatafeedDescriptor<Project>(CallIsolatedValue);
+		protected override PutDatafeedDescriptor<Metric> NewDescriptor() => new PutDatafeedDescriptor<Metric>(CallIsolatedValue);
 
 		protected override object ExpectJson => new
 		{
@@ -44,30 +42,22 @@ namespace Tests.XPack.MachineLearning.PutDatafeed
 			job_id = CallIsolatedValue,
 			query = new
 			{
-				match_all = new
-				{
-					boost = 1.0
-				}
+				match_all = new {}
 			},
 			types = new [] { "metric" }
 		};
 
-		protected override Func<PutDatafeedDescriptor<Project>, IPutDatafeedRequest> Fluent => f => f
+		protected override Func<PutDatafeedDescriptor<Metric>, IPutDatafeedRequest> Fluent => f => f
 			.JobId(CallIsolatedValue)
-			.Indices(Nest.Indices.Parse("server-metrics"))
-			.Types(Types.Parse("metric"))
-			.Query(q => q.MatchAll(m => m.Boost(1)));
+			.Query(q => q.MatchAll());
 
 		protected override PutDatafeedRequest Initializer =>
 			new PutDatafeedRequest(CallIsolatedValue)
 			{
 				JobId = CallIsolatedValue,
-				Indices = Nest.Indices.Parse("server-metrics"),
-				Types = Types.Parse("metric"),
-				Query = new QueryContainer(new MatchAllQuery
-				{
-					Boost = 1
-				})
+				Indices = "server-metrics",
+				Types = "metric",
+				Query = new MatchAllQuery()
 			};
 
 		protected override void ExpectResponse(IPutDatafeedResponse response)
@@ -78,11 +68,10 @@ namespace Tests.XPack.MachineLearning.PutDatafeed
 			response.JobId.Should().Be(CallIsolatedValue);
 
 			response.QueryDelay.Should().NotBeNull("QueryDelay");
-			response.QueryDelay.Should().Be(new Time("1m"));
+			response.QueryDelay.Should().BeGreaterThan(new Time("1nanos"));
 
-//			Indices are not deserialising...
-//			response.Indices.Should().NotBeNull("Indices");
-//			response.Indices.Should().Be(Nest.Indices.Parse("server-metrics"));
+			response.Indices.Should().NotBeNull("Indices");
+			response.Indices.Should().Be(Nest.Indices.Parse("server-metrics"));
 
 			response.Types.Should().NotBeNull("Types");
 			response.Types.Should().Be(Types.Parse("metric"));
