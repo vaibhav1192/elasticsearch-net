@@ -82,6 +82,8 @@ namespace Tests.XPack.MachineLearning
 
 		protected void IndexSnapshot(IElasticClient client, string jobId, string snapshotId, string timestamp = "2016-06-02T00:00:00Z")
 		{
+			var unixTimestamp = (int)(DateTime.Parse(timestamp).Subtract(new DateTime(1970, 1, 1)).TotalSeconds);
+
 			client.Index<object>(new
 			{
 				job_id = jobId,
@@ -90,17 +92,37 @@ namespace Tests.XPack.MachineLearning
 				description = snapshotId + " description",
 				latest_record_time_stamp = timestamp,
 				latest_result_time_stamp = timestamp,
-				snapshot_doc_count = 1
+				snapshot_doc_count = 1,
+				model_size_stats = new {
+					job_id = jobId,
+					model_bytes = 20,
+					log_time = timestamp
+				},
+				quantiles = new {
+					job_id = jobId,
+					timestamp = unixTimestamp,
+					quantile_state = "quantiles-2"
+				}
 			}, i => i.Id(jobId + "_model_snapshot_" + snapshotId)
 					 .Type("doc")
 				     .Index(".ml-anomalies-" + jobId)
 					 .Refresh(Refresh.WaitFor));
+
+			// Index a bucket result, else RevertModelSnapshot throws a null
+			client.Index<object>(new
+			{
+				job_id = jobId,
+				result_type = "bucket",
+				timestamp = timestamp,
+				bucket_span = 1,
+			}, i => i.Id(jobId + "_" + unixTimestamp + "_1")
+					  .Type("doc")
+				      .Index(".ml-anomalies-" + jobId)
+					  .Refresh(Refresh.WaitFor));
 		}
 
 		protected void IndexAnomalyRecord(IElasticClient client, string jobId, DateTimeOffset timestamp)
 		{
-			var index = ".ml-anomalies-" + jobId;
-
 			client.Index<object>(new
 			{
 				job_id = jobId,
@@ -109,12 +131,11 @@ namespace Tests.XPack.MachineLearning
 				record_score = 80.0,
 				bucket_span = 1,
 				is_interim = true
-			}, i => i.Type("doc").Index(index).Refresh(Refresh.WaitFor));
+			}, i => i.Type("doc").Index(".ml-anomalies-" + jobId).Refresh(Refresh.WaitFor));
 		}
 
 		protected void IndexBucket(IElasticClient client, string jobId, DateTimeOffset timestamp)
 		{
-			var index = ".ml-anomalies-" + jobId;
 			client.Index<object>(new
 			{
 				job_id = jobId,
@@ -123,22 +144,20 @@ namespace Tests.XPack.MachineLearning
 				anomaly_score = 90.0,
 				bucket_span = 1,
 				is_interim = true
-			}, i => i.Type("doc").Index(index).Refresh(Refresh.WaitFor));
+			}, i => i.Type("doc").Index(".ml-anomalies-" + jobId).Refresh(Refresh.WaitFor));
 		}
 
 		protected void IndexCategory(IElasticClient client, string jobId)
 		{
-			var index = ".ml-anomalies-" + jobId;
 			client.Index<object>(new
 			{
 				job_id = jobId,
 				category_id = "1"
-			}, i => i.Type("doc").Index(index).Refresh(Refresh.WaitFor));
+			}, i => i.Type("doc").Index(".ml-anomalies-" + jobId).Refresh(Refresh.WaitFor));
 		}
 
 		protected void IndexInfluencer(IElasticClient client, string jobId, DateTimeOffset timestamp)
 		{
-			var index = ".ml-anomalies-" + jobId;
 			client.Index<object>(new
 			{
 				job_id = jobId,
@@ -148,7 +167,7 @@ namespace Tests.XPack.MachineLearning
 				influencer_score = 50,
 				result_type = "influencer",
 				bucket_span = 1
-			}, i => i.Type("doc").Index(index).Refresh(Refresh.WaitFor));
+			}, i => i.Type("doc").Index(".ml-anomalies-" + jobId).Refresh(Refresh.WaitFor));
 		}
 	}
 }
