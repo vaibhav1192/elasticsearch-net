@@ -115,7 +115,7 @@ namespace Nest
 				case "time_of_week":
 					return jObject.ToObject<TimeOfWeekDetector>(ElasticContractResolver.Empty);
 				default:
-					throw new JsonSerializationException($"Cannot deserialize detector for unknown function '{function}");
+					throw new JsonSerializationException($"Cannot deserialize detector for unknown function '{function}'");
 			}
 		}
 
