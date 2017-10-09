@@ -1,5 +1,6 @@
 ﻿using System;
 using Elasticsearch.Net;
+using FluentAssertions;
 using Nest;
 using Tests.Framework;
 using Tests.Framework.Integration;
@@ -21,7 +22,10 @@ namespace Tests.XPack.MachineLearning.UpdateModelSnapshot
 
 		protected override void IntegrationSetup(IElasticClient client, CallUniqueValues values)
 		{
-
+			foreach (var callUniqueValue in values)
+			{
+				IndexSnapshot(client, callUniqueValue.Value, callUniqueValue.Value + "-snapshot");
+			}
 		}
 
 		protected override bool ExpectIsValid => true;
@@ -48,6 +52,7 @@ namespace Tests.XPack.MachineLearning.UpdateModelSnapshot
 		protected override void ExpectResponse(IUpdateModelSnapshotResponse response)
 		{
 			response.ShouldBeValid();
+			response.Acknowledged.Should().BeTrue();
 		}
 	}
 }
